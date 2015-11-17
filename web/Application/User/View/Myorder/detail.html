@@ -1,0 +1,170 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js"/>
+<css href="__PLUGIN__/uploadify/uploadify.css"/>
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+            	<div class="dataset_title clearfix f_16 js_exp_top"><span>订单详情</span><i></i></div>
+            	<div class="m_lr_15">
+            	<!-- 新增/修改 过往经历模块 S-->            	
+            		<div class="order_box_ZH">
+                		<h5><b>订单信息</b></h5>
+                		<p>
+                			<span>订单编号：<?=$info['order_num']?></span>
+                			<span>下单时间：<?=$info['add_time']?></span>
+						</p>
+						<p>
+                			<span>付款时间：<?=$info['pay_time']=='0000-00-00 00:00:00'?'未付款':$info['pay_time']?></span>
+                			<span>付款方式：<?=$info['pay_type_text']?></span>
+						</p>
+						<p>
+                			<span>是否提供发票：<?=$info['is_need_invoice_text']?></span>
+                		</p>
+                	</div>
+					<?php 
+						if($info['is_need_invoice'] == 1){
+					?>
+					<div class="order_box_ZH">
+                		<h5><b>发票信息</b></h5>
+                		<div>
+                			<span>发票抬头：<?=$invoice['title']?></span>
+                			<span>手机号：<?=$invoice['phone_number']?></span>
+						</div>
+						<div>
+                			<span>收货地址：<?=$invoice['area_text']?></span>
+                			<span>邮编：<?=$invoice['postalcode']?></span>
+						</div>
+                	</div>
+					<?php 
+						}
+					?>
+                	<div class="order_box_ZH">
+                		<h5><b>买家备注</b></h5>
+                		<p><?=trim($info['description'])?$info['description']:'无'?></p>
+                	</div>
+                	<div class="order_box_ZH">
+                		<h5><b>买家信息</b></h5>
+                		<div>
+                			<span>名称：<?=$buyer_info['username']?></span>
+                			<span>城市：<?=trim($buyer_info['address_text'])?$buyer_info['address_text']:'未填写'?></span>
+                			<span>联系电话：<?=$buyer_info['telephone']?> </span>
+                		</div>
+                		<!-- <p>收货信息：李小璐，131****0840，湖北省 武汉市 武昌区 光谷大道金融港，430061</p> -->
+                	</div>
+                	<div class="table-responsive">
+						<table class="table order_b_edf5fd_ZH c_666">
+							<tr>
+								<th>商品</th>
+								<th>单价</th>
+								<th>数量</th>
+								<th>技能</th>
+								<th>订单状态</th>
+								<th>商品总价</th>
+							</tr>
+							<tr>
+								<td>
+									<span class="m_r_20">源语言：<?=$info['product_language_id_text']?></span><span>目标语言：<?=$info['product_to_language_id_text']?></span>
+								</td>
+								<td><?=$info['product_price']?>/千字</td>
+								<td><?=$info['qty']?>/<?php if($info['product_type'] == 1){ echo '字'; }else{ echo '小时'; } ?></td>
+								<td><?=$info['product_type_text']?></td>
+								<td><b class="org"><?=$info['order_status_text']?></b></td>
+								<td><?=$info['total_price']?>元</td>
+							</tr>
+							<tr>
+								<td colspan="6"></td>
+							</tr>
+						</table>
+						<?php
+							if(($info['order_status'] == 6||$info['order_status']==7)&&!empty($info['files'])){
+						?>
+						<table class="table order_b_edf5fd_ZH c_666">
+							<tr>
+								<th width="18%">翻译完成文件</th>
+							</tr>
+							<tr>
+								<td colspan="5" class="text-left">
+								<?php 
+									foreach($info['files'] as $row){
+								?>
+									<b class="org"><a href="<?=U('downloads',array('id'=>$row['id']))?>" title="文件下载"><?=$row['title']?></a></b>&nbsp;&nbsp;&nbsp;&nbsp;
+								<?php 
+									}
+								?>
+								</td>
+							</tr>
+							<?php
+								if($info['order_status'] == 6){
+							?>
+							<tr>
+								<td><a class="btn b_org pull-right ajax-get confirm" href="<?=U('confirm',array('order_id'=>$info['order_id']))?>" >确  认</a></td>
+							</tr>
+							<?php
+								}
+							?>
+							<tr>
+								<td></td>
+							</tr>
+						</table>
+						<?php 
+							}
+						?>
+					</div>
+					<!--退款详情 S-->
+					<?php 
+						if($info['order_status'] == 7||$info['order_status'] == 4){
+					?>
+					<include file="Myorder/order_refundRequest"/>
+					<?php 
+						}
+					?>
+					<!--退款详情 E-->
+					<div class="table-responsive">
+						<div class="order_title_ZH">
+							<h5>历史记录</h5>
+						</div>
+						<table class="table order_b_edf5fd_ZH c_666 m_t_10">
+							<tr>
+								<th width='60%'>日期</th>
+								<th>订单状态</th>
+								<th>备注</th>
+							</tr>
+							<?php
+								foreach($result as $v){
+							?>
+							<tr>
+								<td><?=$v['add_time']?></td>
+								<td><b class="org"><?=$v['order_status_text']?></b></td>
+								<td><?=$v['description']?></td>
+							</tr>
+							<?php
+								}
+							?>
+							<tr>
+								<td colspan="3"></td>
+							</tr>
+						</table>
+					</div>
+            	<!--the end-->
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+	$(function(){
+		/*默认选中当前打开的链接菜单*/
+		if('<?=U(CONTROLLER_NAME.'/'.ACTION_NAME)?>'==='<?=U(CONTROLLER_NAME.'/'."detail")?>'){			
+			var current_uri='<?=U(CONTROLLER_NAME.'/'."index")?>';
+			}
+			$('a[href="'+current_uri+'"]').addClass('focus');
+			$('a[href="'+current_uri+'"]').parent().parent().attr({'style':'display:block;'});
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').addClass('cur');
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').children('.pull-right').addClass('down');
+	})
+</script>
+</block>

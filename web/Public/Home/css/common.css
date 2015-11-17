@@ -1,0 +1,181 @@
+@charset "utf-8";
+
+/* 设置需要的标签内边距和外边距为0，仅添加需要的标签，不建议使用星号（*）代替，以下为示例 */
+body,ul,h3,img,dl,dt,dd{margin:0;padding:0;}
+p{min-height:20px;}
+a{cursor:pointer;}
+.delThis{margin:10px}
+a:focus {
+     outline:none;
+     -moz-outline:none;
+}
+/* 列表样式设置，以下为示例，仅写你用到的标签 */
+ul{list-style-type:none;list-style-position:inside;}
+/* 设置body默认样式 */
+body{font-family:"Microsoft YaHei",verdana,arial;font-size:12px;color:#444;}
+pre{font-family:"Microsoft YaHei",verdana,arial !important;}
+/* 设置文本选中后的样式，默认设置的为背景和字体 */
+::selection{background:#138FCB !important; color:#eee !important;}
+/* 设置链接默认样式 */
+a{text-decoration:none;color:#4a4a4a;}
+a:hover{color:#FF5926; text-decoration: none;}
+a:focus,a:visited{ text-decoration: none;}
+/* 设置图片无边框 */
+img{border:none;}
+/*火狐不兼容问题*/
+.clearfix{
+	zoom:1;
+}
+/*解决input置灰问题*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
+}
+input::-ms-clear{display:none;}
+/* 浮动 */
+.f_l{float:left;}
+.f_r{float:right;}
+/* 清除浮动 http://developer.51cto.com/art/201105/261229.htm */
+.cf:before, .cf:after { content: ""; display: table; }
+.cf:after { clear: both; }
+.cf { zoom: 1; }
+/* 超过指定宽度，用省略号代替 */
+.ellipsis{display:block;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/*强制换行*/
+.break_word{word-wrap:break-word;word-break:break-all;}
+/*禁止换行*/
+.keep_all{word-break:keep-all;white-space:nowrap;}
+.mt20{margin-top: 20px;}
+.mb20{ margin-bottom: 20px !important;}
+/*分页样式*/
+.pages{ line-height: 30px;}
+.pages a{
+	display: inline-block;
+	border: 1px solid #ddd;
+	padding: 0 10px;
+}
+.pages a:hover,
+.pages a.cur{
+	border:1px solid #ff7302;
+	background: #ff7302;
+	color: #fff;
+	text-decoration: none;
+}
+.pages input{
+	width: 30px;
+	height: 100%;
+	height: 32px\9;
+	*line-height: 30px;
+	vertical-align: middle\9;
+	padding: 0 10px;
+	border:1px solid #ddd;
+}
+
+/* 跳转页面样式 */
+.jump_j{
+	border: 1px solid #ddd;
+	margin: 20px 0 10px;
+	padding:60px 0;
+	text-align: center;
+	font-size: 14px;
+}
+.jump_j .table td{
+	border-top: 0;
+	vertical-align: middle;
+}
+.jump_j a{
+	color: #ff0100;
+}
+.jump_j .orange{
+	color: #ff0100;
+}
+.jump_ZH{
+	margin: 20px 0 10px;
+	background-color: #fafafa;
+	text-align: center;
+	font-size: 14px;
+}
+.jump_ZH table{
+	margin-bottom:0; 
+}
+.jump_ZH table tbody tr td{
+	border-top:0!important;
+	vertical-align: middle;
+}
+.jump_ZH table tbody tr td img{
+	display: inline-block;
+	margin: 20px 10px;
+	border: 0;
+	max-width: 70px;
+	vertical-align: middle;
+	text-align: center;
+}
+/*validform表单验证样式表*/
+/*==========以下部分是Validform必须的===========*/
+.Validform_checktip{
+	margin-top:8px;
+	line-height:20px;
+	height:20px;
+	overflow:hidden;
+	color:#999;
+	font-size:12px;
+}
+.Validform_right{
+	color:#71b83d;
+}
+.Validform_wrong{
+	color:red;
+	white-space:nowrap;
+}
+.Validform_loading{
+
+}
+.Validform_error{
+	background-color:#ffe7e7;
+}
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#999;
+background: -moz-linear-gradient(top, #999, #666 100%); background: -webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#666)); filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666');}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#ccc;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #bbb; border-top:none; text-align:left;}
+
+
+/* 重置弹框样式 */
+.ui-dialog-grid{
+	font-family: 'Microsoft YaHei';
+	min-width: 200px;
+}
+.ui-dialog-footer{
+	padding: 0 10px 20px;
+}
+.ui-dialog-footer button{
+	color: #fff;
+}
+.ui-dialog-footer button:hover{
+	color: #fff;
+	opacity: .8;
+	filter:alpha(opacity=80);
+}
+.ui-dialog-footer button.cancel{
+    background: #ddd;
+}
+.ui-dialog-footer button.ok{
+    background: #24a7dd;
+}
+
+/* IE中bootstrap兼容 */
+.col-xs-9,
+.col-xs-3{
+	*padding-left: 0;
+	*padding-right: 0;
+}

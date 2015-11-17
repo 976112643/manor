@@ -1,0 +1,56 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<div class="container">
+    <div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+                <div class="dataset_title clearfix f_16 js_exp_top"><span>资金管理</span><i></i></div>
+                <div class="m_lr_15">
+                <!-- 新增/修改 过往经历模块 S-->              
+                    <h3 class="f_17 f_w msg_sw">欢迎您，娜娜！ 您当前可用余额：<span class="f_24 c_ff9c02 f_bold">￥8.88</span></h3>
+                    <a class="active_sw f_14 f_w" href="">余额提现</a>
+                    <a class="link_sw f_14 f_w" href="">资金充值</a>
+                    <!-- -余额提现 -->
+                    <form class="form-horizontal balanceform_sw">
+                        <div class="form-group border_sw">
+                            <label class="col_2_sw col-xs-2 control-label label_sw f_w">提现金额</label>
+                            <div class="col_10_sw col-xs-10 padding_sw paddingbotm_sw">
+                                <input class="form-control input_sw" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group border_sw">
+                            <label class="col_2_sw col-xs-2 control-label label_sw f_w">交易密码</label>
+                            <div class="col_10_sw col-xs-10 padding_sw paddingbotm_sw">
+                                <input class="form-control input_sw psw_sw" type="text">
+                                <a class="pad_left_sw" href="">忘记密码</a>
+                            </div>
+                        </div>
+                        <div class="form-group border_sw border_btom_sw">
+                            <label class="col_2_sw col-xs-2 control-label label_sw balancelabel_sw">收款账号</label>
+                            <div class="col_10_sw col-xs-10 padding_sw paddingbotm_sw">
+                                <select class="form-control cardnumber_sw">
+                                    <option>范冰冰&nbsp&nbsp&nbsp&nbsp招商银行&nbsp&nbsp&nbsp&nbsp1234567890123456789&nbsp&nbsp&nbsp&nbsp湖北省宜昌市</option>
+                                    <option>六级</option>
+                                    <option>八级</option>
+                                </select>
+                                <span class="pad_left_sw c_ff9c02 underline_sw "  style="padding-top:10px;padding-bottom；10px">没有银行卡？</span>
+                                <a class="pad_left_sw underline_sw" href="" style="padding-top:10px;padding-bottom；10px">点击添加</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-9 col_9_sw col-xs-offset-2">
+                                <div class="form-inline">
+                                    <input class="btn balance_add_sw" type="button" value="提交">
+                                    <input class="btn balance_reset_sw" type="reset" value="取消">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <!--the end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>

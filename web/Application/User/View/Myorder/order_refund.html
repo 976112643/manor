@@ -1,0 +1,47 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<div class="container">
+    <div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+                <div class="dataset_title clearfix f_16 js_exp_top"><span>我要退款</span><i></i></div>
+                <div class="m_lr_15">
+                <!-- 新增/修改 过往经历模块 S-->              
+                    <form class="form-horizontal">
+                        <div class="form-group label_ZH">
+                            <label class="col-xs-2 control-label p_r_0">退款原因：</label>
+                            <div class="col-xs-10">
+                                <select class="select_style">
+                                    <option>请选择退款原因</option>
+                                    <option>原因一</option>
+                                    <option>原因二</option>
+                                </select>
+                            </div>         
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label p_r_0">上传凭证：</label>
+                            <div class="col-xs-10">
+                                <input type="file" id="exampleInputFile">
+                                <p class="help-block org">请上传doc、docx、txt、pdf、rar、zip、png、jpg、gif格式的文件，文件大小在100M以内。</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2 control-label p_r_0">退款备注：</label>
+                            <div class="col-xs-10">
+                                <textarea class="textarea_style w_500" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-offset-2 col-xs-10">
+                                <input class="refund_btn" type="button" value="提交退款申请">
+                            </div>
+                        </div>
+                    </form>
+                <!--the end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>

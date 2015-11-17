@@ -1,0 +1,91 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+            	<div class="dataset_title clearfix f_16 js_exp_top"><span>订单列表</span><i></i></div>
+            	<div class="m_lr_15">
+            	<!-- 新增/修改 过往经历模块 S-->            	
+            		<div class="form-inline">
+                    	<div class="form-group">
+                    		<input class="input_style" type="text" placeholder="订单号">
+                    	</div>
+                    	<div class="form-group">
+                    		<input class="input_style" type="text" placeholder="下单日期">
+                    	</div>
+                    	<div class="form-group">
+                    		<select class="select_style w_140">
+                    			<option>待处理</option>
+                    		</select>
+                    	</div>
+                    	<div class="form-group">
+                    		<input class="order_btn_ZH" type="button" value="搜索">
+                    	</div>
+                    </div>
+					<div class="w_452">
+						<ul class="nav nav-pills nav-justified">
+							<li><a class="order_reset_a order_cur" href="javascript:void(0)">全部订单(<strong>18</strong>)</a></li>
+							<li><a class="order_reset_a" href="javascript:void(0)">已完成订单(<strong>10</strong>)</a></li>
+							<li><a class="order_reset_a" href="javascript:void(0)">进行中订单(<strong>8</strong>)</a></li>
+						</ul>
+					</div>
+					<div class="table-responsive">
+						<table class="table order_b_edf5fd_ZH c_666">
+							<tr>
+								<th>
+									<input type="checkbox">
+								</th>
+								<th>订单号</th>
+								<th>下单人</th>
+								<th>订单总额</th>
+								<th>技能</th>
+								<th>订单状态</th>
+								<th>下单日期</th>
+								<th>操作</th>
+							</tr>
+							<tr>
+								<td>
+									<input type="checkbox">
+								</td>
+								<td>221546159546567</td>
+								<td>remember娜娜</td>
+								<td>800元</td>
+								<td>笔译</td>
+								<td>已完成</td>
+								<td>2015-06-18</td>
+								<td><a href="javascript:void(0)">删除</a><span class="m_lr_5">/</span><a href="javascript:void(0)">查看</a><span class="m_lr_5">/</span><a href="javascript:void(0)">退款</a></td>
+							</tr>
+							<tr>
+								<td colspan="8">
+									<label>
+										<input type="checkbox">全选
+									</label>
+									<input class="ml_10 del_btn_ZH" type="button" class="btn btn-default" value="删除">
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="pager clearfix">
+                        <ul class="pull-left">
+                            <li><a href="#">上一页</a></li>
+                            <li class="on"><a href="#">1</a></li>
+                            <li class="hover"><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">3</a></li>
+                            <li class="more">…</li>
+                            <li><a href="#">18</a></li>
+                            <li><a href="#">下一页</a></li>
+                            <li class="jump"><span>共18页 跳转至</span><input type="text" class="num"/><span>页</span><input type="submit" value="确定" class="btn_pager_jump"/></li>
+                        </ul>
+                    </div>
+            	<!--the end-->
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>

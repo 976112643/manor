@@ -1,0 +1,197 @@
+<!-- Main Header -->
+<header class="main-header">
+
+    <!-- Logo -->
+    <a href="#this" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>N邦</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <!-- <span class="logo-lg">
+        <i>CNSunRun</i>
+      </span> -->
+	  
+	  <!-- <span class="logo_pic">
+	  <img src="__ROOT__/Public/Home/img/sc_template/logo.png"/>
+	  </span> -->
+	  <span class="logo-lg">
+        <i>N邦翻译</i>
+      </span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      
+      <a href="#" class="sidebar-toggle topbar-toggle" data-toggle="collapse" data-target=".nav_box" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      
+      <!--navbar left menu-->
+      <div class="nav_box">
+      <?php
+			//生成链接,头部和左边被选中的项目,标题
+			foreach(session('menu_result') as $key=>$row){
+				$a['title']=$row['title'];
+				$a['url']=$row['_child'][0]['url'];
+				$header_url[]=$a;										//头部链接
+				if(!$need_display){										//没有想要的值,就得计算
+					foreach($row['_child'] as $k=> $val){
+						if(strstr(trim( '__SELF__','.html'),"__ROOT__/".$val['url']) && !empty($val['url']) ){
+							$need_display=$key;							//需呈现出来的标签
+							$group_class=$val['groups'];				//被选中的分组
+							$title_class=$val['title'];					//被选中的标题
+							$page_title=$val['groups'];
+							$page_small=$val['title'];
+							//排个序
+							$a=array('添加','启用','禁用','删除');
+							foreach($a as $aval){
+								foreach($val['_child'] as $v){
+									if($aval==$v['title']){
+										$page_child[]=$v;				//这些按扭
+									}
+								}
+							}
+							break;
+						}
+						foreach($val['_child'] as $v){
+							if(strstr(trim( '__SELF__','.html'),"__ROOT__/".$v['url']) && !empty($v['url']) ){
+								$need_display=$key;						//需呈现出来的标签
+								$group_class=$val['groups'];			//被选中的分组
+								$title_class=$val['title'];				//被选中的标题
+								$page_title=$val['title'];
+								$page_small=$v['title'];
+								break;
+							}
+						}
+						if($need_display){
+							break;
+						}
+					}
+				}
+			}
+			foreach($header_url as $key=>$row){
+      	?>
+      	
+      	<a href="<?=U($row['url'])?>" class="<?=$key==$need_display?'cur':''?>"  ><?=$row['title']?></a>
+      	
+      	<?php
+      		}
+      	?>
+      </div>
+      <!--end -->
+      
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+		          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu">
+            <!-- Menu toggle button -->
+           
+            <ul class="dropdown-menu">
+              <li class="footer"><a href="#">See All Messages</a></li>
+            </ul>
+          </li><!-- /.messages-menu -->
+
+
+    
+          <!-- Notifications Menu -->
+          
+          <!-- Tasks Menu -->
+         
+          <!-- User Account Menu -->
+          <li class="dropdown user user-menu111">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle111" data-toggle="dropdown111">
+              <!-- The user image in the navbar-->
+              <!-- <img src="__IMG__/user.jpg" class="user-image" alt="User Image"/> -->
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs"><?=session('username')?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              
+              <!-- Menu Body -->
+              
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  
+                </div>
+                <div class="pull-right">
+                  <a href="<?=U('Backend/Base/Public/logout')?>" class="btn btn-default btn-flat ajax-get">安全退出</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+		  <a href="<?=U('Backend/Base/Public/logout')?>" class="ajax-get">安全退出</a>
+            <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          </li>
+        </ul>
+      </div>
+    </nav>
+</header>
+<!-- Control Sidebar -->      
+<aside class="control-sidebar control-sidebar-dark">                
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class='control-sidebar-menu'>
+          <li>
+            <a href='javascript::;'>
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>              
+        </ul><!-- /.control-sidebar-menu -->
+    
+        <h3 class="control-sidebar-heading">Tasks Progress</h3> 
+        <ul class='control-sidebar-menu'>
+          <li>
+            <a href='javascript::;'>               
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>                                    
+            </a>
+          </li>                         
+        </ul><!-- /.control-sidebar-menu -->         
+    
+      </div><!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">            
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked />
+            </label>
+            <p>
+              Some information about this general settings option
+            </p>
+          </div><!-- /.form-group -->
+        </form>
+      </div><!-- /.tab-pane -->
+    </div>
+</aside>

@@ -1,0 +1,46 @@
+<extend name="User@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>手机修改</span><i></i></div>
+                    <div class="m_lr_15">
+                        <!-- 修改手机密码-开始 -->
+                        <form class="form-horizontal sale_form_sw">
+                            <div class="form-group border_sw">
+                                <label class="salelabel_sw f_w">当前手机号</label>
+                                <div class="padding_sw ph_numb_sw">
+                                    1313***1111
+                                </div>
+                            </div>
+                            <div class="form-group border_sw">
+                                <label class="salelabel_sw f_w">更换新号码</label>
+                                <div class="padding_sw">
+                                    <input class="form-control input_sw" type="text">
+                                </div>
+                            </div>   
+                            <div class="form-group border_sw border_btom_sw">
+                                <label class="salelabel_sw f_w">验证码</label>
+                                <div class="padding_sw">
+                                    <input class="form-control yanzheng_sw" type="text">
+                                    <input class="form-control btn yanzheng_sw btn_sw" type="button" value="获取验证码">
+                                </div>
+                            </div>           
+                            <div class="form-group">
+                                <div class="col-xs-offset-3 zoom1_sw">
+                                    <div class="form-inline">
+                                        <input class="btn btn_add_sw" type="button" value="提交">
+                                        <input class="btn btn_reset_sw" type="reset" value="取消">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- 修改手机密码-结束 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

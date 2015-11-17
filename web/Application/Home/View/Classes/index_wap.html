@@ -1,0 +1,489 @@
+<extend name="Home@Public/body_wap" />
+<block name="body">
+<!-- banner切换 S-->
+<div class="index_banner_j" id="banner">
+	<ul class="banner_tip">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<div class="banner_wrap">
+		<ul>
+			<li><a href="#this"><img src="__IMG__/banner.jpg" alt=""></a></li>
+			<li><a href="#this"><img src="__IMG__/banner.jpg" alt=""></a></li>
+			<li><a href="#this"><img src="__IMG__/banner.jpg" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+<script>
+	TouchSlide({
+		slideCell:"#banner",
+		titCell:".banner_tip", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		mainCell:".banner_wrap ul",
+		effect:"leftLoop",
+		autoPlay:true,//自动播放
+		autoPage:true, //自动分页
+	});
+</script>
+<!-- banner切换 E-->
+<!-- title_info S-->
+<div class="wap_title_ZH clearfix bg_gray sj_ZH">
+	<div class="pull-left pic_box_ZH">
+		<img src="__IMG__/sc_template/app/pic_app.png">
+	</div>
+	<div class="info_box_ZH clearfix">
+		<div class="pull-right info_right">
+			<a class="f12" href="#this"><i class="fa fa-star mr_5"></i>收藏</a>
+			<a class="f12" href="#this"><i class="fa fa-share-alt mr_5"></i>分享</a>
+		</div>
+		<div class="info_left">
+			<div class="f14 line_h_28"><strong class="mr_15">乐享国际翻译公司</strong><i class="fc fc-lv org"></i>八级</div>
+			<div>
+				<span class="mr_5">译龄:3年</span>
+				<span>评价:5.0分</span>
+				<div>(265条评价)</div>
+			</div>
+		</div>      
+	</div>
+	<div class="inte_ZH">
+		<ul>
+			<li>               
+				<i class="fc fc-person org mr_5"></i>身份认证
+			</li>
+			<li>
+				<i class="fc fc-license org mr_5"></i>营业执照
+			</li>
+			<li>
+				<i class="fc fc-tallage org mr_5"></i>税务证
+			</li>
+			<li>
+				<i class="fc fc-permit org mr_5"></i>资质证书
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- title_info E-->
+<!-- 基本描述 S-->
+<div class="depict_content">
+	<div class="depict_ZH">
+		<div class="depict_title_ZH">
+			<h5>日翻译量</h5>
+		</div>
+		<p class="f14 pr_8 pl_8">
+			音频：3小时<i class="line_bet"></i>笔译:3000字<i class="line_bet"></i>口译:4小时
+		</p>
+	</div>
+	<div class="depict_ZH">
+		<div class="depict_title_ZH">
+			<h5>业务范围</h5>
+		</div>
+		<p class="f14 pr_8 pl_8">
+			翻译<i class="line_bet"></i>审稿<i class="line_bet"></i>校对<i class="line_bet"></i>母语审稿<i class="line_bet"></i>同传<i class="line_bet"></i>交传<i class="line_bet"></i>陪同
+		</p>
+	</div>
+	<div class="depict_ZH">
+		<div class="depict_title_ZH">
+			<h5>服务类别</h5>
+		</div>
+		<p class="f14 pr_8 pl_8">
+			外译中<i class="line_bet"></i>外译中<i class="line_bet"></i>外译中
+		</p>
+	</div>
+	<div class="depict_ZH">
+		<div class="depict_title_ZH">
+			<h5>服务统计</h5>
+		</div>
+		<p class="f14 pr_8 pl_8">
+			音频：4700小时<i class="line_bet"></i>笔译:5000万字<i class="line_bet"></i>口译:47500万字
+		</p>
+	</div>
+</div>  
+<!-- 基本描述 E-->
+<!-- 服务and评价切换 S-->
+<div class="service_box gray">
+	<div class="js_service service_ZH">
+		<a href="javascript:void(0);">服务语言</a>
+		<a class="active"  href="javascript:void(0);">用户评价</a>
+		<a href="javascript:void(0);">详细资料</a>
+	</div>
+	<div class="service_content">
+		<div class="js_box lang_content" style="display: none;">
+			<table>
+				<tr style="border-bottom: 1px solid #e3e3e3;">
+					<th>公司简介：</th>
+					<td>没有翻译不好的资料，只有不尽责的译员。</td>
+				</tr>
+				<tr>
+					<th>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</th>
+					<td>武汉洪山区</td>
+				</tr>
+			</table>
+			<div class="timeTable_ZH">
+				<div class="clearfix" style="border:1px solid #e3e3e3;border-bottom: 0;">
+					<h5 class="pull-left ml_5 org">可预约翻译时间</h5>
+					<h6 class="pull-right mr_5">
+						<span><i class="fa"></i>可预约</span>
+						<span><i class="fa"></i>不可预约</span>
+						<span><i class="fa"></i>已预约</span>
+					</h6>
+				</div>
+				<table class="table table-bordered">
+					<tr>
+						<td>周一</td>
+						<td>上午<i class="fa ml_5"></i></td>
+						<td>下午<i class="fa ml_5"></i></td>
+						<td>晚上<i class="fa ml_5"></i></td>
+					</tr>
+					<tr>
+						<td>周二</td>
+						<td>上午<i class="fa ml_5"></i></td>
+						<td>下午<i class="fa ml_5"></i></td>
+						<td>晚上<i class="fa ml_5"></i></td>
+					</tr>
+					<tr>
+						<td>周三</td>
+						<td>上午<i class="fa ml_5"></i></td>
+						<td>下午<i class="fa ml_5"></i></td>
+						<td>晚上<i class="fa ml_5"></i></td>
+					</tr>
+					<tr>
+						<td>周四</td>
+						<td>上午<i class="fa ml_5"></i></td>
+						<td>下午<i class="fa ml_5"></i></td>
+						<td>晚上<i class="fa ml_5"></i></td>
+					</tr>
+					<tr>
+						<td>周五</td>
+						<td>上午<i class="fa ml_5"></i></td>
+						<td>下午<i class="fa ml_5"></i></td>
+						<td>晚上<i class="fa ml_5"></i></td>
+					</tr>
+					<tr>
+						<td>周六</td>
+						<td>上午<i class="fa ml_5"></i></td>
+						<td>下午<i class="fa ml_5"></i></td>
+						<td>晚上<i class="fa ml_5"></i></td>
+					</tr>
+					<tr>
+						<td>周日</td>
+						<td>上午<i class="fa ml_5"></i></td>
+						<td>下午<i class="fa ml_5"></i></td>
+						<td>晚上<i class="fa ml_5"></i></td>
+					</tr>
+				</table>
+			</div>
+			<ul>
+				<li class="border_box">
+					<div class="org f14">
+						<span class="mr_5">源语言：中文</span>
+						<span>目标语言：英文</span>
+					</div>
+					<h5 class="f16">口译<i class=""></i></h5>
+					<ul>
+						<li>可接类型：wps,ppt,word</li>
+						<li>难度等级：大师</li>
+						<li>可接领域：工程建筑</li>
+						<li>商品描述：专业翻译团队，多次荣获国际翻译竞赛金奖<a class="org ml_5" href="javascript:void(0)">查看详情</a></li>
+					</ul>
+					<div class="buy_btn clearfix">
+						<h5 class="pull-left">￥150元/小时</h5>
+						<input class="pull-right" type="button" value="购买此服务">
+					</div>
+				</li>
+				<li class="border_box">
+					<div class="org f14">
+						<span class="mr_5">源语言：中文</span>
+						<span>目标语言：英文</span>
+					</div>
+					<h5 class="f16">笔译<i class=""></i></h5>
+					<ul>
+						<li>可接类型：wps,ppt,word</li>
+						<li>难度等级：大师</li>
+						<li>可接领域：工程建筑</li>
+						<li>商品描述：专业翻译团队，多次荣获国际翻译竞赛金奖<a class="org ml_5" href="javascript:void(0)">查看详情</a></li>
+					</ul>
+					<div class="buy_btn clearfix">
+						<h5 class="pull-left">￥150元/500字</h5>
+						<input class="pull-right" type="button" value="购买此服务">
+					</div>
+				</li>
+				<li class="border_box">
+					<div class="org f14">
+						<span class="mr_5">源语言：中文</span>
+						<span>目标语言：英文</span>
+					</div>
+					<h5 class="f16">音频翻译<i class=""></i></h5>
+					<ul>
+						<li>可接类型：wps,ppt,word</li>
+						<li>难度等级：大师</li>
+						<li>可接领域：工程建筑</li>
+						<li>商品描述：专业翻译团队，多次荣获国际翻译竞赛金奖<a class="org ml_5" href="javascript:void(0)">查看详情</a></li>
+					</ul>
+					<div class="buy_btn clearfix">
+						<h5 class="pull-left">￥150元/小时</h5>
+						<input class="pull-right" type="button" value="购买此服务">
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="js_box evaluate_content">
+			<div class="star_box bg_white clearfix">
+				<div class="pull-left l_grade_ZH">
+					<span><strong>5.0</strong>分</span>
+					<span>
+						<div class="star_progress_yqc edit">
+							<div class="bar" style="width: 80%;"></div>
+						</div>
+					</span>
+					<span>共271人评价</span>
+				</div>
+				<div class="pull-right r_grade_ZH">
+					<div>
+						<span>质量：</span>
+						<span>
+							<div class="star_progress_yqc edit">
+								<div class="bar" style="width: 80%;"></div>
+							</div>
+						</span>
+						<span>5.0分</span>
+					</div>
+					<div>
+						<span>速度：</span>
+						<span>
+							<div class="star_progress_yqc edit">
+								<div class="bar" style="width: 80%;"></div>
+							</div>
+						</span>
+						<span>5.0分</span>
+					</div>
+					<div>
+						<span>态度：</span>
+						<span>
+							<div class="star_progress_yqc edit">
+								<div class="bar" style="width: 80%;"></div>
+							</div>
+						</span>
+						<span>5.0分</span>
+					</div>
+				</div>
+			</div>
+			<div class="evaluate_box">
+				<div class="js_active evaluate_tab bg_white">
+					<a class="active" href="javascript:void(0)">
+						<span>全部</span>
+						<span>（147）</span>
+					</a>
+					<a href="javascript:void(0)">
+						<span>好评</span>
+						<span>（147）</span>
+					</a>
+					<a href="javascript:void(0)">
+						<span>中评</span>
+						<span>（0）</span>
+					</a>
+					<a style="border-right: 0;" href="javascript:void(0)">
+						<span>差评</span>
+						<span>（0）</span>
+					</a>
+				</div>
+				<div class="evaluate_list">
+					<div class="js_box2 border_box">
+						<ul>
+							<li>
+								<div class="clearfix">
+									<span class="pull-left">杜昊：<i class=""></i>好评</span>
+									<span class="pull-right light_gray">2015-05-29 15:19</span>
+								</div>
+								<div class="light_gray line_h_28">
+									<span>技能：笔译</span>
+									<span>用途：合同文件</span>
+									<span>文件类型：pfd</span>
+								</div>
+								<p>
+									非常专业，在这家翻译了好几次，不管是服务态度还是翻译效率和翻译精准度，都是非常棒的！
+								</p>
+							</li>
+							<li>
+								<div class="clearfix">
+									<span class="pull-left">杜昊：<i class=""></i>好评</span>
+									<span class="pull-right light_gray">2015-05-29 15:19</span>
+								</div>
+								<div class="light_gray line_h_28">
+									<span>技能：笔译</span>
+									<span>用途：合同文件</span>
+									<span>文件类型：pfd</span>
+								</div>
+								<p>
+									非常专业，在这家翻译了好几次，不管是服务态度还是翻译效率和翻译精准度，都是非常棒的！
+								</p>
+							</li>
+							<li>
+								<div class="clearfix">
+									<span class="pull-left">杜昊：<i class=""></i>好评</span>
+									<span class="pull-right light_gray">2015-05-29 15:19</span>
+								</div>
+								<div class="light_gray line_h_28">
+									<span>技能：笔译</span>
+									<span>用途：合同文件</span>
+									<span>文件类型：pfd</span>
+								</div>
+								<p>
+									非常专业，在这家翻译了好几次，不管是服务态度还是翻译效率和翻译精准度，都是非常棒的！
+								</p>
+							</li>
+							<li>
+								<div class="clearfix">
+									<span class="pull-left">杜昊：<i class=""></i>好评</span>
+									<span class="pull-right light_gray">2015-05-29 15:19</span>
+								</div>
+								<div class="light_gray line_h_28">
+									<span>技能：笔译</span>
+									<span>用途：合同文件</span>
+									<span>文件类型：pfd</span>
+								</div>
+								<p>
+									非常专业，在这家翻译了好几次，不管是服务态度还是翻译效率和翻译精准度，都是非常棒的！
+								</p>
+							</li>
+						</ul>
+					</div>
+					<div class="js_box2 border_box" style="display:none;">
+						<ul>
+							<li>
+								<div class="clearfix">
+									<span class="pull-left">杜昊：<i class=""></i>好评</span>
+									<span class="pull-right light_gray">2015-05-29 15:19</span>
+								</div>
+								<div class="light_gray line_h_28">
+									<span>技能：笔译</span>
+									<span>用途：合同文件</span>
+									<span>文件类型：pfd</span>
+								</div>
+								<p>
+									非常专业，在这家翻译了好几次，不管是服务态度还是翻译效率和翻译精准度，都是非常棒的！
+								</p>
+							</li>
+						</ul>
+					</div>
+					<div class="js_box2 border_box" style="display:none;">
+						<ul>
+							<li>
+								<div class="clearfix">
+									<span class="pull-left">杜昊：<i class=""></i>好评</span>
+									<span class="pull-right light_gray">2015-05-29 15:19</span>
+								</div>
+								<div class="light_gray line_h_28">
+									<span>技能：笔译</span>
+									<span>用途：合同文件</span>
+									<span>文件类型：pfd</span>
+								</div>
+								<p>
+									非常专业，在这家翻译了好几次，不管是服务态度还是翻译效率和翻译精准度，都是非常棒的！
+								</p>
+							</li>
+						</ul>
+					</div>
+					<div class="js_box2 border_box" style="display:none;">
+						<ul>
+							<li>
+								<div class="clearfix">
+									<span class="pull-left">杜昊：<i class=""></i>好评</span>
+									<span class="pull-right light_gray">2015-05-29 15:19</span>
+								</div>
+								<div class="light_gray line_h_28">
+									<span>技能：笔译</span>
+									<span>用途：合同文件</span>
+									<span>文件类型：pfd</span>
+								</div>
+								<p>
+									非常专业，在这家翻译了好几次，不管是服务态度还是翻译效率和翻译精准度，都是非常棒的！
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="js_box intro_content" style="display: none;">
+			<div class="border_box">
+				<p><i class="fc fc-flag mr_5 f16"></i>过往经历</p>
+				<p class="org">2014/05/01-至今</p>
+				<p>
+					乐享国际翻译公司城市矿产资源再生循环利用示范基地是由湖北和天下东山资源循环利用投资有限公司投资兴建的国家级再生资源循环利用产业园。项目的建设得到国家工信部、湖北省相关部门、孝感市及孝南区各级领导的鼎力帮助和大力支持。
+				</p>
+				<p class="org">2014/05/01-至今</p>
+				<p>
+					乐享国际翻译公司城市矿产资源再生循环利用示范基地是由湖北和天下东山资源循环利用投资有限公司投资兴建的国家级再生资源循环利用产业园。项目的建设得到国家工信部、湖北省相关部门、孝感市及孝南区各级领导的鼎力帮助和大力支持。
+				</p>
+			</div>
+			<div class="border_box">
+				<p>
+					<img src="__IMG__/sc_template/app/pic_1.jpg">
+				</p>
+				<p>
+					乐享国际翻译公司城市矿产资源再生循环利用示范基地是由湖北和天下东山资源循环利用投资有限公司投资兴建的国家级再生资源循环利用产业园。项目的建设得到国家工信部、湖北省相关部门、孝感市及孝南区各级领导的鼎力帮助和大力支持。
+				</p>
+				<p>
+					<img src="__IMG__/sc_template/app/pic_2.jpg">
+				</p>
+				<p>
+					<img src="__IMG__/sc_template/app/pic_3.jpg">
+				</p>
+			</div>
+		</div>
+	</div>
+</div>    
+<!-- 服务and评价切换 E-->
+</block>
+<block name="script">
+<script type="text/javascript">
+	var th=parseInt($(".js_service").offset().top);
+	$(window).scroll(function(){
+		var wh=parseInt($(window).scrollTop());
+		if(wh>=th){
+			$(".js_service").addClass("fixed_ZH");
+		} else{
+			$(".js_service").removeClass("fixed_ZH");
+		}
+	});
+
+	change(".js_service a",".service_content .js_box");
+	change(".js_active a",".evaluate_list .js_box2");
+	
+	/*//鼠标滑过打分
+	$('.star_progress_yqc.edit').mouseover(function(){
+		var bar = $(this).children('.bar');
+		var txt = $(this).parent().next('.score_desc_yqc').children('em');
+		var text = [
+			'1分 很不满意',
+			'2分 不满意',
+			'3分 一般',
+			'4分 满意',
+			'5分 惊喜'
+		];
+		$(this).mousemove(function(e){
+			var x = parseInt(e.pageX - $(this).offset().left);
+			if(x > 80){
+				x = 100;
+			}else if(x > 60){
+				x = 80;
+			}else if(x > 40){
+				x = 60;
+			}else if(x > 20){
+				x = 40;
+			}else{
+				x = 20;
+			}
+			bar.css('width',x+'%');
+			if(x/20 == 5){
+				bar.addClass('red_star');
+				txt.parent().addClass('red_score');
+			}else{
+				bar.removeClass('red_star');
+				txt.parent().removeClass('red_score');
+			}
+			txt.html(text[x/20-1]);
+		})
+	})*/
+</script>
+</block>

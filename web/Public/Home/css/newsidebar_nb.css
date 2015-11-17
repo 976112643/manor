@@ -1,0 +1,16 @@
+/*
+ * 新闻流程左侧
+ * dir  user
+ * @author	宋慰 
+ * */
+
+ /*公共样式*/
+/*颜色设置*/
+.c_ff7302{
+	color: #ff7302;
+}
+/*左侧 S*/
+li{
+	list-style-type: disc !important;
+}
+/*左侧 E*/

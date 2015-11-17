@@ -1,0 +1,83 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>资金管理</span><i></i></div>
+                    
+                    <div class="m_lr_15">
+                        <h3 class="f_17 f_w msg_sw">欢迎您，<?=session('username')?>！ 您当前可用余额：<span class="f_24 c_ff9c02 f_bold">￥<?=$member_info['balance']+$member_info['withdrawals']?></span><!-- &nbsp;&nbsp;可消费余额：<span class="f_24 c_ff9c02 f_bold">￥<?=$member_info['balance']?></span> -->&nbsp;&nbsp;可提现余额：<span class="f_24 c_ff9c02 f_bold">￥<?=$member_info['withdrawals']?></span></h3>
+                        <a class="link_sw f_14 f_w" href="<?=U('drawals')?>">余额提现</a>
+                        <a class="active_sw f_14 f_w" href="<?=U('recharge')?>">资金充值</a>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <!-- -资金充值 -->
+                        <form class="form-horizontal rechargeform_sw js_online_pay" action="<?=U('/Home/Pay/index')?>"  method="post" target="_blank">
+                            <div class="form-group row border_sw">
+                                <label class="col_2_sw col-xs-2 control-label label_numb_sw f_w">充值金额<span class="change_color c_ff7402">*</span></label>
+                                <div class="col_10_sw col-xs-10 padding_sw paddingbotm_sw">
+                                    <input class="form-control input_sw balanceinput_sw" name='recharge_money' type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row border_sw border_btom_sw">
+                                <label class="col_2_sw col-xs-2 control-label label_means_sw f_w">充值方式<span class="change_color c_ff7402">*</span></label>
+                                <div class="col_10_sw col-xs-10 padding_sw" id="pic_button_sw">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="pay_type" checked="checked" value="alipay" style="display:none;">
+                                        <a class="ashyborder_sw">
+                                            <img class="img-responsive center-block" src="__IMG__/zhifubao_nb.jpg">
+                                        </a>
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="pay_type" value="" style="display:none;"> 
+                                        <a class="ashyborder_sw">
+                                            <img class="img-responsive center-block" src="__IMG__/weixin_nb.jpg">
+                                        </a>
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="pay_type" value="" style="display:none;"> 
+                                        <a class="ashyborder_sw">
+                                            <img class="img-responsive center-block" src="__IMG__/zaixian_nb.jpg">
+                                        </a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-9 col_9_sw col-xs-offset-2">
+                                    <div class="form-inline">
+                                        <input class="btn balance_add_sw dialog"  href="<?=U('/User/Balance/pay_tip')?>"  onclick="js_submit(this);" type="bottom" target-form="js_online_pay" value="提交">
+                                        <input class="btn balance_reset_sw" type="reset" value="取消">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- end 资金充值 -->
+                        </div>      
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+		function js_submit(obj){
+			$(obj).parents('form').submit();
+		}
+    window.onload=function(){
+        var button=document.getElementById("pic_button_sw");
+        var link=button.getElementsByTagName("a");
+        for(var i=0;i<link.length;i++){
+            link[i].id=i;//为link里的li设置id
+            link[0].className="redborder_sw";
+            link[i].onclick=function(){
+                for (var j = 0; j < link.length; j++) {
+                    link[j].className="ashyborder_sw";
+                }
+                this.className="";
+                this.className="redborder_sw";
+            }
+        }
+    }
+    </script>
+</block>

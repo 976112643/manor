@@ -1,0 +1,94 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+            	<div class="dataset_title clearfix f_16 js_exp_top"><span>资金管理</span><i></i></div>
+            	<div class="m_lr_15">
+            	<!-- 新增/修改 过往经历模块 S-->            	
+            		<form class="form-inline m_b_10" action="<?=U('User/Balance/record')?>" method='post'>
+                    	<div class="form-group">
+                    		<input class="input_style" type="text" placeholder="交易号/金额" value='<?=$keyword?>' name='keyword'>
+                    	</div>
+                    	<div class="form-group">
+                    		<input class="input_style" type="text" placeholder="时间" value='<?=$add_time?$add_time:''?>' onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" name='add_time'>
+                    	</div>
+                    	<div class="form-group">
+                    		<select class="select_style w_140" name='status'>
+								<option value=''>全部</option>
+									<?php
+										foreach($status as $k=>$v){
+									?>
+	                    			<option value='<?=$k?>' <?=$k==$status?'selected':''?> ><?=$v?></option>
+								<?php
+									}
+								?>
+                    		</select>
+                    	</div>
+                    	<div class="form-group">
+                    		<input class="order_btn_ZH" type="submit" value="搜索">
+                    	</div>
+                    </form>
+					<div class="table-responsive m_t_10">
+						<table class="table record_ZH">
+							<tr>
+								<th>交易时间</th>
+								<th class="text-center">金额</th>
+								<th class="text-center">类型</th>
+								<th>备注</th>
+								<th>状态</th>
+								<!-- <th class="text-center">操作</th> -->
+							</tr>
+							<?php
+								foreach($member_record as $row){
+							?>
+							<tr style="padding: 15px 0;">
+								<td><?=$row['add_time']?></td>
+								<td class="text-center blue f_18"><?=$row['money']?></td>
+								<td class="text-center"><?=$row['type_text']?></td>
+								<td>
+                                    <p>交易号：<?=$row['order_num']?></p>
+									<?php
+										if($row['type'] ==1){
+									?>
+                                    <p>充值方式：<?=$row['recharge_type_text']?></p>
+									<?php
+										}
+									?>
+                                </td>
+								<td><?=$row['status_text']?></td>
+								<!-- <td class="text-center">
+									<?php
+										if($row['status']==0){
+									?>
+									<a href='<?=U('User/Balance/abolish',array('id'=>$row['id']))?>'>取消提现</a>
+									<?php
+										}else{
+									?>
+									-
+									<?php
+										}
+									?>
+								</td> -->
+							</tr>
+							<?php
+								}
+							?>
+						</table>
+						<?php if(empty($member_record)){?>
+	                    	<include file="Public/nodata" />
+		                 <?php }?>
+					</div>
+					<div class="pager clearfix pages">
+                       <?=$page?>
+                    </div>
+            	<!--the end-->
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>

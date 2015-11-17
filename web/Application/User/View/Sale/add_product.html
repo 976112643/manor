@@ -1,0 +1,200 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>商品管理</span><i></i></div>
+                    <!-- 商品添加-开始 -->
+                    <div class="m_lr_15">
+                        <div class="row row_sw addpro_sw">
+                            <form class="col-xs-10 form-horizontal js_submit" action="<?=U('add_product')?>" method="post">
+								<input name="id" type="hidden" value="" >
+                                <div class="form-group form_group_sw clear_left_sw">
+                                    <label class="col-xs-3 control-label goodsna_sw">商品名称：</label>
+                                    <select name="language_id" id="source_language" class="form-control w_175 displ_sw" >
+                                        <option value=''>请选择源语言</option>
+										<?php
+											foreach($language as $row){
+												if($row['pid']>0){
+										?>
+                                        <option value="<?=$row['id']?>"><?=$row['title']?></option>
+										<?php
+												}
+											}
+										?>
+                                    </select>
+                                    <i class="fa fa-arrow-right fa-lg fa_right_sw displ_sw c_999"></i>
+                                    <select name="to_language_id" id="to_language" class="form-control w_175 displ_sw" >
+                                        <option value=''>请选择目标语言</option>
+										<?php
+											foreach($language as $row){
+												if($row['pid']>0){
+										?>
+                                        <option value="<?=$row['id']?>"><?=$row['title']?></option>
+										<?php
+												}
+											}
+										?>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">商品类型：</label>
+                                    <select class="form-control w_175 js_change_type" name="type" >
+										<option value="">--请选择类型--</option>	
+										<?php
+											foreach($product_type as $row){
+										?>
+                                        <option value="<?=$row['id']?>"><?=$row['title']?></option>	
+										<?php
+											}
+										?>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">等级：</label>
+                                    <select class="form-control w_175" name="level_id" >
+										<option value="">--请选择等级--</option>
+										<?php
+											foreach($product_level as $row){
+										?>
+                                        <option value="<?=$row['id']?>"><?=$row['title']?></option>
+										<?php
+											}
+										?>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">价格：</label>
+                                    <input name="price" class="form-control w_70 price_sw" type="text" placeholder="300">
+                                    <span>元/千字/小时/分钟</span>
+                                </div>
+									<?php
+									//print_r($ability);
+										foreach($ability as $row){
+											foreach($row['_child'] as $_row){
+									?>
+                                <div class="form-group form_group_sw pad_bottom_sw js_ability js_check<?=$row['id']?>" style="display:none;" >
+                                    <label class="col-xs-3 control-label"><?=$_row['title']?>：</label>
+                                    <div class="file_clas_sw w_175">
+										<?php
+										//print_r($ability);
+											foreach($_row['_child'] as $_row_child){
+										?>
+                                        <label class="checkbox-inline">
+                                            <input name="ability_3[]" type="checkbox" value="<?=$_row_child['id']?>"> <?=$_row_child['title']?>
+                                        </label>
+										<?php
+											}
+										?>
+                                    </div>
+                                </div>
+                               
+								<?php
+										}
+									}
+								?>
+								<?php
+									foreach($industry as $row){
+								?>
+                                <div class="form-group form_group_sw pad_bottom_sw?>">
+                                    <label class="col-xs-3 control-label"><?=$row['title']?>：</label>
+                                    <div class="file_clas_sw w_175">
+										<?php
+										//print_r($ability);
+											foreach($row['_child'] as $_row){
+										?>
+                                        <label class="checkbox-inline">
+                                            <input name="industry_id[]" <?php if(in_array($_row['id'],$ability_ids)){echo 'checked="checked"';}?> type="checkbox" value="<?=$_row['id']?>"> <?=$_row['title']?>
+                                        </label>
+										<?php
+											}
+										?>
+                                    </div>
+                                </div>
+                               
+								<?php
+										
+									}
+								?>
+                                <div class="form-group form_group_sw pad_bottom_sw">
+                                    <label class="col-xs-3 control-label">商品描述：</label>
+                                    <textarea class="form-control maxw_400 minw_300" name="description" rows="5" placeholder="商品描述"></textarea>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">产品有效期：</label>
+                                    <div class="date_sw">
+									
+										<input class="form-control w_175 displ_sw"  type="text" onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" name='start_time' placeholder="选择开始日期" />
+                                        <!-- <select class="form-control w_175 displ_sw">
+                                            <option>选择开始日期</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>5</option>
+                                        </select> -->
+                                        <span class="displ_sw">—</span>
+										<input class="form-control w_175 displ_sw" type="text"  onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" name='expired_time' placeholder="选择结束日期" />
+                                        <!-- <select class="form-control w_175 displ_sw">
+                                            <option>选择结束日期</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>5</option>
+                                        </select> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group form_group_sw">
+                                    <label class="col-sm-3 control-label pad_bottom_sw">是否提供发票：</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" value="option1"> 提供
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" value="option3"> 不提供
+                                    </label>
+                                </div> -->
+                                <div class="form-group">
+                                    <div class="col-xs-offset-3 zoom1_sw">
+                                        <div class="form-inline">
+                                            <input class="btn btn_add_sw ajax-post" target-form="js_submit" type="submit" value="提交">
+                                            <input class="btn btn_reset_sw" type="reset" value="取消">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 商品添加-结束 -->
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+	$(function(){
+		/*根据商品类型选择显示相应的属性  *李东*/
+		$('.js_change_type').on('change',function(){
+			var pid = $(this).val();
+			$('.js_ability').attr({'style':'display:none;'});
+			$('.js_check'+pid).attr({'style':'display:block;'});
+		});
+		
+		/*根据选择的源语言,隐藏目标语言中的相同项 *李东*/
+		$('#source_language').on('change',function(){
+			var choose_id = $(this).val();
+			$('#to_language').children('option[value='+choose_id+']').attr({'style':'display:none'});
+			$('#to_language').children('option[value='+choose_id+']').prevAll().attr({'style':'display:block'});
+			$('#to_language').children('option[value='+choose_id+']').nextAll().attr({'style':'display:block'});
+		});
+		
+		/*根据选择的目标言,隐藏源语言中的相同项 *李东*/
+		$('#to_language').on('change',function(){
+			var choose_id = $(this).val();
+			$('#source_language').children('option[value='+choose_id+']').attr({'style':'display:none'});
+			$('#source_language').children('option[value='+choose_id+']').prevAll().attr({'style':'display:block'});
+			$('#source_language').children('option[value='+choose_id+']').nextAll().attr({'style':'display:block'});
+		});
+	});
+</script>
+</block>

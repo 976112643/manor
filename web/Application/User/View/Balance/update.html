@@ -1,0 +1,91 @@
+<extend name="Home@Public/body"/>
+<block name="body"> 
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>银行卡管理</span><i></i></div>
+                    <div class="m_lr_15">
+                        <div class="clearfix zoom1_sw">
+                            <h3 class="f_17 f_w msg_sw c_357fb0 cardmanage_h3_sw ">我的银行卡</h3>
+                            <!-- <a class="adduser_sw b_357fb0 c_fff f_w" href=""><i class="fa fa-plus"></i>添加</a> -->
+                        </div>
+                        <div class="row" style='margin-top:20px;'>
+                        <?php if(empty(I('get.'))){?>
+                         <form class="form-horizontal cardform_sw f_w demo_form_sw ajax_form" action='<?=U('User/Balance/index')?>' method='post'>
+                        <?php }else{?>
+                         <form class="form-horizontal cardform_sw f_w ajax_form" action='<?=U('User/Balance/update')?>' method='post'>
+                        <?php }?>
+								<input type='hidden' name='id' value='<?=$info['id']?>' />
+                            <div class="form-group border_sw">
+                                <label class="col_2_sw col-xs-2 control-label label_sw cardlabel_sw f_w">开户人<span class="change_color c_ff7402">*</span></label>
+                                <div class="col_10_sw col-xs-10 padding_sw">
+                                    <input class="form-control input_sw js_bank" type="text" name='account_user' value='<?=$info['account_user']?$info['account_user']:''?>' datatype="*" errormsg="" >
+                                </div>
+                            </div>
+                            <div class="form-group border_sw">
+                                <label class="col_2_sw col-xs-2 control-label label_sw cardlabel_sw">银行名称</label>
+                                <div class="col_10_sw col-xs-10 padding_sw">
+                                    <select class="form-control input_sw select_sw" name='bank_id'>
+                                       <?php
+											foreach($bank_data as $k=>$v){
+									   ?>
+										<option value="<?=$v['id']?>" <?=$info['bank_id']==$v['id']?'selected':''?>><?=$v['title']?></option>
+									   <?php
+											}
+									   ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group border_sw">
+                                <label class="col_2_sw col-xs-2 control-label label_sw cardlabel_sw f_w">银行卡号<span class="change_color c_ff7402">*</span></label>
+                                <div class="col_10_sw col-xs-10 padding_sw">
+                                    <i class="fa fa-lock fa-lg fa_lock_sw c_357fb0"></i>
+                                    <input class="form-control input_sw" type="text" name='account' value='<?=$info['account']?$info['account']:''?>' datatype="*16-19" errormsg="请正确填写你的卡号">
+									<span class="Validform_checktip"></span>
+                                </div>
+                            </div>
+                            <div class="form-group border_sw border_btom_sw">
+                                <label class="col_2_sw col-xs-2 control-label label_sw cardlabel_sw f_w">开户支行<span class="change_color c_ff7402">*</span></label>
+                                <div class="col_10_sw col-xs-10 padding_sw">
+                                    <input class="form-control input_sw" type="text" name='account_bank' datatype="*" errormsg="" value='<?=$info['account_bank']?$info['account_bank']:''?>'>
+									<span class="Validform_checktip"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-9 col_9_sw col-xs-offset-2">
+                                    <div class="form-inline">
+                                        <input class="btn balance_add_sw ajax-post" type="submit" target-form="ajax_form" value="提交">
+                                        <!-- <a href="<?=U('index')?>"><input class="btn balance_reset_sw" type="reset" value="取消"></a> -->
+                                        <a href="<?=U('index')?>" class="btn balance_reset_sw">取消</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <script>
+	$(function(){
+            //表单验证
+            $(".demo_form_sw").Validform({tiptype:3});
+        })
+	$(function(){
+	/*默认选中当前打开的链接菜单*/
+		if('<?=U(CONTROLLER_NAME.'/'.ACTION_NAME)?>'==='<?=U(CONTROLLER_NAME.'/'."update")?>'){			
+			var current_uri='<?=U(CONTROLLER_NAME.'/'."index")?>';
+		}
+			$('a[href="'+current_uri+'"]').addClass('focus');
+			$('a[href="'+current_uri+'"]').parent().parent().attr({'style':'display:block;'});
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').addClass('cur');
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').children('.pull-right').addClass('down');
+		
+	});
+	
+
+</script>
+</block>

@@ -1,0 +1,53 @@
+<css href="__CSS__/user_lj.css" />
+<div class="col-xs-3 fyh news_nb">
+	<div class="side_bar2_j border_gray text-center">
+        <!--左侧公告栏 start-->
+        <ul class="newsidebarl_sw text-left">
+        	<li class="f_14 f_bold"><i class="fa fa-volume-up fa-lg c_ff7302"></i><?=CONTROLLER_NAME=='News'?'N邦公告':'新闻'?></li>
+			<?php
+				$num = 0;//应该可以从后台读取的
+				foreach($notice as $row){
+					if($num<10){
+						if(CONTROLLER_NAME=='News'){
+							$url = U('Home/Notice/detail',array('id'=>$row['id']));
+						}else{
+							$url = U('Home/News/detail',array('id'=>$row['id']));
+						}
+			?>
+            <li class="listdisc_sw clearfix"><a href="<?=$url?>"><p><?=$row['title']?></p><span class="c_a6a6a6 f_12"><?=date('y-m-d',strtotime($row['add_time']))?></span></a></li>
+			<?php
+					}
+				$num++;
+				}
+			?>
+        </ul>
+        <!--end -->
+        <!-- 联系我们 start -->
+        <div class="callme_sw text-left clearfix">
+            <h4 class="f_14 f_bold">联系我们</h4>
+            <div class="clearfix probl_sw">
+                <p>如果您在平台遇到问题或者对我们有任何建议，请及时与我们联系</p>
+                <img src="__IMG__/leftpic_nb.jpg">
+            </div>
+            <div>
+                <img class="newsph_sw" src="__IMG__/newsph_nb.jpg">
+                <div class="phnumb_sw">
+                    <h5 class="f_14">服务咨询热线</h5>
+                    <span class="f_24 c_ff0000 f_bold">800-820-8820</span>
+                </div>
+            </div>
+            
+        </div>
+        <!-- end -->
+        <!-- 微信 start -->
+        <div class="nbweixin_sw text-left clearfix">
+            <h4 class="f_14 f_bold">官方微信</h4>
+            <p>N邦翻译为公司和个人译者提供一个宣传自己的平台</p>
+            <!-- <img class="img-responsive" src="__IMG__/weixin2_nb.jpg"> -->
+            <img class="img-responsive" src="__ROOT__/<?=C('QR_CODE')?>">
+            <!-- <div><span class="text-center f_bold"><i class="fa fa-weixin fa-2x c_8fdd3b"></i>官方微信</span><p>N邦翻译为公司和个人译者提供一个宣传自己的平台</p></div> -->
+        </div>
+        <!-- end -->
+    </div>
+</div>
+<!--end -->

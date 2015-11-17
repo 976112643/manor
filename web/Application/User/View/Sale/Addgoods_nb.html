@@ -1,0 +1,126 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>商品管理</span><i></i></div>
+                    <!-- 商品添加-开始 -->
+                    <div class="m_lr_15">
+                        <div class="row row_sw addpro_sw">
+                            <form class="col-xs-10 form-horizontal">
+                                <div class="form-group form_group_sw clear_left_sw">
+                                    <label class="col-xs-3 control-label goodsna_sw">商品名称：</label>
+                                    <select class="form-control w_175 displ_sw">
+                                        <option>请选择源语言</option>
+                                        <option>3</option>
+                                        <option>3</option>
+                                        <option>3</option>
+                                        <option>5</option>
+                                    </select>
+                                    <i class="fa fa-arrow-right fa-lg fa_right_sw displ_sw c_999"></i>
+                                    <select class="form-control w_175 displ_sw">
+                                        <option>请选择目标语言</option>
+                                        <option>3</option>
+                                        <option>3</option>
+                                        <option>3</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">商品类型：</label>
+                                    <select class="form-control w_175">
+                                    <option>笔译</option>
+                                    <option>口译</option>
+                                    <option>录音翻译</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">等级：</label>
+                                    <select class="form-control w_175">
+                                    <option>四级</option>
+                                    <option>六级</option>
+                                    <option>八级</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">价格：</label>
+                                    <input class="form-control w_70 price_sw" type="text" placeholder="300">
+                                    <span>元/千字</span>
+                                </div>
+                                <div class="form-group form_group_sw pad_bottom_sw">
+                                    <label class="col-xs-3 control-label">可接文件类型：</label>
+                                    <div class="file_clas_sw w_175">
+                                        <label class="checkbox-inline">
+                                            <input id="inlineCheckbox1" type="checkbox" value="option1"> 1
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input id="inlineCheckbox3" type="checkbox" value="option3"> 3
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input id="inlineCheckbox3" type="checkbox" value="option3"> 3
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input id="inlineCheckbox3" type="checkbox" value="option3"> 3
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">可接领域：</label>
+                                    <select class="form-control w_175">
+                                        <option>四级</option>
+                                        <option>六级</option>
+                                        <option>八级</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw pad_bottom_sw">
+                                    <label class="col-xs-3 control-label">商品描述：</label>
+                                    <textarea class="form-control maxw_400 minw_300" rows="5" placeholder="商品描述"></textarea>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">产品有效期：</label>
+                                    <div class="date_sw">
+                                        <select class="form-control w_175 displ_sw">
+                                            <option>选择开始日期</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>5</option>
+                                        </select>
+                                        <span class="displ_sw">—</span>
+                                        <select class="form-control w_175 displ_sw">
+                                            <option>选择结束日期</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label pad_bottom_sw">是否提供发票：</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" value="option1"> 提供
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" value="option3"> 不提供
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-offset-3 zoom1_sw">
+                                        <div class="form-inline">
+                                            <input class="btn btn_add_sw" type="button" value="提交">
+                                            <input class="btn btn_reset_sw" type="reset" value="取消">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 商品添加-结束 -->
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

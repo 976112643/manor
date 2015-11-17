@@ -1,0 +1,123 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+<!--注册模版一-->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8">
+			<div class="b_fff p_ZH">
+				<div style="border:1px solid #ddd;padding-bottom: 50px;">
+					<div class="border_ZH">
+						<span class="putt-left f_18">用户注册</span>
+						<span class="pull-right">已有账号<a style="margin-left:5px;" href="<?=U('User/Login/index')?>">快速登录</a></span>
+					</div>
+					<form class="registerform js_registerform" action="<?=U('update')?>" method="post">
+						<div class="row m_tb_20">
+							<div class="col-xs-3 text-right lineH_zh">电子邮箱：</div>
+							<div class="col-xs-9">
+								<input class="input_ZH" type="email" name="floginName" datatype="e" errormsg="请输入正确的邮箱" placeholder="请输入邮箱地址">
+								<span class="Validform_checktip"></span>
+							</div>
+						</div>
+						<div class="row m_tb_20">
+							<div class="col-xs-3 text-right lineH_zh">登录密码：</div>
+							<div class="col-xs-9">
+								<input class="input_ZH" type="password" name="fLoginPassword" datatype="*6-15" errormsg="密码范围在6~15位之间！" placeholder="6-15位字符">
+								<span class="Validform_checktip"></span>
+							</div>
+						</div>
+						<div class="row m_tb_20">
+							<div class="col-xs-3 text-right lineH_zh">确认密码：</div>
+							<div class="col-xs-9">
+								<input class="input_ZH" type="password" name="fLoginPassword2" datatype="*6-16" recheck="fLoginPassword" errormsg="您两次输入的账号密码不一致！" placeholder="确认您的密码">
+								<span class="Validform_checktip"></span>
+							</div>
+						</div>
+						<div class="row m_tb_20">
+							<div class="col-xs-3"></div>
+							<div class="col-xs-9">
+								<label>
+									<input style="margin-right:5px;" type="checkbox" datatype="*" name="agreement">我已阅读并同意<a href="javascript:void(0)"><strong>《多特网用户协议》</strong></a>
+								</label>
+							</div>
+						</div>
+						<div class="row m_tb_20">
+							<div class="col-xs-3"></div>
+							<div class="col-xs-9">
+								<input class="r_btn_ZH" type="submit" value="立即注册">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>	
+		</div>
+		<div class="col-xs-4 reset_ZH">
+			<ul>
+				<li class="clearfix">
+					<div class="pull-left icon1_ZH"></div>
+					<div class="pull-right w_300_ZH">
+						<h3 class="c_d09e28">安全可靠</h3>
+						<p>银行系统级安全连接，短信身份验证机制以及分布式离线钱包备份机制；专业化公司运作，第三方银行资金监管确保资金安全</p>
+					</div>
+				</li>
+				<li class="clearfix">
+					<div class="pull-left icon2_ZH"></div>
+					<div class="pull-right w_300_ZH">
+						<h3 class="c_d09e28">高效便捷</h3>
+						<p>人民币账户提现时间9：00—17:30；多特币提现时间：9：00—17:30</p>
+					</div>
+				</li>
+				<li class="clearfix">
+					<div class="pull-left icon3_ZH"></div>
+					<div class="pull-right w_300_ZH">
+						<h3 class="c_d09e28">0费率</h3>
+						<p>网银，普通汇款充值免手续费；免收交易手续费，全面为用户考虑</p>
+					</div>
+				</li>
+				<li class="clearfix">
+					<div class="pull-left icon4_ZH"></div>
+					<div class="pull-right w_300_ZH">
+						<h3 class="c_d09e28">专业服务</h3>
+						<p>7*24 400电话服务，7*24在线企业客服VIP客户一对一免费专业咨询师服务</p>
+					</div>
+				</li>
+			</ul>	
+		</div>
+	</div>
+</div>
+<script>
+	$(function(){
+		if($(window).width()<768){
+				$(".lineH_zh").addClass("text-left").removeClass("text-right");
+				}else{
+					$(".lineH_zh").addClass("text-right").removeClass("text-left");
+				}		
+		$(window).resize(function() {
+			if($(window).width()<768){
+				$(".lineH_zh").addClass("text-left").removeClass("text-right");
+				}else{
+					$(".lineH_zh").addClass("text-right").removeClass("text-left");
+				}
+			});
+		});
+		$(".js_registerform").Validform({
+			set: {
+				tiptype:3,
+				postonce: true,
+				ajaxPost: true,
+				showAllError:false,
+			},
+			f: {
+				after_submit: function(data){
+					/*var myDialog = dialog({
+						title:'注册成功',
+						padding:0,
+						lock:true
+					});
+					myDialog.content(data.info);// 填充对话框内容
+					myDialog.showModal();*/
+					return false;
+				}
+			}
+		});
+</script>
+</block>

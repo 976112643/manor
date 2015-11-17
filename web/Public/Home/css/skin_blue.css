@@ -1,0 +1,77 @@
+body,
+a,
+.company_left_side h3,
+.success_exp_yqc h6,
+.passed_exp_yqc h6,
+.company_nav li a{
+    color: #6d6d6d;
+}
+a:hover,
+.org,
+.c_ff7402{
+    color: #46b0e2!important;
+}
+.nav_ZH,
+.search_btn,
+.btn_buy_server,
+.comments_title_yqc,
+.pages a:hover,
+.pages a.cur,
+.pages a.cur:hover,
+.pager .back_top_yqc,
+.searchTab_cur{
+    background-color: #46b0e2!important;
+    color: #fff!important;
+}
+.nav_ZH ul li a:hover,
+.btn_buy_server:hover,
+.title_nav{
+    background: #1aa1d6!important;
+    color: #fff!important;
+}
+.btn_contact,
+.btn_bottom_buy_yqc,
+.btn_service_yqc{
+    background: url(../img/bg/skin_btn_bg.jpg) repeat-x!important;
+}
+.btn_contact:hover,
+.btn_service_yqc:hover{
+    color: #fff!important;
+}
+.home_left_sidebar{
+    border-color:#1aa1d6;
+}
+.home_left_sidebar dt{
+    color: #444;
+}
+.home_left_sidebar .more_btn2 a{
+    background: #1aa1d6;
+}
+.company_bg{
+    background: url(../img/bg/skin_company_bg.jpg) repeat-x!important;
+}
+.footer_box_ZH{
+    background: #46b0e2!important;
+}
+.pages a:hover,
+.pages a.cur,
+.company_nav li.active a,
+.search_input{
+    border-color: #46b0e2!important;
+}
+.footer_box_ZH,
+.footer_box_ZH p a{
+    color: #fff!important;
+}
+.icon_1{
+    background: url("../img/sc_template/skin_feature.png") left center no-repeat!important;
+}
+.icon_2{
+    background: url("../img/sc_template/skin_feature.png") center center no-repeat!important;
+}
+.icon_3{
+    background: url("../img/sc_template/skin_feature.png") right center no-repeat!important;
+}
+.fixed_product_yqc{
+    background: #ecf8fe;
+}

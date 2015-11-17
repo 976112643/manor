@@ -1,0 +1,7 @@
+<include file="Home@Public/top"/>
+<include file="Home@Public/search"/>
+<?php if(U(CONTROLLER_NAME.'/'.ACTION_NAME) ==U('/Home/Index/index')){ ?>
+<include file="Home@Public/nav" />
+<?php }else{ ?>
+<include file="Home@Public/nav2" />
+<?php }?>

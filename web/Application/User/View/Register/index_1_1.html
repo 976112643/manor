@@ -1,0 +1,240 @@
+<extend name="User@Public/body"/>
+<block name="body">      
+    <div class="container_1000 box_r_ZH">
+        <!-- 二级导航-开始 -->
+        <div class="row">
+            <div class="col-xs-12">
+	            <div style="border-bottom: 1px solid #ddd;">
+                    <ul class="nav_sw col_7_sw">
+    	            	<li class="<?=$type==1?'nav_active_sw':''?>" ><a href="<?=U('User/Register/index',array('type'=>1))?>">用户注册</a></li>
+    	            	<li class="<?=$type==2?'nav_active_sw':''?>"><a href="<?=U('User/Register/index',array('type'=>2))?>">个译注册</a></li>
+    	            	<li class="<?=$type==3?'nav_active_sw':''?>"><a href="<?=U('User/Register/index',array('type'=>3))?>">公司注册</a></li>
+    	        	</ul>
+                </div>
+        	</div>
+        </div>
+        <!-- 二级导航-结束 -->
+        <div class="row">
+            <!-- 注册页面上半部分左侧-开始 -->
+            <!-- 设置响应式布局以及小屏隐藏 -->
+            <div class="col-xs-8 col_8_sw">
+                <!-- 欢迎 -->
+                <div class="msg_sw">
+                    <h1 class="f_w">注册成为<span class="c_ff7402">N邦</span>会员<small class="c_ff7402">WELCOME TO<span>YOSHIMORI MI MEMBER CENTER</span></small></h1>
+                </div>
+                <div class="line_sw"></div>
+                <h6 class="tips_sw f_w c_999">感谢您抽出宝贵时间填写个人信息，审核通过后您即可使用您的账户名登录网站。<small class="c_6d6d6d">带"<span>*</span>"部分为必填写项</small></h6>
+            </div>
+            <!-- 注册页面上半部分左侧-结束 -->
+            <!-- 注册页面上半部分右侧-开始 -->
+            <div class="col-xs-4 pic_log_sw col_4_sw">
+                <img  src="__IMG__/sc_template/user/regsite_nb.jpg">
+            </div>
+            <!-- 注册页面上半部分右侧-结束 -->
+        </div>
+        <div class="row">
+            <!-- 注册页面下半部分左侧-开始 -->
+            <div class="col-xs-8 sidebar_a_sw col_7_sw">
+                <form class="form-horizontal demo_form_sw js_form" action="<?=U('User/Register/index',array('type'=>I('type')))?>" method='post'>
+					<?php
+						if($type==3){
+					?>
+					<div class="form-group form_input_sw">
+                        <label class="col-xs-2 text-right form_label_sw c_999 p_r_0">机构所在地<span class="star_sw">*</span>：</label>
+                        <div class="col-xs-10">
+                            <select class="form-control w_145 displ_sw regsel_sw f_12" onchange="province_change(this)" name='province'>
+								<option>省</option>
+                                <?php
+									foreach($area_data as $row){
+										if($row['pid']==0){
+								?>
+								<option value='<?=$row['id']?>'><?=$row['title']?></option>
+								<?php
+										}
+									}
+								?>
+                            </select>
+                            <select class="form-control w_145 displ_sw regsel_sw f_12 city_select" id="city" onchange="city_change(this)" name='city'>
+                                <option>市</option>
+                            </select>
+                        </div>
+						<div class="form-group" style='display:none'>
+							<select class="input-sm" id="area_select_data">
+								<?php
+									foreach($area_data as $k=>$v){
+										if($v['pid']==0){
+											continue;
+										}
+								?>
+								<option value='<?=$v['id']?>' pid='<?=$v['pid']?>' ><?=$v['title']?></option>
+								<?php
+									}
+								?>
+							</select>
+						</div>
+                    </div>
+					<script type="text/javascript">
+						function province_change(obj){
+							var pid=$(obj).val();
+							$('.city_select').html('');
+							
+							var area='0';
+							$('.city_select').html("<option value='0'>市</option>");
+							$('#area_select_data option[pid='+pid+']').clone().appendTo('.city_select');
+							
+						}
+					</script>
+					<?php
+						}
+					?>
+                    <div class="form-group form_input_sw">
+                        <label class="col-xs-2 text-right form_label_sw c_999 p_r_0">手机<span class="star_sw">*</span>：</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" id="js_register_pop" type="text" value="" name="telephone" nullmsg="请填写手机号码" ajaxurl="<?=U('User/Register/checkForm')?>" datatype="m" errormsg="手机号码格式不正确">
+                            <span class="Validform_checktip"></span>
+                        </div>
+                    </div>
+					 <!-- <div class="form-group form_input_sw">
+                        <label class="col-sm-2 text-right form_label_sw c_999 p_r_0">邮箱<span class="star_sw">*</span>：</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="js_register_email" type="text" value="" name="email" datatype="e" errormsg="">
+                            <span class="Validform_checktip"></span>
+                        </div>
+                    </div> -->
+                    <div class="form-group form_input_sw">
+                        <label class="col-xs-2 text-right form_label_sw c_999 p_r_0">密码<span class="star_sw">*</span>：</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="password" value="" name="password" datatype="*6-15" errormsg="">
+                            <span class="Validform_checktip"></span>
+                        </div>
+                    </div>
+                    <div class="form-group form_input_sw">
+                        <label class="col-xs-2 col_4_sw text-right form_label_sw c_999 p_r_0">确认密码<span class="star_sw">*</span>：</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="password" value="" name="confirmPassword" datatype="*" recheck="password" errormsg="">
+                            <span class="Validform_checktip"></span>
+                        </div>
+                    </div>
+                    <div class="form-group form_input_sw">
+                        <label class="col-xs-2 col_4_sw text-right form_label_sw c_999 p_r_0">验证码<span class="star_sw">*</span>：</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" style="width: 95px;" type="text" value="" name='code' datatype="n6-6" ajaxurl="<?=U('User/Register/checkForm')?>" errormsg="验证码必须为6位数字" nullmsg="请输入验证码！">
+                            <input type='button' class="yanzheng_btn_ZH" onclick="get_code(this);" value="获取验证码">
+                            <span class="Validform_checktip"></span>
+                        </div>
+						
+                    </div>
+                    <div class="form-group js_display">
+                        <div class="col-xs-10 col_9_sw col-xs-offset-2">
+                            <span class="f12 Validform_checktip ml25" id="valid_resulte"></span>
+                        </div>
+                    </div>
+                    <div class="form-group form_input_sw">
+                        <div class="col-xs-offset-2 checkbox_sw col-xs-10 col_8_sw form_label_sw c_999">
+                            <div class="checkbox ml25">
+                                <label class="f_12">
+                                    <input type="checkbox" checked="checked" errormsg="必须同意平台使用规则" nullmsg="必须同意平台使用规则"  datatype="*" value="1" name="agreement"> 我已阅读，并同意
+                                    <a href="<?=U('Home/Help/index',array('id'=>60))?>"><strong>《平台使用规则》</strong></a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-10 col_9_sw col-xs-offset-2">
+                            <div class="regsite_btn_sw ml25">
+                                <input class="btn btn_add_sw" type="submit" value="确认并提交">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xs-4 col_5_sw hidden-xs sidebar_b_sw f_w">
+                <img class="img-responsive" src="__IMG__/sc_template/user/regsite_nb_bg.jpg">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        
+        $(function(){
+            var _text = $(".js_display span").text();
+            //console.log(_text);
+            if(_text == ""){
+                $(".js_display").css({"display":"none"});
+            }else{
+                $(".js_display").css({"display":"block"});
+            }
+            //表单验证
+            $(".demo_form_sw").Validform({
+			   tiptype:4,
+			   ajaxPost:true,
+			   callback:function(data){
+					if(data.status==1){
+					    //tips(data.info,1500,"success");
+						$('#valid_resulte').addClass('Validform_right').removeClass('Validform_wrong').text(data.info);
+						window.location.href=data.url;
+					}else{
+					    //tips(data.info,1500,"error");
+						$('#valid_resulte').addClass('Validform_wrong').removeClass('Validform_right').text(data.info);
+					}
+		      }
+			});
+        })
+        
+        $(document).on("click",".nav_sw li",function(){
+            $(this).addClass("nav_active_sw").siblings(this).removeClass("nav_active_sw");
+        });
+		//用于发送验证码计时的函数，在下面的函数中用到
+		function code_countdown(obj){
+			$(obj).prop("disabled",true).css("cursor","text");
+			var time=60;
+			var cur=$(obj);
+			cur.val(time+"秒后重新获取");
+			function coutdown(){
+				time--;	
+				cur.val(time+"秒后重新获取");
+				if(time<=0){
+					clearInterval(s);
+					cur.prop("disabled",false).css("cursor","pointer");
+					cur.val("点击重新获取");
+				}	
+			}
+			var s=setInterval(coutdown,1000);
+		}
+		//发送验证码
+		var code_send=true;
+		function get_code(obj){
+		  if(code_send){
+			code_send=false;
+			var m_regxp=/^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
+			var e_regxp=/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;//邮箱正则
+			var account=$('#js_register_pop').val();
+			var account_email=$('#js_register_email').val();//邮箱获取
+			if(account==''){
+			  $('#js_register_pop').next('span').addClass('Validform_wrong').text('请输入手机号');
+			  code_send=true;
+			}else{
+			  var m_mac=account.match(m_regxp);
+			  //var e_mac=account.match(e_regxp);
+			  if(!m_mac){
+				$('#js_register_pop').next('span').addClass('Validform_wrong').text('请输入正确的手机号');
+				code_send=true;
+			  }else{
+				$.post('<?=U('/User/Register/registerCode')?>',{account:account,account_email:account_email},function(data){
+				  if(data.status){
+					code_countdown(obj);
+					//$('#valid_resulte').addClass('Validform_right').text(data.info);
+					$(".js_display").show();
+					$('#valid_resulte').addClass('Validform_right').removeClass('Validform_wrong').text(data.info);
+					code_send=true;
+				  }else{
+				    $(".js_display").show();
+					$('#valid_resulte').addClass('Validform_wrong').text(data.info);
+					code_send=true;
+				  }
+				});
+			  }
+			}
+		  }
+		}
+    </script>
+</block>

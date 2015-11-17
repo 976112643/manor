@@ -1,0 +1,122 @@
+							<ul class="comments_list ">
+											<?php
+												foreach($shop_comments as $row){
+												 $user_header=getAvatar($row["member_id"],"middle");
+											?>
+										<li class="clearfix">
+										<div class="comment_img"><a href="#"><img src="<?=$user_header?>" class="img-circle" onerror="this.src='__IMG__/sc_template/onerror_pic.png'"/></a></div>
+										<?php
+											if(ACTION_NAME!='member_evaluate'){
+										?>
+										<div class="comment_btn">
+											<a class="reply_btn_ZH b_org js_btn" onclick="btnDialog(this);" href="javascript:;"><?=$row['_child']?'修改回复':'回复'?></a>
+										</div>
+										<?php
+											}
+										?>
+									<div class="comment_info m_r_150">
+										<div class="review_type">
+										    <?php
+											  if($row["type"]==1){
+											?>
+											<i class="face_icon smile"></i>好评
+											<?php
+											  }
+											?>
+											<?php
+											  if($row["type"]==2){
+											?>
+											<i class="face_icon normal"></i>中评
+											<?php
+											  }
+											?>
+											<?php
+											  if($row["type"]==3){
+											?>
+											<i class="face_icon sad"></i>差评
+											<?php
+											  }
+											?>
+											<span>源语言：<em><?=$row['language_text']?></em></span><span>目标语言：<em><?=$row['to_language_text']?></em></span>
+										</div>
+										<p><?=$row['content']?></p>
+										<div class="img_list">
+											       <?php
+												     foreach($comments_image[$row["id"]] as $img){
+												   ?>
+													<a href="__ROOT__/<?=$img["save_path"]?>" rel="group"><img src="__ROOT__/<?=$img["save_path"]?>"></a>
+												   <?php
+												    }
+												   ?>
+										</div>
+										<div style="position: relative">
+											<p><?=$row['add_time']?> 所属类型：<?=$row['serve_text']?></p>
+											<div class="dialog_box js_dialog">
+												<form action='<?=U('User/Order/reply')?>'  class='comment_form'>
+													<input type='hidden' name='comment_id' value='<?=$row['id']?>'/>
+													<?php
+														if($row['_child']){
+													?>
+													<input type='hidden' name='reply_id' value='<?=$row['_child'][0]['id']?>' />
+													<?php
+														}
+													?>
+													<!--弹框 S-->
+													<div class="dialog_box_ZH">
+														<i class="dialog_sj"></i>
+														<div class="radio">
+															<div class="radio-inline">
+																<label><input type="radio" name='comment_level' value='1' <?=$row['_child'][0]['type']==1?'checked':''?> >好评</label>
+															</div>
+															<div class="radio-inline">
+																<label><input type="radio" name='comment_level' value='2' <?=$row['_child'][0]['type']==2?'checked':''?>>中评</label>
+															</div>
+															<div class="radio-inline">
+																<label><input type="radio" name='comment_level' value='3' <?=$row['_child'][0]['type']==3?'checked':''?>>差评</label>
+															</div>
+														</div>
+														<div class="textarea_box_ZH clearfix">
+															<textarea class="textarea_style reply_LH js_reply_msg" rows="4" name='reply' ><?=$row['_child'][0]['content']?></textarea>
+															<span class="m_t_10 pull-left">500字</span>
+															<a class='reply_btn_ZH pull-right b_org js_reply_lh' onclick="subDialog(this);">提交</a>
+															<a class="reply_btn_ZH pull-right b_grey js_cancel" onclick="cancelDialog(this);" href="javascript:void(0)">取消</a>
+														</div>
+													</div>
+													<!--弹框 E-->
+												</form>
+											</div>
+										</div>
+										<?php
+											foreach($row['_child'] as $_row){
+										?>
+										<!--评论 S-->
+										<div class="comment_ZH">
+											<ul class="media-list">
+												<li class="media">
+													<div class="media-left">
+														<span class="media-object w_55">回复：</span>
+													</div>
+													<div class="media-body">
+														<h6 class="media-heading"><i class="face_icon smile"></i><?=$_row['type_text']?></h6>
+														<p class="js_receive"><?=$_row['content']?></p>
+														<p><?=$row['add_time']?></p>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!--评论 E-->
+										<?php
+											}
+										?>
+									</div>
+								</li>
+								<?php
+									}
+								?>
+								<?php if(!is_array($shop_comments)){?>
+	                    			<include file="Public/nodata" />
+		                    	<?php }?>
+							</ul>
+							<div class="pager clearfix pages">
+								<?=$page?>
+							</div>

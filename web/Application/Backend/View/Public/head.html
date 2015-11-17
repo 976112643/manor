@@ -1,0 +1,59 @@
+<block name="head_change"></block>
+<?php /* SEO代码编辑区 */ ?>
+<?php
+	if($title){
+		$title=$title.' | '.C('SITE_TITLE');
+	}else{
+		$title=C('SITE_TITLE');
+	}
+	if(!$keywords){
+		$keywords=C('SITE_KEYWORD');
+	}
+	if(!$description){
+		$description=C('SITE_DESCRIPTION');
+	}
+	//获取所有参数，并将所有参数转换为小写
+	$get_param=$_GET;
+	$_GET=null;
+	foreach ($get_param as $key => $val) {
+		$_GET[strtolower($key)]=$val;
+	}
+	if(I("get.extension")){
+		cookie("register_extension_link",I("get.extension"));
+	}
+?>
+<title><?=$title?></title>
+<meta name="keywords" content="<?=$keywords?>" /> 
+<meta name="description" content="<?=$description?>" />
+<script>
+var _ROOT_='__ROOT__';
+var _STATIC_='__STATIC__';
+var _PLUGIN_='__PLUGIN__';
+var _JS_='__JS__';
+var _IMG_='__IMG__';
+var _CSS_='__CSS__';
+</script>
+<css href="__CSS__/bootstrap.min.css" />
+<css href="__CSS__/font-awesome.min.css" />
+<css href="__CSS__/admin.min.css" />
+<css href="__CSS__/backend.css" />
+<css href="__PLUGIN__/uploadify/uploadify.css" />
+<css href="__PLUGIN__/artdialog/css/ui-dialog.css" />
+<js href="__JS__/jquery.min.js" />
+<js href="__JS__/bootstrap.min.js" />
+<js href="__JS__/app.min.js" />
+<js href="__STATIC__/js/common.js" />
+<js href="__JS__/common.js" />
+<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js" />
+<js href="__PLUGIN__/artdialog/js/dialog-plus-min.js" />
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+<!--[if lt IE 9]>
+  <js href="__JS__/html5shiv.min.js" />
+  <js href="__JS__/respond.min.js" />
+<![endif]-->
+<!--[if lte IE 6]>
+<css href="__CSS__/fix-ie.css" />
+<js href="__JS__/bootstrap-ie.js" />
+<css href="__CSS__/bootstrap-ie6.min.css"/>
+<![endif]-->
+<block name="style"></block> 

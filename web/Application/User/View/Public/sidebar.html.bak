@@ -1,0 +1,102 @@
+<css href="__CSS__/user_lj.css" />
+<div class="col-xs-3 fyh">
+	<div class="side_bar2_j border_gray text-center">
+    	<!--用户信息 start-->
+    	<div class="user_img2">
+        	<a href="#this"><img src="__IMG__/user.jpg" class="img-circle img-responsive"></a>
+        </div>
+        <div class="user_info2">
+            <a href="#this" class="f_18">REMEMBER娜娜</a>
+            <p class="f_12">积分：2401分</p>
+        </div>
+        <!--end -->
+        
+        <!--左侧导航栏 start-->
+        <ul class="sidebar_nav2">
+        	<li>
+            	<div class="nav_title"><i class="fa fa-tags pull-left"></i><i class="fa fa-angle-right pull-right"></i>我是卖家</div>
+                <ul style="display: none;">
+                	<li><a href="#this">资料设置</a></li>
+                    <li><a href="<?=U('User/Sale/serviceSetting')?>">服务设置</a></li>
+                    <li><a href="<?=U('User/Sale/passedExp')?>">过往经历</a></li>
+                    <li><a href="<?=U('User/Sale/videoAlbum')?>">视频相册</a></li>
+                    <li><a href="#this">修改头像</a></li>
+                    <li><a href="#this">修改密码</a></li>
+                </ul>
+            </li>
+            <li>
+            	<div class="nav_title"><i class="fa fa-home pull-left"></i><i class="fa fa-angle-right pull-right"></i>店铺管理</div>
+                <ul style="display:none;">
+                	<li><a href="#this">充值</a></li>
+                    <li><a href="#this" class="focus">提现</a></li>
+                    <li><a href="#this">个人财务</a></li>
+                    <li><a href="#this">账单明细</a></li>
+                    <li><a href="#this">多特币充值</a></li>
+                    <li><a href="#this">多特币提现</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-shopping-cart pull-left"></i><i class="fa fa-angle-right pull-right"></i>商品管理</div>
+                <ul style="display:none;">
+                    <li><a href="<?=U('User/Sale/product_list')?>" >商品列表</a></li>
+                    <li><a href="#this" class="focus">提现</a></li>
+                    <li><a href="#this">个人财务</a></li>
+                    <li><a href="#this">账单明细</a></li>
+                    <li><a href="#this">多特币充值</a></li>
+                    <li><a href="#this">多特币提现</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-calendar-o pull-left"></i><i class="fa fa-angle-right pull-right"></i>订单管理</div>
+                <ul style="display:none;">
+                    <li><a href="#this">充值</a></li>
+                    <li><a href="#this" class="focus">提现</a></li>
+                    <li><a href="#this">个人财务</a></li>
+                    <li><a href="#this">账单明细</a></li>
+                    <li><a href="#this">多特币充值</a></li>
+                    <li><a href="#this">多特币提现</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-money pull-left"></i><i class="fa fa-angle-right pull-right"></i>资金管理</div>
+                <ul style="display:none;">
+                    <li><a href="#this">充值</a></li>
+                    <li><a href="#this" class="focus">提现</a></li>
+                    <li><a href="#this">个人财务</a></li>
+                    <li><a href="#this">账单明细</a></li>
+                    <li><a href="#this">多特币充值</a></li>
+                    <li><a href="#this">多特币提现</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-book pull-left"></i>评价管理</div>
+            </li>
+            <li>
+            	<div class="nav_title cur"><i class="fa fa-comments pull-left"></i><i class="fa fa-angle-right down pull-right"></i>消息中心</div>
+                <ul  style="display:none;">
+                	<li><a class="focus" href="#this">系统消息</a></li>
+                    <li><a href="#this">订单消息</a></li>
+                    <li><a href="#this">个人消息</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!--end -->
+    </div>
+</div>
+<script>
+    $(function(){
+        $(document).on('click','.nav_title',function(){
+            $(this).next('ul').slideToggle();   
+            $(this).children('.fa-angle-right').toggleClass('down');
+        }); 
+		
+		/*默认选中当前打开的链接菜单*/
+		var current_uri='<?=U(CONTROLLER_NAME.'/'.ACTION_NAME)?>';
+			$('a[href="'+current_uri+'"]').addClass('focus');
+			$('a[href="'+current_uri+'"]').parent().parent().attr({'style':'display:block;'});
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').addClass('cur');
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').children('.pull-right').addClass('down');
+		
+    });
+</script>
+<!--end -->

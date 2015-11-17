@@ -1,0 +1,127 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10 clearfix">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+            	<div class="list_box_j">
+            		<div class="list_top_j clearfix">
+            			<div class="pull-left">
+            				<span class="list_top_title f_16">好友列表</span>
+				
+		
+            				<!-- <button class="btn btn-default btn-xs js_delete" >删除</button> -->
+							<!--<a href="<?=U('inform_one')?>" class="btn btn-default btn-xs ajax-post confirm" target-form="ids"> 举报 </a>-->
+            				<!-- <button class="btn btn-default btn-xs">举报</button> -->
+							
+            			</div>
+            		</div>
+					
+					<div class="table-responsive">
+	            		<table class="table table_j m_t_10">
+	            			<tr>
+	            				<th>序号</th>
+	            				<th>好友手机</th>
+	            				<th>最近联系时间</th>
+	            				<th>发送消息</th>
+								<th>操作</th>
+	            			</tr>
+							<?php
+								foreach($friend_results as $row){
+							?>
+	            			<tr>
+	            				<td>
+	            					<label><input type="checkbox" name="ids[]"  class="js_select ids" value="<?=$row['message_id']?>" onClick="setselectAll()"></label>
+									<?php echo $num=$num+1;?>
+	            				</td>
+	            				<td><?=substr($row['from_telphone'], 0, 5).'****'.substr($row['from_telphone'], 9)?></td>
+	            				<td><?=$row['contact_time']?></td>
+	            				<td><a class="contact_send" href="<?=U('send_msg',array('member_id'=>$row['friend_id']))?>">联系TA</a></td>
+								<td><a href="<?=U('del_msg',array('status'=>'-1','id'=>$row['id']))?>" class="btn btn-default btn-xs js_delete ajax-post confirm" target-form="ids">删除</a></td>
+	            			</tr>
+							<?php
+								}
+							?>
+	            		</table>
+            		</div>
+					<?php if(!is_array($friend_results)){?>
+						<include file="Public/nodata" />
+					<?php }?>
+            		<div class="list_bot_j form-inline clearfix">
+            			<!--<div class="pull-left">
+						    <?php
+							  if(!empty($friend_results)){
+							?>
+            				<div class="checkbox">
+	            				<label><input type="checkbox" class="js_selectAll">全选</label>
+	            			</div>
+							<a href="<?=U('del_msg',array('status'=>'-1'))?>" class="btn btn-default btn-xs js_delete ajax-post confirm" target-form="ids">删除</a>
+							<?php
+							  } 
+							?>
+	        			</div>-->
+						<div class="pages text-center">
+							<?=$page?>
+							<?php
+								if(trim($page)){
+							?>
+							<span>共<?=$page_count?>页</span>
+							<span>&nbsp;</span>
+							<span>跳转至</span>
+							<input type="text" name='p' />
+							<span>页</span>
+							<a href="<?=U('')?>" class='go_to_page' >确定</a>
+							<?php
+								}
+							?>
+						</div>
+            		</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+    $(function(){
+    	/*全选*/
+    	$(document).on('click','.js_selectAll',function(){
+    		if($(this).prop('checked')){
+    			$('.js_select').prop('checked',true);
+    		}else{
+    			$('.js_select').prop('checked',false);
+    		}
+    	});
+
+    	/*删除所选项*/
+    	/*
+		$(document).on('click','.js_delete',function(){
+    		$('.js_select').each(function(){
+    			if($(this).prop('checked')){
+    				$(this).parents('tr').remove();
+    			}
+    		})
+    	})
+		*/
+		/*跳转指定页码	 李东*/
+		$(document).on('click','.go_to_page',function(){
+			page = $('input[name="p"]').val();
+			if(!isNaN(page)){
+				//url_old = $(this).attr('href');
+				//url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+				//$(this).attr({'href':url});
+					/*跳转指定页@刘巧*/
+				url_old=window.location.href;
+				var url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+				$(this).attr({'href':url});
+			}else{
+			   alert("请输入数字");
+			   return false;
+			}
+		});
+		
+		
+		
+		
+    })
+    </script>
+</block>

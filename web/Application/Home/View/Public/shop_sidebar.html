@@ -1,0 +1,163 @@
+    <!--right fixed S-->
+	<?php 
+		if($shop_info_1['theme_id']){
+	?>
+	<link rel="stylesheet" type="text/css" href="__CSS__/<?=$all_theme[$shop_info_1['theme_id']]['theme_path']?>.css" />
+	<!-- <css href="__CSS__/<?=$all_theme[$shop_info_1['theme_id']]['theme_path']?>.css" /> -->
+	<?php 
+		}
+	?>
+    <div class="right_fixed_box">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="#"><i class="bar_icon phone"></i></a>
+                <div class="qrcode_yqc"><!-- <img src="__IMG__/qrcode.jpg"> --><img src="__ROOT__/<?=C('QR_CODE')?>"></div>
+            </li>
+            <li class="list-group-item"><a href="<?=U('/Home/News/index')?>"><i class="bar_icon file"></i></a></li>
+            <li class="list-group-item"><a href="<?=U('/Home/Help/index')?>"><i class="bar_icon help"></i></a></li>
+            <li class="list-group-item"><a href="javascript:;"><i class="bar_icon backtop js_backtop"></i></a></li>
+        </ul>
+    </div>
+    <!--right fixed S-->
+    <script>
+        $(function(){
+            //左侧文字收缩
+            $('.js_toggle_text').click(function(){
+                if($(this).hasClass('active')){
+                    $(this).text('展开全部');
+                    $(this).prev('span').html($(this).parent().attr('data-cut'));
+                }else{
+                    $(this).text('收起全部');
+                    $(this).prev('span').html($(this).parent().attr('data-all'));
+                }
+                $(this).toggleClass('active');
+            })
+            //返回顶部
+            $('.js_backtop').click(function(){
+                $(document).scrollTop(0);
+            })
+            //悬浮语言技能条
+            $(window).scroll(function(){
+                if($(this).scrollTop() >= $('.js_lan_lists').offset().top + $('.js_lan_lists').outerHeight(true)){
+                    $('.fixed_product_yqc').show();
+                }else{
+                    $('.fixed_product_yqc').hide();
+                }
+            })
+           
+			$('.js_ajax_select_LH').on('change',function(){
+				var select = $(this).val();
+				var radio  = $('.js_ajax_radio_LH input:checked').val()||0;
+				$('.js_comments_sort').val(select+'&'+radio);
+				$.post("<?=U('','','').'/shop_id/'.I('shop_id')?>",{select:select,radio:radio,shop_id:<?=I('shop_id')?>},function(data){
+					//window.location.reload();
+					$('.comment_list_ajax_LH').html(data);
+				});
+			})
+			$('.js_ajax_radio_LH input').on('click',function(){
+				var select = $('.js_ajax_select_LH').val();
+				var radio  = $(this).val();
+				$('.js_comments_sort').val(select+'&'+radio);
+				$.post("<?=U('','','').'/shop_id/'.I('shop_id')?>",{select:select,radio:radio,shop_id:<?=I('shop_id')?>},function(data){
+					//window.location.reload();
+					$('.comment_list_ajax_LH').html(data);
+				});
+			})
+			$('.all_comments_box .pages').delegate('a','click',function(){
+			    var radio=$(".js_ajax_radio_LH input[type='radio']:checked").val();
+			    if($(this).attr("class")!="cur"){
+				    var url=$(this).attr("href");
+					var data='radio='+radio+'&shop_id=<?=I('shop_id')?>';
+					if($(this).attr("class")=="go_to_page"){
+					   if($("input[name='p']").val()){
+					     url="<?=U('','','').'/shop_id/'.I('shop_id').'/p/'?>"+$("input[name='p']").val();
+					   }
+					}
+				    $.ajax({
+					   type: "POST",
+					   url: url,
+					   data: data,
+					   dataType: "html",
+					   success: function(data){
+                          $('.comment_list_ajax_LH').html(data);
+					   }
+					});
+				}
+			    return false;
+			});
+        })
+    </script>
+    <!-- JiaThis Button BEGIN -->
+    <script type="text/javascript" >
+        var jiathis_config={
+            summary:"",
+            shortUrl:false,
+            hideMore:false
+        }
+    </script>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+    <!--baidu map-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F43ffcb838eb792124b12b5a8c67de5c"></script>
+    <script type="text/javascript">
+        //创建和初始化地图函数：
+        function initMap(){
+            createMap();//创建地图
+            setMapEvent();//设置地图事件
+            addMapControl();//向地图添加控件
+            addMapOverlay();//向地图添加覆盖物
+        }
+        function createMap(){
+            map = new BMap.Map("map");
+        }
+        function setMapEvent(){
+            map.enableScrollWheelZoom();
+            map.enableKeyboard();
+            map.enableDragging();
+            map.enableDoubleClickZoom()
+        }
+        function addClickHandler(target,window){
+            target.addEventListener("click",function(){
+                target.openInfoWindow(window);
+            });
+        }
+        function addMapOverlay(){
+            var markers = [
+                {content:"",title:"<?=$area_data?>",imageOffset: {width:-46,height:-21},location:'<?=$area_data?>'}
+            ];
+            for(var i = 0; i < markers.length; i++ ){
+				var point,marker,label,opts,infoWindow,loca,myGeo,index;
+				index = i;
+				myGeo = new BMap.Geocoder();
+				// 将地址解析结果显示在地图上,并调整地图视野
+				myGeo.getPoint(markers[index].location, function(_point){
+					if (_point) {
+						marker = new BMap.Marker(_point,{icon:new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png",new BMap.Size(20,25),{
+							imageOffset: new BMap.Size(markers[index].imageOffset.width,markers[index].imageOffset.height)
+						})});
+						map.centerAndZoom(_point,12);
+						label = new BMap.Label(markers[index].title,{offset: new BMap.Size(25,5)});
+						opts = {
+							width: 200,
+							title: markers[index].title,
+							enableMessage: false
+						};
+						infoWindow = new BMap.InfoWindow(markers[index].content,opts);
+						marker.setLabel(label);
+						addClickHandler(marker,infoWindow);
+						map.addOverlay(marker);
+					}else{
+						alert("您选择地址没有解析到结果!");
+					}
+				});
+            };
+        }
+        //向地图添加控件
+        function addMapControl(){
+            var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+            scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+            map.addControl(scaleControl);
+        }
+        var map;
+        initMap();
+    </script>

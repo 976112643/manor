@@ -1,0 +1,77 @@
+<extend name="Public/body"/>
+<block name="body">
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section class="content-header">
+			<h1>
+				<?=$page_title?>
+				<small>
+				<?php
+					if($info){
+						echo "修改";
+					}else{
+						echo "添加";
+					}
+				?> 
+				</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+				<li><a href="<?=U('index')?>"> <?=$page_small?></a></li>
+				<li class="active">
+				<?php
+					if($info){
+						echo "修改";
+					}else{
+						echo "添加";
+					}
+				?> 
+				</li>
+			</ol>
+		</section>
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<!-- left column -->
+				<div class="col-md-12">
+					<!-- general form elements -->
+					<div class="box box-primary">
+						<!-- form start -->
+						<form role="form" action="<?=U('')?>" method="post" class="operate_form">
+							<input type='hidden' name='id' value='<?=$info["id"]?>' />
+							<div class="box-body">
+								<div class="form-group">
+									<label for="exampleInputEmail1">标题：</label>
+									<input type="text" class="form-control" name='title' value="<?=$info['title']?>">
+								</div>
+								
+								<div class="form-group">
+									<label for="exampleInputPassword1">内容：</label>
+									<!--百度编辑器-->
+									<?php $time=time(); ?>
+									<script id="<?='editor_'.$time?>" type="text/plain" name="content" style="width:99%;"><?=$info['content']?></script>
+									<script type="text/javascript">
+									var config_2={
+										initialFrameWidth:"100%",
+										initialFrameHeight:400
+									};
+									//合并配置文件，config为默认配置，config_2为自定义的配置
+									var new_config=array_merge({},[config,config_2]);
+									//说明：editor_obj_id的值必须和编辑器ID保持一致
+									var editor_<?=$time?>=UE.getEditor('editor_<?=$time?>',new_config);
+									</script>
+								</div>
+								<div class="box-footer">
+									<button type="submit" class="btn btn-primary">提交</button>
+									<a href="<?=U('index')?>" class="btn btn-default">取消返回</a>
+								</div>
+							</div>
+						</form>
+					</div><!-- /.box -->
+				</div><!--/.col (left) -->
+			</div>   <!-- /.row -->
+		</section><!-- /.content -->
+	</div>
+</block>

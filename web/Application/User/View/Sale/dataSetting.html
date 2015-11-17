@@ -1,0 +1,120 @@
+<extend name="Home@Public/body"/>
+<block name="style">
+	<js href="__PLUGIN__/my97date/WdatePicker.js" />
+</block>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<div class="dataset_title f_16"><span>资料设置</span><i></i></div>
+					<div class="table-responsive">
+							<table class="table table-bordered table_data_j">
+								<tr>
+									<th>公司名称</th>
+									<td><input type="text" class="input-sm" size="90" value="乐享国际文化传媒"></td>
+								</tr>
+								<tr>
+									<th>联系地址</th>
+									<td>
+										<div class="form-inline">
+											<div class="form-group">
+												<select class="input-sm">
+													<option>省</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<select class="input-sm">
+													<option>市</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<select class="input-sm">
+													<option>区</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<input type="text" class="input-sm" size="48" placeholder="请输入详细地址">
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>联系电话</th>
+									<td>
+										<span>132****1234</span>
+										<a href="#this" class="red">修改</a>
+									</td>
+								</tr>
+								<tr>
+									<th>成立时间</th>
+									<td>
+										<input type="text" class="input-sm" placeholder="2015-06-15" onclick="WdatePicker();">
+									</td>
+								</tr>
+								<tr>
+									<th>擅长语言</th>
+									<td>
+										<div class="form-inline">
+											<div class="form-group">
+												<div class="checkbox">
+										            <label>
+										            	<input type="checkbox">中文
+										            </label>
+										        </div>
+										        <div class="checkbox">
+										            <label>
+										            	<input type="checkbox">英文
+										            </label>
+										        </div>
+										        <div class="checkbox">
+										            <label>
+										            	<input type="checkbox">韩语
+										            </label>
+										        </div>
+										        <div class="checkbox">
+										            <label>
+										            	<input type="checkbox">日语
+										            </label>
+										        </div>
+										        <div class="checkbox">
+										            <label>
+										            	<input type="checkbox">德语
+										            </label>
+										        </div>
+										        <div class="checkbox">
+										            <label>
+										            	<input type="checkbox">意大利语
+										            </label>
+										        </div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>一句概述</th>
+									<td>
+										<input type="text" class="input-sm" size="75" value="全心全意只为更好的为您服务！">
+										<span>限输入20个字</span>
+									</td>
+								</tr>
+								<tr>
+									<th style="vertical-align: top !important;">公司介绍</th>
+									<td>
+										此处放编辑器
+									</td>
+								</tr>
+							</table>
+
+							<div class="text-center">
+								<a href="#this" class="btn btn-warning">提交</a>
+								<a href="#this" class="btn btn-default">取消</a>
+							</div>
+
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

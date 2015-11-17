@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/base/tools.js"></script>
+<script type="text/javascript">
+	var timer;  
+	var time = 1000;
+	var uid;
+	function timedCount() {
+		var result = $.ajax({
+			url : "./home/index/searchUser",
+			data : {
+				token : uid
+			},
+			complete : function(xmlhttp, data) {
+				$("#result").append("<br/>"+data+"  " + xmlhttp.responseText);
+			},
+			async : false
+		})
+		timer = setTimeout("timedCount()", time);
+	}
+	$(function() {
+		uid = getUid();
+		$("#code").attr('src', "./Home/Preview/qrcimg?content=" + uid);
+		$('#result').append("=="+uid);
+		//timedCount();/*轮询*/
+	})
+</script>
+<style type="text/css">
+#code {
+	width: 20%;
+	height: 20%;
+}
+
+#qrc {
+	text-align: center;
+}
+</style>
+</head>  
+<body>
+	<div id="qrc">
+		<img id="code" alt="" src="./images/qrcode.png" />
+	</div>
+	<p id="result"></p>
+</body>
+
+</html>

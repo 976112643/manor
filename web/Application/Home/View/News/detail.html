@@ -1,0 +1,24 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/newsidebar_nb" />
+            <div class="col-xs-9 border_gray news_nb">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>新闻详情</span><i></i></div>
+                    <div class="m_lr_15 newscont_sw">
+                        <!-- 新闻详情-start -->
+                        <h3 class="f_16 f_bold c_357fb0 text-center"><?=$news_detail['title']?></h3>
+                        <ul class="list-inline f_12 c_a6a6a6 text-center authtime_sw"><li>作者：<?=$news_detail['username']?$news_detail['username']:'admin'?></li><li>时间：<?=date('Y-m-d',strtotime($news_detail['add_time']))?></li><li>浏览次数：<?=$news_detail['view']+1?></li></ul>
+                        <p class="f_12 c_6d6d6d"><?=htmlspecialchars_decode($news_detail['content'])?></p>
+                        <!-- <img class="img-responsive center-block contpic_sw" src="__IMG__/newscont_nb.jpg">
+                        <span class="texturl_sw c_6d6d6d">原文链接：<a href="">http://edu.hjbjjkkj/gvhjvh/hvj.shtml</a></span> -->
+                        <!-- 新闻详情-end -->
+                        <span class="bg_c_edf5fd changepage_sw c_6d6d6d clear-fix"><a class="f_bold c_6d6d6d" href="<?=U('detail',array('id'=>$news_detail['id']+1))?>">下一篇</a><a class="prepage_sw c_357fb0" href="<?=U('detail',array('id'=>$news_detail['id']-1))?>">上一篇</a></span>
+                        <!-- <span class="bg_c_edf5fd changepage_sw c_6d6d6d clear-fix">下一篇：<a class="f_bold c_6d6d6d" href="">N邦翻译陈向东：创业的五个逻辑</a><a class="prepage_sw c_357fb0" href="">上一篇</a></span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

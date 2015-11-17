@@ -1,0 +1,118 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>银行卡管理</span><i></i></div>
+                    <div class="m_lr_15">
+                        <div class="clearfix">
+                            <h3 class="f_17 f_w msg_sw c_357fb0 cardmanage_h3_sw">我的银行卡</h3>
+                            <a class="adduser_sw b_357fb0 c_fff f_w" href="<?=U('User/Balance/update')?>"><i class="fa fa-plus"></i>添加</a>
+                        </div>
+                        <!-- 开户人表格- -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table_sw f_w">
+                                <tr class="bg_c_f8f8f8">
+                                    <th>开户人</th>
+                                    <th>银行名称</th>
+                                    <th>银行卡号</th>
+                                    <th>开户支行</th>
+                                    <th>操作</th>
+                                </tr>
+								<?php
+									foreach($member_info as $k=>$v){
+							
+								?>
+                                <tr>
+                                    <td><?=$v['account_user']?></td>
+                                    <td><?=$v['title']?></td>
+                                    <td><?=$v['account']?></td>
+                                    <td><?=$v['account_bank']?></td>
+                                    <td>
+										<a class="c_ff9c02 underline_sw" href="<?=U('User/Balance/update',array('id'=>$v['id']))?>">修改</a>
+										<a class="underline_sw ajax-get confirm" href="<?=U('User/Balance/del',array('id'=>$v['id']))?>">删除</a>
+									</td>
+                                </tr>
+								<?php
+									}
+								?>
+                            </table>
+                            <?php if(empty($member_info)){?>
+			                    	<include file="Public/nodata" />
+			                 <?php }?>
+                        </div>
+                        <!-- end 开户人表格- -->
+                        <!-- 
+                        <div class="row addcard_sw">
+                            <form class="form-horizontal cardform_sw f_w demo_form_sw" action='<?=U('User/Balance/index')?>' method='post'>
+                                <div class="form-group border_sw">
+                                    <label class="col-sm-2 col_2_sw col-xs-12 col-md-2 control-label label_sw cardlabel_sw f_w">开户人</label>
+                                    <div class="col-xs-12 col-sm-10 col_10_sw col-md-10 padding_sw">
+                                        <input class="form-control input_sw" type="text" name='account_user' datatype="*" errormsg="" >
+                                        <span class="Validform_checktip"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group border_sw">
+                                    <label class="col-sm-2 col_2_sw col-xs-12 col-md-2 control-label label_sw cardlabel_sw">银行名称</label>
+                                    <div class="col-xs-12 col-sm-10 col_10_sw col-md-10 padding_sw">
+                                        <select class="form-control input_sw select_sw" name='bank_id'>
+											<?php
+												foreach($bank_data as $k=>$v){
+											?>
+                                            <option><?=$v['title']?></option>
+                                            <?php
+												}
+											?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group border_sw">
+                                    <label class="col-sm-2 col_2_sw col-xs-12 col-md-2 control-label label_sw cardlabel_sw f_w">银行卡号</label>
+                                    <div class="col-xs-12 col-sm-10 col_10_sw col-md-10 padding_sw">
+                                        <i class="fa fa-lock fa-lg fa_lock_sw c_357fb0"></i>
+                                        <input class="form-control input_sw" type="text" name='account' datatype="*" errormsg="请正确填写你的卡号">
+                                        <span class="Validform_checktip"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group border_sw border_btom_sw">
+                                    <label class="col-sm-2 col_2_sw col-xs-12 col-md-2 control-label label_sw cardlabel_sw f_w">开户支行</label>
+                                    <div class="col-xs-12 col-sm-10 col_10_sw col-md-10 padding_sw">
+                                        <input class="form-control input_sw" type="text"  name='account_bank' errormsg="请填写开户支行">
+                                        <span class="Validform_checktip"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-9 col_9_sw col-sm-offset-2">
+                                        <div class="form-inline">
+                                            <input class="btn balance_add_sw" type="submit" value="添加">
+                                            <input class="btn balance_reset_sw" type="reset" value="取消">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                         -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            //表单验证
+            $(".demo_form_sw").Validform({tiptype:3});
+        });
+        $(function(){
+            //显示表单
+            $('.adduser_sw').click(function(){
+                $('.addcard_sw').show();
+            })
+            //隐藏表单
+            $('.balance_reset_sw').click(function(){
+                $('.addcard_sw').hide();
+            })
+        });
+    </script>
+</block>

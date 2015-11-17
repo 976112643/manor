@@ -1,0 +1,108 @@
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						<?=$page_title?>
+						<small>
+						<?php
+							if($info){
+								echo "订单详情";
+							}
+						?> 
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li class="active">
+						<?php
+							if($info){
+								echo "订单详情";
+							}
+						?> 
+						</li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+				<!-- left column -->
+				<div class="col-md-12">
+					<div class="box box-body box-primary form-horizontal">
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>订单号:</div>
+							<div class="col-sm-10 text-left"><?=$info['order_num']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>下单用户:</div>
+							<div class="col-sm-10 text-left"><?=$info['username']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>接单店铺:</div>
+							<div class="col-sm-10 text-left"><?=$info['shop_title']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>产品名称:</div>
+							<div class="col-sm-10 text-left"><?=$info['product_title']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>订单金额:</div>
+							<div class="col-sm-10 text-left"><?=$info['total_price']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>商品数量:</div>
+							<div class="col-sm-10 text-left"><?=$info['qty']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2  text-center'><label>订单详细</label></div>
+							<div class='col-sm-10'> </div>
+						</div>
+						<?php
+							foreach($result as $v){
+						?>	
+						<div class="form-group">
+							<div style="color:#ccc;" class='col-sm-2 text-right'>[<?=$v['add_time']?>]</div>
+							<div class="message_content col-sm-9 text-left"><?=$v['description']?></div>
+						</div>
+						<?php
+							}
+						?>
+						
+					</div>
+					<div class="pages"><?=$page?></div>
+					<?php 
+						if($info['status']>0 && $info['status']!=5){
+					?>
+					<h4>操作</h4>
+					<div class="box box-body box-primary">
+						<div>
+							<form class="form-horizontal" action="<?=U('refund')?>" method="post">
+								<input type="hidden" name="id" value="<?=$info['id']?>">
+								<div class="form-group">
+									<label class="col-sm-2 text-right">退款金额：</label>
+									<div class="col-sm-10">
+										<input type="text" style="max-width:180px;" class="form-control" name='refund_price' placeholder="请输入退款金额">
+									</div>
+								</div>
+								<div class="box-footer text-left">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-10">
+										<input type="submit" class="btn btn-primary" value="退款">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<?php 
+						}
+					?>
+
+				</div><!--/.col (left) -->
+
+			</div>   <!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

@@ -1,0 +1,31 @@
+<ul class="step_bar_j clearfix text-center f_14">
+	<?php 
+		$step1 = $step2 = $step3 = $step4 = $step5 = '';
+		if(!$order_info['step']){
+			$step1 = 'active';
+		}elseif($order_info['step'] == 1){
+			$step1 = 'active';
+			$step2 = 'active';
+		}elseif($order_info['step'] == 2){
+			$step1 = 'active';
+			$step2 = 'active';
+			$step3 = 'active';
+		}elseif($order_info['step'] == 4){
+			$step1 = 'active';
+			$step2 = 'active';
+			$step3 = 'active';
+			$step4 = 'active';
+		}else{
+			$step1 = 'active';
+			$step2 = 'active';
+			$step3 = 'active';
+			$step4 = 'active';
+			$step5 = 'active';
+		}
+	?>
+	<li class="<?=$step1?>">01.提交文档</li>
+	<li class="<?=$step2?>">02.确认报价</li>
+	<li class="<?=$step3?>">03.支付订单</li>
+	<li class="<?=$step4?>">04.翻译完成</li>
+	<li class="<?=$step5?>">05.评价质量</li>
+</ul>

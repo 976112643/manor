@@ -1,0 +1,203 @@
+
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						<?=$page_title?>
+						<small>
+						查看
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li><a href="<?=U('index')?>"><?=$page_small?></a></li>
+						<li class="active">
+						查看
+						</li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<!-- form start -->
+								<form role="form" action="<?=U('')?>" method="post" class="operate_form js_check_shop">
+									<div class="box-body table-responsive">
+										<table class="table table-hover table-bordered">
+											<tr>
+												<td class="text-center" colspan="2"><b>店铺信息</b></td>
+											</tr>
+											<tr>
+												<td class="text-right" width="18%"><b>店铺名称</b>：</td>
+												<td><?=$info['title']?$info['title']:"无"?></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>所属用户</b>：</td>
+												<td><?=$info['username']?$info['username']:"无"?></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>店铺Logo</b>：</td>
+												<td><img height="200" width="auto" src="__ROOT__/<?=$info['logo']?>"</td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>店铺营业执照正面/身份证正面</b>：</td>
+												<td><img height="200" width="auto" src="__ROOT__/<?=$info['shop_license']?>"></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>店铺营业执照反面/身份证反面</b>：</td>
+												<td><img height="200" width="auto" src="__ROOT__/<?=$info['shop_license_1']?>"></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>店铺税务登记证/学历证书</b>：</td>
+												<td><img height="200" width="auto" src="__ROOT__/<?=$info['shop_tax']?>"></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>店铺翻译资质证书</b>：</td>
+												<td><?php
+													  foreach($shop_image as $row){
+													?>
+													   <img height="200" width="auto" src="__ROOT__/<?=$row['image']?>">
+													<?php
+													 }
+													?>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>标语</b>：</td>
+												<td><?=$info['slogan']?$info['slogan']:"无"?></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>擅长</b>：</td>
+												<td>
+													<?php
+													/*将擅长的语言ID分割成数组*/
+													$good_at = json_decode($info['good_at'],true);
+													$language = get_language_cache();
+													//print_r($language);
+														foreach($language as $key=>$val){
+															if($val['pid']==0){
+													?>
+													<label><?=$val['title']?>：</label>
+													<?php
+														foreach($language as $k=>$v){
+															if($v['pid']==$val['id']){
+																if(in_array($v[id],$good_at)){
+																  echo $v['title']."&nbsp;";
+																}
+															}  
+														}
+													?>
+													<br/>
+													<?php	
+															}
+														}
+													?>	
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>身份类型</b>：</td>
+												<td>
+													<?php if($info['type'] ==1 ){ echo '个人';}?>
+													<?php if($info['type'] ==2 ){ echo '公司';}?>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>关键词</b>：</td>
+												<td><?=$info['keywords']?$info['keywords']:"无"?></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>简介</b>：</td>
+												<td><?=$info['short_description']?$info['short_description']:"无"?></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>过往经历</b>：</td>
+												<td>
+													<?php
+													 if(!empty($undergo)){
+													  foreach($undergo as $key => $val){
+													?>
+											  		<div class="exp_item_box1" style="float:left;display:inline;width:100%">
+	                                                   <h5><?=date("Y/m",$val["start_time"])?>-<?=date("Y/m",$val["end_time"])?></h5>
+	                                                   <p class="toggle_text_box"><?=$val["content"]?></p>
+	                                              	</div>
+			                                            <?php											
+				  									}
+			                                             }else{
+				   									echo "无";
+											 		}  											  
+													?>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>成功案例</b>：</td>
+												<td>
+													<?=htmlspecialchars_decode($info['description_now'])?htmlspecialchars_decode($info['description_now']):"无"?>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center" colspan="2"><b>审核信息</b></td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>身份审核</b>：</td>
+												<td>
+													<select name="is_identity_confirm">
+														<option value="choose">--请选择--</option>
+														<option value="1">通过</option>
+														<option value="0">不通过</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>资质审核</b>：</td>
+												<td>
+													<select name="is_qualified_comfirm">
+														<option value="choose">--请选择--</option>
+														<option value="1">通过</option>
+														<option value="0">不通过</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-right"><b>店铺审核</b>：</td>
+												<td>
+													<select name="status">
+														<option value="choose">--请选择--</option>
+														<option value="1">通过</option>
+														<option value="0">不通过</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<td></td>
+												<td>
+													<input type="hidden" name='shop_id' value="<?=$info['id']?>">
+													<a href="#this" class="btn btn-primary ajax-post confirm" target-form='js_check_shop'>审核<a>
+													<a href="<?=U('index')?>" class="btn btn-default">取消返回</a>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</form>
+							</div><!-- /.box -->
+						</div><!--/.col (left) -->
+<script>
+	$(function(){
+		var qualified = '<?=$info['is_qualified_comfirm']?>';
+		var identity = '<?=$info['is_identity_confirm']?>';
+		var status = '<?=$info['status']?>';
+		$('select[name="is_qualified_comfirm"]').val(qualified);
+		$('select[name="is_identity_confirm"]').val(identity);
+		$('select[name="status"]').val(status);
+	});
+</script>
+					</div>   <!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

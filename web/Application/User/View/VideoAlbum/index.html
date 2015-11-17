@@ -1,0 +1,165 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js" />
+	<css href="__PLUGIN__/uploadify/uploadify.css" />
+	<css href="__PLUGIN__/fancybox/source/jquery.fancybox.css" />
+	<js href="__PLUGIN__/fancybox/source/jquery.fancybox.js" />
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>视频相册</span><i></i></div>
+                    <div class="album_add_title clearfix">
+                        <h5 class="pull-left">相册/视频</h5>
+                        <a href="javascript:;" class="js_add_album"><i class="fa fa-plus"></i>添加</a>
+                    </div>
+                    <div class="album_add_box">
+						<form action='<?=U('User/VideoAlbum/index')?>' method='post'>
+							<div class="album_add_form clearfix" >
+								<img src="__IMG__/default_img.jpg" class="default_img" style='float:left;'>
+								<div style='float:left;margin-left:10px'>
+								<?php
+									$config=array(
+										'table'		=>'resources',
+										'name'		=>'img_path',
+										'val_key'	=>"img_path",
+										'tpl'		=>"videoalbum",
+										'index'     =>"4",
+										'multi'     =>'true',  
+									);
+									echo W("Common/File/index",array($config));
+								?>
+								</div>
+								<!--<span>配个名称吧</span>
+								<input type="text" class="album_name_input" placeholder="名称不要超过12个字" name='title'>
+								-->
+							</div>
+							<div>
+								<p>
+									1、照片仅支持 .jpg、.png、.jpeg 格式，大小不超过2M.<br>
+									2、请将视频大小控制在1G之内，视频必须为您的原创作品，并且不能在视频中以任何方式给机构打广告哦~<br>
+									3、.mp4/.f4v/.flv 格式均可上传
+									3、可同时上传多张图片或视频
+								</p>
+							</div>
+							<div class="album_btn_box">
+								<input type="submit" value="提交" class="btn btn_album_submit"/>
+								<input type="reset" value="取消" class="btn btn_album_cancel"/>
+							</div>
+						</form>
+                    </div>
+                    <div class="album_fancybox">
+	                    <?php if(empty($shop_resource)){?>
+	                    	<include file="Public/nodata" />
+                   		<?php }else{?>
+								<?php
+									foreach($shop_resource as $k=>$v){
+								?>
+		                            <div class="album_item col-xs-3">
+		                                <div class="album_img_box <?=$v['type']==4?'video':''?>">
+		                                    <i href="<?=$v['type']==4?'#play':'__ROOT__/'.$v['img_path']?>" data_url="__ROOT__/<?=$v['img_path']?>" class="video_icon fancybox"></i>
+		                                    <div class="album_action_box">
+		                                        <i class="js_btn_down btn_down fa fa-angle-down"></i>
+		                                        <a href="javascript:;" class="album_rename js_album_rename"><i class="fa fa-pencil"></i>重命名</a>
+		                                        <a href="javascript:;" class="album_delete js_album_delete" resource='<?=$v['id']?>'><i class="fa fa-times"></i>删除</a>
+		                                    </div>
+		                                    <a href="<?=$v['type']==4?'#play':'__ROOT__/'.$v['img_path']?>" data_url="__ROOT__/<?=$v['img_path']?>" class="fancybox"><img onerror="this.src='__IMG__/sc_template/onerror_pic.png'" src="__ROOT__/<?=$v['type']==4?$v['cover']:$v['img_path']?>" class="img-responsive"></a>
+		                                </div>
+		                                <div class="album_name_box">
+		                                    <div class="input-group clearfix">
+		                                        <a href="javascript:;" class="input-group-addon js_submit_name"><i class="fa fa-check"></i></a>
+		                                        <input type="text" value="<?=$v['title']?>" class="album_name_input" id='rename_resource' resource='<?=$v['id']?>'>
+		                                    </div>
+		                                    <p><a href="<?=$v['type']==4?'#play':'__ROOT__/'.$v['img_path']?>" data_url="__ROOT__/<?=$v['img_path']?>" class="fancybox"><?=$v['title']?></a></p>
+		                                </div>
+		                            </div>
+									<?php
+										}
+									}
+									?>
+                        </div>
+						<div class="pages clearfix">
+							<?=$page?>
+							<?php
+								if(trim($page)){
+							?>
+							<span>&nbsp;</span>
+							<span>跳转至</span>
+							<input type="text" name='p' class="page_p" value="<?=$p?>" />
+							<span>页</span>
+							<a href="javascript:void(0);" url="<?=U('',param(array(),'p'))?>" class='go_to_page' >确定</a>
+							<?php
+								}
+							?>
+						</div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<script type="text/javascript" src="__ROOT__/public/Plugins/ckplayer/ckplayer.js" charset="utf-8"></script>
+    <script>
+        $(function(){
+        	$('.go_to_page').click(function(){
+        		var val=$('.page_p').val();
+        		var url=$(this).attr('url');
+        		window.location.href=url+'?p='+val;
+        	});
+        	
+            //显示添加相册表单
+            $('.js_add_album').click(function(){
+                $('.album_add_box').show();
+            })
+            //隐藏添加相册表单
+            $('.btn_album_submit,.btn_album_cancel').click(function(){
+                $('.album_add_box').hide();
+            })
+            //遮罩层操作按钮显示切换
+            $('.js_btn_down').click(function(){
+                $(this).siblings().toggle();
+            })
+            //遮罩层显示切换
+            $('.album_img_box').hover(function(){
+                $(this).children('.album_action_box').toggle().children('a').hide();
+            })
+            //删除相册
+            $('.js_album_delete').click(function(){
+                if(confirm('是否确认删除？')){
+					//获取相片对应的id 
+					var resources_id = $(this).attr('resource');
+					$.post('<?=U('User/VideoAlbum/del')?>',{resources:resources_id},function(data){
+						if(data.status==0){
+							alert(data.info);
+						}
+					});
+                    $(this).parents('.album_item').remove();
+                }
+            })
+            //修改相册名称
+            $('.js_album_rename').click(function(){
+                $(this).parents('.album_img_box').next('.album_name_box').children().toggle();
+            })
+            //提交修改后的相册名
+            $('.js_submit_name').click(function(){
+                $(this).parents('.input-group').hide().next('p').show().children('a').text($(this).next('input').val());
+				var resource_name = $(this).next('input').val();
+				var resource_id = $(this).parent().find('#rename_resource').attr('resource');
+				$.post('<?=U('User/VideoAlbum/ajax_update')?>',{title:resource_name,id:resource_id},function(data){
+					if(data.status==0){
+						alert(data.msg);
+					}
+				});
+            })
+			$('.album_fancybox a.fancybox,.album_fancybox i.fancybox').fancybox({
+				'arrows':false,
+				'beforeLoad': function(){
+					if($(this)[0].href.indexOf('#play') != -1){
+						var _id = $(this)[0].href.slice(1,$(this)[0].href.length),
+							_tpl = '<div class="video" id="'+_id+'"><object pluginspage="http://www.macromedia.com/go/getflashplayer" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=11,3,0,0" width="700" height="500" id="ckplayer_a1" name="ckplayer_a1" align="middle"><param name="allowScriptAccess" value="false"><param name="allowFullScreen" value="true"><param name="quality" value="high"><param name="bgcolor" value="#aaa"><param name="wmode" value="transparent"><param name="movie" value="__ROOT__/Public/Plugins/ckplayer/ckplayer.swf"><param name="flashvars" value="f=<?="http://".$_SERVER["SERVER_NAME"]?>'+$(this)[0].dataUrl+'&amp;c=0&amp;b=1"><embed allowscriptaccess="false" allowfullscreen="true" quality="high" bgcolor="#aaa" wmode="transparent" src="__ROOT__/Public/Plugins/ckplayer/ckplayer.swf" flashvars="f=<?="http://".$_SERVER["SERVER_NAME"]?>'+$(this)[0].dataUrl+'&amp;c=0&amp;b=1" width="700" height="500" name="ckplayer_a1" id="ckplayer_a1" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object></div>';
+						$(this)[0].content = _tpl;
+					}
+				}	
+            })
+        })
+    </script>
+</block>

@@ -1,0 +1,213 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<div class="list_top_j light_gray clearfix">
+            			<div class="pull-left">
+            			<div class="form-inline">
+            			<div class="form-group">
+            				<span class="list_top_title f_16 select_type">商品列表</span>
+            				<!-- <label><input type="radio" name='type' value='0' url='<?=U('',array('type'=>'0'))?>' class='select_type' />全部</label> -->        				
+            				<form action="<?=U('')?>">
+            				</div>
+            				<div class="form-group">
+            				源语言:
+            				<select name="language_id" id="language_id">
+            					<option value=''>源语言</option>
+            				<?php foreach($language_array_text as $key=>$value){?>
+            					<option value="<?php echo $key?>"><?php echo $value;?></option>
+            					<?php }?>
+            				</select>
+            				</div>
+            				<div class="form-group">
+            				目标语言:
+            				<select name="to_language_id" id="to_language_id">
+            					<option value=''>目标语言</option>
+            					<?php foreach($language_array_text as $key=>$value){?>
+            					<option value="<?php echo $key?>"><?php echo $value;?></option>
+            					<?php }?>
+            				</select>
+            				</div>
+            				<div class="form-group">
+            				技能:
+            				<select name="type_text" id="type_text">
+            					<option value=''>技能</option>
+            				<?php foreach($ability_array_text as $key=>$value){?>
+            					<option value="<?php echo $key;?>"><?php echo $value;?></option>
+            					<?php }?>
+            				</select>
+            				</div>
+            				<div class="form-group">
+            				行业:
+            				<select name="industry_id_text" id="industry_id_text">
+            					<option value=''>行业</option>
+            				<?php foreach($industry_array_text as $key=>$value){?>
+            					<option value="<?php echo $key?>"><?php echo $value;?></option>
+           					<?php }?>
+            				</select>
+            				</div>
+            				<div class="form-group">
+							<input type="submit" class="order_btn_ZH" style="line-height:normal" value="筛选">
+							</div>
+							</form>
+							</div>
+							<!-- 
+							<?php 
+								foreach($product_type as $row){
+							?>
+            				<label><input type="radio" name='type' value='<?=$row['id']?>' url='<?=U('',array('type'=>$row['id']))?>' class='select_type' /><?=$row['title']?></label>
+							<?php 
+								}
+							?> -->
+            				<!-- <label><input type="radio" url='<?=U('',array('type'=>'3'))?>' class='select_type' />口译</label>
+            				<label><input type="radio" url='<?=U('',array('type'=>'2'))?>' class='select_type' />音频翻译</label> -->
+            			</div>
+            			<div class="pull-right">
+            			<a href="<?=U('less_shelf',array('status'=>0))?>" class="light_gray ajax-post confirm"  target-form="ids" >批量下架</a>
+            				<!-- <a href="<?=U('added_shelf',array('status'=>1))?>" class="light_gray ajax-post confirm"  target-form="ids" >批量上架</a> -->
+            			</div>
+            		</div>
+					
+					<div class="table-responsive">
+	            		<table class="table table_goods_list">
+	            			<tr>
+	            				<th><label><input type="checkbox" class="js_selectAll">商品信息</label></th>
+	            				<th>商品价格</th>
+	            				<th class="text-center">操作</th>
+	            			</tr>
+							<?php
+								foreach($product_lists as $row){
+							?>
+	            			<tr>
+	            				<td>
+	            					<label class="f_16"><input type="checkbox" class="js_select ids"  name="ids[]" value="<?=$row['product_id']?>" /><?=$row['language_id_text']?> -> <?=$row['to_language_id_text']?></label>
+	            					<p>类型：<?=$row['type_text']?>     等级：<?=$row['level_id_text']?>     可接领域：<?=$row['industry_id_text']?></p>
+	            					<p>服务类型：<?=$row['ability_id_text']?></p>
+	            				</td>
+	            				<td class="f_14">价格：<span class="red">￥</span><?=$row['price']?>/小时</td>
+	            				<td class="text-center">
+								<?php
+									if($row['assess']==1){
+									if($row['product_status'] == 1){
+								?>
+	            					<a href="<?=U('less_shelf',array('ids'=>$row['product_id'],'status'=>0))?>" class="btn btn-sm btn_gray ajax-get confirm">下架</a>
+	            				<?php
+									}else{
+								?>
+									<a href="<?=U('added_shelf',array('ids'=>$row['product_id'],'status'=>1))?>" class="btn btn-sm btn_gray ajax-get confirm">上架</a>
+								<?php
+									}
+									}else{
+										echo '审核未通过';
+									}
+								?>
+									<a href="<?=U('edit',array('id'=>$row['product_id']))?>" class="btn btn-sm btn_orange">编辑</a>
+	            					<a href="<?=U('del',array('ids'=>$row['product_id'],'status'=>-1))?>" class="btn btn-sm btn_red ajax-get confirm">删除</a>
+	            				</td>
+	            			</tr>
+							<?php
+								}
+							?>
+	            		</table>
+		            		<?php if(empty($product_lists)){?>
+		            			<include file="Public/nodata" />
+		            		<?php }?>
+	            	</div>
+	            	<div class="list_bot_j clearfix">
+	            		<div class="pull-left">
+	            			<!--<div class="pages text-center">
+		    					<?=$page?>
+								<span>共<?=$page_count?>页</span>
+								<?php
+									if(trim($page)){
+								?>
+		    					<span>&nbsp;</span>
+		    					<span>跳转至</span>
+		    					<input type="text" name='p' />
+		    					<span>页</span>
+		    					<a href="<?=U('index',param(array(),p))?>" class='go_to_page' >确定</a>
+								<?php
+									}
+								?>
+		    				</div>-->
+							<div class="pages text-center">
+								<?=$page?>
+								<?php
+									if(trim($page)){
+								?>
+								<span>共<?=$page_count?>页</span>
+								<span>&nbsp;</span>
+								<span>跳转至</span>
+								<input type="text" name='p' />
+								<span>页</span>
+								<a href="<?=U('')?>" class='go_to_page' >确定</a>
+								<?php
+									}
+								?>
+							</div>
+	            		</div>
+	            		<div class="pull-right">
+	            			<!-- <a href="#this" class="btn btn-sm btn-danger js_goTop"><i class="fa fa-arrow-up f_16"></i></a> -->
+	            		</div>
+	            	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+    $(function(){
+    	/*全选*/
+    	$(document).on('click','.js_selectAll',function(){
+    		if($(this).prop('checked')){
+    			$('.js_select').prop('checked',true);
+    		}else{
+    			$('.js_select').prop('checked',false);
+    		}
+    	});
+
+    	$(document).on('click','.js_goTop',function(){
+    		$('body,html').animate({'scrollTop':'0px'},'slow');
+    	});
+		
+		/*跳转指定页码	 李东*/
+		$(document).on('click','.go_to_page',function(){
+    		page = $('input[name="p"]').val();
+			if(!isNaN(page)){
+				//url_old = $(this).attr('href');
+				//alert(url_old);
+				//url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+			    //$(this).attr({'href':url});
+				/*跳转指定页@刘巧*/
+				url_old=$(this).attr('href');
+				url=url_old+'?p='+page;
+				//url_old=window.location.href;
+				//var url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+				$(this).attr({'href':url});
+				
+				
+			}else{
+			   alert("请输入数字");
+			   return false;
+			}
+    	});
+		
+		/*分类点击筛选	 李东*/
+		var products = '<?=I('get.type')?>'?'<?=I('get.type')?>':0;
+		$('input[value='+products+']').attr({'checked':'checked'});
+		$(document).on('click','.select_type',function(){
+			url = $(this).attr('url');
+			window.location.href = url;
+		});
+		
+		$(".search_data").click(function(){
+			var language_id = $("#language_id").val();
+			var to_language_id = $("#to_language_id").val();
+			var type_text = $("#type_text").val();
+			var industry_id_text = $("#industry_id_text").val();
+		})
+    })
+    </script>
+</block>

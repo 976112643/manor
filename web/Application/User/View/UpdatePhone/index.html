@@ -1,0 +1,112 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<div class="dataset_title f_16"><span>手机修改</span><i></i></div>
+					<div class="p_l_20">
+						<div class="table-responsive">
+							<form class="form-horizontal demo_form_sw" action="<?=U('User/UpdatePhone/index')?>" method='post'>
+							<table class="table table-bordered table_data_j">
+								<tr>
+									<th>当前手机号</th>
+									<td>
+										<input type='text' name='old_telephone' class="input-sm" size="30" readonly='readonly' value='<?=$member_info['telephone']?>'/>
+									</td>
+								</tr>
+								<tr>
+									<th>更换手机号<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<!-- <input type='text' name='telephone' class="input-sm" size="30" id='js_register_pop' datatype="m" errormsg="" />
+										<span class="Validform_checktip"></span> -->
+								<!-- 提示用户输入的手机号是否已经被注册S -->
+                                <!-- <div class="padding_sw"> -->
+		                            <input class="input-sm"  type="text" size="30" value="" id='js_register_pop'  name="newPhone" nullmsg="请输入手机号" ajaxurl="<?=U('User/UpdatePhone/checkForm')?>" datatype="m" errormsg="手机号格式错误">
+		                            <span class="Validform_checktip"></span>
+		                        <!-- </div> -->
+		                         <!-- 提示用户输入的手机号是否已经被注册E -->
+									</td>
+								</tr>
+								<tr>
+									<th>验证码<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<input type='text' name='code' class="input-sm" size="9" datatype="*" errormsg="" nullmsg="请输入验证码！"/>
+										<input type='button' class="yanzheng_btn_ZH" onclick="get_code(this);" value="获取验证码" >
+										<span class="Validform_checktip" id='valid_resulte'></span>
+									</td>
+								</tr>
+							</table>
+							<div class="m_l_160">
+								<input type='submit' class='btn btn-warning' value='提交' />
+								<!-- <a href="#this" class="btn btn-warning">提交</a> -->
+								<a href="#this" class="btn btn-default">取消</a>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		 $(function(){
+            //表单验证
+            $(".demo_form_sw").Validform({tiptype:3});
+        })
+		//用于发送验证码计时的函数，在下面的函数中用到
+		function code_countdown(obj){
+			$(obj).prop("disabled",true).css("cursor","text");
+			var time=60;
+			var cur=$(obj);
+			cur.val(time+"秒后重新获取");
+			function coutdown(){
+				time--;	
+				cur.val(time+"秒后重新获取");
+				if(time<=0){
+					clearInterval(s);
+					cur.prop("disabled",false).css("cursor","pointer");
+					cur.val("点击重新获取");
+				}	
+			}
+			var s=setInterval(coutdown,1000);
+		}
+		//发送验证码
+		var code_send=true;
+		function get_code(obj){
+		  if(code_send){
+			code_send=false;
+			var m_regxp=/^13[0-9]{9}$|14[0-9]{9}|15[0-9]{9}$|18[0-9]{9}$/;
+			//var e_regxp=/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;//邮箱正则
+			var account=$('#js_register_pop').val();
+			var old_account = <?=$member_info['telephone']?>;
+			if(account==''){
+			  $('#js_register_pop').next('span').addClass('Validform_wrong').text('请输入手机号');
+			  code_send=true;
+			}else if(account==old_account){
+				$('#js_register_pop').next('span').addClass('Validform_wrong').text('您的号码没有变更！');
+				code_send=true;
+			}else{
+			  var m_mac=account.match(m_regxp);
+			  //var e_mac=account.match(e_regxp);
+			  if(!m_mac){
+				$('#js_register_pop').next('span').addClass('Validform_wrong').text('请输入正确的手机号');
+				code_send=true;
+			  }else{
+				$.post('<?=U('/User/UpdatePhone/registerCode')?>',{account:account},function(data){
+				  if(data.status==1){
+				    code_countdown(obj);
+					$('#valid_resulte').addClass('Validform_right').text(data.info);
+					code_send=true;
+				  }else{
+					$('#valid_resulte').addClass('Validform_wrong').text(data.info);
+					code_send=true;
+				  }
+				});
+			  }
+			}
+		  }
+		}
+	</script>
+</block>

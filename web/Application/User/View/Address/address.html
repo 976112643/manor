@@ -1,0 +1,129 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>地址管理</span><i></i></div>
+                    <div class="m_lr_15">
+                        <!-- 地址表格- -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed table-hover table_sw f_w tableclick_sw">
+                                <tr class="bg_c_f8f8f8">
+                                    <th>别名</th>
+                                    <th>收货人</th>
+                                    <th>手机号</th>
+                                    <th>收货地址</th>
+                                    <th>邮编</th>
+                                    <th>操作</th>
+                                </tr>
+                                <?php 
+								foreach($data['address'] as $value){?>
+                                <tr>
+                                    <td><?=$value['title']?></td>
+                                    <td><?=$value['username']?></td>
+                                    <td><?=$value['phone_number']?></td>
+                                    <td><?=$value['new_address'].'--'.$value['detailed_address']?></td>
+                                    <td><?=$value['postalcode']?></td>
+                                    <td>
+									<a class="c_ff9c02 underline_sw" href="<?=U('User/Address/edit',array('id'=>$value['id']))?>" >修改</a>
+									<a href="<?=U('User/Address/del',array('id'=>$value['id']))?>"><u>删除</u></a>
+									<?php
+									  if($value["default_address"]==1){
+									?>  
+									  <u class="defaddr_sw" style="display:inline;color:#ccc;text-decoration:none;padding:0px 10px">默认地址</u>
+									<?php 
+									  }else{
+									?>
+									<a href="<?=U('User/Address/setDefault',array('id'=>$value['id']))?>" class="c_357fb0"><u style="display:inline">设为默认地址</u></a>
+									<?php
+									  }
+									?>
+									</td>
+                                </tr>
+                                <?php }?>
+                            </table>
+                            <?php if(empty($data['address'])){?>
+								 <include file="Public/nodata" />
+							<?php }?>
+                        </div>
+                        <!-- end 地址表格- -->
+                        <!-- 添加按钮 -->
+                        <div class="clearfix zoom1_sw">
+                            <a class="defaddr_btn_sw b_357fb0 " href="<?=U('User/Address/edit')?>"><i class="fa fa-plus"></i>添加</a>
+                        </div>
+                        <!-- end 添加按钮 -->
+                         <!-- 添加分页 -->
+                        <!--<div class="pages clearfix" style="float:right;">
+						<?=$page?>
+						<span>共<?=$page_count?>页</span>
+						<?php
+							if(trim($page)){
+						?>
+						<span>&nbsp;</span>
+						<span>跳转至</span>
+						<input type="text" name='p' />
+						<span>页</span>
+						<a href="<?=U('')?>" class='go_to_page' >确定</a>
+						<?php
+							}
+						?>
+                    </div>-->
+					<div class="pages text-center">
+						<?=$page?>
+						<?php
+							if(trim($page)){
+						?>
+						<span>共<?=$page_count?>页</span>
+						<span>&nbsp;</span>
+						<span>跳转至</span>
+						<input type="text" name='p' />
+						<span>页</span>
+						<a href="<?=U('')?>" class='go_to_page' >确定</a>
+						<?php
+							}
+						?>
+					</div>
+                        <!-- end 添加分页 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            //表单验证
+            $(".demo_form_sw").Validform({tiptype:4});
+            /*跳转指定页码	 李东*/
+    		/*$(document).on('click','.go_to_page',function(){
+        		page = $('input[name="p"]').val();
+    			if(!isNaN(page)){
+    				url_old = $(this).attr('href');
+    				url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+    			    $(this).attr({'href':url});
+    			}else{
+    			   alert("请输入数字");
+    			   return false;
+    			}
+        	});*/
+			
+			/*跳转指定页码	 李东*/
+			$(document).on('click','.go_to_page',function(){
+				page = $('input[name="p"]').val();
+				if(!isNaN(page)){
+					//url_old = $(this).attr('href');
+					//url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+					//$(this).attr({'href':url});
+						/*跳转指定页@刘巧*/
+					url_old=window.location.href;
+					var url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+					$(this).attr({'href':url});
+				}else{
+				   alert("请输入数字");
+				   return false;
+				}
+			});
+        });
+    </script>
+</block>

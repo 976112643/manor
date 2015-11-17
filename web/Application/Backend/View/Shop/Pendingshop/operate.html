@@ -1,0 +1,123 @@
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						<?=$page_title?>
+						<small>
+						<?php
+							if($info){
+								echo "修改";
+							}else{
+								echo "添加";
+							}
+						?> 
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li><a href="<?=U('index')?>">待审核店铺</a></li>
+						<li class="active">
+						<?php
+							if($info){
+								echo "修改";
+							}else{
+								echo "添加";
+							}
+						?> 
+						</li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<!-- form start -->
+								<form role="form" action="<?=U('')?>" method="post" class="operate_form">
+									<input type='hidden' name='id' value='<?=$info["id"]?>' />
+									<div class="box-body">
+										<div class="form-group">
+											<label>标题：</label>
+											<input type="text" class="form-control" name='title' value="<?=$info['title']?>">
+										</div>
+										<div class="form-group">
+											<label>所属用户：</label>
+											<input type="text" class="form-control" name='username' value="<?=$info['username']?>">
+										</div>
+										<div class="form-group">
+											<label>店铺Logo</label>
+											<input type="hidden" name="old_logo" value="<?=$info['logo']?>">
+											<?php
+												$config=array(
+													'table'		=>'shop',
+													'name'		=>'logo',
+													'val_key'	=>"logo"
+												);
+												echo W("Common/Img/index",array($config,$info['id']));
+											?>
+										</div>
+										<div class="form-group">
+											<label>标语：</label>
+											<input type="text" class="form-control" name='slogan' value="<?=$info['slogan']?>">
+										</div>
+										<div class="form-group">
+											<label>擅长：</label><br/>
+											<?php
+											/*将擅长的语言ID分割成数组*/
+											$good_at = json_decode($info['good_at'],true);
+											$language = get_language_cache();
+											//print_r($language);
+												foreach($language as $key=>$val){
+													if($val['pid']==0){
+											?>
+											<label><?=$val['title']?>：</label>
+											<?php
+												foreach($language as $k=>$v){
+													if($v['pid']==$val['id']){
+											?>
+												<input type="checkbox" name='good_at[]' <?php if(in_array($v[id],$good_at)){echo 'checked="checked"';}?> value='<?=$v['id']?>' ><?=$v['title']?>
+											<?php  
+													}  
+												}
+											?>
+											<br/>
+											<?php	
+													}
+												}
+											?>	
+										</div>
+										<div class="form-group">
+											<label>身份类型：</label>
+											<select class="form-control" name="type">
+													<option value="">--请选择--</option>
+													<option value="1" <?php if($info['type'] ==1 ){ echo 'selected="selected"';}?>>个人</option>
+													<option value="2" <?php if($info['type'] ==2 ){ echo 'selected="selected"';}?>>公司</option> 
+											</select>
+										</div>
+										<div class="form-group">
+											<label>关键词：</label>
+											<input name="keywords" type="text" class="form-control" value="<?=$info['keywords']?>"  placeholder="多个关键词用英文逗号隔开" >
+										</div>
+										<div class="form-group">
+											<label>简介：</label>
+											<textarea name='short_description' class="form-control"><?=$info['short_description']?></textarea>
+										</div>
+									</div>
+									<div class="box-footer">
+										<button type="submit" class="btn btn-primary">提交</button>
+										<a href="<?=U('index')?>" class="btn btn-default">取消返回</a>
+									</div>
+								</form>
+							</div><!-- /.box -->
+						</div><!--/.col (left) -->
+
+					</div>   <!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

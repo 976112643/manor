@@ -1,0 +1,400 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <css href="__CSS__/classes.css" />
+    <css href="__PLUGIN__/fancybox/source/jquery.fancybox.css" />
+    <js href="__PLUGIN__/fancybox/source/jquery.fancybox.js" /> 
+    <js href="__JS__/superSlide.js" />
+	<include file='Public/shop_top' />
+                <!--company right side S-->
+                <div class="col-xs-9 company_right_side">
+                    <div class="server_info_box">
+                        <!-- service language S-->
+                        <div class="main_title_box clearfix">
+                            <h4 class="org pull-left">服务语言</h4>
+                        </div>
+						 <ul class="lan_lists js_lan_lists">
+							<?php 
+								foreach($product_result as $row){
+							?>
+                            <li class="clearfix">
+                                <h5><a href="#"><?=$row['language_id_text']?>翻译为<?=$row['to_language_id_text']?></a></h5>
+                                <div class="col-xs-5 skill_data_yqc" data-cut="商品类型：<?=$row['type_text']?> <br/>商品描述：<?=msubstr(strip_tags(htmlspecialchars_decode($row['description'])),0,30)?>" data-all="商品类型：<?=$row['type_text']?><br/>难度等级：<?=$row['level_id_text']?><br/>可接类型：<?=$row['ability_id_text']?><br/>可接领域：<?=$row['industry_id_text']?><br/>商品描述：<?=strip_tags(htmlspecialchars_decode($row['description']))?>">
+                                    <span>商品类型：<?=$row['type_text']?> <br/>商品描述：<?=msubstr(strip_tags(htmlspecialchars_decode($row['description'])),0,30)?></span>
+                                    <a href="javascript:;" class="js_toggle_text">展开全部</a>
+                                </div>
+                                <div class="col-xs-5">
+                                    <p class="f_14">价格：<span class="red">￥</span><?=$row['price']?>/小时</p>
+                                </div>
+                                <div class="col-xs-2"><a href="<?php if(intval(session('home_member_id'))){ echo U('/Home/Buy/index',array('product_id'=>$row['product_id'])); }else{ echo U('/User/Login/index'); }?>" class="btn btn_buy_server">购买此服务</a></div>
+                            </li>
+							<?php 
+								}
+							?>
+                        </ul>
+                        <?php if(empty($product_result)){?>
+							<include file="Public/nodata" />
+						<?php }?>
+						<!-- <ul class="lan_lists js_lan_lists">
+							<?php 
+								foreach($product_result as $row){
+							?>
+                            <li class="clearfix">
+                                <h5><a href="#"><?=$row['language_id_text']?>翻译为<?=$row['to_language_id_text']?></a></h5>
+                                <div class="col-md-5 skill_data_yqc" data-cut="商品类型：<?=$row['type_text']?><br>商品描述：<?=msubstr(strip_tags(htmlspecialchars_decode($row['description'])),0,30)?>" data-all="商品类型：<?=$row['type_text']?><br>难度等级：<?=$row['level_id_text']?><br>可接类型：<?=$row['ability_id_text']?><br>可接领域：<?=$row['industry_id_text']?><br>商品描述：<?=strip_tags(htmlspecialchars_decode($row['description']))?>">
+                                    <span>商品类型：<?=$row['type_text']?><br>商品描述：<?=msubstr(strip_tags(htmlspecialchars_decode($row['description'])),0,30)?></span>
+                                    <a href="javascript:;" class="js_toggle_text">展开全部</a>
+                                </div>
+                                <div class="col-md-5">
+                                    <p class="f_14">价格：<span class="red">￥</span><?=$row['price']?>/小时</p>
+                                </div>
+                                <div class="col-md-2"><a href="<?php if(intval(session('home_member_id'))){ echo U('/Home/Buy/index',array('product_id'=>$row['product_id'])); }else{ echo U('/User/Login/index'); }?>" class="btn btn_buy_server">购买此服务</a></div>
+                            </li>
+							<?php 
+								}
+							?>
+                        </ul> -->
+                        <!-- service language E-->
+                    </div>
+                    <div class="comments_info_box">
+                        <h3 class="comments_title_yqc">所有评价</h3>
+                        <div class="clearfix user_comments_yqc">
+                            <div class="comments_score">
+                                <h2 class="org ta_c"><?=$shop_info_1['star_num']?></h2>
+                                <div class="star_box clearfix">
+                                    <span class="pull-left">速度：</span>
+                                    <div class="pull-left star_progress_yqc edit"><div class="bar <?=($shop_info_1['quality_star_num']*2*10==100)? 'red_star':''?>" style="width: <?=$shop_info_1['speed_star_num']*2*10?>%;"></div></div>
+                                </div>
+                                <div class="star_box clearfix">
+                                    <span class="pull-left">质量：</span>
+                                    <div class="pull-left star_progress_yqc edit"><div class="bar <?=($shop_info_1['quality_star_num']*2*10==100)? 'red_star':''?>" style="width: <?=$shop_info_1['quality_star_num']*2*10?>%;"></div></div>
+                                </div>
+                                <div class="star_box clearfix">
+                                    <span class="pull-left">服务：</span>
+                                    <div class="pull-left star_progress_yqc edit"><div class="bar <?=($shop_info_1['quality_star_num']*2*10==100)? 'red_star':''?>" style="width: <?=$shop_info_1['serve_star_num']*2*10?>%;"></div></div>
+                                </div>
+                            </div>
+                            <div class="all_comments_box">
+                               <div class="comments_sort clearfix">
+									<input type="hidden" class="js_comments_sort" value="1&0">
+									<strong class="pull-left"><label>全部评价</label></strong>
+									<!--<select class="pull-right selecter js_ajax_select_LH" style="width:90px;">
+										<option value=1>默认排序</option>
+										<option value=2>时间降序</option>
+									</select>-->
+									<div class="js_ajax_radio_LH" style="padding-left:50px; padding-right: 20px;">
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="0" checked="checked"> 全部评价（<?=$all_comments_num?>）</label>
+										</div>
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="1"> 好评（<?=$good_comments_num?>）</label>
+										</div>
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="2"> 中评（<?=$mid_comments_num?>）</label>
+										</div>
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="3"> 差评（<?=$bad_comments_num?>）</label>
+										</div>
+									</div>
+								</div>
+								<div class='comment_list_ajax_LH'>
+									<ul class="comments_list">
+										<?php
+											foreach($shop_comments as $row){
+											 $user_header=getAvatar($row["member_id"],"middle");
+										?>
+										<li class="clearfix">
+											<div class="comment_img"><a href="#"><img src="<?=$user_header?>" class="img-circle"/></a></div>
+											<div class="comment_info">
+												<div class="review_type">
+												    <?php
+													  if($row["type"]==1){
+													?>
+												    <i class="face_icon smile"></i>好评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==2){
+													?>
+												    <i class="face_icon normal"></i>中评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==3){
+													?>
+												    <i class="face_icon sad"></i>差评
+													<?php
+													  }
+													?>
+													<span>源语言：<em><?=$row["language_text"]?></em></span><span>目标语言：<em><?=$row["to_language_text"]?></em></span>
+												</div>
+												<p><?=$row['content']?></p>
+												<?php
+												  if(!empty($comments_image[$row["id"]])){
+												?>
+												<div class="img_list js_fancybox">
+												   <?php
+												     foreach($comments_image[$row["id"]] as $img){
+												   ?>
+													<a href="__ROOT__/<?=$img["save_path"]?>" rel="group"><img src="__ROOT__/<?=$img["save_path"]?>"></a>
+												   <?php
+												    }
+												   ?>	
+												</div>
+												<?php
+												  }
+												?>
+												<p><?=date("Y-m-d",strtotime($row["add_time"]))?> 所属技能：<?=$row["serve_text"]?></p>
+												<!--评论 S-->
+												<?php
+													if($row['_child']){
+												?>
+												<div class="comment_ZH" style='margin-top:10px'>
+													<ul class="media-list">
+														<li class="media">
+															<div class="media-left">
+																<span class="media-object w_55">回复：</span>
+															</div>
+															<div class="media-body">
+																<h6 class="media-heading"><i class="face_icon smile"></i><?=$_row['type_text']?></h6>
+																<p><?=$_row['content']?></p>
+															</div>
+														</li>
+													</ul>
+												</div>
+												<?php
+												   }
+												?>
+												<!--评论 E-->
+											</div>
+										</li>
+										<?php
+											}
+										?>
+									</ul>
+									 <?php if(empty($shop_comments)){?>
+										<include file="Public/nodata" />
+									<?php }?>
+									<div class="pages clearfix pager">
+										<?=$page?>
+										<?php
+											if(trim($page)){
+										?>
+										<span>&nbsp;</span>
+										<span>跳转至</span>
+										<input type="text" name='p' />
+										<span>页</span>
+										<a href="<?=U('')?>" class='go_to_page' >确定</a>
+										<?php
+											}
+										?>
+										<!--<a href="javascript:;" class="pull-right back_top_yqc js_backtop"></a>-->
+									</div>
+								</div>
+                            </div>
+                        </div>
+                        <div class="comments_banner"><img src="__IMG__/comment_banner.jpg" class="img-responsive"></div>
+                    </div>
+                   
+                </div>
+                </div>
+                <!--company right side E-->
+            </div>
+        </div>
+    </div>
+    <!--bottom box S-->
+    <div class="navbar navbar-fixed-bottom fixed_product_yqc">
+        <div class="container">
+            <form action="<?=U('/Home/Buy/index')?>" method="get">
+            <ul class="clearfix">
+                <li class="price">￥<em class="js_trans_price">0</em>元<span>/千字</span></li>
+                <li>
+                    <div class="sim-select-box js_lang_type">
+                        <div class="sim-select-checked">
+                            <input type="hidden"><span placeholder="请选择源语言">请选择类型</span><i></i>
+                        </div>
+                        <div class="sim-select-list"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sim-select-box js_lang_source">
+                        <div class="sim-select-checked">
+                            <input type="hidden"><span placeholder="请选择源语言">请选择源语言</span><i></i>
+                        </div>
+                        <div class="sim-select-list"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sim-select-box js_lang_target">
+                        <div class="sim-select-checked">
+                            <input type="hidden"><span placeholder="请选择目标语言">请选择目标语言</span><i></i>
+                        </div>
+                        <div class="sim-select-list"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sim-select-box js_lang_lv">
+                        <div class="sim-select-checked">
+                            <input type="hidden" name="product_id"><span placeholder="请选择等级">请选择等级</span><i></i>
+                        </div>
+                        <div class="sim-select-list"></div>
+                    </div>
+                </li>
+                <li>
+					<?php 
+						if(session('home_member_id')){
+					?>
+					<input type="submit" class="btn btn_bottom_buy_yqc" value="购买">
+					<?php 
+						}else{
+					?>
+					<a href="<?=U('/User/Login/index')?>" class="btn btn_bottom_buy_yqc">购买</a>
+					<?php 
+						}
+					?>
+				</li>
+            </ul> 
+            </form>
+        </div>
+    </div>
+    <!--bottom box E-->
+    <script>
+		function parseData(){
+			var all_product = <?=$all_product?>,
+				data = [];
+			for(var i = 0, len = all_product.length; i < len; i++){
+				var tempData = {};
+				tempData.id = all_product[i].id;
+				tempData.type = all_product[i].type;
+				tempData.typeTxt = all_product[i].type_text;
+				tempData.price = all_product[i].price;
+				tempData.lid = all_product[i].language_id;
+				tempData.ltxt = all_product[i].language_id_text;
+				tempData.tid = all_product[i].to_language_id;
+				tempData.ttxt = all_product[i].to_language_id_text;
+				tempData.lvid = all_product[i].level_id;
+				tempData.lvtxt = all_product[i].level_id_text;
+				data.push(tempData);
+			}	
+			return data;
+		}
+		// 选择类型
+		$('.js_lang_type').click(function(){
+			var data = parseData(),
+				list = $(this).find('.sim-select-list'),
+				typeArr = [],
+				temp = '';
+			for(var i = 0, len = data.length; i < len; i++){
+				if($.inArray(data[i].type,typeArr) == -1){
+					typeArr.push(data[i].type);
+					temp += '<span data-type="'+data[i].type+'">'+data[i].typeTxt+'</span>';
+				}
+			}
+			list.html(temp);
+		})
+		// 选择源语言
+		$('.js_lang_source').click(function(){
+			var data = parseData(),
+				type = $('.js_lang_type').find('input').val(),
+				list = $(this).find('.sim-select-list'),
+				typeArr = [],
+				temp = '';
+			if(type == ''){
+				alert('请选择类型');
+			}else{
+				for(var i = 0, len = data.length; i < len; i++){
+					if(data[i].type == type){
+						if($.inArray(data[i].lid,typeArr) == -1){
+							typeArr.push(data[i].lid);
+							temp += '<span data-type="'+data[i].lid+'">'+data[i].ltxt+'</span>';
+						}
+					}
+				}
+				list.html(temp);
+			}
+		})
+		// 选择目标语言
+		$('.js_lang_target').click(function(){
+			var data = parseData(),
+				type = $('.js_lang_source').find('input').val(),
+				list = $(this).find('.sim-select-list'),
+				typeArr = [],
+				temp = '';
+			if(type == ''){
+				alert('请选择源语言');
+			}else{
+				for(var i = 0, len = data.length; i < len; i++){
+					if(data[i].lid == type){
+						if($.inArray(data[i].tid,typeArr) == -1){
+							typeArr.push(data[i].tid);
+							temp += '<span data-type="'+data[i].tid+'">'+data[i].ttxt+'</span>';
+						}
+					}
+				}
+				list.html(temp);
+			}
+		})
+		// 选择等级
+		$('.js_lang_lv').click(function(){
+			var data = parseData(),
+				type = $('.js_lang_target').find('input').val(),
+				list = $(this).find('.sim-select-list'),
+				ele = $('.js_trans_price'),
+				price = {},
+				typeArr = [],
+				temp = '';
+			if(type == ''){
+				alert('请选择目标语言');
+			}else{
+				for(var i = 0, len = data.length; i < len; i++){
+					if(data[i].tid == type){
+						if($.inArray(data[i].lvid,typeArr) == -1){
+							typeArr.push(data[i].lvid);
+							price[data[i].id] = data[i].price;
+							temp += '<span data-type="'+data[i].id+'">'+data[i].lvtxt+'</span>';
+						}
+					}
+				}
+				list.html(temp);
+			}
+			ele.text(price[$(this).find('input').val()]);
+		})
+		// 重置select
+		$('.js_lang_type').on('click','.sim-select-list span',function(){
+			resetSelect($('.js_lang_source'));
+			resetSelect($('.js_lang_target'));
+			resetSelect($('.js_lang_lv'));
+			$('.js_trans_price').text('0');
+		})
+		$('.js_lang_source').on('click','.sim-select-list span',function(){
+			resetSelect($('.js_lang_target'));
+			resetSelect($('.js_lang_lv'));
+			$('.js_trans_price').text('0');
+		})
+		$('.js_lang_target').on('click','.sim-select-list span',function(){
+			resetSelect($('.js_lang_lv'));
+			$('.js_trans_price').text('0');
+		})
+        $(function(){
+            $('.js_fancybox a').fancybox();
+        })
+		/*$('.js_ajax_select_LH').on('change',function(){
+			var select = $(this).val();
+			var radio  = $('.js_ajax_radio_LH input:checked').val()||'all';
+			$('.js_comments_sort').val(select+'&'+radio);
+			$.post("<?=U()?>",{select:select,radio:radio,shop_id:<?=I('shop_id')?>},function(data){
+				$('.comment_list_ajax_LH').html(data);
+			});
+		})*/
+		/*$('.js_ajax_radio_LH input').on('click',function(){
+			var select = $('.js_ajax_select_LH').val();
+			var radio  = $(this).val();
+			$('.js_comments_sort').val(select+'&'+radio);
+			$.post("<?=U()?>",{select:select,radio:radio,shop_id:<?=I('shop_id')?>},function(data){
+				$('.comment_list_ajax_LH').html(data);
+			});
+		})*/
+    </script>
+   <include file='Public/shop_sidebar' />
+</block>

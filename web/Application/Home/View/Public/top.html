@@ -1,0 +1,26 @@
+<div class="top_box_ZH">
+	<div class="container p_lr">
+		<ul class="f_l">
+			<li style="margin-left: 0;" class="m_r_20">您好，欢迎来到<b class="c_ff7402">N邦翻译</b> !</li>
+			<?php
+				if(!session('home_member_id')){
+			?>
+			<li>请<a href="<?=U('User/Login/index')?>">登录</a></li>
+			<li><a href="<?=U('User/Register/index')?>">注册</a></li>
+			<?php
+				}else{
+			?>
+			<li>你好<a href="<?=U('User/Index/index')?>" class="m_r_5"><?=session('nickname')?session('nickname'):session('username')?></a><a class="m_lr_5 f_14" href="<?=U('User/Message/index')?>"><i class="fa fa-envelope org"></i></a>
+				<a href="<?=U('User/Message/index')?>">您有<strong class="org m_lr_5"><?=(session('news_num'))?></strong>条新消息</a>
+			</li>
+			<li><a href="<?=U('User/Login/loginout')?>">退出</a></li>
+			<?php
+				}
+			?>
+		</ul>
+		<ul class="f_r">
+			<li><a href="<?=U('User/Index/index')?>"><i class="fa fa-user f_14"></i>我的翻译</a></li>
+			<li><a href="<?=C('TOP_APP_LINK')?>"><i class="fa fa-mobile-phone f_18" style="vertical-align: middle;"></i>手机客户端</a></li>
+		</ul>
+	</div>
+</div>

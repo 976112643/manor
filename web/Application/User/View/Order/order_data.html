@@ -1,0 +1,166 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<js href="__PLUGIN__/echarts-all.js" />
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+            	<div class="dataset_title clearfix f_16 js_exp_top"><span>数据报表</span><i></i></div>
+            	<div class="m_lr_15">
+            	<!-- 新增/修改 过往经历模块 S-->            	
+                    <div class="order_dataTab_ZH f_14">
+						<a href="<?=U('data',array('time'=>2))?>"><span  class=" <?php if(I('time') == '2' || !I('time')){ echo 'order_cur'; }?>">今日</span></a>
+						<a href="<?=U('data',array('time'=>1))?>"> <span class="<?php if(I('time') == '1'){ echo 'order_cur'; }?>">咋日</span></a>
+						<a href="<?=U('data',array('time'=>3))?>"> <span class="<?php if(I('time') == '3'){ echo 'order_cur'; }?>" >上周</span></a>
+						<a href="<?=U('data',array('time'=>4))?>"><span class=" <?php if(I('time') == '4'){ echo 'order_cur'; }?>">本月</span></a>
+                    </div>
+					
+					
+                    <div id="main" style="width:100%;height:400px;"></div>
+            	<!--the end-->
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts图表
+    var myChart = echarts.init(document.getElementById('main')); 
+    var option = {
+		calculable : true,
+		xAxis : [
+			{
+				type : 'category',
+				splitLine: {
+					lineStyle: {
+						width: 0
+					}
+				},
+				axisLine:{
+					lineStyle: {
+						width: 0
+					}
+				},
+				axisTick:{
+					lineStyle: {
+						width: 0
+					}
+				},
+				data : ['成交金额','成交笔数','成交客户数','成交数量']
+			}
+		],
+		grid: {
+			borderWidth: 0,
+			y: 80,
+			y2: 60
+		},
+		yAxis : [
+			{
+				show: false
+			}
+		],
+		series : [
+			{
+				name:'数据报表',
+				type:'bar',
+				data:[<?=$order_price?>,<?=$order_num?>,<?=$member_num?>,<?=$deal_num?>],
+		   itemStyle: {
+					normal: {
+						color: function(params) {
+							var colorList = [
+							  '#ffab47','#45a4e8','#21cebc','#d659ff'
+							];
+							return colorList[params.dataIndex]
+						},
+						label: {
+							show: true,
+							position: 'top',
+							formatter: function(params){
+								 if(params.name == '成交金额'){
+									return '￥' + params.data+'元';
+								 }else{
+									return params.data;
+								 }
+							}
+						}
+					}
+			}
+			}
+		]
+	};
+    // 为echarts对象加载数据 
+    myChart.setOption(option);
+    window.onresize = myChart.resize;
+	//切换选项卡，ajax加载数据
+	$(document).on("click",".order_dataTab_ZH span",function(){
+        $(this).addClass("order_cur").siblings().removeClass("order_cur");
+		var _index = $(this).index()+1;//表示不同的时间筛选类型
+		$.post('<?=U('User/Order/data')?>',{time:_index},function(data){
+			option = {
+				calculable : true,
+				xAxis : [
+					{
+						type : 'category',
+						splitLine: {
+							lineStyle: {
+								width: 0
+							}
+						},
+						axisLine:{
+							lineStyle: {
+								width: 0
+							}
+						},
+						axisTick:{
+							lineStyle: {
+								width: 0
+							}
+						},
+						data : ['成交金额','成交笔数','成交客户数','成交数量']
+					}
+				],
+				grid: {
+					borderWidth: 0,
+					y: 80,
+					y2: 60
+				},
+				yAxis : [
+					{
+						show: false
+					}
+				],
+				series : [
+					{
+						name:'数据报表',
+						type:'bar',
+						data:[data.order_price,data.order_num,data.member_num,data.deal_num],
+				   itemStyle: {
+							normal: {
+								color: function(params) {
+									var colorList = [
+									  '#ffab47','#45a4e8','#21cebc','#d659ff'
+									];
+									return colorList[params.dataIndex]
+								},
+								label: {
+									show: true,
+									position: 'top',
+									formatter: function(params){
+										 if(params.name == '成交金额'){
+											return '￥' + params.data+'元';
+										 }else{
+											return params.data;
+										 }
+									}
+								}
+							}
+					}
+					}
+				]
+			};
+			myChart.setOption(option);
+		});
+    });
+</script>
+</block>

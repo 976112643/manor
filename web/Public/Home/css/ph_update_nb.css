@@ -1,0 +1,379 @@
+/*
+ * @time 2015-06-27
+ * @author	宋慰 
+ * */
+/*公共样式-开始*/
+.sale_form_sw{
+	*zoom: 1;
+	line-height: 30px;
+}
+.form-group{
+	*margin-left: 10px !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	*padding:0;
+}
+.form-control{
+	*margin: 8px 20px;
+	*padding: 0;
+	display: inline-block\9;
+}
+/*字体设置*/
+.f_w{
+	font-family: "微软雅黑";
+}
+.f_14{
+	font-size: 14px;
+}
+.f_16{
+	font-size: 16px;
+}
+.f_25{
+	font-size: 25px;
+}
+.f_bold{
+	font-weight: bold;
+}
+/*颜色设置*/
+.c_138fcb{
+	color: #138fcb;
+}
+.bg_c_f8f8f8{
+	background-color: #f8f8f8;
+}
+.bg_c_ffb902{
+	background-color: #ffb902;
+}
+.c_ff7302{
+	color: #ff7302;
+}
+.c_ffb902{
+	color: #ffb902;
+}
+.c_fff{
+	color: #fff;
+}
+.bg_c_cacaca{
+	background-color: #cacaca;
+}
+.c_337ab7{
+	color: #337ab7;
+}
+/*清除浮动*/
+.zoom1_sw{
+	zoom: 1;
+}
+/*头部-开始*/
+.head_sw{
+	height: 20px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.title_sw{
+	padding-right: 20px;
+	padding-left: 10px;
+	background: #fff url(../img/head_nb_circle.jpg)no-repeat right;
+	border-left: 5px solid #ff7302;
+	background-image: url(../img/head_nb_circle.jpg)\9;
+	background-repeat: no-repeat\9;
+	background-position: right\9;
+	background-color: #fff\9;
+}
+.bg_sw{
+	margin-top: -12px;
+	display: block;
+	border-top: 1px solid #f8f8f8;
+	*margin-top: 0;
+	*position: relative;
+	*top: -12px;
+	*left: 115px;
+}
+/*头部-结束*/
+/*表单-开始*/
+.border_sw{
+	zoom: 1;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	margin-bottom: 0;
+}
+.border_btom_sw{
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+/* @media(max-width: 768px){
+	.sale_form_sw{
+		padding: 0 30px;
+	}
+} */
+.label_sw {
+	float: left;
+	height: 50px;
+	width: 190px;
+	line-height: 50px;
+	text-align: center !important;
+	border-right: 1px solid #ddd;
+	background-color: #f8f8f8;
+	font-weight: 100 !important;
+	margin-bottom: 0px;
+}
+/* @media(max-width: 550px){
+	.label_sw{
+		width: 100%;
+		border-right: none; 
+	}
+} */
+.input_sw{
+	width: 190px;
+	height: 30px;
+	border-radius: 0;
+	outline: 0;
+	box-shadow: none;
+}
+.padding_sw {
+	float: left;
+	padding: 9px;
+	padding-bottom: 0\9;
+	*padding: 0;
+}
+.ph_numb_sw{
+	*line-height: 50px;
+	*margin-left: 10px;
+	*padding-left: 13px !important;
+}
+/* @media(max-width: 550px){
+	.input_sw{
+		margin: 0 auto;
+	}
+	.padding_sw{
+		width: 100%;
+	}
+}
+@media(max-width: 768px){
+	.padding_sw,{
+		padding-bottom: 10px;
+	}
+	.input_sw{
+		width: 100%;
+	}
+} */
+/*表单-结束*/
+/*按钮*/
+.btn_add_sw{
+	width: 85px;
+	height: 35px;
+	*margin-left: 15px;
+	margin-top: 10px\9;
+	background-color: #ff9c02;
+	color: #fff;
+	border-radius: 4px;
+}
+.btn_add_sw:hover{
+	background-color: #ff7302;
+	color: #fff;
+}
+.btn_reset_sw{
+	width: 85px;
+	height: 35px;
+	background-color: #f8f8f8;
+	margin-top: 10px\9;
+	border: 0;
+}
+.btn_reset_sw:hover{
+	background-color: #dbdbdb;
+}
+.input_sw:focus{
+	border-color: #ff7302;
+}
+/*按钮-结束*/
+/*公共样式-结束*/
+/*修改手机号码-开始*/
+.w_10{
+	width: 10%;
+}
+.w_80{
+	width: 80%;
+}
+/*表单-开始*/
+.yanzheng_sw{
+	float: left;
+	width: 80px;
+	height: 30px;
+	border-radius: 0;
+	outline: 0;
+	box-shadow: none;
+}
+/* @media(max-width: 768px){
+	.yanzheng_sw{
+		width: 50%;
+	}
+	.btn_sw{
+		padding: 0;
+	}
+} */
+.btn_sw{
+	max-width: 100px;
+	padding: 6px 4px;
+	margin-left: 5px;
+	background-color: #f8f8f8;
+}
+.input_sw:focus,.yanzheng_sw:focus{
+	border-color: #ff9C02;
+}
+/*表单-结束*/
+/*修改手机号码-结束*/
+
+/*添加商品-开始*/
+/*表单设置-开始*/
+/*宽度设置*/
+.w_70{
+	width: 70px;
+}
+.w_175{
+	width: 175px;
+}
+.maxw_400{
+	max-width: 400px;
+}
+/*宽度设置-结束*/
+.displ_sw{
+	display: inline-block;
+}
+.goodsna_sw{
+	display: block;
+}
+.row_sw{
+	margin-left: 30px\9;	
+}
+/* @media(max-width: 768px){
+	.row_sw form{
+		margin-left: 25px;
+	}
+} */
+.form_group_sw{
+	margin-bottom: 5px;
+}
+.form_group_sw select{
+	margin-bottom: 10px !important;
+	margin-right: 10px;
+}
+.form_group_sw input{
+	outline: none;
+	box-shadow: none;
+}
+.form_group_sw input:focus{
+	border-color: #ff7302;
+}
+.form_group_sw select{
+	outline: none;
+	box-shadow: none;
+}
+.form_group_sw select:focus{
+	border-color: #ff7302;
+}
+.fa_right_sw{
+	width: 20px;
+	height: 35px;
+	line-height: 35px;
+	vertical-align: 0;
+}
+.form_group_sw textarea{
+	outline: none;
+	box-shadow: none;
+}
+.form_group_sw textarea:focus{
+	border-color: #ff7302;
+}
+.date_sw input{
+	margin-right: 10px;
+}
+.date_sw span{
+	height: 35px;
+	line-height: 35px;
+	*line-height: 10px;	
+	padding: 0 5px;
+	margin-right: 10px;
+}
+/* @media(max-width: 520px){
+	.date_sw span,.fa_right_sw{
+		display: none;
+	}
+} */
+.price_sw{
+	margin-right: 10px;
+	display: inline-block !important;
+}
+.file_clas_sw{
+	display: inline-block !important;
+}
+.file_clas_sw .checkbox-inline input{
+	*margin-top: 0px !important;
+	*margin-left: 10px;
+}
+.pad_bottom_sw{
+	padding-bottom: 10px;
+}
+.pad_bottom_sw+.radio-inline{
+	*margin-left: 10px;
+}
+.pad_bottom_sw+.radio-inline input{
+	*margin-top: 0px !important;
+}
+.pad_bottom_sw+.radio-inline+.radio-inline input{
+	*margin-top: 0px !important;
+}
+/* @media(max-width: 768px){
+	.pad_bottom_sw+label,.pad_bottom_sw+label+label{
+		padding-top: 0!important;
+	}
+} */
+/*表单设置-结束*/
+/*添加商品-结束*/
+/*修改密码-开始*/
+/*功能选项-开始*/
+.active_sw,.link_sw{
+	width: 150px;
+	height: 40px;
+	padding-top: 12px;
+	margin-bottom: 10px;
+	display: inline-block;
+	text-align: center;
+	*margin-bottom: 0;
+}
+/* @media(max-width: 350px){
+	.active_sw,.link_sw{
+		width: 130px;
+	}
+} */
+.active_sw{
+	background-color: #ff9C02;
+	color: #fff;
+}
+.active_sw:hover{
+	text-decoration: none;
+	color: #fff;
+}
+.link_sw{
+	background-color: #f8f8f8;
+}
+.link_sw:hover{
+	text-decoration: none;
+}
+/*功能选项-结束*/
+.pswbtn_add_sw{
+	padding: 0;
+}
+.tips_sw{
+	max-width: 850px;
+	min-height: 190px;	
+	line-height: 25px;
+}
+.tips_cont_sw{
+	padding: 20px 30px;
+	background: url(../img/tips_nb_bg.jpg)repeat-y center;
+	background-image: url(../img/tips_nb_bg.jpg)\9;
+	background-repeat: repeat-y\9;
+	background-position: center\9;
+}
+/*修改密码-结束*/

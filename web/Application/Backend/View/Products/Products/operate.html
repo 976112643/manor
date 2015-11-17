@@ -1,0 +1,271 @@
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						<?=$page_title?>
+						<small>
+						<?php
+							if($info){
+								echo "修改";
+							}else{
+								echo "添加";
+							}
+						?> 
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li><a href="<?=U('index')?>">商品列表</a></li>
+						<li class="active">
+						<?php
+							if($info){
+								echo "修改";
+							}else{
+								echo "添加";
+							}
+						?> 
+						</li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<!-- form start -->
+								<form role="form" action="<?=U('')?>" method="post" class="operate_form">
+									<input type='hidden' name='id' value='<?=$info["id"]?>' />
+									<div class="box-body">
+										<!-- <div class="form-group">
+											<label>商品名称</label>
+											<input type="text" class="form-control" name='title' value="<?=$info['title']?>">
+										</div>   -->
+										 <div class="form-group">
+											<label>发布店铺</label>
+											<!-- <input type="hidden" name="shop_id" value="<?=$info['shop_id']?>">
+											<input type="text" class="form-control" name='title' value="<?=$info['title']?>"> -->
+											<select name="shop_id">
+											<?php if($info['title']){?>
+											<option value="<?=$info['shop_id']?>"><?=$info['title']?></option>
+											<?php }else{?>
+											<?php foreach($shop_data as $value){?>
+												<option value="<?php echo $value['id'];?>"><?php echo $value['title'];?></option>
+												<?php 
+														}
+													}
+												?>
+											</select>
+										</div> 
+										<div class="form-group">
+											<label>翻译语言</label>
+											<div class="form-inline">
+												<label>源语言：
+													<select name="language_id" class="form-control input-sm">
+														<option value=''>--请选择--</option>
+														<?php
+															foreach(get_language_cache() as $v){
+																if($v['pid']!= 0){
+														?>
+														 <option <?php if($v['id']==$info['language_id']){ echo "selected='selected'"; } ?> value='<?=$v['id']?>'><?=$v['title']?></option>
+														<?php 
+																}
+															} 
+														?>
+													</select>
+												</label>
+												&nbsp;&nbsp;
+												<label>目标语言：
+													<select name="to_language_id" class="form-control input-sm">
+														<option value='0'>--请选择--</option>
+														<?php
+															foreach(get_language_cache() as $v){
+																if($v['pid']!= 0){
+														?>
+														 <option <?php if($v['id']==$info['to_language_id']){ echo "selected='selected'"; } ?> value='<?=$v['id']?>'><?=$v['title']?></option>
+														<?php 
+																}
+															} 
+														?>
+													</select>
+												</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>行业选择</label>
+											<div class="form-inline">
+											<?php
+												/*将擅长的语言ID分割成数组*/
+												$industry_ids = json_decode($info['industry_id'],true);
+												$industry = get_industry_cache();
+												$industry = list_to_tree($industry);
+												foreach($industry as $row){
+											?>
+												<label><?=$row['title']?>：</label>
+												<?php
+													foreach($row['_child'] as $_row){
+												?>
+													<input type="checkbox" name='industry_id[]' <?php if(in_array($_row['id'],$industry_ids)){echo 'checked="checked"';}?> value='<?=$_row['id']?>' ><?=$_row['title']?>
+												<?php  
+													}
+												?>
+												<br/>
+											<?php	
+												}
+											?>	
+											</div>
+										</div>
+										<div class="form-group">
+											<label>属性设置</label>
+											<?php
+												/*将擅长的语言ID分割成数组*/
+												$ability_ids = json_decode($info['ability_id'],true);
+												$ability = get_ability_cache();
+												$ability_tree = list_to_tree($ability);
+												//print_r($ability_tree);
+											?>
+											<div class="form-inline">
+												<label>服务：
+													<select name="ability_1" id='ability_1' onchange="ability_1_change(this)" class="form-control input-sm">
+														<option value="0" >--请选择--</option>
+														<?php 
+															foreach($ability as $row){ 
+																if($row['pid']==0){
+														?>
+														 <option value="<?=$row['id']?>"><?=$row['title']?></option>
+														<?php 
+																}
+															} 
+														?>
+													</select>
+												</label>
+												&nbsp;&nbsp;
+												<label>类型：
+													<select name="ability_2" id='ability_2' onchange="ability_2_change(this)" class="form-control input-sm">
+														<option value=''>--请选择--</option>
+													</select>
+												</label>
+												&nbsp;&nbsp;
+												<select id='ability_all' style="display:none;">
+													<?php 
+														foreach($ability as $row){ 
+															if($row['pid']!=0){
+													?>
+													 <option value="<?=$row['id']?>" pid="<?=$row['pid']?>"><?=$row['title']?></option>
+													<?php 
+															}
+														} 
+													?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group form-inline"  id='ability_3' >
+											
+											<?php 
+												foreach($ability_tree as $row){ 
+													foreach($row['_child'] as $_row){
+											?>
+											<div class="form-inline" data-id='<?=$_row['id']?>' style="display:none;">
+												<label>属性：</label>
+												<?php 
+														foreach($_row['_child'] as $_row_child){
+												?>
+													<input name="ability_3[]" type="checkbox" value="<?=$_row_child['id']?>"> <?=$_row_child['title']?>	
+												<?php 
+														}
+												?>
+											</div>
+											<?php 
+													} 
+												} 
+											?>
+											<?php 
+												if($info){
+												$temp = array();
+												foreach($ability as $row){
+													$temp[$row['id']]=$row;
+												}
+												$ability = $temp;
+											?>
+											<div class="form-inline" id='old_ability'>
+												<label>属性：</label>
+												<?php 
+													foreach($ability_ids as $val){
+												?>
+												<input name="ability_3[]" <?php if(in_array($val,$ability_ids)){echo 'checked="checked"';}?> type="checkbox" value="<?=$val?>"> <?=$ability[$val]['title']?>	
+												<?php 
+													}
+												?>
+											</div>
+											<?php 
+												}
+											?>
+										</div>
+										<script type="text/javascript">
+											function ability_1_change(obj){
+												var pid=$(obj).val();
+												$('#ability_2').html("<option value='0'>--请选择--</option>");
+												$('#ability_all option[pid='+pid+']').clone().appendTo('#ability_2');
+												
+												/*移除之前的选择*/
+												$('#old_ability').remove();/*移除修改时默认选中的*/
+												$('#ability_3').children('.form-inline').attr({'style':'display:none'});/*再次选择其他服务时，隐藏之前服务的属性*/
+												
+											}
+											function ability_2_change(obj){
+												var pid=$(obj).val();
+												$('#ability_3').children('div [data-id="'+pid+'"]').attr({'style':'display:block'});
+												$('#ability_3').children('div [data-id="'+pid+'"]').nextAll('.form-inline').attr({'style':'display:none'});
+												$('#ability_3').children('div [data-id="'+pid+'"]').prevAll('.form-inline').attr({'style':'display:none'});
+											}
+											<?php
+												if(!$info){		
+											?>
+											$('#ability_1').val('<?=intval($info['ability_1'])?>').change();
+											$('#ability_2').val('<?=intval($info['ability_2'])?>').change();
+											<?php
+												}		
+											?>
+										</script>
+										<div class="form-group">
+											<div class="form-inline">
+												<label>价格：</label>
+												<input type="text" class="form-control" name='price' value="<?=$info['price']?>">&nbsp;&nbsp;元/千字
+											</div>
+										</div>  
+										<div class="form-group">
+											<label>关键词：</label>
+											<input name="keywords" type="text" class="form-control" value="<?=$info['keywords']?>">
+										</div>
+										<div class="form-group">
+											<label>简介：</label>
+											<textarea name='short_description' class="form-control"><?=$info['short_description']?></textarea>
+										</div>
+										<div class="form-group">
+											<label>内容：</label>
+											<!--百度编辑器-->
+											<?php $time=time(); ?>
+											<script id="<?='editor_'.$time?>" type="text/plain" name="description"><?=htmlspecialchars_decode($info['description'])?></script>
+											<script type="text/javascript">
+											//说明：editor_obj_id的值必须和编辑器ID保持一致
+											var editor_<?=$time?>=UE.getEditor('editor_<?=$time?>',config);
+											</script>
+										</div>
+									</div>
+									<div class="box-footer">
+										<button type="submit" class="btn btn-primary">提交</button>
+										<a href="<?=U('index')?>" class="btn btn-default">取消返回</a>
+									</div>
+								</form>
+							</div><!-- /.box -->
+						</div><!--/.col (left) -->
+
+					</div>   <!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

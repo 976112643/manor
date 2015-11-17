@@ -1,0 +1,243 @@
+<extend name="Home@Public/body"/>
+<block name="style">
+	<js href="__PLUGIN__/my97date/WdatePicker.js" />
+	<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js" />
+	<css href="__PLUGIN__/uploadify/uploadify.css" />
+</block>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<p class="f_18">欢迎您<?=session('nickname')?></p>
+					<p><i class="fa fa-exclamation-circle f_14 orange"></i> 
+					  <?php
+					    if($info["shop_status"]==3){
+					  ?>
+					   您当前店铺还未开通，只需四步轻松开店，赶快试试吧！
+					   <?php
+					    }else{
+					   ?>
+					   您的店铺目前正处于审核状态，请耐心等待！
+					   <?php
+						}
+					   ?>
+					</p>
+					
+					<div class="flow_ZH sale_step_j">
+						<ul class="text-center orange">
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa fa-user b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>注册</h4>
+							</li>
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa fa-edit b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>完善资料</h4>
+							</li>
+							<li class="<?=(!empty($info) and $info['shop_status']==0)?'cur':''?>">
+								<div class="icon_box_ZH">
+									<i class="fa  fa-eye b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>后台审核</h4>
+							</li>
+							<li>
+								<div class="icon_box_ZH">
+									<i class="fa fa-thumbs-o-up b_icon"></i>
+									<span class="f_24 fa fa-check"></span>
+								</div>
+								<h4>店铺开通</h4>
+							</li>
+						</ul>
+					</div>
+					<div class="table-responsive">
+						<!-- <div class="sale_tab_ZH clearfix w_302">
+							<span class="sale_cut">翻译公司</span>
+							<span>个人译者</span>
+						</div> -->
+						<!-- 切换内容一 S-->
+						<form action='<?=U('User/StoreSetting/index')?>' method='post' class="js_form">
+						<table class="js_change_ZH table table-bordered table_data_j">
+							<tr>
+								<th><?=session('type')==2?'店铺名称':'公司名称'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<input type="text" class="input-sm" size="30"  name='title' value="<?=$info['title']?>">
+									<!-- <span class="light_gray p_l_20">请与公司注册名保持一致</span> -->
+								</td>
+							</tr>
+							<tr>
+								<th>业务范围<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<?php
+										foreach($operate_type as $v){
+									?>
+									<label style="font-weight:normal;padding-right:8px"><input type='checkbox' name='operate_type[]' value='<?=$v['id']?>' <?=in_array($v['id'],$info['operate_type'])?'checked':''?> /><?=$v['title']?></label>
+									<?php
+										}
+									?>
+								</td>
+							</tr>
+							<tr>
+								<th>服务类别<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<?php
+										foreach($servece_type as $k=>$v){
+									?>
+									<label style="font-weight:normal;padding-right:8px"><input type='checkbox' name='servece_type[]' value='<?=$k?>' <?=in_array(intval($k),$info['translate_type'])?'checked':''?> /><?=$v?></label>
+									<?php
+										}
+									?>
+								</td>
+							</tr>
+							<tr>
+								<th>日翻译量<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<input type="text" class="input-sm" size="30"  name='translate_num' value="<?=!empty($info['translate_num'])?$info['translate_num']:''?>">
+								</td>
+							</tr>
+							<tr>
+								<th>翻译年限<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<input type="text" class="input-sm" size="30"  name='translate_year' value="<?=!empty($info['translate_year'])?$info['translate_year']:''?>">
+									年
+								</td>
+							</tr>
+							<tr>
+								<th><?=session('type')==2?'身份证正面':'营业执照正面'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<i class="fa fa-photo picture_j f_28" style="float:left;"></i>
+									<div style="margin-left:35px;">
+										<?php
+											$config=array(
+												'index'     =>1,
+												'table'		=>'shop',
+												'table_id'  =>'id',
+												'name'		=>'shop_license',
+												'val_key'	=>'shop_license',
+												'tpl' => 'home'
+											);
+											echo W("Common/Img/index",array($config,$info['shop_id']));
+										?>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th><?=session('type')==2?'身份证反面':'营业执照反面'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<i class="fa fa-photo picture_j f_28" style="float:left;"></i>
+									<div style="margin-left:35px;">
+										<?php
+											$config=array(
+												'index'     =>4,
+												'table'		=>'shop',
+												'table_id'  =>'id',
+												'name'		=>'shop_license_1',
+												'val_key'	=>'shop_license_1',
+												'tpl' => 'home'
+											);
+											echo W("Common/Img/index",array($config,$info['shop_id']));
+										?>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th><?=session('type')==2?'学历证书':'税务登记证'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<i class="fa fa-photo picture_j f_28 pull-left"></i>
+									<div style="margin-left:35px;">
+										<?php
+											$config=array(
+												'index'     =>2,
+												'table'		=>'shop',
+												'table_id'  =>'id',
+												'name'		=>'shop_tax',
+												'val_key'	=>'shop_tax',
+												'tpl' => 'home'
+											);
+											echo W("Common/Img/index",array($config,$info['shop_id']));
+										?>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>翻译资质证书<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<i class="fa fa-photo picture_j f_28 pull-left"></i>
+									<div style="margin-left:35px;">
+										<?php
+											$config=array(
+												'index'     =>3,
+												'table'		=>'shop_image',
+												'table_id'  =>'shop_id',
+												'name'		=>'image',
+												'val_key'	=>'image',
+												'multi' => 'true',
+												'tpl' => 'home'
+											);
+											echo W("Common/Img/index",array($config,$info['shop_id']));
+										?>
+									</div>
+									<span class="light_gray p_l_20" style="padding-left:35px;margin:5px 0;display:block;">可上传多次</span>
+								</td>
+							</tr>
+							<tr>
+								<th style="vertical-align: top !important;"><?=session('type')==2?'店铺介绍':'公司介绍'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<!--百度编辑器-->
+									<?php $time=time(); ?>
+									<script id="<?='editor_'.$time.'company'?>" type="text/plain" name="content"><?=htmlspecialchars_decode($info['description_now'])?></script>
+									<script type="text/javascript">
+									//说明：editor_obj_id的值必须和编辑器ID保持一致
+									var editor_<?=$time?>=UE.getEditor('editor_<?=$time?>company',config);
+									</script>
+								</td>
+							</tr>
+							
+						</table>
+						<!-- 切换内容二 E-->
+						<p>1、请将以上所传图片大小控制在2M之内。</p>
+						<div class="text-center">
+							<a href="javascript:void(0);" class="btn btn-warning js_sub">
+							 <?php
+							 if($info["shop_status"]==3){
+							    echo "提交";
+							 }else if($info["shop_status"]==0){
+							    echo "修改";
+							 }?>
+							</a>
+							<!-- <a href="#this" class="btn btn-warning">提交</a> -->
+							<a href="#this" class="btn btn-default">取消</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	$(document).on("click",".sale_tab_ZH span",function(){
+		$(this).addClass("sale_cut").siblings().removeClass("sale_cut");
+		var index = $(".sale_tab_ZH span").index(this);
+		$(".js_change_ZH").eq(index).attr('style','');
+		$(".js_change_ZH").eq(index).siblings('.js_change_ZH').attr('style','display:none');
+	});
+	$(function(){
+	    $('.js_sub').click(function(){
+			var url=$('.js_form').attr('action');
+			var val=$('.js_form').serialize();
+			$.post(url,val,function(data){
+				tips(data.info,1000,'error');
+				if(data.status==1){
+					window.location.reload();
+				}
+			});			
+		});
+	});
+</script>	
+</block>

@@ -1,0 +1,149 @@
+<css href="__CSS__/user_lj.css" />
+<div class="col-xs-3 fyh">
+	<div class="side_bar2_j border_gray text-center">
+    	<!--用户信息 start-->
+    	<div class="user_img2">
+
+        	<!-- <a href="#this"><img src="__ROOT__/icon/<?=session('home_member_id')?>_avatar_big.jpg" class="img-circle img-responsive" value='<?=session('home_member_id')?>' ></a> -->
+        	<a href="<?=U('/User/UpdateImg/index')?>"><img src="__ROOT__/icon/<?=session('home_member_id')?>_avatar_big.jpg" class="img-responsive" onerror="this.src='__IMG__/sc_template/onerror_pic.png'"></a>
+        </div>
+        <div class="user_info2">
+            <a href="#this" class="f_18"><?=session('nickname')?session('nickname'):session('username')?></a>
+            <p class="f_12">积分：<?=session('points')?session('points'):'0'?>分</p>
+        </div>
+        <!--end -->
+        
+        <!--左侧导航栏 start-->
+        <ul class="sidebar_nav2">
+			<?php
+				if(session('home_shop_id') or session('type')>1){//表示只有注册了个人译者或翻译公司的才会显示这些店铺中的url 
+			?>
+        	<li>
+            	<div class="nav_title"><i class="fa fa-tags pull-left"></i><i class="fa fa-angle-right pull-right"></i>我是卖家</div>
+                <ul style="display: none;">
+                	<li><a href="<?=U('User/CompanyInfo/index')?>">资料设置</a></li>
+                    <li><a href="<?=U('User/UnderGo/index')?>">过往经历</a></li>
+                    <li><a href="<?=U('User/Success/index')?>">成果分享</a></li>
+                    <li><a href="<?=U('User/VideoAlbum/index')?>">视频相册</a></li>
+					<li><a href="<?=U('User/Order/evaluate')?>">评价管理</a></li>
+					<li><a href="<?=U('User/Order/data')?>">数据图表</a></li>
+					<li><a href="<?=U('User/Schedule/index')?>">日程管理</a></li>
+                    <!-- <li><a href="<?=U('User/ChangePassword/index')?>">地址管理</a></li> -->
+                </ul>
+            </li>
+            <li>
+            	<div class="nav_title"><i class="fa fa-home pull-left"></i><i class="fa fa-angle-right pull-right"></i>店铺管理</div>
+                <ul style="display:none;">
+					<li><a href="<?=U('User/StoreSetting/index')?>" >店铺申请</a></li>
+					 <li><a href="<?=U('User/Sale/changeSkin')?>">更换皮肤</a></li>
+					<li><a href="<?=U('Home/Classes/detail',array('shop_id'=>session('home_shop_id')))?>">我的店铺</a></li>
+					<li><a href="<?=U('User/Order/index')?>">店铺订单</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-shopping-cart pull-left"></i><i class="fa fa-angle-right pull-right"></i>商品管理</div>
+                <ul style="display:none;">
+					<li><a href="<?=U('User/Sale/add_product')?>" >添加商品</a></li>
+                    <li><a href="<?=U('User/Sale/index')?>" >商品列表</a></li>
+					<li><a href="<?=U('User/Sale/has_failed')?>" >过期商品</a></li>
+					
+                </ul>
+            </li>
+			<?php
+				}
+			?>
+			<!-- <li>
+                <div class="nav_title"><i class="fa fa-book pull-left"></i><i class="fa fa-angle-right pull-right"></i>评价管理</div>
+				<ul style="display:none;">
+                    <li><a href="<?=U('User/Order/evaluate')?>">评价列表</a></li>
+                </ul>
+            </li> -->
+			<li>
+                <div class="nav_title"><i class="fa fa-calendar-o pull-left"></i><i class="fa fa-angle-right pull-right"></i>用户中心</div>
+                <ul style="display:none;">
+                    <li><a href="<?=U('User/Address/index')?>">地址管理</a></li>
+					<li><a href="<?=U('User/UpdateImg/index')?>">修改头像</a></li>
+					<li><a href="<?=U('User/UpdateName/index')?>">修改昵称</a></li>
+                    <li><a href="<?=U('User/ChangePassword/index')?>">修改密码</a></li>
+                    <li><a href="<?=U('User/UpdatePhone/index')?>">修改手机</a></li>
+					<li><a href="<?=U('User/Balance/index')?>">银行卡管理</a></li>
+					<li><a href="<?=U('User/Index/member_evaluate')?>">我的评价</a></li>
+					<li><a href="<?=U('User/MyTrack/index')?>">我的脚印</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-calendar-o pull-left"></i><i class="fa fa-angle-right pull-right"></i>订单管理</div>
+                <ul style="display:none;">
+					<li><a href="<?=U('User/Myorder/index')?>">我的订单</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-money pull-left"></i><i class="fa fa-angle-right pull-right"></i>资金管理</div>
+                <ul style="display:none;">
+                    <li><a href="<?=U('User/Balance/recharge')?>">充值</a></li>
+                    <li><a href="<?=U('User/Balance/drawals')?>">提现</a></li>
+					<li><a href="<?=U('User/Balance/record')?>">资金记录</a></li>
+                </ul>
+            </li>
+            <li>
+            	<div class="nav_title"><i class="fa fa-comments pull-left"></i><i class="fa fa-angle-right pull-right"></i>消息中心</div>
+                <ul  style="display:none;">
+					<!--@刘巧  增加一个好友列表-->
+					<li><a href="<?=U('User/Message/Friends_List')?>">联系人列表</a></li>
+					<li><a href="<?=U('User/Message/send_msg')?>">发送消息</a></li>
+					<li><a href="<?=U('User/Message/index')?>">全部消息</a></li>
+                    <li><a href="<?=U('User/Message/order_msg')?>">订单消息</a></li>	
+                    <li><a href="<?=U('User/Message/personal_msg')?>">个人消息</a></li>
+					<li><a href="<?=U('User/Message/system_msg')?>">系统消息</a></li>
+					<li><a href="<?=U('User/Message/has_send')?>">已发消息</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav_title"><i class="fa fa-star pull-left"></i><i class="fa fa-angle-right pull-right"></i>收藏管理</div>
+                <ul  style="display:none;">
+                    <!--@刘巧  增加一个好友列表-->
+                    <li><a href="<?=U('User/Collect/index')?>">店铺收藏</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!--end -->
+    </div>
+</div>
+<script>
+    $(function(){
+        $(document).on('click','.nav_title',function(){
+            $(this).next('ul').slideToggle();   
+            $(this).children('.fa-angle-right').toggleClass('down');
+        }); 
+		/*默认选中当前打开的链接菜单*/
+		var current_uri='<?=U(CONTROLLER_NAME.'/'.ACTION_NAME)?>';
+		
+			$('a[href="'+current_uri+'"]').addClass('focus');
+			$('a[href="'+current_uri+'"]').parent().parent().attr({'style':'display:block;'});
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').addClass('cur');
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').children('.pull-right').addClass('down');
+		
+    });
+//全选返选
+function selectAll(_this){
+    if($(_this).prop("checked")){
+        $(".js_select").prop("checked",true);
+        $(".js_selectAll").prop("checked",true);
+    }else{
+        $(".js_select").prop("checked",false);
+        $(".js_selectAll").prop("checked",false);
+    }
+};
+function setselectAll(){
+    if(!$(".js_select").checked){
+        $(".js_selectAll").prop("checked",false);
+    }
+    var _checkboxNum=$(".js_select").length;
+    var _selectNum=$(".js_select:checked").length;
+    if(_checkboxNum==_selectNum){
+        $(".js_selectAll").prop("checked",true);
+    }
+}; 
+</script>
+<!--end -->

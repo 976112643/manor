@@ -1,0 +1,99 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<js href="__PLUGIN__/echarts-all.js" />
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+            	<div class="dataset_title clearfix f_16 js_exp_top"><span>数据报表</span><i></i></div>
+            	<div class="m_lr_15">
+            	<!-- 新增/修改 过往经历模块 S-->            	
+                    <div class="order_dataTab_ZH f_14">
+                        <span class="order_cur">今日</span>
+                        <span>咋日</span>
+                        <span>上周</span>
+                        <span>本月</span>
+                    </div>
+                    <div id="main" style="width:100%;height:400px;"></div>
+            	<!--the end-->
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).on("click",".order_dataTab_ZH span",function(){
+        $(this).addClass("order_cur").siblings().removeClass("order_cur");
+    });
+
+    // 基于准备好的dom，初始化echarts图表
+    var myChart = echarts.init(document.getElementById('main')); 
+    var option = {
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            splitLine: {
+                lineStyle: {
+                    width: 0
+                }
+            },
+            axisLine:{
+                lineStyle: {
+                    width: 0
+                }
+            },
+            axisTick:{
+                lineStyle: {
+                    width: 0
+                }
+            },
+            data : ['成交金额','成交笔数','成交客户数','成交数量']
+        }
+    ],
+    grid: {
+        borderWidth: 0,
+        y: 80,
+        y2: 60
+    },
+    yAxis : [
+        {
+            show: false
+        }
+    ],
+    series : [
+        {
+            name:'数据报表',
+            type:'bar',
+            data:[3689, 8,2,4],
+       itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [
+                          '#ffab47','#45a4e8','#21cebc','#d659ff'
+                        ];
+                        return colorList[params.dataIndex]
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        formatter: function(params){
+                             if(params.name == '成交金额'){
+                                return '￥' + params.data;
+                             }else{
+                                return params.data;
+                             }
+                        }
+                    }
+                }
+        }
+        }
+    ]
+};
+    // 为echarts对象加载数据 
+    myChart.setOption(option);
+    window.onresize = myChart.resize;
+</script>
+</block>

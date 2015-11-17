@@ -1,0 +1,104 @@
+<extend name="Home@Public/body"/>
+<block name="style">
+	<js href="__PLUGIN__/my97date/WdatePicker.js" />
+</block>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<p class="f_18">欢迎您，remember娜娜！</p>
+					<p><i class="fa fa-exclamation-circle f_14 orange"></i> 您当前店铺还未开通，只需四步轻松开店，赶快试试吧！</p>
+					
+					<div class="flow_ZH sale_step_j">
+						<ul class="text-center orange">
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa fa-user b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>注册</h4>
+							</li>
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa fa-edit b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>完善资料</h4>
+							</li>
+							<li>
+								<div class="icon_box_ZH">
+									<i class="fa  fa-eye b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>后台审核</h4>
+							</li>
+							<li>
+								<div class="icon_box_ZH">
+									<i class="fa fa-thumbs-o-up b_icon"></i>
+									<span class="f_24 fa fa-check"></span>
+								</div>
+								<h4>店铺开通</h4>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="table-responsive">
+						<div class="sale_tab_ZH clearfix w_302">
+							<span class="sale_cut">个人注册完善</span>
+							<span>申请公司注册</span>
+						</div>
+						<table class="table table-bordered table_data_j">
+							<tr>
+								<th>公司名称</th>
+								<td>
+									<input type="text" class="input-sm" size="30" value="乐享国际文化传媒">
+									<span class="light_gray p_l_20">请与公司注册名保持一致</span>
+								</td>
+							</tr>
+							<tr>
+								<th>营业执照</th>
+								<td>
+									<i class="fa fa-photo picture_j f_28"></i>
+									<a href="#this" class="btn btn_gray btn-xs f_14">点击上传</a>
+								</td>
+							</tr>
+							<tr>
+								<th>税务登记证</th>
+								<td>
+									<i class="fa fa-photo picture_j f_28"></i>
+									<a href="#this" class="btn btn_gray btn-xs f_14">点击上传</a>
+								</td>
+							</tr>
+							<tr>
+								<th>翻译资质证书</th>
+								<td>
+									<i class="fa fa-photo picture_j f_28"></i>
+									<a href="#this" class="btn btn_gray btn-xs f_14">点击上传</a>
+									<span class="light_gray p_l_20">可上传多次</span>
+								</td>
+							</tr>
+							<tr>
+								<th style="vertical-align: top !important;">公司介绍</th>
+								<td>
+									此处放编辑器
+								</td>
+							</tr>
+						</table>
+						<p>1、请将以上所传图片大小控制在2M之内。</p>
+						<div class="text-center">
+							<a href="#this" class="btn btn-warning">提交</a>
+							<a href="#this" class="btn btn-default">取消</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	$(document).on("click",".sale_tab_ZH span",function(){
+		$(this).addClass("sale_cut").siblings().removeClass("sale_cut");
+	});
+</script>
+</block>

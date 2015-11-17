@@ -1,0 +1,140 @@
+<extend name="User@Public/body"/>
+<block name="body">
+    <div class="container js_container">
+        <div class="row">
+            <!-- 登录页面左侧-开始 -->
+            <!-- 设置响应式布局以及小屏隐藏 -->
+            <div class="col-xs-6 col_sw_6">
+                <div class="sidebar_a_sw">
+                    <!-- 欢迎 -->
+                    <div class="msg_sw f_w">
+                        <h1 class="f_w">欢迎您登录<span class="c_ff7402 f_28 f_weight">N邦</span>翻译平台<small class="c_ff7402">WELCOME TO<span>N Bang Member Center</span></small></h1>
+                        <div class="line_sw"></div>
+                       	<h6 class="c_6d6d6d f_14 f_w">N邦翻译为翻译公司和个人译者提供一个宣传自己的平台，为客户提供更多的翻译服务选择。</h6>
+                    </div>
+                    <img class="backg_pic_sw img-responsive" src="__IMG__/sc_template/user/logo_nb_bg.jpg">
+                </div>
+            </div>
+            <!-- 登录页面左侧-结束 -->
+            <!-- 登录页面右侧-开始 -->
+            <!-- 设置响应式布局 -->
+            <div class="col-xs-6 col_sw_6">
+	            <div class="sidebar_b_sw">
+	            	<!-- 登录模块头部 -->
+	            	<div class="nav_sw f_w f_14" id='js_table_LH'>
+	            		<ul>
+	            			<li class="nav_active_sw"><a href='#'>用户登录</a></li>
+	            			<li><a href='#'>个译登录</a></li>
+	            			<li><a href='#'>公司登录</a></li>
+	            		</ul>
+	            	</div>
+	                <div class="form_sw">
+	                    <div class="login_head_sw f_22"><span class="c_ff7402 f_w">会员登录</span><span class="c_ddd">LOGIN</span></div>
+	                    <!-- 登录表单-开始 -->
+	                    <div class="login_main_sw">
+	                        <form action='<?=U('User/Login/index')?>' method='post' class='js_form'>
+								<input type='hidden' name='type' value='1' id='type_change_LH'>
+	                            <div class="loginbar_sw input-group">
+	                                <div class="border_1_sw">
+	                                    <span class="fa fa-user input_group_sw"></span>
+	                                    <input class="input_otl" type="text" placeholder="用户名" name='username'>
+	                                </div>
+	                            </div>
+	                            <div class="loginbar_sw input-group">
+	                                <div class="border_1_sw">
+	                                    <span class="fa fa-unlock-alt input_group_sw"></span>
+	                                    <input class="input_otl" type="password" placeholder="密码" name='password'>
+	                                </div>
+	                            </div>
+	                            <!-- 验证码-开始 -->
+	                            <div class="captchabar_sw">
+	                                <input class="input_otl" type="text" placeholder="验证码" name='code'>
+	                                <img src="<?=U('User/Login/verify')?>" class='verifyimg'>
+	                                <a class="c_ff7402 f_w reloadverify" href="Javascript:void(0)">换一张</a>
+	                            </div>
+	                            <!-- 验证码-结束 -->
+	                            <div class="login_btn_sw">
+	                                <input class="input_otl btn js_submit_zh" type="submit" value="登  录">
+	                            </div>
+	                            <div class="captchabar_sw clearfix">
+	                                <a class="c_ff7402 pull-right" href="<?=U('User/Forgetpassword/index')?>">忘记登录密码？</a>
+	                                <span class="f12 Validform_checktip" id="valid_resulte"></span>
+	                            </div>
+	                        </form>
+	                    </div>
+	                    <!-- 登录表单-结束 -->
+	                    <div class="clearfix login_bottom_sw c_ff7402 f_w">
+	                        <h3>
+	                            我还不是会员？<small>您可以点击注册成为会员！</small>
+	                        </h3>
+	                        <i class="fc fc-pro"></i>
+	                    </div>
+	                    <div class="login_adduser_sw border_1_sw">
+	                        <a class="c_ff7402 f_w" href="<?=U('User/Register/index_1')?>">免费注册</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+            <!-- 登录页面右侧-结束-->
+        </div>
+    </div>
+	<script type="text/javascript">
+	//去除container固定宽
+	$(function(){
+		if($(window).width()>1000){
+			$(".js_container").css({"margin": "0px auto 60px","width": "1000px"});
+		}else if($(window).width()<=1000){
+			$(".js_container").css({"margin": "0px auto 60px","width": "100%"});
+		}
+	});
+	//刷新验证码
+      var verifyimg = $(".verifyimg").attr("src");
+      $(".reloadverify").click(function(){
+          if( verifyimg.indexOf('?')>0){
+              $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
+          }else{
+              $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+          }
+      });
+	  $('#js_table_LH li').click(function(){
+		var index = $(this).index();
+		var type = index+1;
+		$(this).attr('class','nav_active_sw').siblings().attr('class','');
+		$('#type_change_LH').attr('value',type);
+	  })
+	  $('#form_submit').submit(function(){
+		$.post($(this).action(),$(this).serialize(),function(data){
+			alert(data.type);
+		});
+		return false;
+	  })
+	  //登录框表单验证
+		$('.js_form').Validform({
+			btnSubmit:".js_submit_zh", 
+			tiptype:function(msg,o,cssctl){
+				var objtip=$("#valid_resulte");
+				cssctl(objtip,o.type);
+				objtip.text(msg);
+			},
+			ajaxPost:true,
+			postonce:true,
+			callback:function(data){
+				if(data.status==1){
+					 window.location.href = '<?=U('Home/Index/index')?>';
+					$('#valid_resulte').addClass('Validform_right').removeClass('Validform_wrong').text(data.info);
+				}else {
+					//刷新验证码
+					 var verifyimg = $(".verifyimg").attr("src");
+					 if( verifyimg.indexOf('?')>0){
+						  $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
+					  }else{
+						  $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+					  }
+					//添加错误信息
+					// $('#valid_resulte').addClass('Validform_wrong').text(data.info);
+					
+				}
+			}
+		});
+	</script>
+</block>

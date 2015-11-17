@@ -1,0 +1,389 @@
+/*字体设置*/
+.f_w{
+	font-family: "微软雅黑";
+}
+.f_14{
+	font-size: 14px;
+}
+.f_16{
+	font-size: 16px;
+}
+.f_17{
+	font-size: 17px;
+}
+.f_24{
+	font-size: 24px;
+}
+.f_bold{
+	font-weight: bold;
+}
+/*下划线*/
+.underline_sw{
+	text-decoration: underline;
+}
+/*颜色设置*/
+.c_ff9c02{
+	color: #ff9c02;
+}
+.bg_c_f8f8f8{
+	background-color: #f8f8f8;
+}
+.c_357fb0{
+	color: #357fb0;
+}
+.c_fff{
+	color: #fff;
+}
+.b_357fb0{
+	background-color: #357fb0;
+}
+/*兼容ie */
+.form-group{
+	zoom: 1;
+}
+.row{
+	margin: 0\9 !important;
+}
+.col_2_sw{
+	float: left\9;
+	width: 16.6667%\9;
+	*width: 150px !important;
+	*padding-left:0 !important;
+	*margin-right: 0 !important;
+}
+.col_4_sw{
+	float: left\9;
+	*width: 33.3333%;
+	*padding-left:0 !important;
+	*margin-right: 0 !important;
+}
+.col_8_sw{
+	float: left\9;
+	width: 66.6667%\9;
+	*padding-left:0 !important;
+	*margin-right: 0 !important;
+}
+.col_9_sw{
+	float: left\9;
+	width: 75%\9;
+	*padding-left:0 !important;
+	*margin-right: 0 !important;
+}
+.col_10_sw{
+	float: left\9;
+	width: 83.3333%\9;
+	*width: 650px !important;
+	*padding-left:0 !important;
+	*margin-right: 0 !important;
+}
+
+/*头部-开始*/
+.head_sw{
+	height: 20px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.title_sw{
+	padding-right: 20px;
+	padding-left: 10px;
+	background: #fff url(../img/head_nb_circle.jpg)no-repeat right;
+	border-left: 5px solid #ff7302;
+}
+/*ie兼容处理*/
+.title_sw{
+	background-image: url(../img/head_nb_circle.jpg)\9;
+	background-repeat: no-repeat\9;
+	background-position: right\9;
+	background-color: #fff\9;
+}
+.bg_sw{
+	margin-top: -12px;
+	display: block;
+	border-top: 1px solid #f8f8f8;
+	*margin-top: 0;
+	*position: relative;
+	*top: -12px;
+	*left: 115px;
+}
+/*头部-结束*/
+/*提示信息-开始*/
+.cardmanage_h3_sw{
+	float: left;
+}
+.msg_sw{
+	padding-bottom: 20px;
+}
+/*提示信息-结束*/
+/*功能选项-开始*/
+.active_sw,.link_sw{
+	width: 150px;
+	height: 40px;
+	padding-top: 12px;
+	margin-bottom: 10px;
+	display: inline-block;
+	text-align: center;
+	*margin-bottom: 0;
+}
+/* @media(max-width: 350px){
+	.active_sw,.link_sw{
+		width: 130px;
+	}
+} */
+.active_sw{
+	background-color: #ff9C02;
+	color: #fff;
+}
+.active_sw:hover{
+	text-decoration: none;
+	color: #fff;
+}
+.link_sw{
+	background-color: #f8f8f8;
+}
+.link_sw:hover{
+	text-decoration: none;
+}
+/*功能选项-结束*/
+/*表单公共样式-开始*/
+.border_sw{
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	margin-bottom: 0;
+	zoom: 1;
+}
+.border_btom_sw{
+	margin-bottom: 20px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.border_sw label{
+	*max-width: 100% !important;
+}
+.label_sw{
+	height: 52px;
+	padding-top: 17px !important;
+	text-align: center !important;
+	border-right: 1px solid #ddd;
+	background-color: #f8f8f8;
+	font-weight: 100 !important;
+	margin-bottom: 0\9;
+	*height: 52px;
+	*line-height: 32px;
+}
+/* @media(max-width: 768px){
+	.label_sw{
+		margin-bottom: 0;
+		border-right: 0;
+	}
+} */
+.input_sw{
+	width: 190px;
+	height: 35px;
+	display: inline-block;
+	border-radius: 0;
+	outline: 0;
+	box-shadow: none;
+	*padding-top: 0;
+	*padding-bottom: 0;
+	*margin-top: 6px;
+	*margin-left: 20px;
+	*line-height: 35px;
+}
+.padding_sw{
+	padding-top: 8px;
+}
+.pad_left_sw{
+	padding-left: 13px;
+}
+/*表单公共样式-结束*/
+/*按钮*/
+.balance_add_sw{
+	width: 80px;
+	height: 35px;
+	background-color: #ff9c02;
+	color: #fff;
+	*margin-left: 15px;
+	margin-top: 10px\9;
+}
+.balance_add_sw:hover{
+	background-color: #ff7302;
+	color: #fff;
+}
+.balance_reset_sw{
+	width: 80px;
+	height: 35px;
+	background-color: #f8f8f8;
+	margin-top: 10px\9;
+	border: 0;
+}
+.balance_reset_sw:hover{
+	background-color: #dbdbdb;
+}
+.input_sw:focus{
+	border-color: #ff7302;
+}
+/*按钮-结束*/
+
+/*余额管理-balance-开始*/
+.balanceform_sw{
+	padding-left: 15px;
+	padding-right:15px;
+	padding-left: 15px\9;
+	padding-right: 15px\9;
+}
+/* @media(max-width: 768px){
+	.balanceform_sw{
+		padding: 0 30px;
+	}
+} */
+/*余额提现-开始*/
+/* @media(max-width: 768px){
+	.paddingbotm_sw{
+		padding-bottom: 10px;
+	}
+	.input_sw{
+		width: 100%;
+	}
+	.psw_sw{
+		width: 65%;
+	}
+} */
+/*收款账号*/
+.cardnumber_sw{
+	max-width: 440px;
+	height: 35px;
+	display: inline-block;
+	border-radius: 0;
+	outline: 0;
+	box-shadow: none;
+}
+.cardnumber_sw:focus{
+	border-color: #ff7302;
+}
+/* @media(min-width: 768px) and (max-width: 1200px){
+	.balancelabel_sw{
+		height: 60px !important;
+		padding-top: 20px;
+	}
+} */
+/*余额提现-结束*/
+/*余额管理-balance-结束*/
+
+/*余额管理-recharge-开始*/
+.rechargeform_sw{
+	padding-left: 0\9 !important;
+	*padding-right: 0 !important;
+}
+/*资金充值-开始*/
+.label_numb_sw{
+	height: 50px;
+	padding-top: 15px !important;
+	text-align: center !important;
+	border-right: 1px solid #ddd;
+	background-color: #f8f8f8;
+	font-weight: 100 !important;
+	margin-bottom: 0\9;
+	*height: 51px;
+}
+/* @media(max-width: 768px){
+	.label_numb_sw{
+		margin-bottom: 0;
+		border-right: none;
+	}
+} */
+.label_means_sw{
+	height: 90px;
+	line-height: 65px;
+	padding-top: 15px !important;
+	text-align: center !important;
+	border-right: 1px solid #ddd;
+	background-color: #f8f8f8;
+	font-weight: 100 !important;
+	margin-bottom: 0\9;
+}
+/* @media(max-width: 768px){
+	.label_means_sw{
+		height: 50px;
+		line-height: 20px;
+		border-right: none;
+	}
+} */
+/*充值方式*/
+#pic_button_sw{
+	margin-top: 10px;
+}
+.ashyborder_sw{
+	width: 25.33%;
+	display: inline-block;
+	margin-right: 20px;
+	border: 3px solid #ededed;
+}
+.ashyborder_sw,.redborder_sw{
+	*margin-top: 10px;
+	*margin-left: 20px;
+}
+.redborder_sw{
+	width: 25.33%;
+	display: inline-block;
+	margin-right: 20px;
+	border: 3px solid #ff0000;
+}
+/* @media(max-width: 768px){
+	.ashyborder_sw{
+		width: 65px;
+		margin-right: 10px;
+	}
+} */
+/*资金充值-结束*/
+/*余额管理-recharge-结束*/
+
+/*银行卡管理-cardmanage-开始*/
+.cardform_sw{
+	padding: 0 15px;
+}
+.zoom1_sw{
+	zoom: 1;
+}
+.adduser_sw{
+	float: right;
+	width: 80px;
+	height: 30px;
+	line-height: 30px; 
+	text-align: center;
+	border-radius: 6px;
+}
+.adduser_sw i{
+	padding-right: 10px;
+}
+.adduser_sw:hover{
+	color: #fff;
+	text-decoration: none;
+}
+/*提示信息-结束*/
+/*表格-开始*/
+.table_sw a{
+	padding: 0 10px;
+	text-align: center;
+}
+/*表格-结束*/
+/*添加开户人-开始*/
+
+/* @media(max-width: 768px){
+	.cardlabel_sw{
+		margin-bottom: 0;
+	}
+} */
+.fa_lock_sw{
+	position: absolute;
+	left: 20px;
+	*left: 25px;
+	*top: 15px;
+	line-height: 35px;
+}
+.fa_lock_sw + input{
+	padding-left: 15px;
+}
+/*添加开户人-结束*/
+/*银行卡管理-cardmanage-结束*/
+

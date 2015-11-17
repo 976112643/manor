@@ -1,0 +1,297 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js"/>
+	<css href="__PLUGIN__/uploadify/uploadify.css"/>
+    <css href="__CSS__/classes.css" />
+    <div class="container">
+        <div class="step5_inner_box_yqc row">
+            <include file="Public/buyStepbar" />
+            <h5 class="clearfix quality_title_yqc">
+                <strong class="pull-left">质量评价</strong>其他商家，需要您的建议哦！
+            </h5>
+            <!-- submit comments S-->
+            <div class="quality_box_yqc clearfix">
+                <form action="<?=U('comment')?>" class="js_submit">
+					<div class="quality_side_title_yqc">请为商品填写评价</div>
+					<div class="quality_main_box_yqc">
+						<div class="evaluation_types_yqc">
+							<label><i class="face_icon smile"></i><input type="radio" name="type" value="1" >好评</label>
+							<label><i class="face_icon normal"></i><input type="radio" name="type" value="2" >中评</label>
+							<label><i class="face_icon sad"></i><input type="radio" name="type" value="3" >差评</label>
+						</div>
+						<table class="table">
+							<tr>
+								<th>商品评价</th>
+								<td><textarea class="textarea" name="content" placeholder="请填写商品评价"></textarea></td>
+							</tr>
+							<tr>
+								<th>晒图片</th>
+								<td>
+									<img src="__IMG__/default_img.jpg" class="default_img_yqc pull-left">
+									<!-- <input type="button" class="btn btn_upload_img_yqc" value="上传图片"/> -->
+									<?php
+										$config=array(
+											'index'		=>1,				//当前页面的第几个插件 默认为1
+											'table'		=>'comment_image',	//存储信息的表格
+											'table_id'  =>'comment_id',     // 数据所在表的主键，默认为id
+											'name'		=>'save_path',		// 此配置项主要用于设置表单提交时的name，非特殊情况下可以和val_key的配置值保持一致
+											'val_key'	=>"save_path",		// 存储在数据表中的字段
+											'multi'		=>'true',			// 是否允许多图上传，允许为true（前后需要添加引号），不允许为false（默认）
+										);
+										echo W("Common/img/index",array($config,''));
+									?>
+								</td>
+							</tr>
+						</table>
+					</div>
+                    <div class="quality_side_title_yqc">请为本次服务打分</div>
+                    <div class="quality_main_box_yqc">
+                        <ul class="clearfix service_score_yqc">
+                            <li class="score_num"><strong>4.3</strong>分</li>
+                            <li>
+                                <div>
+                                    <span>速度：</span>
+                                    <div class="star_progress_yqc edit">
+                                        <div class="bar" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                                <div class="score_desc_yqc"><i class="tip_arrow"></i><em>4分 满意</em></div>
+                               <input type="hidden" name="speed_star_num" value="4">
+                            </li>
+                            <li>
+                                <div>
+                                    <span>质量：</span>
+                                    <div class="star_progress_yqc edit">
+                                        <div class="bar red_star" style="width: 100%;"></div>
+                                    </div>
+                                </div>
+                                <div class="score_desc_yqc red_score"><i class="tip_arrow"></i><em>5分 惊喜</em></div>
+                                <input type="hidden" name="quality_star_num"  value="5">
+                            </li>
+                            <li>
+                                <div>
+                                    <span>服务：</span>
+                                    <div class="star_progress_yqc edit">
+                                        <div class="bar" style="width: 80%;"></div>
+                                    </div>
+                                </div>
+                                <div class="score_desc_yqc"><i class="tip_arrow"></i><em>4分 满意</em></div>
+                                <input type="hidden" name="serve_star_num"  value="4">
+                            </li>
+                        </ul>
+                        <div class="mt20 clearfix">
+                            <input type="hidden" name="order_id" value="<?=$order_id?>" >
+                            <input type="submit" class="btn btn_evaluation_yqc ajax-post confirm" target-form="js_submit" value="提交评价">
+                        </div>
+                    </div>
+				</form>
+            </div>
+			
+            <!-- submit comments E-->
+            <!-- service score S-->
+            <div class="quality_box_yqc clearfix">
+                <!-- <div class="quality_side_title_yqc">请为本次服务打分</div> -->
+                <div class="quality_main_box_yqc">
+                    <!-- <ul class="clearfix service_score_yqc">
+                        <li class="score_num"><strong>4.0</strong>分</li>
+                        <li>
+                            <div>
+                                <span>速度：</span>
+                                <div class="star_progress_yqc edit">
+                                    <div class="bar" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="score_desc_yqc"><i class="tip_arrow"></i><em>4分 满意</em></div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>质量：</span>
+                                <div class="star_progress_yqc edit">
+                                    <div class="bar red_star" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="score_desc_yqc red_score"><i class="tip_arrow"></i><em>5分 惊喜</em></div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>服务：</span>
+                                <div class="star_progress_yqc edit">
+                                    <div class="bar" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="score_desc_yqc"><i class="tip_arrow"></i><em>4分 满意</em></div>
+                        </li>
+                    </ul> -->
+                    <div class="all_comments_box">
+						<input type="hidden" class="js_comments_sort" value="1&0">
+						<div class="comments_sort clearfix">
+							<input type="hidden" class="js_comments_sort" value="1&0">
+							<div class="js_ajax_radio_LH" style="padding-left:0px; padding-right: 20px;">
+								<div class="radio-inline">
+									<label><input type="radio" name="type" value="0" <?=I("get.type")==0? 'checked="checked"':'';?> onclick="top.location.href='<?=U('comment',array('type'=>0,'order_id'=>I('get.order_id')))?>'"> 全部评价（<?=!is_null($all_comments_num)?$all_comments_num:0?>）</label>
+								</div>
+								<div class="radio-inline">
+									<label><input type="radio" name="type" value="1" <?=I("get.type")==1 ? 'checked="checked"':'';?> onclick="top.location.href='<?=U('comment',array('type'=>1,'order_id'=>I('get.order_id')))?>'"> 好评（<?=!is_null($good_comments_num)?$good_comments_num:0?>）</label>
+								</div>
+								<div class="radio-inline">
+									<label><input type="radio" name="type" value="2" <?=I("get.type")==2 ? 'checked="checked"':'';?> onclick="top.location.href='<?=U('comment',array('type'=>2,'order_id'=>I('get.order_id')))?>'"> 中评（<?=!is_null($mid_comments_num)?$mid_comments_num:0?>）</label>
+								</div>
+								<div class="radio-inline">
+									<label><input type="radio" name="type" value="3" <?=I("get.type")==3 ? 'checked="checked"':'';?> onclick="top.location.href='<?=U('comment',array('type'=>3,'order_id'=>I('get.order_id')))?>'"> 差评（<?=!is_null($bad_comments_num)?$bad_comments_num:0?>）</label>
+								</div>
+							</div>
+						</div>	
+						<div class='comment_list_ajax_LH'>
+                        <ul class="comments_list">
+										<?php
+											foreach($shop_comments as $row){
+											 $user_header=getAvatar($row["member_id"],"middle");
+										?>
+										<li class="clearfix">
+											<div class="comment_img"><a href="#"><img src="<?=$user_header?>" class="img-circle"/></a></div>
+											<div class="comment_info">
+												<div class="review_type">
+												    <?php
+													  if($row["type"]==1){
+													?>
+												    <i class="face_icon smile"></i>好评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==2){
+													?>
+												    <i class="face_icon normal"></i>中评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==3){
+													?>
+												    <i class="face_icon sad"></i>差评
+													<?php
+													  }
+													?>
+													<span>源语言：<em><?=$row["language_text"]?></em></span><span>目标语言：<em><?=$row["to_language_text"]?></em></span>
+												</div>
+												<p><?=$row['content']?></p>
+												<?php
+												  if(!empty($comments_image[$row["id"]])){
+												?>
+												<div class="img_list js_fancybox">
+												   <?php
+												     foreach($comments_image[$row["id"]] as $img){
+												   ?>
+													<a href="__ROOT__/<?=$img["save_path"]?>" rel="group"><img src="__ROOT__/<?=$img["save_path"]?>"></a>
+												   <?php
+												    }
+												   ?>	
+												</div>
+												<?php
+												  }
+												?>
+												<p><?=date("Y-m-d",strtotime($row["add_time"]))?> 所属技能：<?=$row["serve_text"]?></p>
+												<!--评论 S-->
+												<?php
+													if($row['_child']){
+												?>
+												<div class="comment_ZH" style='margin-top:10px'>
+													<ul class="media-list">
+														<li class="media">
+															<div class="media-left">
+																<span class="media-object w_55">回复：</span>
+															</div>
+															<div class="media-body">
+																<h6 class="media-heading"><i class="face_icon smile"></i><?=$_row['type_text']?></h6>
+																<p><?=$_row['content']?></p>
+															</div>
+														</li>
+													</ul>
+												</div>
+												<?php
+												   }
+												?>
+												<!--评论 E-->
+											</div>
+										</li>
+										<?php
+											}
+										?>
+									</ul>
+									<?php if(empty($shop_comments)){?>
+										<include file="Public/nodata" />
+									<?php }?>
+                        <div class="pager clearfix">
+                            <ul class="pull-left">
+                               <?=$page?>
+								<?php
+									if(trim($page)){
+								?>
+										<span>共<?=$page_count?>页</span>
+										<span>&nbsp;</span>
+										<span>跳转至</span>
+										<input type="text" name='p' />
+										<span>页</span>
+										<a href="<?=U('')?>" class='go_to_page' >确定</a>
+								<?php
+									}
+								?>
+                            </ul>
+                        </div>
+					</div>	
+                    </div>
+                </div>
+            </div>
+            <!-- service score E-->
+        </div>
+    </div>
+    <script>
+        //鼠标滑过打分
+        $('.star_progress_yqc.edit').mouseover(function(){
+            var bar = $(this).children('.bar');
+            var txt = $(this).parent().next('.score_desc_yqc').children('em');
+            var ipt = $(this).parent().next().next('input');
+            var text = [
+                '1分 很不满意',
+                '2分 不满意',
+                '3分 一般',
+                '4分 满意',
+                '5分 惊喜'
+            ];
+            $(this).mousemove(function(e){
+                var x = parseInt(e.pageX - $(this).offset().left);
+                if(x > 80){
+                    x = 100;
+                }else if(x > 60){
+                    x = 80;
+                }else if(x > 40){
+                    x = 60;
+                }else if(x > 20){
+                    x = 40;
+                }else{
+                    x = 20;
+                }
+                bar.css('width',x+'%');
+                if(x/20 == 5){
+                    bar.addClass('red_star');
+                    txt.parent().addClass('red_score');
+                }else{
+                    bar.removeClass('red_star');
+                    txt.parent().removeClass('red_score');
+                }
+                txt.html(text[x/20-1]);
+                ipt.attr('value',x/20);
+                var sum=0;
+                var x=0;
+                $('.service_score_yqc li:not(:first-child)').each(function(){
+                    x=parseInt($(this).children('input').val());
+                    if(isNaN(x)) x=0;
+                    sum+=x;
+                });
+                var es=parseFloat(sum/3).toFixed(1);
+                $('.score_num').children().html(es);
+            });
+	       
+        });
+    </script>
+</block>

@@ -1,0 +1,171 @@
+<extend name="Home@Public/body"/>
+<block name="style">
+	<js href="__PLUGIN__/my97date/WdatePicker.js" />
+	<js href="__STATIC__/js/common.js" />
+	<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js" />
+	<css href="__PLUGIN__/uploadify/uploadify.css" />
+</block>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<p class="f_18">欢迎您，<?=session('nickname')?></p>
+					<p class="f_14">
+					    <?php 
+						if($info["shop_status"]==2){
+						?>
+						  您的店铺目前处于冻结状态，请联系客服人员！
+						<?php
+						}else{
+						?>
+						<span><i class="fa fa-edit light_gray"></i> <a href="<?=U('User/companyInfo/index')?>" class="blue">完善资料</a></span>
+						<span class="p_l_15"><i class="fa fa-shopping-cart light_gray"></i> <a href="<?=U('User/Sale/index')?>" class="blue">管理商品</a></span>
+						<span class="p_l_15"><i class="fa fa-unlock-alt light_gray"></i> <a href="<?=U('User/ChangePassword/index')?>" class="blue">修改密码</a></span>
+						<?php
+						}
+						?>
+					</p>
+					<?php 
+						if($info["shop_status"]==1){
+					?>
+					<div class="flow_ZH sale_step_j">
+						<ul class="text-center orange">
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa fa-user b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>注册</h4>
+							</li>
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa fa-edit b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>完善资料</h4>
+							</li>
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa  fa-eye b_icon"></i>
+									<span class="f_18 fa fa-chevron-right"></span>
+								</div>
+								<h4>后台审核</h4>
+							</li>
+							<li class="cur">
+								<div class="icon_box_ZH">
+									<i class="fa fa-thumbs-o-up b_icon"></i>
+									<span class="f_24 fa fa-check"></span>
+								</div>
+								<h4>店铺开通</h4>
+							</li>
+						</ul>
+					</div>
+					<?php
+					  }
+					?>
+					<form action='<?=U('User/StoreSetting/index')?>' method='post' class='js_confirm_LH'>
+						<table class="js_change_ZH table table-bordered table_data_j">
+							<tr>
+								<th><?=session('type')==2?'店铺名称':'公司名称'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<span><?=$info['title']?></span>
+								</td>
+							</tr>
+							<tr>
+								<th>业务范围<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<?php
+									    $operate="";
+										foreach($operate_type as $v){
+										  if(in_array($v['id'],$info['operate_type'])){
+										       $operate.=$v['title']." ";
+										  }
+										}
+										echo $operate;
+									?>
+								</td>
+							</tr>
+							<tr>
+								<th>服务类别<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<?php
+									    $servece="";
+										foreach($servece_type as $k=>$v){
+										  if(in_array(intval($k),$info['translate_type'])){
+										       $servece.=$v." ";
+										  } 
+										}
+										echo $servece;
+									?>
+								</td>
+							</tr>
+							<tr>
+								<th>日翻译量<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<span><?=$info['translate_num']?></span>
+									<!-- <input type="text" class="input-sm" size="30" readonly='readonly' name='translate_num' value="<?=$info['translate_num']?>"> -->
+								</td>
+							</tr>
+							<tr>
+								<th>翻译年限<span class="change_color c_ff7402">*</span></th>
+								<td>
+									<span><?=$info['translate_year']?></span>
+									<!-- <input type="text" class="input-sm" size="30" readonly='readonly' name='translate_year' value="<?=$info['translate_year']?>"> -->
+								</td>
+							</tr>
+							<tr>
+								<th><?=session('type')==2?'身份证正面':'营业执照正面'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<img src="__ROOT__/<?=$info['shop_license']?>">
+								</td>
+							</tr>
+							<tr>
+								<th><?=session('type')==2?'身份证反面':'营业执照反面'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<img src="__ROOT__/<?=$info['shop_license_1']?>">
+								</td>
+							</tr>
+							<tr>
+								<th><?=session('type')==2?'学历证书':'税务登记证'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<img src="__ROOT__/<?=$info['shop_tax']?>">
+								</td>
+							</tr>
+							<tr>
+								<th>翻译资质证书<span class="change_color c_ff7402">*</span></th>
+								<td>
+								    <?php
+									  foreach($shop_image as $row){
+									?>
+									<img src="__ROOT__/<?=$row['image']?>">
+									<?php
+									  }
+									?>
+								</td>
+							</tr>
+							<tr>
+								<th style="vertical-align: top !important;"><?=session('type')==2?'店铺介绍':'公司介绍'?><span class="change_color c_ff7402">*</span></th>
+								<td>
+									<?=htmlspecialchars_decode($info['description_now'])?>
+								</td>
+							</tr>
+							
+						</table>
+						<!-- 切换内容二 E-->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript'>
+		$(function(){
+			$('.js_confirm_LH').on('submit',function(){
+				var a = confirm('确定提交？提交后店铺将会重新审核！');
+				return a;
+			});
+		})
+	</script>
+</block>
+

@@ -1,0 +1,155 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>地址管理</span><i></i></div>
+                    <div class="m_lr_15">
+                        <!-- 地址表格- -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed table-hover table_sw f_w tableclick_sw">
+                                <tr class="bg_c_f8f8f8">
+                                    <th>发票抬头</th>
+                                    <th>收货人</th>
+                                    <th>手机号</th>
+                                    <th>收货地址</th>
+                                    <th>邮编</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr>
+                                    <td>刘亦菲到花丛中猴子字度过塔巴萨</td>
+                                    <td>招商银行</td>
+                                    <td>111****1111</td>
+                                    <td>滴答滴答滴滴答弟弟啊大大大是顶顶顶</td>
+                                    <td>438700</td>
+                                    <td><a class="c_ff9c02 underline_sw" href="">修改</a><a href=""><u>删除</u></a><a class="c_357fb0"><u class="defaddr_sw">设为默认地址</u></a></td>
+                                </tr>
+                                <tr>
+                                    <td>刘亦菲到花丛中猴子字度过塔巴萨</td>
+                                    <td>招商银行</td>
+                                    <td>111****1111</td>
+                                    <td>滴答滴答滴滴答弟弟啊大大大是顶顶顶</td>
+                                    <td>438700</td>
+                                    <td><a class="c_ff9c02 underline_sw" href="">修改</a><a href=""><u>删除</u></a><a class="c_357fb0"><u class="defaddr_sw">设为默认地址</u></a></td></td>
+                                </tr>
+                                <tr>
+                                    <td>刘亦菲到花丛中猴子字度过塔巴萨</td>
+                                    <td>招商银行</td>
+                                    <td>111****1111</td>
+                                    <td>滴答滴答滴滴答弟弟啊大大大是顶顶顶</td>
+                                    <td>438700</td>
+                                    <td><a class="c_ff9c02 underline_sw" href="">修改</a><a href=""><u>删除</u></a><a class="c_357fb0"><u class="defaddr_sw">设为默认地址</u></a></td></td>
+                                </tr>
+                                <tr>
+                                    <td>刘亦菲到花丛中猴子字度过塔巴萨</td>
+                                    <td>招商银行</td>
+                                    <td>111****1111</td>
+                                    <td>滴答滴答滴滴答弟弟啊大大大是顶顶顶</td>
+                                    <td>438700</td>
+                                    <td><a class="c_ff9c02 underline_sw" href="">修改</a><a href=""><u>删除</u></a><a class="c_357fb0"><u class="defaddr_sw">设为默认地址</u></a></td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- end 地址表格- -->
+                        <!-- 添加按钮 -->
+                        <div class="clearfix zoom1_sw">
+                            <a class="defaddr_btn_sw b_357fb0 c_fff f_w" href="javascript:;"><i class="fa fa-plus"></i>添加</a>
+                        </div>
+                        <!-- end 添加按钮 -->
+                        <div class="add_addre_sw">
+                            <form class="form-horizontal f_w demo_form_sw">
+                                <div class="form-inline userinfo_sw">
+                                    <div class="form-group">
+                                        <label for="exampleInputName2">发票抬头：</label>
+                                        <input type="text" class="form-control" errormsg="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail2">收货人：</label>
+                                        <input type="email" class="form-control" datatype="zh2-4" errormsg="请填写开户人">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail2">手机号码：</label>
+                                        <input type="text" class="form-control" datatype="m" errormsg="">
+                                    </div>
+                                    <span class="Validform_checktip"></span>
+                                </div>
+                                <div class="form-inline consinaddre_sw">
+                                    <label>收取地址：</label>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option>省</option>
+                                            <option>招商银行</option>
+                                            <option>招商银行</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option>市</option>
+                                            <option>招商银行</option>
+                                            <option>招商银行</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control">
+                                            <option>区</option>
+                                            <option>招商银行</option>
+                                            <option>招商银行</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="请输入详细地址">
+                                    </div>
+                                </div>
+                                <div class="form-inline zipcode_sw">
+                                    <label class="f_w">邮政编码：</label>
+                                    <input class="form-control" type="text" datatype="p" errormsg="">
+                                </div>
+                                <span class="Validform_checktip"></span>
+                                <div class="checkbox">
+                                    <label class="col-xs-offset-1 c_6d6d6d">
+                                        <input type="checkbox">设为默认收货地址
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-offset-1">
+                                        <input class="btn addre_keep_sw balance_add_sw" type="button" value="保存">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            //表单验证
+            $(".demo_form_sw").Validform({tiptype:4});
+        });
+        $(function(){
+            //显示或隐藏设置默认地址
+            $('u.defaddr_sw').click(function(){
+                $('u.defaddr_sw').html('<u>设为默认地址</u>');
+                $('u.defaddr_sw').hide();
+                $(this).html('<u>默认收货地址</u>');
+                $(this).show();
+            });
+            $('.tableclick_sw').find('tr').click(function(){
+                if($(this).find('u.defaddr_sw').html()!='<u>默认收货地址</u>'){
+                    $(this).find('u.defaddr_sw').toggle();
+                } 
+            });
+            //显示表单
+            $('.defaddr_btn_sw').click(function(){
+                $('.add_addre_sw').show();
+            });
+            //隐藏表单
+            $('.addre_keep_sw').click(function(){
+                $('.add_addre_sw').hide();
+            })
+        });
+    </script>
+</block>

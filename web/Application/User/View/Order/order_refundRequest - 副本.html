@@ -1,0 +1,64 @@
+<!--退款请求 S-->
+<div class="order_title_ZH">
+	<h5><b class="blue">退款请求</b></h5>
+</div>
+<div class="form-horizontal  m_tb_20">
+	
+	<form class="js_agree_refund" >
+		<input type="hidden" name="order_id" value="<?=$info['order_id']?>" />
+		<div class="form-group">
+			<label class="col-sm-2 control-label p_t_0 p_r_0">退款原因：</label>
+			<div class="col-sm-10">
+				翻译质量太差
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label p_r_0">退款凭证：</label>
+			<div class="col-sm-10">
+				<div class="img_list">
+					<img src="__IMG__/comments_img.jpg">
+					<img src="__IMG__/comments_img.jpg">
+					<img src="__IMG__/comments_img.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label p_t_0 p_r_0">退款备注：</label>
+			<div class="col-sm-10">
+				<p>翻译质量有严重问题，还拖延时间。</p>
+				<div>
+					<a class="btn b_org refund_btn_ZH ajax-post confirm" target-form="js_agree_refund" href="<?=U('')?>">同意退款</a>
+					<a class="btn b_org refund_btn_ZH ajax-post ml_10" target-form="js_agree_refund" href="<?=U('')?>">不同意退款</a>
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	
+	<form action="<?=U('')?>" class="js_refund" >
+		<input type="hidden" name="order_id" value="<?=$info['order_id']?>" />
+		<div class="form-group">
+			<label class="col-sm-2 control-label p_r_0">退款金额：</label>
+			<div class="col-sm-10">
+				<input class="input_style" name="refund_price" type="text"> /元
+				<span class="org">( 为避免纠纷，请输入您和客户沟通后的金额 )</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label p_r_0">退款备注：</label>
+			<div class="col-sm-10">
+				<textarea class="textarea_style w_500" rows="5"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label p_r_0">支付密码：</label>
+			<div class="col-sm-10">
+				<input class="input_style" type="password">
+				<p>
+					<a class="btn b_org refund_btn_ZH m_tb_10" href="javascript:void(0)">确 定</a>
+				</p>
+			</div>
+		</div>
+	</form>
+</div>
+<!--退款请求 E-->

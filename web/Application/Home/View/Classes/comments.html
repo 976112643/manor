@@ -1,0 +1,162 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <css href="__CSS__/classes.css" />
+    <css href="__PLUGIN__/fancybox/source/jquery.fancybox.css" />
+	<js href="__PLUGIN__/fancybox/source/jquery.fancybox.js" />	
+    <include file='Public/shop_top' />
+                <!--company right side S-->
+                <div class="col-xs-9 company_right_side">
+                    <div class="comments_info_box">
+                        <h3 class="comments_title_yqc">所有评价</h3>
+                        <div class="clearfix user_comments_yqc">
+                            <div class="comments_score">
+                                <h2 class="org ta_c"><?=$shop_info_1['star_num']?></h2>
+                                <div class="star_box clearfix">
+                                    <span class="pull-left">速度：</span>
+                                    <div class="pull-left star_progress_yqc edit"><div class="bar <?=($shop_info_1['quality_star_num']*2*10==100)? 'red_star':''?>" style="width: <?=$shop_info_1['speed_star_num']*2*10?>%;"></div></div>
+                                </div>
+                                <div class="star_box clearfix">
+                                    <span class="pull-left">质量：</span>
+                                    <div class="pull-left star_progress_yqc edit"><div class="bar <?=($shop_info_1['quality_star_num']*2*10==100)? 'red_star':''?>" style="width: <?=$shop_info_1['quality_star_num']*2*10?>%;"></div></div>
+                                </div>
+                                <div class="star_box clearfix">
+                                    <span class="pull-left">服务：</span>
+                                    <div class="pull-left star_progress_yqc edit"><div class="bar <?=($shop_info_1['quality_star_num']*2*10==100)? 'red_star':''?>" style="width: <?=$shop_info_1['serve_star_num']*2*10?>%;"></div></div>
+                                </div>
+                            </div>
+                            <div class="all_comments_box">
+                               <div class="comments_sort clearfix">
+									<input type="hidden" class="js_comments_sort" value="1&0">
+									<strong class="pull-left"><label>全部评价</label></strong>
+									<!--<select class="pull-right selecter js_ajax_select_LH" style="width:90px;">
+										<option value=1>默认排序</option>
+										<option value=2>时间降序</option>
+									</select>-->
+									<div class="js_ajax_radio_LH" style="padding-left:50px; padding-right: 20px;">
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="0" checked="checked"> 全部评价（<?=$all_comments_num?$all_comments_num:0?>）</label>
+										</div>
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="1"> 好评（<?=$good_comments_num?$good_comments_num:0?>）</label>
+										</div>
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="2"> 中评（<?=$mid_comments_num?$mid_comments_num:0?>）</label>
+										</div>
+										<div class="radio-inline">
+											<label><input type="radio" name="inlineRadioOptions" value="3"> 差评（<?=$bad_comments_num?$bad_comments_num:0?>）</label>
+										</div>
+									</div>
+								</div>
+								<div class='comment_list_ajax_LH'>
+									<ul class="comments_list">
+										<?php
+											foreach($shop_comments as $row){
+											 $user_header=getAvatar($row["member_id"],"middle");
+										?>
+										<li class="clearfix">
+											<div class="comment_img"><a href="#"><img src="<?=$user_header?>" class="img-circle"/></a></div>
+											<div class="comment_info">
+												<div class="review_type">
+												    <?php
+													  if($row["type"]==1){
+													?>
+												    <i class="face_icon smile"></i>好评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==2){
+													?>
+												    <i class="face_icon normal"></i>中评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==3){
+													?>
+												    <i class="face_icon sad"></i>差评
+													<?php
+													  }
+													?>
+													<span>源语言：<em><?=$row["language_text"]?></em></span><span>目标语言：<em><?=$row["to_language_text"]?></em></span>
+												</div>
+												<p><?=$row['content']?></p>
+												<?php
+												  if(!empty($comments_image[$row["id"]])){
+												?>
+												<div class="img_list js_fancybox">
+												   <?php
+												     foreach($comments_image[$row["id"]] as $img){
+												   ?>
+													<a href="__ROOT__/<?=$img["save_path"]?>" rel="group"><img src="__ROOT__/<?=$img["save_path"]?>"></a>
+												   <?php
+												    }
+												   ?>	
+												</div>
+												<?php
+												  }
+												?>
+												<p><?=date("Y-m-d",strtotime($row["add_time"]))?> 所属技能：<?=$row["serve_text"]?></p>
+												<!--评论 S-->
+												<?php
+													if($row['_child']){
+												?>
+												<div class="comment_ZH" style='margin-top:10px'>
+													<ul class="media-list">
+														<li class="media">
+															<div class="media-left">
+																<span class="media-object w_55">回复：</span>
+															</div>
+															<div class="media-body">
+																<h6 class="media-heading"><i class="face_icon smile"></i><?=$_row['type_text']?></h6>
+																<p><?=$_row['content']?></p>
+															</div>
+														</li>
+													</ul>
+												</div>
+												<?php
+												   }
+												?>
+												<!--评论 E-->
+											</div>
+										</li>
+										<?php
+											}
+										?>
+									</ul>
+									<?php if(empty($shop_comments)){?>
+										<include file="Public/nodata" />
+									<?php }?>
+									<div class="pages clearfix pager">
+										<?=$page?>
+										<?php
+											if(trim($page)){
+										?>
+										<span>&nbsp;</span>
+										<span>跳转至</span>
+										<input type="text" name='p' />
+										<span>页</span>
+										<a href="<?=U('')?>" class='go_to_page' >确定</a>
+										<?php
+											}
+										?>
+										<!--<a href="javascript:;" class="pull-right back_top_yqc js_backtop"></a>-->
+									</div>
+									
+								</div>
+                            </div>
+                        </div>
+                        <div class="comments_banner"><img src="__IMG__/comment_banner.jpg" class="img-responsive"></div>
+                    </div>
+                </div>
+                <!--company right side E-->
+            </div>
+        </div>
+    </div>
+<script>
+	$(function(){
+		$('.js_fancybox a').fancybox();
+	})
+</script>
+   <include file='Public/shop_sidebar' />
+</block>

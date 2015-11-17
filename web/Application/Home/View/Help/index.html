@@ -1,0 +1,87 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<div class="container">
+		<div class="row m_tb_20">
+ 	<!-- leftMenu S-->
+ 		<div class="col-xs-3">
+ 			<div class="border_1 left_menu">
+	 			<ul>
+					<?php 
+						$i=0;
+						foreach($help_category_cath  as $key=>$value){
+					?>
+					<li  <?php if($i==0 && empty(I('id'))){ echo 'class="active"'; } if($i== 0){echo 'style="border-top: 0;"';}?>  >
+						<div class="title_info">
+	 						<i class="fa fa-folder-open m_lr_5"></i><?=$value['title']?><i class="js_icon fa <?php if($i==0 && empty(I('id'))){ echo 'fa-angle-right'; }else{ echo 'fa-angle-down';} ?>"></i>
+	 					</div>
+	 					<div class="select_plan js_plan">
+	 					<?php 
+							$j=0;
+							foreach($articles as $v){
+								if($v['category_id'] == $value['id']){
+									$suffix = mb_strlen($v['title']) > 7 ? true : false;
+						?>
+							<a href="<?=U('index',array('id'=>$v['id']))?>" <?php if(($i==0 && empty(I('id'))) || I('id')==$v['id']){ echo 'class="active js_add_parent"';}?>  <?php if($j==0){echo '';} ?>><?=msubstr($v['title'],0,7,"utf-8",$suffix)?></a>
+	 					<?php
+	 							}
+								$j++;
+							}
+						?>
+						</div>
+	 				</li>
+					<?php 
+						$i++;
+						}
+					?>
+					<!-- <li class="active" style="border-top: 0;">
+	 					<div class="title_info">
+	 						<i class="fa fa-folder-open m_lr_5"></i>法律声明<i class="js_icon fa fa-angle-down ml_30"></i>
+	 					</div>
+	 					<div class="select_plan js_plan" style="display:block;">
+	 						<a href="javascript:void(0)" style="border-top: 0;">法律声明</a>
+	 						<a href="javascript:void(0)">法律声明</a>
+	 					</div>
+	 				</li>
+	 				<li>
+	 					<div class="title_info">
+	 						<i class="fa fa-folder-open m_lr_5"></i>法律声明<i class="js_icon fa fa-angle-right ml_30"></i>
+	 					</div>
+	 					<div class="select_plan js_plan">
+	 						<a href="javascript:void(0)" style="border-top: 0;">法律声明</a>
+	 						<a href="javascript:void(0)">法律声明</a>
+	 					</div>
+	 				</li> -->
+	 			</ul>
+ 			</div>
+ 		</div>
+ 	<!-- leftMenu E-->
+ 	<!-- rightContent S-->
+			<div class="col-xs-9 border_1 right_content">
+				<div class="dataset_title clearfix f_16 mt_20"><span><?=$help_category_cath[$cur_article['category_id']]['title']?></span><i></i></div>
+				<!-- <div class="hidden_data"  id="<?=$v['id']?>">
+					<p class="f_14">
+						<h3><?=$v['title']?></h3>
+						<?=$v['content']?>
+					</p>
+				</div> -->
+				
+				<div class="hidden_data"  id="<?=$v['id']?>">
+					<p class="f_14">
+						<h3><?=$cur_article['title']?></h3>
+						<?=htmlspecialchars_decode($cur_article['content'])?>
+					</p>
+				</div>
+			</div>
+ 		</div>
+ 	<!-- rightContent E-->		
+	</div>
+<script type="text/javascript">
+		$('.js_add_parent').parent().parent().addClass('active');
+		$('.js_add_parent').parent().prev().find('.js_icon').removeClass('fa-angle-right').addClass('fa-angle-down');
+		$(".left_menu li").click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			$(this).find('.js_plan').slideToggle();
+			$(this).find('.js_icon').toggleClass('fa-angle-down').toggleClass('fa-angle-right');
+	});
+</script>	
+</block>

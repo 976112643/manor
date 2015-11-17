@@ -1,0 +1,209 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<div class="container step_box">
+		<include file="Public/buyStepbar"/>
+		<form class="form-horizontal form_box_ZH">
+			<div class="form-group">
+				<label class="col-xs-2 title_ZH text-right" for="exampleInputName2">选择源语言:</label>
+				<div class="col-xs-10 eng_ZH">
+					<span>
+						<select>
+							<option>中文</option>
+							<option>英文</option>
+						</select>
+						<label>选择目标语言:</label>
+						<select>
+							<option>英文</option>
+							<option>中文</option>
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="form-group m_b">
+    			<label class="col-xs-2 title_ZH text-right" for="exampleInputFile">收取地址:</label>
+				<div class="col-xs-10">
+	    			<div class="address_ZH" style="margin: 0;margin-bottom: 15px;">
+						<span>
+							<select>
+								<option>省</option>
+								<option>湖南</option>
+							</select>
+							<select>
+								<option>市</option>
+								<option>黄冈市</option>
+							</select>
+							<select>
+								<option>区</option>
+								<option>汉口区</option>
+							</select>
+						</span>	
+						<span>
+							<input type="text" placeholder="请输入详细地址">
+						</span>
+						<p class="c_ff7402 m_tb_5">请具体到门牌号，以方便联系。</p>
+					</div>
+	  			</div>
+  			</div>
+  			<div class="form-group">
+    			<label class="col-xs-2 title_ZH text-right" for="exampleInputName2">预约服务时间:</label>
+	  			<div class="col-xs-10">
+	    			<div class="time_ZH">
+		    			<span>
+		    				<input type="text" value="2015年06月15日">
+		    				<em>16:00</em>
+		    			</span> -
+		    			<span>
+		    				<input type="text" value="2015年06月15日">
+		    				<em>16:00</em>
+		    			</span>
+		    			 共计：<b>24</b>小时
+	    			</div>
+	  			</div>
+  			</div>
+			<div class="form-group">
+				<label  class="col-xs-2 title_ZH text-right" for="exampleInputName2">选择专业领域:</label>
+				<div class="col-xs-10 clearfix">
+					<i class="pull-left fa fa-pencil hidden-xs c_ff7402 m_t_10"></i>
+					<div class="radio_ZH radio">
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios1" value="option1">无特殊专业
+					</label>
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios2" value="option2">生物医学
+					</label>
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios3" value="option3">经济贸易
+					</label>
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios4" value="option4">法律法规
+					</label>
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios5" value="option5">人文艺术
+					</label>
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios6" value="option6">机械电子
+					</label>
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios6" value="option6">建筑工程
+					</label>
+					<label>
+						<input type="radio" name="optionsRadios_1" id="optionsRadios6" value="option6">IT科技
+					</label>
+					<label style="margin-right: 0">
+						<input class="ie7_radio" type="radio" name="optionsRadios_1" id="optionsRadios7" value="option7" checked="">更多
+						<input class="input_x" type="text" placeholder="请输入...">
+					</label>
+				</div>
+			</div>
+			</div>
+			<div class="form-group m_b">
+				<label class="col-xs-2 title_ZH text-right" for="exampleInputName2">需求备注:</label>
+				<div class="col-xs-10 clearfix">
+				<i class="pull-left fa fa-pencil hidden-xs c_ff7402 m_t_10"></i>
+				<div class="pull-left textarea_ZH">
+					<textarea class="pull-left form-control m_tb_5" rows="4"></textarea>
+					<p class="help-block">为建议填写，帮助我们选择合适的译员和理解您的需求，获取更佳的翻译质量</p>
+				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-offset-2  col-xs-10">
+					<div class="radio">
+						<label class="checkbox-inline">
+							<input type="checkbox" id="inlineCheckbox1" value="option1">是否需要提供发票
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="inlineCheckbox1" value="option1"><a href="javascript:void(0)">保密协议</a>
+						</label>
+						<label class="radio-inline ml_10">
+							<input type="radio" name="language_sbt" value="radio_1">纯目标语言提交
+						</label>
+						<label class="checkbox-inline ml_10">
+							<input type="radio" name="language_sbt" value="radio_2">对照提交
+						</label>
+					</div>
+					<div class="js_info_ZH" style="display: none">
+						<div class="basic_ZH">
+							<span>
+								<label>发票抬头：</label>
+								<input type="text">
+							</span>
+							<span>
+								<label>收货人：</label>
+								<input type="text">
+							</span>
+							<span>
+								<label>手机号码：</label>
+								<input type="text">
+							</span>
+						</div>
+						<div class="address_ZH">
+							<label>收取地址：</label>
+							<span>
+								<select>
+									<option>省</option>
+									<option>湖南</option>
+								</select>
+								<select>
+									<option>市</option>
+									<option>黄冈市</option>
+								</select>
+								<select>
+									<option>区</option>
+									<option>汉口区</option>
+								</select>
+							</span>	
+							<span>
+								<input type="text" placeholder="请输入详细地址">
+							</span>
+						</div>
+						<div class="postcode_ZH">
+							<label for="exampleInputName2">邮政编码：</label>
+							<input type="text" placeholder="">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-offset-2  col-xs-10">
+					<button class="btn_step_ZH" type="submit" class="btn">下一步</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+</block>
+<block name="script">
+<script type="text/javascript">
+	if($(window).width()<=768){
+		$(".title_ZH").removeClass("text-right")
+	}else if($(window).width()>768){
+		$(".title_ZH").addClass("text-right")
+	}
+	$(window).resize(function(){
+		if($(window).width()<=768){
+		$(".title_ZH").removeClass("text-right")
+	}else if($(window).width()>768){
+		$(".title_ZH").addClass("text-right")
+	}
+	});
+	$('#inlineCheckbox1').click(function(){
+		if($(this).prop('checked')){
+			$('.js_info_ZH').show('');
+		}else{
+			$('.js_info_ZH').hide('');
+		}
+	})
+	$(function(){
+		$('.left_btn').click(function(){
+			var _val=$(".btn1_ZH input").val();
+			$(this).next().val(parseInt(_val)-1 >= 0 ? _val-1 : 0);
+		})
+		$('.right_btn').click(function(){
+			var _val=$(".btn1_ZH input").val();
+			$(this).prev().val(parseInt(_val)+1);
+		})
+	});
+
+</script>	
+</block>

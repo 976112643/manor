@@ -1,0 +1,61 @@
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						成功案例
+						<small>
+						列表
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li><a href="<?=U('shop_success')?>">成功案例</a></li>
+						<li class="active">
+						列表
+						</li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<!-- form start -->
+								<form role="form" action="<?=U('')?>" method="post" class="operate_form">
+									<input type='hidden' name='id' value='<?=$info["id"]?>' />
+									<div class="box-body">
+									    <div class="form-group"><label>成功案例</label></div>
+										<?php
+									    if(!empty($undergo)){	
+										  foreach($undergo as $key => $row){
+										?>
+										<div class="form-group">
+											<label>
+											<?=date("Y/m",$row["start_time"])?>--<?=date("Y/m",$row["end_time"])?>
+											<a href="<?=U('shop_success',array('id'=>$row['id'],'shop_id'=>$row['shop_id'],'edit'=>1))?>" style="padding-left:10px">修改</a><a href="<?=U('undergo_del',array('id'=>$row['id'],'shop_id'=>$row['shop_id'],'del'=>1))?>" style="padding-left:10px" onclick="return confirm('您确定要删除吗？')">删除</a>
+											</label>
+											<p><?=$row["content"]?></p>
+										</div>
+										<?php
+										  }
+										}else{
+										?>
+										<div class="form-group">暂无数据</div>
+										<?php
+										}  
+										?>
+									</div>
+								</form>
+							</div><!-- /.box -->
+						</div><!--/.col (left) -->
+
+					</div>   <!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

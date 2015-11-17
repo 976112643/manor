@@ -1,0 +1,144 @@
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						<?=$page_title?>
+						<small>
+						<?php
+							if($info){
+								echo "订单详情";
+							}
+						?> 
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li><a href="<?=U('index')?>">订单列表</a></li>
+						<li class="active">
+						<?php
+							if($info){
+								echo "订单详情";
+							}
+						?> 
+						</li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+				<!-- left column -->
+				<div class="col-md-12">
+					<div class="box box-body box-primary form-horizontal">
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>订单号:</div>
+							<div class="col-sm-10 text-left"><?=$info['order_num']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>下单用户:</div>
+							<div class="col-sm-10 text-left"><?=$info['username']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>接单店铺:</div>
+							<div class="col-sm-10 text-left"><?=$info['shop_title']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>产品名称:</div>
+							<div class="col-sm-10 text-left"><?=$info['product_title']?></div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>订单金额:</div>
+							<div class="col-sm-10 text-left"><?=$info['total_price']?>&nbsp;&nbsp;元</div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2 text-right'>商品数量:</div>
+							<div class="col-sm-10 text-left"><?=$info['qty']?>&nbsp;&nbsp;&nbsp;&nbsp;/千字/小时/分钟</div>
+						</div>
+						<div class="form-group">
+							<div class='col-sm-2  text-center'><label>订单详细</label></div>
+							<div class='col-sm-10'> </div>
+						</div>
+						<?php
+							foreach($result as $v){
+						?>	
+						<div class="form-group">
+							<div style="color:#ccc;" class='col-sm-2 text-right'>[<?=$v['add_time']?>]</div>
+							<div class="message_content col-sm-9 text-left"><?=$v['description']?></div>
+						</div>
+						<?php
+							}
+						?>
+						
+					</div>
+					<div class="pages"><?=$page?></div>
+					
+					<h4>订单状态修改</h4>
+					<div class="box box-body box-primary">
+						<div>
+							<form class="form-horizontal js_change_status" action="<?=U('change_status')?>" method="post">
+								<input type="hidden" name="id" value="<?=$info['id']?>">
+								<div class="form-group">
+									<label class="col-sm-2 text-right">订单状态：</label>
+									<div class="col-sm-10">
+										<select name="status" id='order_status'>
+											<option value='choose'>--请选择--</option>
+											<option value='0'>已取消</option>
+											<option value='1'>未付款</option>
+											<option value='2'>已付款</option>
+											<option value='3'>已完成</option>
+											<option value='4'>待退款</option>
+											<option value='5'>已退款</option>
+											<option value='6'>翻译完成</option>
+											<option value='7'>已确认</option>
+										</select>
+									</div>
+								</div>
+								<script>
+									$('#order_status').val('<?=$info['status']?>');
+								</script>
+								<div class="box-footer text-left">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-10">
+										<input type="submit" class="btn btn-primary ajax-post confirm" target-form="js_change_status" value="提交">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<?php 
+						if($info['status']>0 && $info['status']!=5){
+					?>
+					<h4>维权退款</h4>
+					<div class="box box-body box-primary">
+						<div>
+							<form class="form-horizontal js_refund" action="<?=U('refund')?>" method="post">
+								<input type="hidden" name="id" value="<?=$info['id']?>">
+								<div class="form-group">
+									<label class="col-sm-2 text-right">退款金额：</label>
+									<div class="col-sm-2">
+										<input type="text" style="max-width:180px;" class="form-control" name='refund_price' placeholder="请输入退款金额">
+									</div>
+									<span class="col-sm-8">(请填写给购买服务用户的退款金额)</span>
+								</div>
+								<div class="box-footer text-left">
+									<div class="col-sm-2"></div>
+									<div class="col-sm-10">
+										<input type="submit" class="btn btn-primary  ajax-post confirm" target-form="js_refund" value="退款">
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<?php 
+						}
+					?>
+
+				</div><!--/.col (left) -->
+
+			</div>   <!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

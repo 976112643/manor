@@ -1,0 +1,31 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+            	<div class="list_box_j">
+            		<div class="dataset_title f_16"><span>更换皮肤</span><i></i></div>
+            		<p class="gray f_14 p_l_15">请选择要更换的皮肤(点击图片换肤)</p>
+            		<ul class="skin_j clearfix text-center js_skin">
+					<?php
+						foreach($skin_results as $v){
+					?>
+								<li>
+									<a class="ajax-get" href="<?=U('changeSkin',array('ids'=>$v['id']))?>"><div class="color_img" style="background-image: url('__ROOT__/<?=$v['thumb']?>');"></div></a>
+									<label><input class="ajax-get" href="<?=U('changeSkin',array('ids'=>$v['id']))?>" <?php if($v['id'] == $theme_id){ echo 'checked="checked"';} ?> class="select_skin" type="radio" name="skin" value="<?=$v['id']?>"><?=$v['title']?></label>
+								</li>
+					<?php
+						}
+					?>
+							<!--	<li>
+										<div class="color_img" style="background-image: url('__IMG__/skin2.jpg');"></div>
+										<label><input type="radio" name="skin">清爽蓝色</label>
+								</li>-->
+									
+            		</ul>
+            	</div>
+            </div>
+        </div>
+    </div>
+</block>

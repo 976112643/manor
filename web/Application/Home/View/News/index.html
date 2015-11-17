@@ -1,0 +1,41 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/newsidebar_nb" />
+            <div class="col-xs-9 border_gray news_nb">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>新闻列表</span><i></i></div>
+                    <div class="m_lr_15">
+                        <!-- 新闻列表-开始 -->
+						<?php
+							foreach($news as $row){
+						?>
+                        <div class="newsborder_sw">
+                            <div class="row f_w rowlist_sw">
+                                <div class="col-xs-4">
+                                    <a href=""><img  style="width:205px;height:140px" class="listpic_sw" src="__ROOT__/<?=$row['cover']?>" onerror="this.src='__IMG__/sc_template/onerror_pic.png'"></a>
+                                </div>
+                                <div class="col-xs-8 listcont_sw">
+                                    <a href="<?=U('Home/News/detail',array('id'=>$row['id']))?>"><h3 class="f_16 f_bold c_357fb0 text-left"><?=$row['title']?></h3>
+                                    <p class="f_12 c_6d6d6d"><?=msubstr(strip_tags(htmlspecialchars_decode($row['content'])),0,210)?></p>
+                                    <ul class="list-inline f_12 c_a6a6a6 text-left authtime_sw"><li>作者：<?=$row['username']?$row['username']:'admin'?></li><li>时间：<?=date('Y-m-d',strtotime($row['add_time']))?></li></ul></a>
+                                </div>
+                            </div>
+                        </div>
+						<?php
+							}
+						?>
+                       
+                        <!-- 新闻列表-结束 -->
+                        <!-- 翻頁-start -->
+                        <div class="pages clearfix" style='margin-top:10px'>
+                            <?=$page?>
+                        </div>
+                        <!-- end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

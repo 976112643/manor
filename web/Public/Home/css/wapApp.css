@@ -1,0 +1,964 @@
+/*
+ * 公共样式区域
+ * @time 2015-06-30
+ * @creater	张远航  <354631282@qq.com>
+ * */
+*{
+	margin: 0;
+	padding: 0;
+    font-style: normal;
+}
+a:focus,
+a:hover{
+    text-decoration: none;
+}
+body{
+    background: #f5f3f4;
+}
+input,select,textarea{
+    outline: none;
+}
+ul,ul li{ list-style-type: none;}
+ /*颜色样式*/
+
+ /*background颜色*/
+.bg_gray{
+	background-color: #f5f5f5;
+}
+.bg_white{
+	background-color: #fff;
+}
+/*font family*/
+.fyh{
+    font-family: 'microsoft yahei';
+}
+.fh{
+	font-family: "黑体";
+}
+.ta_r{
+    text-align: right;
+}
+
+/*font颜色*/
+.org{
+	color: #ff7403;
+}
+.blue{
+	color: #3292ca;
+}
+.gray{
+	color: #666;
+}
+.red{
+    color: #f00;
+}
+.light_gray{
+	color: #999;
+}
+/*font-size*/
+.f12{
+    font-size: 12px;
+}
+.f14{
+    font-size: 14px;
+}
+.f16{
+    font-size: 16px;
+}
+.f18{
+    font-size: 18px;
+}
+.f20{
+    font-size: 20px;
+}
+
+/*margin值*/
+.mt10{
+    margin-top: 10px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mr_5{
+	margin-right: 5px;
+}
+.ml_5{
+	margin-left: 5px;
+}
+.mr_15{
+	margin-right: 15px;
+}
+
+/*padding值*/
+.pl_8{
+	padding-left: 8px;
+}
+.pr_8{
+	padding-right: 8px;
+}
+
+/*
+ * wapApp 购买流程
+ * @dir Home/Buy
+ * @creater	张远航	<354631282@qq.com>
+ * */
+
+/* 公共模块区域 2015-06-30 张远航 */
+
+/*填写订单 written_app 2015-07-02 喻启超*/
+.oppose_box{
+    border: solid 1px #e2e2e2;
+    border-width: 1px 0;
+    margin-bottom: -1px;
+    padding: 8px;
+    background: #fff;
+    line-height: 30px;
+}
+.oppose_box h5{
+    margin: 0;
+    line-height: 30px;
+}
+.oppose_box span{
+    margin-right: 5px;
+    color: #c9c9c9;
+}
+.oppose_box em{
+    margin-left: 10px;
+}
+.oppose_box .input_box{
+    position: relative;
+    display: inline-block;
+}
+.oppose_box .input_box input{
+    border: none;
+    padding: 5px 10px;
+    line-height: 20px;
+
+}
+.oppose_box .input_box:before{
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    border: solid 1px #d7d7d7;
+    border-top: none;
+    z-index: 1;
+    transition: border .5s ease-in-out;
+}
+.oppose_box .input_box.active:before{
+    border-color: #3292ca;
+}
+.oppose_box i{
+    line-height: 30px;
+    color: #b7b7b7;
+}
+.oppose_box i.fa-caret-down{
+    color: #ff7403;
+}
+.oppose_box .full_txtarea{
+    display: block;
+    width: 100%;
+    height: 120px;
+    margin: 10px 0;
+    padding: 10px;
+    border: solid 1px #e2e2e2;
+    border-radius: 5px;
+    line-height: 24px;
+    clear: left;
+    resize: none;
+}
+.collapse_box{
+    display: none;
+    border-bottom: solid 1px #e2e2e2;
+}
+.collapse_box .item {
+    background: #fafafa;
+}
+.collapse_box .item i{
+    display: none;
+}
+.collapse_box .item.active,
+.collapse_box .item.active i{
+    color: #ff7403;
+}
+.collapse_box .item.active i{
+    display: inline;
+}
+/*=公司信息=*/
+.flow_top_yqc{
+    padding: 8px;
+    border-bottom: solid 1px #e2e2e2;
+    background: #fff;
+}
+.flow_top_yqc .flow_top_img{
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.flow_top_yqc .flow_top_img img{
+    width: 100%;
+    height: 100%;
+}
+.flow_top_yqc .f_t_mail{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0 2px;
+    background: #fff;
+    line-height: 16px;
+}
+.flow_top_yqc .f_t_mail i{
+    color: #ff7403;
+}
+.flow_top_yqc .flow_top_info{
+    margin-left: 87px;
+    padding-top: 14px;
+    border-bottom: solid 1px #e3e3e3;
+}
+.flow_top_yqc .f_t_main{
+    line-height: 30px;
+}
+.flow_top_yqc .f_t_title{
+    font-weight: bold;
+}
+.flow_top_yqc .f_t_social a{
+    display: block;
+    line-height: 30px;
+    color: #999;
+}
+.flow_top_yqc .f_t_social i{
+    padding-right: 5px;
+}
+/*=选择语言=*/
+.lang_transform_yqc .collapse_box{
+    padding: 1px 8px;
+    border-top: solid 1px #e2e2e2;
+    background: #fff;
+    overflow: hidden;
+}
+.hid{
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.lang_transform_yqc .src_box.fixed,
+.lang_transform_yqc .target_box.fixed{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.lang_out_box{
+    height: 780px;
+    overflow: hidden;
+}
+.lang_box dt{
+    padding: 0 5px;
+    background: #eee;
+    font: 16px/30px 'microsoft yahei';
+}
+.lang_box dd{
+    margin-bottom: -1px;
+    padding-left: 10px;
+}
+.lang_box dd p{
+    margin: 0;
+    border-bottom: solid 1px #e2e2e2;
+}
+.lang_box dd p a{
+    font: 14px/30px 'microsoft yahei';
+}
+.lang_transform_yqc .char_list{
+    width: 38px;
+    margin-right: -8px;
+    background: #fff;
+}
+.lang_transform_yqc .char_list span{
+    display: block;
+    text-align: center;
+    font: 16px/30px 'microsoft yahei';
+    color: #ff7403;
+}
+/*=填写字数=*/
+.file_count_yqc .input_box{
+    margin: 0 5px;
+}
+.file_count_yqc .input_box input{
+    width: 80px;
+    text-align: center;
+}
+.file_count_yqc .plus,
+.file_count_yqc .minus{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: #e8e7e7;
+    line-height: 30px;
+    text-align: center;
+}
+.file_count_yqc .plus.active,
+.file_count_yqc .minus.active{
+    background: #ff7403;
+}
+.file_count_yqc .plus i,
+.file_count_yqc .minus i{
+    color: #fff;
+}
+/*=上传文件=*/
+.upload_file_yqc .btn_upload{
+    margin-left: 10px;
+    background: #cecdcd;
+    color: #fff;
+}
+.access_file{
+    display: block;
+    padding-top: 10px;
+    line-height: 24px;
+    color: #c9c9c9;
+    clear: left;
+}
+/*=是否提供发票=*/
+.protocol_yqc .oppose_box .fa-check-circle,
+.invoice_yqc .oppose_box .fa-check-circle{
+    color: #ff7403;
+}
+.invoice_yqc .address_box{
+    display: none;
+    padding: 10px 8px;
+    margin-bottom: -10px;
+}
+.invoice_yqc .change_address,
+.invoice_yqc .location_icon{
+    width: 20px;
+    line-height: 72px;
+    text-align: center;
+    font-size: 30px;
+}
+.invoice_yqc .cur_address{
+    margin: 0 20px;
+    line-height: 24px;
+}
+/*=提交订单=*/
+.order_submit_yqc{
+    margin: 10px;
+}
+.order_submit_yqc .btn_submit{
+    width: 100%;
+    background: #ff7302;
+    color: #fff;
+}
+.btn_submit.disabled{
+    background: #6d6d6d;
+}
+.order_submit_yqc .btn_submit:focus{
+    color: #fff;
+}
+
+/*等待翻译 wait_app 2015-07-03 喻启超*/
+.wait_translate_yqc{
+    padding: 10px 0;
+    background: #fff;
+}
+.wait_translate_yqc .order_status{
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+}
+.wait_translate_yqc .order_status i{
+    margin-right: 5px;
+    color: #ff7403;
+}
+.wait_translate_yqc .waiter{
+    display: block;
+    width: 50%;
+    max-width: 203px;
+    margin: 10px auto;
+}
+.wait_translate_yqc .order_tips{
+    width: 200px;
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: center;
+}
+.order_info_yqc .divide_box{
+    float: left;
+    width: 50%;
+    padding: 0 5px;
+}
+
+/*确认报价 comfirm_app 2015-07-03 喻启超*/
+.translate_info_yqc .mark_time{
+    margin-left: 80px;
+    line-height: 30px;
+}
+.translate_info_yqc .mark_time p{
+    margin: 0;
+    line-height: 15px;
+}
+/*订单支付 balance_app 2015-07-03 喻启超*/
+.balance_yqc img{
+    width: 40px;
+    height: 24px;
+}
+.balance_yqc .payment_info{
+    margin-left: 50px;
+    margin-right: 20px;
+}
+.balance_yqc i.fa-check-circle{
+    color: #ff7403;
+}
+.balance_yqc .payment_info h5,
+.balance_yqc .payment_info p{
+    margin: 0;
+    line-height: 20px;
+}
+.ui-popup-modal{
+    width: 100%;
+}
+.ui-dialog-grid{
+    width: 100%;
+}
+.model{
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto 0;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+}
+.model .model_title{
+    line-height: 30px;
+    text-align: center;
+}
+.model .info_line{
+    margin: -1px -10px 0;
+    padding: 0 10px;
+    border: solid 1px #e2e2e2;
+    border-width: 1px 0;
+    line-height: 40px;
+}
+.model .info_line a{
+    padding: 0 5px;
+}
+.model .model_form{
+    padding: 10px;
+}
+.pay_password{
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    border: solid 1px #e9e9e9;
+    background: #f5f5f5;
+}
+.btn_line{
+}
+.btn_cancel{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    border: solid 1px #e9e9e9;
+    background: #f5f5f5;
+}
+.btn_pay{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    background: #ff7302;
+    color: #fff;
+}
+/*
+ * wapApp 商家主页流程
+ * @dir Home/Classes
+ * @creater	张远航	<354631282@qq.com>
+ * */
+
+/* 公共模块区域 2015-07-01 张远航 */
+
+/*=公司title信息= 2015-07-01 张远航 -S*/
+.wap_title_ZH{
+	padding: 0 8px;
+	position: relative;
+}
+.wap_title_ZH .pic_box_ZH{
+	background-color: #eee;
+	border: 2px solid #fff;
+	width: 80px;
+	height: 80px;
+	margin-top: -15px;
+	overflow: hidden;
+}
+.wap_title_ZH .info_box_ZH{
+	margin-left: 85px;
+	border-bottom: 1px solid #e3e3e3;
+}
+.info_box_ZH .info_left{
+	margin-right: 40px;
+}
+.info_box_ZH .info_right a{
+	display: block;
+	margin: 5px auto;
+    color: #999;
+}
+.line_h_28{
+	line-height: 28px;
+}
+/*=公司title信息= -E*/
+
+/* 商家主页 home 2015-07-01 张远航 */
+.inte_ZH ul li{
+	text-align: center;
+	float: left;
+	width: 25%;
+	padding: 10px 0;
+}
+.sj_ZH{
+	border-bottom: 1px solid #e3e3e3;
+}
+.depict_content{
+	padding-top: 10px;
+	background-color: #fff;
+}
+.depict_content .depict_ZH{
+	border-bottom: 1px solid #e3e3e3;
+	margin-bottom: 10px;
+}
+.depict_ZH .depict_title_ZH{
+	background-color: #ff7403;
+	-webkit-border-top-right-radius: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+	-moz-border-top-right-radius: 15px;
+	-moz-border-bottom-right-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	color: #fff;
+	width: 80px;
+	padding: 8px 0;
+	margin-bottom: 10px;
+}
+.depict_ZH .depict_title_ZH h5{
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: 600;
+	margin-left: 8px;
+}
+.depict_ZH .line_bet{
+	display: inline-block;
+	border-left: 1px solid #e3e3e3;
+	height: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: -2px;
+}
+.service_box .service_ZH{
+	border-top: 1px solid #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+	width: 100%;
+	margin-bottom: 10px;
+	padding-left: 8px;
+	padding-right: 8px;
+	background-color: #fff;
+	font-size: 14px;
+	overflow: hidden;
+}
+.fixed_ZH{
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+.service_box .service_ZH .active{
+	border-bottom: 2px solid #ff7403;
+	color: #ff7403;
+	outline: none;
+	text-decoration: none;
+}
+.service_box .service_ZH a{
+	text-align: center;
+	float: left;
+	width: 33.3333%;
+	padding: 10px 0;
+	overflow: hidden;
+}
+.service_box .service_content .border_box{
+	border: 1px solid #e3e3e3;
+	margin: 10px 8px;
+	padding: 8px;
+	background-color: #fff;
+}
+.service_content .intro_content .border_box img{
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 0;
+	margin: 0 auto;
+	vertical-align: middle;
+}
+.service_content .lang_content table{
+	width: 100%;
+	border-top: 1px solid #e3e3e3;
+	border-bottom: 1px solid #e3e3e3;
+	background-color: #fff;
+}
+.lang_content table tr th{
+	padding:10px 0 10px 8px;
+	width: 70px; 
+	vertical-align: top;
+	color: #999;
+}
+.lang_content table tr td{
+	padding:10px 8px 10px 0;
+	vertical-align: top;
+	color: #444;
+}
+.service_content .lang_content .timeTable_ZH{
+	margin: 10px 8px;
+	background-color: #fff;
+}
+.timeTable_ZH table td{
+	text-align: center;
+}
+.lang_content .border_box .buy_btn{
+	margin-top: 8px;
+	padding: 8px 0 0 0;
+	border-top: 1px solid #e3e3e3;
+}
+.buy_btn h5,
+.buy_btn input{
+	vertical-align: middle;
+	margin: 0;
+	line-height: 28px;
+}
+.buy_btn input{
+	width: 80px;
+	height: 28px;
+	border: 0;
+	border-radius: 3px;
+	background-color: #ff7403;
+	color: #fff;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+
+.evaluate_content{
+	margin-top: 10px;
+	border-top: 1px solid #e3e3e3;
+}
+.evaluate_content .star_box{
+	border-bottom: 1px solid #e3e3e3;
+	padding: 5px 0;
+}
+.evaluate_content .star_box .l_grade_ZH{
+	margin: 0px 0px 0px 20px; 
+}
+.evaluate_content .star_box .l_grade_ZH span{
+	display: block;
+	margin: 10px auto;
+	text-align: center;
+}
+.evaluate_content .star_box .r_grade_ZH{
+	margin: 0px 20px 0px 0;
+}
+.evaluate_content .star_box .r_grade_ZH span{
+	display: inline-block;
+	margin: 3px auto;
+	vertical-align: middle;
+	line-height: 24px;
+}
+/*星星评分 -S */
+.star_progress_yqc{
+	width: 92px;
+	height: 14px;
+	margin: 5px 0;
+}
+.star_progress_yqc .bar{
+	height: 14px;
+	background: url(../img/star_progress.png) left center no-repeat;
+}
+.star_progress_yqc.edit{
+	background: url(../img/star_progress_bg.png) left center no-repeat;
+	cursor: pointer;
+}
+.star_progress_yqc .bar.red_star{
+	background: url(../img/star_progress_red.png) left center no-repeat;
+}
+/*星星评分 -E */
+
+.evaluate_tab{
+	font-size: 0;
+}
+.evaluate_content .evaluate_box .evaluate_tab a{
+	display: inline-block;
+	width: 25%;
+	height: 34px;
+	border-right: 1px solid #e3e3e3;
+	margin: 10px 0;
+	font-size: 14px;
+	text-align: center;
+	text-decoration: none;
+	overflow: hidden;
+}
+.evaluate_tab a span{
+	display: block;
+	font-size: 12px;
+}
+.evaluate_box .evaluate_tab .active{
+	color: #ff7403;
+}
+.evaluate_list{
+	border-top: 1px solid #e3e3e3;
+}
+.evaluate_list .border_box ul li{
+	border-bottom: 1px solid #e3e3e3;
+	margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * wapApp 主页
+ * @dir Home/Index
+ * @creater	刘静	<354631282@qq.com>
+ * */
+
+/* 公共模块区域 2015-07-01 刘静 */
+.index_banner_j{
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	max-width: 100%;
+	text-align: center;
+}
+.index_banner_j .banner_tip{
+	width: 100%;
+	height: 8px;
+	position: absolute;
+	z-index: 1;
+	bottom: 5px;
+	text-align: center;
+}
+.index_banner_j .banner_tip li{
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	background: #eee;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	font-size: 0;
+	vertical-align: top;
+	margin:0 1px;
+	cursor: pointer;
+}
+.index_banner_j .banner_tip li.on{
+	background: #ff7302;
+}
+.index_banner_j .banner_wrap img{
+	width: 100%;
+	height: auto;
+}
+
+/* 首页 index_wap 2015-07-01 刘静 */
+.content_j{
+	background: #f5f5f5;
+	overflow: hidden;
+}
+.content_j a:hover{
+	text-decoration: none;
+}
+.country_j{
+	border: 1px solid #eee;
+	padding-top: 7px;
+	background: #fff;
+}
+.country_j li{
+	width: 25%;
+	float: left;
+}
+.country_j li .circle{
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin: auto;
+	border-radius: 50%;
+}
+.bg_ch{
+	background-color: #33d6c5;
+}
+.bg_en{
+	background-color: #fbab4a;	
+}
+.bg_fr{
+	background-color: #ffab89;
+}
+.bg_sp{
+	background-color: #bab387;
+}
+.bg_ge{
+	background-color: #b3b9c7;
+}
+.bg_jp{
+	background-color: #8da5d3;
+}
+.bg_ko{
+	background-color: #efb935;
+}
+.bg_more{
+	background-color: #f1b9ea;
+}
+.country_j li .text{
+	line-height: 20px;
+	font-size: 12px;
+	margin-bottom: 7px;
+}
+.country_j li a:hover .text{
+	color: #FF5926;
+}
+
+.fanyi_j{
+	border: 1px solid #eee;
+	padding: 7px 6px 3px;
+	margin-top: 10px;
+	background: #fff;
+}
+.fanyi_j li{
+	width: 48%;
+	margin: 0 1% 4px;
+	float: left;
+}
+.fanyi_j li img{ 
+	width: 100%;
+}
+
+.index_title{
+	margin-top: 10px;
+	border: 1px solid #eee;
+	background: #fff;
+	padding: 0 8px;
+	height: 35px;
+	line-height: 35px;
+	overflow: hidden;
+}
+.index_title span{
+	display: block;
+	color: #ff7300;
+	border-left: 5px solid #ff7300;
+	padding-left: 5px;
+}
+
+.seller_list{
+	margin-bottom: 15px;
+	color: #888;
+}
+.seller_list li{
+	border: 1px solid #eee;
+	background: #fff;
+	padding: 0 8px;
+	height: 90px;
+	margin-top: 10px;
+}
+.seller_list li img{
+	width: 120px;
+	height: 100%;
+	float: left;
+	margin-right: 10px;
+}
+.seller_list h5{ 
+	height: 15px;
+	margin: 5px 0 8px;
+}
+.seller_list h5 a{
+	display: block;
+	overflow:hidden; 
+	float: left;
+	white-space:nowrap; 
+	text-overflow:ellipsis;
+}
+.seller_list p{
+	margin: 5px 0;
+	min-height: 15px;
+	line-height: 15px;
+}
+.seller_list .fa{ 
+	margin-right: 5px;
+}
+
+@media( max-width: 340px){
+	.seller_list h5 a{
+		width: 100px;
+	}
+}
+/*身边地图 nearby 2015-7-6 喻启超*/
+.pl30{
+     padding-left: 30px;
+}
+.map_info_title{
+    font: 16px/28px 'microsoft yahei';
+    color: #3292ca;
+}
+.map_info_box{
+    font: 14px/24px 'microsoft yahei';
+    color: #888;
+}
+.blue a{
+    color: #3ba3f5;
+}
+.map_info_detail i{
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    line-height: 26px;
+}
+.map_info_count i{
+    margin-right: 5px;
+}
+
+/*
+ * wapApp 帮助中心
+ * @dir Home/Help
+ * @creater	张远航	<354631282@qq.com>
+ * */
+
+/* 本流程公共区域 -S */
+.list_help,
+.detail_help{
+	padding: 8px;
+	background-color: #fff;
+	color: #666;
+}
+/* 本流程公共区域 -E */
+
+/* 帮助中心 index 2015-07-07 张远航 */
+.list_help li{
+	border-bottom: 1px solid #e2e2e2;
+	font-size: 14px;
+	line-height: 40px;
+}
+.list_help li a{
+	clear: both;
+	display: block;
+}
+.list_help li i{
+	margin-top: 15px;
+}
+.detail_help img{
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 0;
+	margin: 10px auto;
+	vertical-align: middle;
+}

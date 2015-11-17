@@ -1,0 +1,184 @@
+<extend name="Home@Public/body_wap"/>
+<block name="style">
+    <style>
+    html,body{
+        width: 100%;
+        height: 100%;
+    }
+    .map_container{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .map_container .map_btn_list{
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        z-index: 10;
+    }
+    .map_container .map_btn_list .map_btn{
+        float: left;
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 50%;
+        background: #3ba3f5;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+    }
+    </style>
+</block>
+<block name="body">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F43ffcb838eb792124b12b5a8c67de5c"></script>
+    <!--身边地图 S-->
+    <div class="map_container">
+        <div id="allmap" style="width:100%; height: 100%;"></div>
+        <div class="map_btn_list clearfix">
+            <a href="javascript:;" class="map_btn"><i class="fc fc-location"></i></a>
+            <a href="javascript:;" class="map_btn"><i class="fc fc-refresh"></i></a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function Bd_map(){
+            this.init();
+        }
+        Bd_map.prototype = {
+            info: null,
+            //相关配置信息
+            options:{
+                id : 'allmap',
+                centerPoint : [116.417854,39.911977],
+                zoom : 14,
+                searchRange : 1000
+            },
+            //初始化地图
+            init: function(){
+                if(this.info){
+                    //创建地图对象
+                    this.map = new BMap.Map(this.options.id);
+                    var _this = this,
+                    //设置地图中心点
+                        mPoint = new BMap.Point(this.options.centerPoint[0],this.options.centerPoint[1]),
+                    //添加圆形区域
+                        circle = new BMap.Circle(mPoint,this.options.searchRange,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 0.1, strokeOpacity: 0.01});
+                    this.map.enableScrollWheelZoom(true);
+                    this.map.centerAndZoom(mPoint, this.options.zoom);
+                    var locationIcon = new BMap.Icon("__IMG__/sc_template/app/location.png", new BMap.Size(17,25));
+                    var locationMark = new BMap.Marker(mPoint,{icon:locationIcon});  // 创建标注
+                    this.map.addOverlay(locationMark);
+                    this.map.addOverlay(circle);
+                    //给标注点添加点击事件
+                    function addClickHandler(content,marker){
+                        marker.addEventListener("click",function(e){
+                            var p = e.target,
+                                point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                            this.map.centerAndZoom(point, this.map.getZoom());
+                            this.map.openInfoWindow(content,point);
+                        })
+                    }
+                    //添加标注点及标注点事件
+                    for(var i=0;i<this.info.length;i++){
+                        var opts = {
+                                    width : 155,
+                                    height: 100,
+                                    title : '<span class="map_info_title">'+this.info[i].title+"</span>"
+                                },
+                                myIcon = new BMap.Icon('__IMG__/sc_template/app/point.png', new BMap.Size(24,33)),
+                                marker = new BMap.Marker(new BMap.Point(this.info[i].point[0],this.info[i].point[1]),{icon:myIcon}),
+                                content_box = '<div class="map_info_box">'
+                                            +   '<div class="map_info_count">'
+                                            +       '<span><i class="fa fa-microphone"></i>' + this.info[i].duration + '<span>'
+                                            +       '<span class="pl30"><i class="fa fa-pencil-square-o"></i>' + this.info[i].words + '万字<span>'
+                                            +   '</div>'
+                                            +   '<div class="clearfix">'
+                                            +       '<div class="pull-left">'
+                                            +           '<span class="org">共提供过'+this.info[i].server  + '次服务</span><br>'
+                                            +           '<span>擅长：' + this.info[i].profession + '</span>'
+                                            +       '</div>'
+                                            +       '<div class="pull-right map_info_detail blue">'
+                                            +           '<a href="javascript:;" onclick="alert('+ this.info[i].pid +')">'
+                                            +               '<i class="fa fa-info-circle"></i><span>详情</span>'
+                                            +           '</a>'
+                                            +       '</div>'
+                                            +   '</div>'
+                                            + '</div>',
+                                content = new BMap.InfoWindow(content_box, opts);
+                        addClickHandler(content,marker);
+                        this.map.addOverlay(marker);
+                    }
+                }
+            },
+            setData : function(_data){
+                this.info = _data;
+                this.init();
+            },
+            //配置地图信息
+            reset: function(_opt){
+                //仅重设需要修改的配置项
+                for(var i in _opt){
+                    //过滤掉无关属性
+                    if(this.options.hasOwnProperty(i)){
+                        this.options[i] = _opt[i];
+                    }
+                }
+                //根据新的配置初始化地图
+                this.init();
+            }
+        }
+        /* _pointInfo
+         * @param pid        Number 点ID
+         * @param duration   Number 翻译总时长
+         * @param words      Number 翻译总字数
+         * @param server     Number 服务总次数
+         * @param profession String 专业类型
+         * @param point      Array  [0] 经度  [1] 纬度
+         * @param title      String 冒泡标题
+         * */
+        function javaMap(_pointInfo){
+            var map = new Bd_map();
+            map.setData(_pointInfo);
+        }
+        var info = [
+            {
+                pid : 1,
+                duration : 240,
+                words : 3000,
+                server : 5000,
+                profession : '英语  法语',
+                point : [116.417854,39.941977],
+                title : "张家集"
+            },
+            {
+                pid : 1,
+                duration : 240,
+                words : 3000,
+                server : 5000,
+                profession : '英语  法语',
+                point : [116.417854,39.941977],
+                title : "张家集"
+            },
+            {
+                pid : 1,
+                duration : 240,
+                words : 3000,
+                server : 5000,
+                profession : '英语  法语',
+                point : [116.417854,39.931977],
+                title : "张家集"
+            },
+            {
+                pid : 1,
+                duration : 240,
+                words : 3000,
+                server : 5000,
+                profession : '英语  法语',
+                point : [116.417854,39.921977],
+                title : "张家集"
+            }
+        ];
+        javaMap(info);
+    </script>
+    <!--身边地图 E-->
+</block>

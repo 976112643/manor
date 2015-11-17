@@ -1,0 +1,134 @@
+[ 2015-11-14T15:42:52+08:00 ] ::1 /web/Backend
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000369s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003275s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003644s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005869s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001201s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003220s ]
+NOTIC: [8] Undefined variable: title D:\htdocs\web\Runtime\Cache\Backend\a918f0b5d7cff94bb9b0e45a1e4b5876.php 第 10 行.
+NOTIC: [8] Undefined variable: keywords D:\htdocs\web\Runtime\Cache\Backend\a918f0b5d7cff94bb9b0e45a1e4b5876.php 第 10 行.
+NOTIC: [8] Undefined variable: description D:\htdocs\web\Runtime\Cache\Backend\a918f0b5d7cff94bb9b0e45a1e4b5876.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.320999s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.323296s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.019537s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.032160s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.054959s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.017278s ]
+INFO: [ app_end ] --END-- [ RunTime:0.019131s ]
+
+[ 2015-11-14T15:42:53+08:00 ] ::1 /web/Backend/Base/Public/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000459s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003421s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005383s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004216s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006506s ]
+
+[ 2015-11-14T15:42:57+08:00 ] ::1 /web/Backend
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000433s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004242s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004517s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006792s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001283s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003511s ]
+NOTIC: [8] Undefined variable: title D:\htdocs\web\Runtime\Cache\Backend\a918f0b5d7cff94bb9b0e45a1e4b5876.php 第 10 行.
+NOTIC: [8] Undefined variable: keywords D:\htdocs\web\Runtime\Cache\Backend\a918f0b5d7cff94bb9b0e45a1e4b5876.php 第 10 行.
+NOTIC: [8] Undefined variable: description D:\htdocs\web\Runtime\Cache\Backend\a918f0b5d7cff94bb9b0e45a1e4b5876.php 第 10 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.096847s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.099436s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003690s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.003131s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010550s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004213s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006787s ]
+
+[ 2015-11-14T15:42:57+08:00 ] ::1 /web/Backend/Base/Public/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000429s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004006s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003797s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006280s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003205s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005237s ]
+
+[ 2015-11-14T15:43:03+08:00 ] ::1 /web/Backend/Base/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000377s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003512s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003235s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004989s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0049s ]
+SQL: SHOW COLUMNS FROM `sr_role` [ RunTime:0.0039s ]
+SQL: SELECT member.id AS member_id,member.status AS member_status,member.rules AS member_rules,member.add_time AS member_add_time,member.id AS id,member.pid AS pid,member.path AS path,member.telephone AS telephone,member.email AS email,member.username AS username,member.type AS type,member.deal_password AS deal_password,member.password AS password,member.role_id AS role_id,member.is_admin AS is_admin,member.description AS description,member.rules AS rules,member.register_ip AS register_ip,member.level AS level,member.integration AS integration,member.balance AS balance,member.freeze AS freeze,member.withdrawals AS withdrawals,member.wallet_status AS wallet_status,member.status AS status,member.tags AS tags,member.bank_cards AS bank_cards,member.add_time AS add_time,member.login_time AS login_time,member.login_ip AS login_ip,member.last_login_time AS last_login_time,member.last_login_ip AS last_login_ip,member.realname AS realname,member.code AS code,member.address_id AS address_id,member.has_buy AS has_buy,role.id AS id,role.title AS title,role.description AS description,role.rules AS rules,role.status AS status,role.add_time AS add_time FROM sr_member member LEFT JOIN sr_role role ON member.role_id=role.id WHERE member.username = 'admin' AND member.password = '9db06bcff9248837f86d1a6bcf41c9e7' LIMIT 1   [ RunTime:0.0013s ]
+SQL: SELECT `id`,username as title FROM `sr_member` WHERE `id` = 1  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sr_action_log` [ RunTime:0.0048s ]
+SQL: INSERT INTO `sr_action_log` (`member_id`,`username`,`url`,`table_name`,`table_id`,`description`,`ip`,`add_time`) VALUES ('1','admin','backend/base/public/login','member','1','[{\"id\":\"1\",\"title\":\"admin\"}]','0.0.0.0','2015-11-14 15:43:02') [ RunTime:0.0655s ]
+
+[ 2015-11-14T15:43:03+08:00 ] ::1 /web/Backend
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000302s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002642s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002832s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004502s ]
+SQL: SHOW COLUMNS FROM `sr_menu` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `sr_menu` WHERE `status` = 1 ORDER BY sort desc  [ RunTime:0.0056s ]
+SQL: SELECT `url` FROM `sr_menu` WHERE `level` = 1 AND `status` = 1 LIMIT 1   [ RunTime:0.0009s ]
+
+[ 2015-11-14T15:43:03+08:00 ] ::1 /web/Backend/Base/Config/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000369s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003223s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002788s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004789s ]
+SQL: SHOW COLUMNS FROM `sr_config` [ RunTime:0.0044s ]
+NOTIC: [8] Undefined index: r D:\htdocs\web\Application\Common\Controller\CommonController.class.php 第 45 行.
+NOTIC: [8] Undefined index: p D:\htdocs\web\Application\Common\Controller\CommonController.class.php 第 47 行.
+SQL: SELECT * FROM `sr_config` WHERE `status` > -1 ORDER BY id asc LIMIT 0,20   [ RunTime:0.0012s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sr_config` WHERE `status` > -1 LIMIT 1   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001508s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.004076s ]
+NOTIC: [8] Undefined variable: title D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 10 行.
+NOTIC: [8] Undefined variable: keywords D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 10 行.
+NOTIC: [8] Undefined variable: description D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 10 行.
+NOTIC: [8] Undefined variable: need_display D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [8] Undefined index: _child D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [8] Undefined index: _child D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [8] Undefined index: _child D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [8] Undefined index: _child D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 90 行.
+NOTIC: [8] Undefined variable: iframe_src D:\htdocs\web\Runtime\Cache\Backend\62e423b53d9787dace9659796aa5824a.php 第 241 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.367050s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.368709s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002329s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.003448s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008415s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003564s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006017s ]
+

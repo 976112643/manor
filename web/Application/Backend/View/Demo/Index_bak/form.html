@@ -1,0 +1,62 @@
+<extend name="Base/Public/base"/>
+<block name="body">
+	<include file="Common@Plugins/editor" />
+
+	<div class="head_box cf">
+		<h3 class="f_l">添加数据</h3>
+		<div class="operate f_r cf">
+			<a href="" class="">取消添加</a>
+		</div>
+	</div>
+	<div class="operate_form">
+		<form action="" method="post">
+			<table>
+				<tr>
+					<th>分类：</th>
+					<td>
+						<select name="radio" class="select">
+							<option value="" >模板示例</option>
+							<option value="" >功能示例</option>
+							<option value="" >使用手册</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th width="100">文本框：</th>
+					<td><input type="text" class="input" value=""></td>
+				</tr>
+				<tr>
+					<th>单选：</th>
+					<td><label class="radio"><input type="radio" value="">单选按钮一</label><label class="radio"><input type="radio" value="">单选按钮二</label></td>
+				</tr>
+				<tr>
+					<th>复选：</th>
+					<td><label class="checkbox"><input type="checkbox" value="">复选按钮一</label><label class="checkbox"><input type="checkbox" value="">复选按钮二</label></td>
+				</tr>
+				<tr>
+					<th>文本域：</th>
+					<td style="padding:5px 0;"><textarea class="textarea"></textarea></td>
+				</tr>
+				<tr>
+					<th valign="top">编辑器：</th>
+					<td style="padding:5px 0;">
+						<!--百度编辑器-->
+						<?php $time=time(); ?>
+						<script id="<?='editor_'.$time?>" type="text/plain" name="content" style="width:100%;"><?=$info['content']?></script>
+						<script type="text/javascript">
+						//说明：editor_obj_id的值必须和编辑器ID保持一致
+						var editor_<?=$time?>=UE.getEditor('editor_<?=$time?>',config);
+						</script>
+					</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td style="padding:5px 0;">
+						<input type="submit" class="ajax-post" target-form="operate_form" value="提交">
+						<input type="button" class="cancel" value="取消并返回">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</block>

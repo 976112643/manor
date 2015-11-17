@@ -1,0 +1,36 @@
+<div class="footer_box_ZH">
+	<div class="container">
+		<p>	
+			<?php
+				$navigation = getNavigation();
+				$bottom_navigation = $navigation['bottom'];
+				foreach($bottom_navigation as $key => $row){
+			?>
+				<?php if($key){ /*如果不是数组第一个元素，前面加上竖线*/?>
+				|
+				<?php }?>
+			<a href="__ROOT__/<?=$row['url']?>" target='<?=$row['target']?>'><?=$row['title']?></a>
+			<?php
+				}
+			?>
+			<!-- <a href="javascript:void(0)">帮助中心</a> | 
+			<a href="javascript:void(0)">支付方式</a> | 
+			<a href="javascript:void(0)">联系方式</a> | 
+			<a href="javascript:void(0)">客服中心</a> | 
+			<a href="javascript:void(0)">服务支持</a> | 
+			<a href="javascript:void(0)">网站地图</a> -->
+		</p>
+		<p><?=C('COPY_RIGHT')?></p>
+		<!-- <p>Copyright © 2010-2015 www.88888888.com N邦翻译版权所有 备案：闽ICP备888888888号</p> -->
+		<ul class="clearfix">
+			<li><img src="__IMG__/sc_template/footer_icon_1.png"></li>
+			<li><img src="__IMG__/sc_template/footer_icon_2.png"></li>
+			<li><img src="__IMG__/sc_template/footer_icon_3.png"></li>
+			<li><img src="__IMG__/sc_template/footer_icon_4.png"></li>
+			<li><img src="__IMG__/sc_template/footer_icon_5.png"></li>
+			<li><img src="__IMG__/sc_template/footer_icon_6.png"></li>
+			<li><img src="__IMG__/sc_template/footer_icon_7.png"></li>
+			<li><img src="__IMG__/sc_template/footer_icon_8.png"></li>
+		</ul>
+	</div>
+</div>

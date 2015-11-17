@@ -1,0 +1,118 @@
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						<?=$page_title?>
+						<small>
+						<?php
+							if($info){
+								echo "修改";
+							}else{
+								echo "添加";
+							}
+						?> 
+						</small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li><a href="<?=U('index')?>"> 广告列表</a></li>
+						<li class="active">
+						<?php
+							if($info){
+								echo "修改";
+							}else{
+								echo "添加";
+							}
+						?> 
+						</li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<!-- form start -->
+								<form role="form" action="<?=U('')?>" method="post" class="operate_form">
+									<input type="hidden" name="id" value="<?=$info['id']?>"/>
+									<input type="hidden" name="type" value="image"/>
+									<div class="box-body">
+										<div class="form-group">
+											<label>广告标题</label>
+											<input type="text" class="form-control" name="title" value="<?=$info['title']?>">
+										</div>
+										<div class="form-group" <?php if($info['type']=='code'){echo 'style="display:none;"';}?>>
+											<label>上传图片</label>
+											<input type="hidden" name="old_image" value="<?=$info['image']?>">
+											<?php
+												$config=array(
+													'table'		=>'banner',
+													'name'		=>'image',
+													'val_key'	=>"image"
+												);
+												echo W("Common/Img/index",array($config,$info['id']));
+											?>
+										</div>               
+										
+										<div class="form-group" <?php if($info['type']=='code'){echo 'style="display:none;"';}?>>
+											<label>广告链接</label>
+											<input type="text" class="form-control" name="url" value="<?=$info['url']?>">
+										</div>                    
+
+										<div class="form-group" <?php if($info['type']=='image' || !$info['type']){echo 'style="display:none;"';}?>>
+											<label>HTML代码</label>
+											<textarea class="form-control" name="content"><?=$info['content']?></textarea>
+										</div>
+										<div class="form-group">
+											<label>排序</label>
+											<input type="text" class="form-control" name="sort" value="<?=$info['sort']?>">
+										</div>
+
+										<div class="form-group">
+											<label>起止时间</label>
+											<div class="form-inline">
+												<input type="text"  id="d4311" class="form-control" size="10" name="start_time" onClick="WdatePicker({startDate:'%y-%M-%d %H:00:00',dateFmt:'yyyy-MM-dd HH:00:00',alwaysUseStartDate:true,maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})" value="<?=$info['start_time']?>">
+												<span class="">-</span>
+												<input type="text" id="d4312" class="form-control" size="10" name="end_time" onClick="WdatePicker({startDate:'%y-%M-%d %H:00:00',dateFmt:'yyyy-MM-dd HH:00:00',alwaysUseStartDate:true,minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2020-10-01'})" value="<?=$info['end_time']?>">
+											</div>
+										</div>
+										
+										<div class="form-group">
+											<label>状态</label>
+											<div class="form-inline">
+												<div class="radio">
+													<label>
+														<input type="radio" name="status" value="1" <?php if($info['status']=='1' || !$info['status']){echo "checked";}?>>启用
+													</label>
+												</div>
+												<div class="radio">
+													<label>
+														<input type="radio" name="status" value="0" <?php if($info['status']=='0'){echo "checked";}?>>禁用
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="box-footer">
+										<div class="form-inline">
+											<input type="submit" class="btn btn-primary" value="提交" />
+											<input type="button" class="btn btn-default js_cancel" value="取消返回" />
+										</div>
+									</div>
+								</form>
+							</div><!-- /.box -->
+
+ 
+
+						</div><!--/.col (left) -->
+
+					</div>   <!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

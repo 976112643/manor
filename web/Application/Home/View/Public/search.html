@@ -1,0 +1,149 @@
+<div class="search">
+	<div class="container p_lr">
+		<div class="f_l">
+			<div class="f_l">
+				<a class="logo" href="<?=U('Home/Index/index')?>" class="ct_nav" style="background-image:url('__ROOT__/<?=C('SITE_LOGO')?>'); background-size: cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='__ROOT__/<?=C('SITE_LOGO')?>',sizingMethod='scale');">N邦翻译</a>
+			</div>
+			<div class="f_l city" >
+				<?php $suffix = mb_strlen(session('cur_city_title')) > 4 ? true : false; ?>
+				<strong><a class="c_ff7402 f_14" id="ctname" title="<?=session('cur_city_title')?>"><?=msubstr(session('cur_city_title'),0,4,"utf-8",$suffix)?></a></strong>
+				<div class="ct_nav">
+					<a href="<?=U('Home/City/index')?>"	class="js_check_city">切换城市</a>
+				</div>
+			</div>	
+			<script>
+			/*$(function(){
+				$('.js_check_city').on('click',function(){
+					var url = window.location.href;
+					new_url = url.replace(/\//g,'|');	
+					to_href = $(this).attr('href');
+					window.location.href = to_href.substr(0,to_href.length-5)+'/cur_url/'+new_url;
+					return false;
+				}); 
+			})*/
+			</script>
+		</div>
+		<div class="f_r">
+			<div class="search_form f_l">
+				<form action='<?=U('Home/Classes/index')?>' method='get'>
+				<div class="tab_form">
+					<input type="hidden" name="type" value=<?=$param['type']?$param['type']:1?> >
+					<ul class="js_search_tab">
+						<li class="<?=empty($param['type'])?'searchTab_cur':''?><?=$param['type']==1?'searchTab_cur':''?>" data-type="1">翻译人员</li>
+						<li class="<?=$param['type']==2?'searchTab_cur':''?>" data-type="2">翻译公司</li>
+						<li class="<?=$param['type']==3?'searchTab_cur':''?>" data-type="3">翻译语言</li>
+					</ul>
+				</div>
+				<div class="search_input clearfix">
+					<div class="pull-left search_select">
+						<div class="sim-select-box">
+							<div class="sim-select-checked">
+						    <?php
+							  if(!isset($param['ability_id']) or $param['ability_id']==0){
+							?>  
+							    <input type="hidden" name="ability_id" value='0'><span>全部</span><i class="fa fa-caret-down f_18"></i>
+							<?php
+							  }else{
+							?>	
+							<?php
+							
+								$serve_type = get_serve_cache();//获取category表中的type为2的数据
+								$ability1 = array_id_key(get_ability_cache());//获取category表中的type为2的数据
+								foreach($serve_type as $k=>$v){
+									if(isset($param['ability_id'])){
+										if($param['ability_id']==$v['id']){
+							?>
+								<input type="hidden" name="ability_id" value='<?=$v['id']?>'><span><?=$v['title']?></span><i class="fa fa-caret-down f_18"></i>
+							<?php
+										}else{
+										  if($param['ability_id']==$ability1[$param['ability_id']]['id']){
+							?>			  
+										    <input type="hidden" name="ability_id" value='<?=$param['ability_id']?>'><span><?=$ability1[$param['ability_id']]['title']?></span><i class="fa fa-caret-down f_18"></i>
+							<?php			 
+										  }else{
+										    echo '<input type="hidden" name="ability_id" value="0"><span>全部</span><i class="fa fa-caret-down f_18"></i>';
+										  }
+										}
+									}else if($v['pid']==0 && $v['recommend']==1){
+							?>
+								<input type="hidden" name="ability_id" value='<?=$v['id']?>'><span><?=$v['title']?></span><i  class="fa fa-caret-down f_18"></i>
+							<?php
+									}
+								}
+							  }	
+							?>
+							</div>
+							<div class="sim-select-list">
+							   <span data-type="0">全部</span>
+							<?php
+								$serve_type = get_ability_cache();//获取category表中的type为2的数据
+								foreach($serve_type as $k=>$v){
+									if($v['pid']==0){
+							?>
+								<span data-type="<?=$v['id']?>" ><?=$v['title']?></span>
+							<?php
+									}
+								}
+							?>
+							</div>
+						</div>
+					</div>
+					<button class="pull-right search_btn" type="submit" >
+						<i class="fa fa-search f_18" ></i>
+					</button>
+					<div class="search_input_box">
+						<input type="text" name="search" placeholder="输入您想找的翻译公司，翻译人员，翻译语言" value='<?=$param['search']?>'>
+					</div>
+				</div>
+				</form>
+				<div class="tag">
+					<?php
+						$language = get_language_cache();
+						$i = 0;
+						foreach($recommend_language as $k=>$v){
+							if($v['pid'] ==1 && $v['recommend']==1 && $i<=8){
+					?>
+					<a href="<?=U('Home/Classes/index',array('language_id'=>$v['id']))?>"><?=$v['title']?></a>
+					<?php
+							$i++;
+							}
+						}
+					?>
+				</div>
+			</div>
+			<!--右侧图标标语,如需去掉，直接注释此段代码-->
+			<div class="feature_box f_r">
+				<ul class="clearfix">
+					<li>
+						<!-- <a href="<?=C('TOP_TEACHER')?>"> -->
+						<a href="<?=U('Home/Help/index',array('id'=>46))?>">
+							<i class="fc fc-boshi f_24"></i>
+							<span>翻译认证</span>
+						</a>
+					</li>
+					<li>
+						<!-- <a href="<?=C('TOP_ANY_TIME')?>"> -->
+						<a href="<?=U('Home/Help/index',array('id'=>50))?>">
+							<i class="fc fc-tui f_24"></i>
+							<span>随时退</span>
+						</a>
+					</li>
+					<li>
+						<!-- <a href="<?=C('TOP_TRUTH')?>"> -->
+						<a href="<?=U('Home/Help/index',array('id'=>51))?>">
+							<i class="fc fc-message f_24"></i>
+							<span>真实评价</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--右侧图标标语 end-->
+		</div>
+	</div>
+</div>
+<script>
+	$('.js_search_tab li').click(function(){
+		$(this).addClass('searchTab_cur').siblings().removeClass('searchTab_cur');
+		$(this).parent().prev('input').val($(this).attr('data-type'));
+	})
+</script>

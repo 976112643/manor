@@ -1,0 +1,136 @@
+<extend name="Public/body"/>
+<block name="body">
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper" style="min-height: 922px;">
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1>
+						<?=$page_title?>
+						<small><?=$page_small?></small>
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="<?=U('/Backend')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+						<li class="active"><?=$page_small?></li>
+					</ol>
+				</section>
+
+				<!-- Main content -->
+				<section class="content">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="box">
+								<div class="box-header">
+								</div><!-- /.box-header -->
+								<div class="box-body">
+									<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+										<div class="row">
+												<form action="<?=U('Backend/Member/Personer/index')?>" method='post' />
+													<div class="col-md-8">
+											<!--@liuqiao  过滤条件不需要-->			<!-- <label><input type="search" class="form-control input-sm" placeholder="开始时间" aria-controls="example1" onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" name='add_time_begin' value="<?=$add_time_begin?$add_time_begin:''?>"></label>
+														<label><input type="search" class="form-control input-sm" placeholder="结束时间" aria-controls="example1" onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" name='add_time_end' value="<?=$add_time_end?$add_time_end:''?>"></label> -->
+														<label><input type="search" class="form-control input-sm" placeholder="用户名/手机" aria-controls="example1" name='keywords' value="<?=$keywords?$keywords:''?>"></label>
+														<label><input type="submit" class="btn btn-info btn-sm" value='搜索' /></label>
+													</div>
+												</form>
+												<div class="col-md-4 text-right">
+													<?php
+														foreach($page_child as $v){
+															if($v['status']==1){
+																switch($v['title']){
+																	case '删除':
+													?>
+
+																			<a href="<?=U('del',array('status'=>-1))?>" class="btn btn-danger btn-sm ajax-post " target-form="ids">删除</a>
+
+																			
+
+													<?php
+																								break;
+																	case '禁用';
+													?>
+																			<a href="<?=U('disable',array('status'=>0))?>" class="btn bg-navy btn-sm ajax-post" target-form="ids">禁用</a>
+													<?php
+																								break;
+																	case '启用';
+													?>
+														<a href="<?=U('enable',array('status'=>1))?>" class="btn btn-success btn-sm ajax-post" target-form="ids">启用</a>
+													<?php
+																		break;
+																	case '添加';
+													?>
+														<a class="btn btn-info btn-sm" href="<?=U('add',array('pid'=>intval(I('pid'))))?>">添加</a>
+													<?php
+																		break;
+																}
+															}
+														}
+													?>
+												 </div>
+										</div>
+										<div class="row">
+											<div class="col-sm-12">
+												<table id="example2" class="table table-bordered table-hover dataTable text-center" role="grid" aria-describedby="example2_info">
+													<thead>
+														<tr role="row">
+															<th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width:3%"><label><input type="checkbox" class="check_all" value=""></label></th>
+															<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">用户名/真实姓名</th>
+															<!-- <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">邮箱/手机</th> -->
+															<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">手机</th>
+															<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">注册时间</th>
+															<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width:6%">状态</th>
+															<th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style='width:150px'>操作</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php
+															foreach($result as $row){
+																$row['id']=$row['member_id'];
+																$row['status']=$row['member_status'];
+														?>
+														<tr>
+															<td><label><input type="checkbox" class="ids" name="ids[]" value="<?=$row['id']?>"></label></td>
+															<td>
+																<?=$row['username']?'<p>ID:'.$row['username'].'</p>':''?>
+																<?=$row['realname']?'<p>真实姓名:'.$row['realname'].'</p>':''?>
+															</td>
+															<td>
+																<!-- <?=$row['email']?'<p>邮箱:'.$row['email'].'</p>':''?> -->
+																<?=$row['telephone']?'<p>手机:'.$row['telephone'].'</p>':''?>
+															</td>
+															<td align="center"><?=$row['member_add_time']?></td>
+															<td align="center">
+																<?php
+																	if($row['status']==0){
+																?>
+																<a url="<?=U('enable',array('status'=>1,'ids'=>$row['id'],'pid'=>I('pid')))?>" class="btn btn-success btn-sm ajax-get">启用</a>
+																<?php
+																	}else{
+																?>
+																<a url="<?=U('disable',array('status'=>0,'ids'=>$row['id'],'pid'=>I('pid')))?>" class="btn bg-navy btn-sm ajax-get">禁用</a>
+																<?php
+																	}
+																?>
+															</td>
+															<td align="center">
+																<a href="<?=U('edit',array('pid'=>I('pid'),'id'=>$row['id']))?>" class="btn btn-warning btn-sm">修改</a>&nbsp;<a href="<?=U('del',array('status'=>-1,'ids'=>$row['id']))?>" class="btn btn-danger ajax-get confirm">删除</a>
+															</td>
+														</tr>
+														<?php
+															}
+														?>
+													</tbody>
+											</table>
+										</div>
+									</div>
+					 <!-- 需改
+							 <div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
+										-->
+									 <div class="pages"><?=$page?></div>
+								</div><!-- /.box-body -->
+							</div><!-- /.box -->
+
+						</div><!-- /.col -->
+					</div><!-- /.row -->
+				</section><!-- /.content -->
+			</div>
+</block>

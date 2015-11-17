@@ -1,0 +1,159 @@
+<!--退款请求 S-->
+<div class="order_title_ZH">
+	<h5><b class="blue">退款请求</b></h5>
+</div>
+<!-- <div class="table-responsive">
+	<?php 
+		if($refund_result){
+	?>
+	<table class="table order_b_edf5fd_ZH c_666 m_t_10">
+		<tr>
+			<th>原因描述</th>
+			<th width="20%">描述人</th>
+		</tr>
+		<?php
+			foreach($refund_result as $v){
+		?>
+		<tr>
+			<td><?=$v['description']?></td>
+			<td><?=$v['ask_name']?></td>
+		</tr>
+		<?php
+			}
+		?>
+		<tr>
+			<td colspan="3"></td>
+		</tr>
+	</table>
+	<?php 
+		}
+	?>
+</div> -->
+<?php 
+	if($refund_result){
+?>
+<div class="form-horizontal  m_tb_20">
+	<?php
+		foreach($refund_result as $v){
+	?>
+	<div class="form-group">
+		<label class="col-xs-2 control-label p_t_0 p_r_0">原因描述：</label>
+		<div class="col-xs-10">(<?=$v['ask_name']?>)<br/>
+			<?=$v['description']?>
+		</div>
+	</div>
+	<?php 
+			if($v['files']){
+	?>
+	<div class="form-group">
+		<label class="col-xs-2 control-label p_r_0">退款凭证：</label>
+		<div class="col-xs-10">
+			<div class="img_list">
+				<?php 
+					foreach($v['files'] as $_row){
+						if(in_array($_row['filetype'],$img_type)){
+				?>
+				<a href="__ROOT__/<?=$_row['save_path']?>" target="_blank" ><img src="__ROOT__/<?=$_row['save_path']?>" title="<?=$_row['filename']?>" alt="<?=$_row['filename']?>" ></a>
+				<?php 
+						}else{
+				?>
+				<a href="__ROOT__/<?=$_row['save_path']?>" target="_blank" ><img src="__IMG__/file_img.jpg" title="<?=$_row['filename']?>" alt="<?=$_row['filename']?>" ></a>
+				<?php 
+						}
+					}
+				?>
+				<!-- <img src="__IMG__/comments_img.jpg">
+				<img src="__IMG__/comments_img.jpg">
+				<img src="__IMG__/comments_img.jpg"> -->
+			</div>
+		</div>
+	</div>
+	<?php
+			}
+		}
+	?>
+</div>
+<?php 
+	}
+?>
+<!-- 同意退款START -->
+<div class="form-horizontal  m_tb_20" id="agree" >
+	<form class="js_refund" action="<?=U('refund')?>" >
+		<input type="hidden" name="order_id" value="<?=$info['order_id']?>" />
+		<div class="form-group">
+			<label class="col-xs-2 control-label p_t_0 p_r_0"></label>
+			<div class="col-xs-10">
+				<div>
+					<a class="btn b_org refund_btn_ZH js_agree" >同意退款</a>
+					<a class="btn b_org refund_btn_ZH ml_10 js_not_agree" >不同意退款</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-xs-2 control-label p_r_0">退款金额：</label>
+			<div class="col-xs-10">
+				<input class="input_style" name="refund_price" type="text"> /元
+				<span class="org">( 为避免纠纷，请输入您和客户沟通后的金额 )</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-2 control-label p_r_0">支付密码：</label>
+			<div class="col-xs-10">
+				<input class="input_style" type="password" name="deal_password" >
+				<p>
+					<a class="btn b_org refund_btn_ZH m_tb_10 ajax-post confirm" target-form="js_refund" href='javascript:void(0);' >确 定</a>
+				</p>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- 同意退款END -->
+
+<!-- 不同意退款START -->
+<div class="form-horizontal  m_tb_20" id="not_agree" style="display:none;" >
+	<form class="js_not_refund" action="<?=U('refund_replay')?>" >
+		<input type="hidden" name="order_id" value="<?=$info['order_id']?>" />
+		<div class="form-group">
+			<label class="col-xs-2 control-label p_t_0 p_r_0"><!-- 退款备注： --></label>
+			<div class="col-xs-10">
+				<!-- <p>翻译质量有严重问题，还拖延时间。</p> -->
+				<div>
+					<a class="btn b_org refund_btn_ZH js_agree" >同意退款</a>
+					<a class="btn b_org refund_btn_ZH ml_10 js_not_agree" >不同意退款</a>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-2 control-label p_r_0">原因描述：</label>
+			<div class="col-xs-10">
+				<textarea class="textarea_style w_500" name="description" rows="5"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-2 control-label p_r_0"></label>
+			<div class="col-xs-10">
+				<p>
+					<a class="btn b_org refund_btn_ZH m_tb_10 ajax-post confirm" target-form="js_not_refund" href='javascript:void(0);' >确 定</a>
+				</p>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- 不同意退款END -->
+
+
+<script>
+<!-- 切换同意与不同意的表单 -- 李东 -->
+$(function(){
+	$('.js_agree').on('click',function(){
+		$('#agree').show();
+		$('#not_agree').hide();
+	});
+	$('.js_not_agree').on('click',function(){
+		$('#agree').hide();
+		$('#not_agree').show();
+	});
+});
+</script>
+<!--退款请求 E-->

@@ -1,0 +1,180 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<css href="__CSS__/classes.css" />
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+		<include file="Public/sidebar" />
+		<div class="col-xs-9 border_gray">
+			<div class="list_box_j">
+				<div class="dataset_title clearfix f_16 js_exp_top"><span>评价管理</span><i></i></div>
+				<div class="m_lr_15">
+				<!-- 新增/修改 过往经历模块 S--> 
+
+					<!--评价切换 S-->          	
+					<div class="w_302">
+						<ul class="nav nav-pills nav-justified">
+							<li><a class="order_reset_a order_cur" href="javascript:void(0)">来自客户的评价(<strong>18</strong>)</a></li>
+							<li><a class="order_reset_a" href="javascript:void(0)">给客户的评价(<strong>10</strong>)</a></li>
+						</ul>
+					</div>
+					<!--评价切换 E-->
+					<!--评分 S-->
+					<div class="row order_evaluate_inline">
+						<div class="col-xs-4 border_r2">
+							<div class="comments_score">
+								<h2 class="org ta_c">5.0</h2>
+								<div class="star_progress_yqc"><div class="bar"></div></div>
+							</div>
+						</div>
+						<div class="col-xs-4 border_r2">
+							<div class="comments_score2">
+								<div class="star_box clearfix">
+									<span class="pull-left">速度：</span>
+									<div class="pull-left star_progress_yqc edit"><div class="bar" style="width: 80%;"></div></div>
+								</div>
+								<div class="star_box clearfix">
+									<span class="pull-left">质量：</span>
+									<div class="pull-left star_progress_yqc edit"><div class="bar red_star"></div></div>
+								</div>
+								<div class="star_box clearfix">
+									<span class="pull-left">服务：</span>
+									<div class="pull-left star_progress_yqc edit"><div class="bar" style="width: 60%;"></div></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-4">
+							<p class="comments_score3"><i class="face_icon smile"></i><span>好评&nbsp;&nbsp;<?=$good_comments_num?>个</span></p>
+							<p class="comments_score3"><i class="face_icon smile"></i><span>好评&nbsp;&nbsp;<?=$mid_comments_num?>个</span></p>
+							<p class="comments_score3"><i class="face_icon smile"></i><span>好评&nbsp;&nbsp;<?=$bad_comments_num?>个</span></p>
+						</div>
+					</div>
+					<!--评分 E-->
+					<!--company right side S-->
+					<div class="all_comments_box">
+						<div class="comments_sort clearfix">
+							<strong class="pull-left" style="width:50px;">全部评价</strong>
+								<select class="pull-right selecter" style="width:90px;">
+									<option>默认排序</option>
+									<option>默认排序</option>
+									<option>默认排序</option>
+									<option>默认排序</option>
+								</select>
+							<div style="padding-left:50px; padding-right: 20px;">
+								<div class="radio-inline">
+									<label><input type="radio" name="inlineRadioOptions" value="option1"> 好评（<?=$good_comments_num?>）</label>
+								</div>
+								<div class="radio-inline">
+									<label><input type="radio" name="inlineRadioOptions" value="option1"> 中评（<?=$mid_comments_num?>）</label>
+								</div>
+								<div class="radio-inline">
+									<label><input type="radio" name="inlineRadioOptions" value="option1"> 差评（<?=$bad_comments_num?>）</label>
+								</div>
+							</div>
+						</div>
+						<ul class="comments_list">
+							<?php
+								foreach($shop_comments as $row){
+							?>
+							<li class="clearfix">
+								<div class="comment_img"><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></div>
+								<div class="comment_btn">
+									<a class="reply_btn_ZH b_org js_btn" href="javascript:void(0)">回复</a>
+								</div>
+								<div class="comment_info m_r_150">
+									<div class="review_type"><i class="face_icon smile"></i><?=$row['type_text']?>
+										<span>源语言：<em>中文</em></span><span>目标语言：<em>西班牙语</em></span>
+									</div>
+									<p><?=$row['content']?></p>
+									<div class="img_list">
+										<img src="__IMG__/comments_img.jpg">
+										<img src="__IMG__/comments_img.jpg">
+										<img src="__IMG__/comments_img.jpg">
+									</div>
+									<div style="position: relative">
+										<p>2015-06-15 所属技能：笔译</p>
+										<div class="dialog_box js_dialog">
+											<form action='<?=U('User/Order/reply')?>' method='post' id='comment_form'>
+												<input type='hidden' name='comment_id' value='<?=$row['id']?>'/>
+												<!--弹框 S-->
+												<div class="dialog_box_ZH">
+													<i class="dialog_sj"></i>
+													<div class="radio">
+														<div class="radio-inline">
+															<label><input type="radio" name='comment_level' value='1'>好评</label>
+														</div>
+														<div class="radio-inline">
+															<label><input type="radio" name='comment_level' value='2'>中评</label>
+														</div>
+														<div class="radio-inline">
+															<label><input type="radio" name='comment_level' value='3'>差评</label>
+														</div>
+													</div>
+													<div class="textarea_box_ZH clearfix">
+														<textarea class="textarea_style reply_LH" rows="4" name='reply' ></textarea>
+														<span class="m_t_10 pull-left">500字</span>
+														<a class="reply_btn_ZH pull-right b_org js_reply_lh" href="javascript:void(0)" >回复</a>
+														<a class="reply_btn_ZH pull-right b_grey js_cancel" href="javascript:void(0)">取消</a>
+													</div>
+												</div>
+												<!--弹框 E-->
+											</form>
+										</div>
+									</div>
+									<!--评论 S-->
+									<?php
+										foreach($row['_child'] as $_row){
+									?>
+									<div class="comment_ZH">
+										<ul class="media-list">
+											<li class="media">
+												<div class="media-left">
+													<span class="media-object w_55">回复：</span>
+												</div>
+												<div class="media-body">
+													<h6 class="media-heading"><i class="face_icon smile"></i><?=$_row['type_text']?></h6>
+													<p><?=$_row['content']?></p>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<!--评论 E-->
+									<?php
+										}
+									?>
+								</div>
+							</li>
+							<?php
+								}
+							?>
+						</ul>
+						<div class="pager clearfix pages">
+							<?=$page?>
+						</div>
+					</div>
+				</div>
+				<!--company right side E-->
+				
+				<!--the end-->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>									
+<script type="text/javascript">
+	$(".js_btn").click(function(){
+		$('.js_dialog').hide();
+		$(this).parent().siblings().find(".js_dialog").fadeIn();
+	});
+	$(".js_cancel").click(function(){
+		$(this).parent().parent().parent().fadeOut();
+	});
+	$('.js_reply_lh').click(function(){
+		var reply = $(this).parent().find('textarea').val();
+		var comment_id = $(this).attr('comment_id');
+		$(this).parent().parent().fadeOut();
+		$.post($('#comment_form').attr('action'),$('#comment_form').serialize(),function(data){
+			alert(data.comment_level);
+		});
+	})
+</script>
+</block>

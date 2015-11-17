@@ -1,0 +1,100 @@
+<?php
+namespace User\Controller;
+use User\Controller\BaseController;
+use Think\Page;
+class CompanyInfoController extends BaseController {
+	private $table = 'shop';
+	
+	/**
+	*公司信息设置
+	*	设置店铺的相关信息
+	*流程分析
+	*	1、判断用户是否开店
+	*	2、查询显示用户的信息
+	**/
+    public function index(){
+    	
+		if(session('home_shop_id')){
+			$shop_id=session('home_shop_id');
+			if(IS_POST){
+				$slogan = I('slogan');
+				$slogan_count = mb_strlen($slogan,'UTF8');
+				$good_at = I('good_at');
+				$good_at = implode(',',$good_at);
+				$description_now = I('description_now');
+				//验证信息,一句话概述不能超过20字
+				if($slogan_count>20){
+					$this->error('一句话概述不能超过20字','',$ajax);
+				}
+				//组织将信息修改到数据表中
+				$_POST = array(
+					'id' => $shop_id,
+					'title'=>I('title'),
+					'area_id'=>I('area'),
+					'address'=>I('detailAddress'),
+					'regtime'=>I('regtime'),
+					'good_at'=>$good_at,
+					'work_time_s'=>I('work_time_s'),
+					'work_time_e'=>I('work_time_e'),
+					'slogan'=>$slogan,
+					'description_now'=>$description_now
+				);
+				$result = update_data($this->table);
+				if(is_numeric($result)){
+					$this->success('修改成功！',U('User/CompanyInfo/index'),$ajax);
+				}else{
+					$this->error('修改失败！',U('User/CompanyInfo/index'),$ajax);
+				}
+			}else{
+				//查询用户店铺的信息
+				$shop_info = get_info(D('MemberShopView'),array('id'=>$shop_id));
+				//print_r($shop_info);exit;
+				//查询地理信息
+				$area_data = get_area_cache();
+				$area_list=list_to_tree($area_data);
+				//查询店铺的地理信息
+				$shop_area_id = $shop_info['area_id'];
+				foreach ($area_list as $val){
+					foreach ($val['_child'] as $v){
+						foreach ($v['_child'] as $vv){
+							if($vv['id']==$shop_area_id){
+								$shop_info['city']=$v['id'];
+								$shop_info['province']=$val['id'];
+								$city_data=$val['_child'];
+								$area_k=$v['_child'];
+							}
+						}
+					}
+				}
+				
+				//查询语种分类
+				$language_data = get_language_recommend_cache();
+				
+				//查询擅长的领域
+				$good_at = split(',',$shop_info['good_at']);
+				
+				$data['shop_info'] = $shop_info;
+				$data['area_data'] = $area_data;
+				
+				$data['city_data']=$city_data;
+				$data['area_k']=$area_k;
+				
+				$data['good_at'] = $good_at;
+				$data['language_data'] = $language_data;
+				if ($apptype){
+					$appinfo["area"] = getAreaInfo();//地理信息
+					$appinfo['shop_info'] = $shop_info;//用户店铺信息
+					$appinfo['area_data'] = $area_data;//地理信息
+					$appinfo['good_at'] = $good_at;//擅长领域
+					$appinfo['language_data'] = $language_data;//语种分类
+					$this->ajaxReturn($data['address']);
+				}
+				$this->assign($data);
+				$this->display();
+			}
+		}else{
+			$this->error('您的店铺尚未开通！',U('Home/Index/index'),$ajax);
+		}
+    }
+	
+}

@@ -1,0 +1,67 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container step_box">
+        <include file="Public/buyStepbar"/>
+        <div class="m_lr_15 maxw_915">
+            <div class="table-responsive">
+                <div class="priceborser_sw">
+                    <table class="table table_sw f_w">
+                        <tr class="row_head_sw bg_c_f8f8f8">
+                            <th class="f_14">商品名称</th>
+                            <th class="f_14">字数</th>
+                            <th class="f_14">单价</th>
+                            <th class="f_14">合计</th>
+                        </tr>
+                        <tr class="row_cont_sw">
+                            <td class="f_14">源语言：中文&nbsp&nbsp目标语言：英文</td>
+                            <td class="f_14">20000字</td>
+                            <td class="f_14">500元/字</td>
+                            <td class="f_14 c_ff7302">￥10,0000</td>
+                        </tr>
+                        <tr class="row_head_sw bg_c_f8f8f8">
+                            <th class="f_14">预计时间</td>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        <tr class="row_time_sw" id="block1_sw">
+                            <td class="clock_s_sw"><span class="c_ffb902">开始时间</span>：2015年6月5日&nbsp&nbsp16:16</td>
+                            <td class="clock_e_sw"><span class="c_ffb902">结束时间</span>：2015年6月5日&nbsp&nbsp16:16</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="wait_sw" id="none1_sw">
+                            <td>
+                                <img class="hidden-xs" src="__IMG__/price_bg.jpg">
+                                <p class="c_337ab7 f_16 f_bold">商家正在安排时间，请耐心等待...</p>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <ul class="pay_sw">
+                <li>
+                    <span class="f_14">应付总额:</span><i class="c_ff7302">￥</i><span class="c_ff7302 f_25">10,0000.0</span><i class="fa fa-refresh fa-2x refresh_sw"></i><a class="f_14 c_337ab7" href="">刷新</a>
+                </li>
+                <li id="block2_sw"><a class="f_16 c_fff button_sw bg_c_ffb902">立即支付</a></li>
+                <li class="wait_sw" id="none2_sw"><a class="f_16 c_fff bg_c_cacaca button_sw">请等待</a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+    // 点击支付按钮后出现等待提示
+    document.getElementById('block2_sw').onclick=function(){
+        document.getElementById('block1_sw').style.display="none";
+        document.getElementById('block2_sw').style.display="none";
+        if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/7./i)=="7.") { 
+            document.getElementById('none1_sw').style.display="block";
+            document.getElementById('none2_sw').style.display="block"; 
+        }else{
+            document.getElementById('none1_sw').style.display="table-row";
+            document.getElementById('none2_sw').style.display="block";
+        }
+    }
+    </script>
+</block>

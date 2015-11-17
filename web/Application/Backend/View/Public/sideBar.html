@@ -1,0 +1,59 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+	<section class="sidebar">
+		<br />
+			<!-- Sidebar user panel (optional) -->
+			<!-- <div class="user-panel">
+				<div class="pull-left image">
+					<img src="__IMG__/user.jpg" class="img-circle" alt="User Image" />
+				</div>
+				<div class="pull-left info">
+					<p><?=session('username')?></p> -->
+					<!-- Status -->
+					<!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
+			<!-- 	</div>
+			</div> -->
+		
+			<!-- Sidebar Menu -->
+			<ul class="sidebar-menu" >
+				<!-- Optionally, you can add icons to the links -->
+				<?php
+					$group_menu=array();
+					foreach($menu_result[$need_display]['_child'] as $_row){
+						if($_row['groups']!=''){
+							$group_menu[$_row['groups']][]=$_row;
+						}
+					}
+					foreach($group_menu as $k=>$v){
+				?>
+				<li class="treeview <?=$k==$group_class?'active':''?>"   >
+					<a class="one one-hover"><i class='fa fa-th-large'></i> <span><?=$k?></span> <i class="fa fa-angle-left pull-right"></i></a>
+					<ul class="treeview-menu" >
+						<?php
+							foreach($v as $menu){
+						?>
+						
+						<li class="<?=$menu['title']==$title_class?'cur':''?>"><a href="<?=U($menu['url'])?>"><i class="fa  fa-align-left"></i><?=$menu['title']?></a></li>
+
+						<?php
+								if($iframe_src==''){
+									$iframe_src=U($menu['url']);
+								}
+							}
+						?>
+					</ul>
+				</li>
+				<?php
+					}
+				?>
+			</ul>
+			<script>
+					$(function(){
+						$(".treeview-menu li").click(function(){
+							$(this).addClass("cur").siblings(this).removeClass("cur");	  
+						});
+					});
+			</script>
+			<!-- /.sidebar-menu -->
+		</section>
+</aside>

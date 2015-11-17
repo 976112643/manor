@@ -1,0 +1,240 @@
+<extend name="Base/Public/base"/>
+<block name="body">
+	<div class="head_box cf">
+  	<a href="#this" class="hoem_icon">示例</a><span>&gt;</span>数据列表
+		<!--<h3 class="f_l">数据列表</h3>
+		<div class="operate f_r cf">
+			<div class="search_box f_l cf">
+				<form action="" class="cf">
+					<select name="title" class="select">
+						<option value="">模板示例</option>
+						<option value="">功能示例</option>
+						<option value="">使用手册</option>
+					</select>
+					<input type="text" name="title" class="input" value="{:I('title')}" placeholder="请输入">
+					<button type="submit" class="search_btn font_ico">&nbsp;</button>
+				</form>
+			</div>
+			<input type="button" url="<?=U('del',array("status"=>'1'))?>" class="btn ajax-post" target-form="ids" value="审核" />
+			<input type="button" url="<?=U('del',array("status"=>'-1'))?>" class="btn confirm ajax-post" target-form="ids" value="取消审核" />
+			<a class="btn" href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>">添加</a>
+			<input type="button" url="<?=U('del')?>" class="btn confirm ajax-post" target-form="ids" value="删除" />
+		</div>-->
+	</div>
+	
+  <div class="search_box cf">
+  	<div class="f_l">
+    	<div class="search_advanced_box <?php /* 当需要默认出现高级搜索时加上class show */ ?>">
+        <select name="title" class="select">
+						<option value="">模板示例</option>
+						<option value="">功能示例</option>
+						<option value="">使用手册</option>
+					</select>
+					<input type="text" name="title" class="input" value="{:I('title')}" placeholder="请输入">
+          <input type="submit" class="btn submit" value="查找">
+        </form>
+      </div>
+    	
+    </div>
+    <div class="f_r">
+    	<a class="btn btn_add" href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>">添加</a>
+      <input type="button" url="<?=U('del')?>" class="btn btn_del confirm ajax-post" target-form="ids" value="删除" />
+			<input type="button" url="<?=U('del',array("status"=>'1'))?>" class="btn btn_use ajax-post" target-form="ids" value="审核" />
+			<input type="button" url="<?=U('del',array("status"=>'-1'))?>" class="btn btn_no ajax-post" target-form="ids" value="取消审核" />
+    </div>
+  </div>
+  <div class="list">
+	<table>
+		<tr>
+			<th width="20"><label><input type="checkbox" class="check_all" value=""></label></th>
+			<th align="left">标题</th>
+			<th align="left" width="200">分类</th>
+			<th width="90">发布时间</th>
+			<th width="100">发布人</th>
+			<th width="60">推荐</th>
+			<th width="60">审核状态</th>
+			<th width="110">操作</th>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+    <tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+    <tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+    <tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+    <tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+    <tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+    <tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico rec">推荐</a></td>
+			<td align="center"><a href="" class="font_ico enable">审核</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico del ajax-get">删除</a></td>
+		</tr>
+		<tr>
+			<td><label><input type="checkbox" class="ids" name="ids[]" value="1"></label></td>
+			<td>标题演示数据</td>
+			<td>模板示例</td>
+			<td align="center">2014-12-21</td>
+			<td align="center">康利民</td>
+			<td align="center"><a href="" class="font_ico cancel_rec">取消</a></td>
+			<td align="center"><a href="" class="font_ico disabled">取消</a></td>
+			<td align="center"><a href="<?=U('Backend/Demo/Index/index',array('tpl'=>'form'))?>" class="font_ico edit">修改</a><a href="<?=U('del',array('ids'=>1))?>" class="font_ico confirm del ajax-get">删除</a></td>
+		</tr>
+	</table>
+  </div>
+	<div class="page">
+		<a href="" class="first">首页</a>
+		<a href="" class="prev">上一页</a>
+		<a href="">1</a>
+		<a href="">2</a>
+		<a href="" class="cur">3</a>
+		<a href="">4</a>
+		<a href="">5</a>
+		<a href="">6</a>
+		<a href="">7</a>
+		<a href="">8</a>
+		<a href="">9</a>
+		<a href="">10</a>
+		<a href="">12</a>
+		<a href="">13</a>
+		<a href="">14</a>
+		<a href="">15</a>
+		<a href="" class="next">下一页</a>
+		<a href="" class="end">末页</a>
+	</div>
+</block>

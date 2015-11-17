@@ -1,0 +1,52 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <css href="__CSS__/classes.css" />
+    <include file='Public/shop_top' />
+                <!--company right side S-->
+                <div class="col-xs-9 company_right_side">
+                    <div class="server_info_box">
+                        <h4 class="exp_title">基本信息</h4>
+                        <p class="f_14"><?=htmlspecialchars_decode($shop_info['description_now'])?></p>
+                        <?php if(empty($shop_info['description_now'])){?>
+							<include file="Public/nodata" />
+						<?php }?>
+                    </div>
+                    <div class="server_info_box mt_20">
+                        <h4 class="exp_title">过往经历</h4>
+                        <div class="exp_item_box">
+						<?php
+							foreach($shop_info_old as $k=>$v){
+						?>
+                            <h5><?=date('Y/m',$v['start_time'])?>-<?=date('Y/m',$v['end_time'])?></h5>
+                            <p><?=$v['content']?></p>
+						<?php
+							}
+						?>
+                        </div>
+                        <?php if(empty($shop_info_old)){?>
+							<include file="Public/nodata" />
+						<?php }?>
+                    </div>
+                    <div class="server_info_box mt_20">
+                        <h4 class="exp_title">成功分享</h4>
+                        <div class="exp_item_box">
+						<?php
+							foreach($shop_info_new as $k=>$v){
+						?>
+                            <h5><?=date('Y/m',$v['start_time'])?>-<?=date('Y/m',$v['end_time'])?></h5>
+                            <p><?=$v['content']?></p>
+						<?php
+							}
+						?>
+                        </div>
+                        <?php if(empty($shop_info_new)){?>
+							<include file="Public/nodata" />
+						<?php }?>
+                    </div>
+                </div>
+                <!--company right side E-->
+            </div>
+        </div>
+    </div>
+   <include file='Public/shop_sidebar' />
+</block>

@@ -1,0 +1,505 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <css href="__CSS__/classes.css" />
+    <div class="container">
+        <div>
+            <div class="row">
+                <!--breadNav S-->
+                <ol class="col-xs-9 lan_class_bread_yqc breadcrumb">
+                    <li><a href="<?=U('/')?>">首页</a></li>
+                    <li>语言分类</li>
+                </ol>
+                <!--breadNav E-->
+                <div class="col-xs-3 member_count_yqc">共<span class="org"><?=$count?></span>位商家<i class="fa fa-angle-up js_condit_ctl"></i></div>
+            </div>
+            <!-- conditions S-->
+            <dl class="dl-horizontal cf_l conditions_yqc">
+                <dt>源语言：</dt>
+                <dd>
+                    <div class="lv1 js_cur_language">
+                    	<a <?php if(empty($param['language_id'])){ echo 'class="active"';} ?> value_id='0' href="<?=U('',array_merge(I('get.'),array('language_id'=>0)))?>">全部</a>
+					<?php
+						/*循环源语言*/
+						foreach($language as $row){
+							if($row['pid']>0 && $row['id']!=I('to_language_id')){
+					?>
+						<a value_id='<?=$row['id']?>' href="<?=U('',array_merge(I('get.'),array('language_id'=>$row['id'])))?>"><?=$row['title']?></a>
+					<?php
+							}
+						}
+					?>
+                    </div>
+                </dd>
+                <dt>目标语言：</dt>
+                <dd>
+                    <div class="lv1 js_cur_to_language">
+                    	<a <?php if(empty($param['to_language_id'])){ echo 'class="active"';} ?> value_id='0' href="<?=U('',array_merge(I('get.'),array('to_language_id'=>0)))?>">全部</a>
+					<?php
+						/*循环目标语言*/
+						foreach($language as $row){
+							if($row['pid']>0 && $row['id']!=I('language_id')){
+					?>
+						<a value_id='<?=$row['id']?>' href="<?=U('',array_merge(I('get.'),array('to_language_id'=>$row['id'])))?>"><?=$row['title']?></a>
+					<?php
+							}
+						}
+					?>
+                    </div>
+                </dd>
+                <dt>技能：</dt>
+                <dd class="js_ability">
+                    <div class="lv1 js_cur_ability">
+                    	<a <?php if(empty($param['ability_id'])){ echo 'class="active"';} ?> value_id='0' href="<?=U('',array_merge(I('get.'),array('ability_id'=>0)))?>">全部</a>
+					<?php
+						/*循环服务类型*/
+						foreach($ability as $row){
+					?>
+                        <a value_id='<?=$row['id']?>' href="<?=U('',array_merge(I('get.'),array('ability_id'=>$row['id'])))?>"><?=$row['title']?></a>
+					<?php
+						}
+					?>
+                    </div>
+					
+					
+					<?php
+						/*循环服务类型*/
+						foreach($ability as $row){
+					?>
+                    <div class="lv2 js_ability_child js_ability_child_<?=$row['id']?>" value_id="<?=$row['id']?>" <?php if($param['ability_id']!=$row['id']){  echo 'style="display:none;"'; }?>>
+						<?php
+							/*循环服务类型子分类*/
+							foreach($row['_child'] as $_row){
+						?>
+                        <p>
+                            <strong class="blue"><?=$_row['title']?>：</strong>
+                           <!--   <a value_id="<?=$_row['id']?>" href="<?=U('',array_merge(I('get.'),array('ability_id'=>$_row['id'])))?>">全部</a>-->
+							<?php
+								/*循环服务类型子分类的属性*/
+								foreach($_row['_child'] as $_row_child){
+								
+							?>
+                            <a value_id="<?=$_row_child['id']?>" href="<?=U('',array_merge(I('get.'),array('ability_id'=>$_row_child['id'])))?>"><?=$_row_child['title']?></a>
+							<?php
+								}
+							?>
+                        </p>
+						<?php
+							}
+						?>
+                    </div>
+					<?php
+						}
+					?>
+                </dd>
+                <dt>行业：</dt>
+                <dd>
+                    <div class="lv1 js_cur_industry">
+                    	<a value_id="0" <?php if(empty($param['industry_id'])){ echo 'class="active"';} ?> href="<?=U('',array_merge(I('get.'),array('industry_id'=>0)))?>">全部</a>
+					<?php
+						/*循环行业类型子分类*/
+						foreach($industry as $row){
+							if($row['pid']>0){
+					?>
+                        <a value_id="<?=$row['id']?>" href="<?=U('',array_merge(I('get.'),array('industry_id'=>$row['id'])))?>"><?=$row['title']?></a>
+					<?php
+							}
+						}
+					?>
+                    </div>
+                </dd>
+                <dt>身份：</dt>
+                <dd>
+                    <div class="lv1 js_type">
+                    	<a <?php if(empty($param['type'])||$param['type']==3){ echo 'class="active"';} ?> value_id="0" href="<?=U('',array_merge(I('get.'),array('type'=>0)))?>">全部</a>
+						<?php
+							/*循环店铺种类*/
+							foreach($seller_type as $k=>$val){
+						?>
+							<a value_id="<?=$k?>" href="<?=U('',array_merge(I('get.'),array('type'=>$k)))?>"><?=$val?>翻译</a>
+						<?php
+							}
+						?>
+                    </div>
+                </dd>
+            </dl>
+            <!-- conditions E-->
+            <div class="row">
+                <!-- left content S-->
+                <div class="col-xs-9">
+				<form action='<?=U('',I('get.'))?>'>
+                    <ul class="sort_box_yqc nav nav-tabs">
+                        <li <?php if(empty($order)){ echo 'class="active"'; }?>><a href="<?=U('index',param(array('order'=>0)))?>">综合排序</a></li>
+                        <li <?php if($order==1){ echo 'class="active"'; }?>><a href="<?=U('index',param(array('order'=>1)))?>">星级<?php if($order==1){ echo '由高到低'; }?></a></li>
+                        <li <?php if($order==2){ echo 'class="active"'; }?>><a href="<?=U('index',param(array('order'=>2)))?>">评价数<?php if($order==2){ echo '由高到低'; }?></a></li>
+                        <form action="<?=U('index',param())?>" method="get">
+                        <li class="ml_10">
+                            <span>价格</span><input type="text" name='min_price' class="sort_price_input" value="<?=$min_price?>"/>
+                            <span>-</span><input type="text" name='max_price' class="sort_price_input" value="<?=$max_price?>"/>
+                        </li>
+                        <li class="ml_10">
+							<input type="text" class="sort_search_input" name="keywords" value="<?=$keywords?>" placeholder="在结果中搜索"/>
+							<input type="submit" class="btn btn_sort_yqc" value="确定"/>
+                        </li>
+                        </form>
+                        <!-- <li class="pull-right">
+                            <a href="javascript:;" class="sort_prev"><i class="fa fa-angle-left"></i></a>
+                            <span>1/16</span>
+                            <a href="javascript:;" class="sort_next"><i class="fa fa-angle-right"></i></a>
+                        </li> -->
+                    </ul>
+					</form>
+                    <ul class="company_lists_yqc">
+						<?php 
+							foreach($result as $row){
+						?>
+                        <li class="company_item buy recommend clearfix">
+							<?php 
+								if($row['recommend'] == 1){
+							?>
+                            <i class="recommend_tip"></i>
+							<?php 
+								}
+							?>
+							<?php
+								if(in_array($row['id'],$buy_shop)){
+							?>
+                            <i class="buy_mark"></i>
+                            <?php
+                            	}
+                            ?>
+                            
+                            <div class="item_img_yqc"><a href="<?=U('detail',array('shop_id'=>$row['id']))?>"><img src="<?=$row['logo']?>"/></a></div>
+                            <div class="item_info_yqc clearfix">
+                                <div class="item_title col-xs-12">
+                                    <a href="<?=U('detail',array('shop_id'=>$row['id']))?>"><?=$row['title']?></a>
+									<?php 
+										/*循环擅长的语言*/
+										foreach($row['good_at_arr'] as $_row){
+									?>
+                                    <span class="label label_lang"><?=$_row['title']?></span>
+									<?php 
+										}
+									?>
+                                </div>
+                                <div class="item_base_info_yqc col-xs-7">
+                                    <p class="desc"><?=$row['slogan']?></p>
+                                    <p>擅长：
+										<?php 
+											/*循环擅长的语言*/
+											foreach($row['good_at_arr'] as $_row){
+										?>
+										<span><?=$_row['title']?></span>
+										<?php 
+											}
+										?>
+									
+									</p>
+                                    <p>身份：<?=$seller_type[$row['type']]?></p>
+                                    <!-- <p>译龄：<?=$row['translate_year']?>年<i class="fa fa-map-marker"></i><?=$row['address']?></p> -->
+                                <p>译龄：<?=$row['translate_year']?>年<i class="fa fa-map-marker"></i><?php foreach($address_data as $value){if($row['member_id'] == $value['member_id'] && $row['type'] == 1){echo $value['path'];}else if($row['member_id'] == $value['member_id'] && $row['type'] == 2){print_r($value['path'].$row['address']);}}?></p>
+                                </div>
+                                <div class="item_deal_info_yqc col-xs-3">
+                                    <p><strong class="org f_14">￥：<?=$row['min_price']?>元</strong>起</p>
+                                    <p><?=$row['comment_num']?>条评价</p>
+                                    <p>提供了<strong class="red"><?=$row['service_times']?></strong>次服务</p>
+                                    <div class="star_progress_yqc"><div class="bar" style="width:<?php echo ($row['star_num']/5)*100; ?>%"></div></div>
+                                </div>
+                                <div class="item_identify_info_yqc col-xs-2">
+                                	<?php
+                                		if($row['is_identity_confirm']==1){
+                                	?>
+                                    <p><i class="icon_identify id"></i>身份认证</p>
+                                    <?php
+                                    	}
+										if($row['is_qualified_comfirm']){
+                                    ?>
+                                    <p><i class="icon_identify qua"></i>资质认证</p>
+                                    <?php
+                                    	}
+                                    ?>
+                                </div>
+                            </div>
+                        </li>
+						<?php 
+							}
+						?>
+                    </ul>
+					<?php if(empty($result)){?>
+						<include file="Public/nodata" />
+					<?php }?>	
+					<div class="pages text-center">
+						<?=$page?>
+						<?php
+							if(trim($page)){
+						?>
+						<span>共<?=$page_count?>页</span>
+						<span>&nbsp;</span>
+						<span>跳转至</span>
+						<input type="text" name='p' />
+						<span>页</span>
+						<a href="<?=U('')?>" class='go_to_page' >确定</a>
+						<?php
+							}
+						?>
+					</div>
+                </div>
+                <!-- left content E-->
+                <!-- right content S-->
+                <div class="col-xs-3 ie7_md_3">
+                    <div class="classes_side_yqc">
+                        <!--side login S-->
+                        <div class="side_login_box_yqc">
+						<?php
+							if(session('home_member_id')){
+						?>
+						<!-- TODO:登录后样式 -->
+							<div class="media">
+                                <div class="media-left">
+                                    <a href="#" class="pto_ZH">
+                                    <img src="__ROOT__/icon/<?=session('home_member_id')?>_avatar_big.jpg"  onerror="this.src='__IMG__/sc_template/onerror_pic.png'" class="img-circle media-object"/>
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <p>hi,<a href="<?=U('User/Index/index')?>"><?=session('nickname')?session('nickname'):session('username')?></p>
+                                    
+                                    <p>欢迎来到N邦翻译</p>
+									<a href="<?=U('/User/Login/loginout')?>">退出</a>
+                                    <!-- <a href="<?=U('User/Login/index')?>" class="red f_14 bold">登录</a> -->
+                                </div>
+                            </div>
+							<div class="btn-group" role="group">
+								<p>上N邦翻译，找最好的翻译</p> 
+                            </div>
+
+						<?php
+							}else{
+						?>
+                            <div class="media">
+                                <div class="media-left"><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle media-object"/></a></div>
+                                <div class="media-body">
+                                    <p>hi,</p>
+                                    <p>您还没有登录哟~</p>
+                                    <a href="<?=U('User/Login/index')?>" class="red f_14 bold">登录</a>
+                                </div>
+                            </div>
+                            <div class="btn-group" role="group">
+								<a href="<?=U('User/Register/index',array('type'=>'1'))?>" class="btn btn_org" >用户注册</a>
+								<a href="<?=U('User/Register/index',array('type'=>'2'))?>" class="btn btn_org" >个译注册</a>
+								<a href="<?=U('User/Register/index',array('type'=>'3'))?>" class="btn btn_org" >公司注册</a>
+                            </div>
+						<?php
+							}
+						?>
+                        </div>
+                        <!--side login E-->
+                        <!--side fast search S-->
+                        <p class="side_title">快速查找翻译</p>
+                        <form action="<?=U('/Home/Classes/interpret')?>" method="post" class="js_form">
+                        <select class="form-control select_yqc" name="language_id">
+                            <option value="0">请选择源语言</option>
+                            <?php
+                            	foreach($language as $row){
+									if($row['pid']>0){
+                            ?>
+                            <option value="<?=$row['id']?>"><?=$row['title']?></option>
+                            <?php
+                            		}
+                            	}
+                            ?>
+                        </select>
+                        <select class="form-control select_yqc" name="to_language_id">
+                            <option value="0">请选择目标语言</option>
+                            <?php
+                            	foreach($language as $row){
+									if($row['pid']>0){
+                            ?>
+                            <option value="<?=$row['id']?>"><?=$row['title']?></option>
+                            <?php
+                            		}
+                            	}
+                            ?>
+                        </select>
+                        <select class="form-control select_yqc" name="type">
+                            <option value="0">请选择译者身份</option>
+                            <option value="3">全部</option>
+                            <option value="2">商家译者</option>
+                            <option value="1">个人译者</option>
+                        </select>
+                        <input type="text" name="name" class="form-control input_yqc" placeholder="您的姓名"/>
+                        <input type="text" name="telephone" class="form-control input_yqc" placeholder="您的手机号码"/>
+                        <p class="ta_c phone_num"><i class="fa fa-phone"></i>400-800-88888</p>
+                        <input type="submit" class="btn btn_search ajax-post" target-form="js_form" value="帮我推荐"/>
+                        </form>
+                        <!--side fast search E-->
+                        <!--side viewed S-->
+                        <?php 
+							if(cookie('view_shops')){
+							$view_shops =json_decode(cookie('view_shops'),true);
+							//var_dump($view_shops);
+						?>
+						<p class="side_title">最近浏览</p>
+                        <dl class="viewed_list dl-horizontal">
+                            <?php 
+								foreach($view_shops as $val){
+									$row = json_decode($val,true);
+							?>
+							<dt>
+                                <a class="pic_ZH" href="<?=U('/Home/Classes/detail',array('shop_id'=>$row['id']))?>">
+                                    <img src="__ROOT__/<?=$row['logo']?>" onerror="this.src='__IMG__/sc_template/onerror_pic.png'"/>
+                                </a>
+                            </dt>
+                            <dd>
+                                <a href="<?=U('/Home/Classes/detail',array('shop_id'=>$row['id']))?>" class="f_14 org"><?=$row['title']?></a>
+                                <p>提供过<?=$row['service_times']?>次翻译服务</p>
+                                <p>擅长：
+									<?php 
+										foreach($row['good_at_arr'] as $k=>$_row){
+											if($k<=1){
+												echo $_row['title'],'&nbsp;';
+											}
+										}
+									?>
+								</p>
+                            </dd>
+							<?php 
+								}
+							?>
+                           <!--  <dt><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></dt>
+                            <dd>
+                                <a href="#" class="f_14 org">rememberl娜娜</a>
+                                <p>提供过3000次翻译服务</p>
+                                <p>擅长：英语 法语</p>
+                            </dd>
+                            <dt><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></dt>
+                            <dd>
+                                <a href="#" class="f_14 org">rememberl娜娜</a>
+                                <p>提供过3000次翻译服务</p>
+                                <p>擅长：英语 法语</p>
+                            </dd>
+                            <dt><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></dt>
+                            <dd>
+                                <a href="#" class="f_14 org">rememberl娜娜</a>
+                                <p>提供过3000次翻译服务</p>
+                                <p>擅长：英语 法语</p>
+                            </dd>
+                            <dt><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></dt>
+                            <dd>
+                                <a href="#" class="f_14 org">rememberl娜娜</a>
+                                <p>提供过3000次翻译服务</p>
+                                <p>擅长：英语 法语</p>
+                            </dd>
+                            <dt><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></dt>
+                            <dd>
+                                <a href="#" class="f_14 org">rememberl娜娜</a>
+                                <p>提供过3000次翻译服务</p>
+                                <p>擅长：英语 法语</p>
+                            </dd> -->
+                        </dl>
+						<?php 
+							}
+						?>
+                        <!--side viewed E-->
+                        <!--side common question S-->
+                        <p class="side_title top_line">常见问题</p>
+                        <ul class="common_question_yqc">
+							<?php 
+								$i =1;
+								foreach($common_problem as $row){
+							?>
+                            <li><a href="<?=U('Help/index',array('id'=>$row['id'],))?>"><?=$i?>、<?=$row['title']?></a></li>
+							<?php 
+									$i++;
+								}
+							?><!-- 
+                            <li><a href="#">2、平台流程是怎样的？</a></li>
+                            <li><a href="#">3、平台流程是怎样的？</a></li>
+                            <li><a href="#">4、平台流程是怎样的？</a></li>
+                            <li><a href="#">5、平台流程是怎样的？</a></li>
+                            <li><a href="#">6、平台流程是怎样的？</a></li>
+                            <li><a href="#">7、平台流程是怎样的？</a></li>
+                            <li><a href="#">8、平台流程是怎样的？</a></li>
+                            <li><a href="#">9、平台流程是怎样的？</a></li> -->
+                        </ul>
+                        <!--side common question E-->
+                    </div>
+                </div>
+                <!-- right content E-->
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('.js_condit_ctl').click(function(){
+                $(this).toggleClass('fa-angle-down');
+                $('.conditions_yqc').toggle('');
+            })
+			
+			/*跳转指定页码	 李东*/
+			$(document).on('click','.go_to_page',function(){
+				page = $('input[name="p"]').val();
+				if(!isNaN(page)){
+					//url_old = $(this).attr('href');
+					//url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+					//$(this).attr({'href':url});
+						/*跳转指定页@刘巧*/
+					url_old=window.location.href;
+					var url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+					$(this).attr({'href':url});
+				}else{
+				   alert("请输入数字");
+				   return false;
+				}
+			});
+			
+        })
+		$(function(){
+			/*技能下分类切换以及样式更改*  李东*/
+			$('.js_cur_ability a').on('click',function(){
+				var bility = $(this).attr('value_id');
+				$('.js_cur_ability a').removeClass('active');
+				$(this).addClass('active');
+				$('.js_ability_child').hide();
+				$('.js_ability_child_'+bility).show();
+			});
+		})
+		
+		<?php 
+			/*判断已选择的参数，以及给对应参数添加样式*  李东*/
+			if($param){
+		?>
+			var language_id	= '<?=$param['language_id']?>';
+			var to_language_id	= '<?=$param['to_language_id']?>';
+			var	ability_id	= '<?=$param['ability_id']?>';
+			var	industry_id	= '<?=$param['industry_id']?>';
+			var	type = '<?=$param['type']?>';
+			
+			/*已选中的源语言添加样式*/
+			if(language_id){
+				$('.js_cur_language a[value_id="'+language_id+'"]').addClass('active');
+			}
+			/*已选中的目标语言添加样式*/
+			if(to_language_id){
+				$('.js_cur_to_language a[value_id="'+to_language_id+'"]').addClass('active');
+			}
+			/*已选中的技能以及上级添加样式*/
+			if(ability_id){
+				var pid = $('.js_ability a[value_id="'+ability_id+'"]').parent().parent().attr('value_id');
+				$('.js_ability a[value_id="'+ability_id+'"]').addClass('active');
+				$('.js_cur_ability a[value_id="'+pid+'"]').addClass('active');
+				$('.js_ability_child_'+pid).show();
+			}/*else{
+			    $('.js_ability_child').show();
+			}*/
+			/*已选中的行业添加样式*/
+			if(industry_id){
+				$('.js_cur_industry a[value_id="'+industry_id+'"]').addClass('active');
+			}
+			/*已选中的身份添加样式*/
+			if(type){
+				$('.js_type a[value_id="'+type+'"]').addClass('active');
+			}			
+		<?php 
+			}
+		?>
+</script>
+</block>

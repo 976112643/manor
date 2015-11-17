@@ -1,0 +1,47 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<div class="dataset_title f_16"><span>修改呢称</span><i></i></div>
+					<div class="p_l_20">
+						<div class="table-responsive">
+							<form id="demo_form_sw" class="form-horizontal demo_form_sw" action="<?=U('User/UpdateName/index')?>" method='post'>
+							<table class="table table-bordered table_data_j">
+								<tr>
+									<th>当前呢称</th>
+									<td>
+										<input type='text' name='old_nickname' class="input-sm" size="30" readonly='readonly' value='<?=$member_info['nickname']?$member_info['nickname']:'您还未设置昵称'?>'/>
+									</td>
+								</tr>
+								<tr>
+									<th>更换呢称<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<input type='text' name='nickname' class="input-sm" size="30" id='js_register_pop' datatype="*2-16" errormsg="" />
+										<span class="Validform_checktip"></span>
+									</td>
+								</tr>
+							</table>
+							<div class="m_l_160">
+								<input type='submit' class='btn btn-warning' value='提交' />
+								<!-- <a href="#this" class="btn btn-warning">提交</a> -->
+								<a href="#this" class="btn btn-default">取消</a>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		 $(function(){
+            //表单验证
+            $(".demo_form_sw").Validform({
+            	tiptype:3
+            });
+        })
+	</script>
+</block>

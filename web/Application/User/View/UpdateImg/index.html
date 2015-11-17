@@ -1,0 +1,16 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<?php
+						$uc_avatar='http://'.$_SERVER['HTTP_HOST']."__ROOT__"."/uc_avatar_upload/upload.php?uid=".session('home_member_id');
+					?>
+					<iframe src="<?=$uc_avatar?>" style="width:447px;height:250px;border:solid 1px #ccc; margin:10px;" frameborder="none" scrolling="no"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+</block>

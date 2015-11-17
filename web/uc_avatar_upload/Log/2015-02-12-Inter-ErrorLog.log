@@ -1,0 +1,2 @@
+2015-02-12 03:47:41	/rryf/code/uc_avatar_upload/upload.php?uid=29	ERROR	E_NOTICE	Code 8	Undefined index: HTTP_USER_AGENT	D:\htdocs\rryf\code\uc_avatar_upload\Lib\Controller\AvatarFlashUpload.php	Line 57
+2015-02-12 03:47:41	/rryf/code/uc_avatar_upload/upload.php?uid=29	ERROR	E_NOTICE	Code 8	Undefined index: HTTP_USER_AGENT	D:\htdocs\rryf\code\uc_avatar_upload\Lib\Controller\AvatarFlashUpload.php	Line 62

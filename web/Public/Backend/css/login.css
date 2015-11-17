@@ -1,0 +1,41 @@
+@keyframes rotate {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
+}
+body{background:url(../img/bg/bg.jpg) no-repeat center center; background-color:#1d8dd9;}
+
+.input{border:#fff solid 2px;padding:8px;}
+
+.login_box{
+	width:260px;
+	height:360px;
+	margin:11% auto;top:0;bottom:0;
+}
+.logo_box{
+	position:relative;
+	margin:30px auto;
+	margin-bottom:40px;
+	height:100px;
+	width:100px;
+}
+.logo img{width:100%;height:100%;}
+.login_form{width:260px;}
+
+.input_box{margin-bottom:15px; width:210px; border-radius:20px; padding:0 25px; overflow:hidden; background:#fff;}
+.input_box .input{width:160px; padding:8px 0; background:#fff;}
+.pwd{ line-height:30px; color:#fff;font-size:12px; margin-bottom:5px;}
+.pwd a{ color:#fff; text-decoration:underline; }
+.pwd input[type='checkbox']{ vertical-align:middle;}
+.btn_box{ text-align:center;}
+.btn_box .btn{background:url(../img/bg/header.png) repeat-x;width:260px;padding:8px 0;margin:0;line-height:normal;height:auto;cursor:pointer;font-family:"Microsoft YaHei",verdana;font-size:18px;transition:0.3s;}
+.btn_box .btn:hover{background-image:url(../img/bg/btn_bg.png);}
+.btn_box .ajax-post{ background-image:url(../img/bg/login_btn.png); width:165px; height:40px; border-radius:20px; overflow:hidden;}
+.btn_box .ajax-post:hover{ background-image:url(../img/bg/login_btnHover.png);}
+
+.foot_index{ background:url(../img/bg/foot_bg.jpg) center center no-repeat; width:100%; height:65px; text-align:center; color:#fff; font-size:12px; padding:20px 0;}
+.foot_index ul{ width:350px; margin:0 auto; padding-left:25px;}
+.foot_index ul li{padding:0 15px; border-right:1px solid #317bad; border-left:1px solid #349ddf; float:left;}
+.foot_index ul li a{ color:#fff; display:block;}
+.foot_index ul li a:hover{ text-decoration:underline;}
+.foot_index ul li:first-child{ border-left:hidden;}
+.foot_index ul li:last-child{ border-right:none;}

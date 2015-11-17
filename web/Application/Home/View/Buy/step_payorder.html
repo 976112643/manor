@@ -1,0 +1,95 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container step_box">
+        <include file="Public/buyStepbar"/>
+        <div class="m_lr_15 maxw_915">
+            <!-- 支付订单 start -->
+            <div class="ordertitle_sw f_16">
+                <a id="linktitle_sw" class="paybtn_on_sw">在线支付</a>
+                <a id="activetitle_sw">余额支付</a>
+            </div>
+            <div class="payorder_sw">
+                <form>
+                    <div class="padding_sw paddingbotm_sw" id="pic_button_sw">
+                        <label class="radio-inline">
+                            <input type="radio" name="pay" checked="checked" value="" style="display:none;">
+                            <a class="ashyborder_sw">
+                                <img class="img-responsive center-block" src="__IMG__/weixin_nb.jpg">
+                            </a>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="pay" value="" style="display:none;"> 
+                            <a class="ashyborder_sw">
+                                <img class="img-responsive center-block" src="__IMG__/weixin_nb.jpg">
+                            </a>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="pay" value="" style="display:none;"> 
+                            <a class="ashyborder_sw">
+                                <img class="img-responsive center-block" src="__IMG__/zaixian_nb.jpg">
+                            </a>
+                        </label>
+                    </div>
+                    <ul class="pay_sw payorderbtn_sw clearfix f_w" id="paybtn1_sw">
+                        <li>
+                            <span class="f_14">应付总额:</span><i class="c_ff7302">￥</i><span class="c_ff7302 f_25">10,0000.0</span>
+                        </li>
+                        <li><input class="f_16 c_fff button_sw bg_c_ffb902" type="button" value="确认交易"></li>
+                    </ul>
+                </form>
+                <form>
+                <ul class="balancepay_sw mt20 cf" id="pay_none_sw">
+                    <li class="f-14">您的余额为：<b class="c_ff4e00 f_20">￥0.00</b></li>
+                    <li>请输入密码：<input type="password" name="" size="20" class="pay_input"><a href="/User/Account/index.html" class="red">充值</a></li>
+                </ul>
+                <ul class="pay_sw payorderbtn_sw clearfix f_w" id="paybtn2_sw">
+                    <li>
+                        <span class="f_14">应付总额:</span><i class="c_ff7302">￥</i><span class="c_ff7302 f_25">10,0000.0</span>
+                    </li>
+                    <li><input class="f_16 c_fff button_sw bg_c_ffb902" type="button" value="确认交易"></li>
+                </ul>
+                </form>
+            </div>
+            
+            <!-- end 支付订单 -->
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload=function(){
+            function getId(id){
+                return typeof id==='string'?document.getElementById(id):id;
+            }
+            var button=getId("pic_button_sw");
+            var link=button.getElementsByTagName("a");
+            for(var i=0;i<link.length;i++){
+                link[i].id=i;//为link里的li设置id
+                link[0].className="redborder_sw";
+                link[i].onclick=function(){
+                    for (var j = 0; j < link.length; j++) {
+                        link[j].className="ashyborder_sw";
+                    }
+                    this.className="";
+                    this.className="redborder_sw";
+                }
+            }
+            document.getElementById('activetitle_sw').onclick=function(){
+                getId('linktitle_sw').className="";
+                getId('activetitle_sw').className="paybtn_on_sw";
+                getId('pic_button_sw').style.display="none";
+                getId('paybtn1_sw').style.display="none";
+                getId('pay_none_sw').style.display="block";
+                getId('paybtn2_sw').style.display="block";
+            }
+            getId('linktitle_sw').onclick=function(){
+                if(getId('pic_button_sw').style.display=="none"){
+                    getId('linktitle_sw').className="paybtn_on_sw";
+                    getId('activetitle_sw').className="";
+                    getId('pic_button_sw').style.display="block";
+                    getId('paybtn1_sw').style.display="block";
+                    getId('paybtn2_sw').style.display="none";
+                    getId('pay_none_sw').style.display="none";
+                }
+            }
+        }
+    </script>
+</block>

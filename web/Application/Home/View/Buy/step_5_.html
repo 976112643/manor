@@ -1,0 +1,179 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <css href="__CSS__/classes.css" />
+    <div class="container">
+        <div class="step5_inner_box_yqc row">
+            <include file="Public/buyStepbar" />
+            <h5 class="clearfix quality_title_yqc">
+                <strong class="pull-left">质量评价</strong>其他商家，需要您的建议哦！
+            </h5>
+            <!-- submit comments S-->
+            <div class="quality_box_yqc clearfix">
+                <div class="quality_side_title_yqc">请为商品填写评价</div>
+                <div class="quality_main_box_yqc">
+                    <div class="evaluation_types_yqc">
+                        <label><i class="face_icon smile"></i><input type="radio">好评</label>
+                        <label><i class="face_icon normal"></i><input type="radio">中评</label>
+                        <label><i class="face_icon sad"></i><input type="radio">差评</label>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>商品评价</th>
+                            <td><textarea class="textarea" placeholder="请填写商品评价"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th>晒图片</th>
+                            <td><img src="__IMG__/default_img.jpg" class="default_img_yqc"><input type="button" class="btn btn_upload_img_yqc" value="上传图片"/></td>
+                        </tr>
+                    </table>
+                    <div class="clearfix"><input type="submit" class="btn btn_evaluation_yqc" value="提交评价"></div>
+                </div>
+            </div>
+            <!-- submit comments E-->
+            <!-- service score S-->
+            <div class="quality_box_yqc clearfix">
+                <div class="quality_side_title_yqc">请为本次服务打分</div>
+                <div class="quality_main_box_yqc">
+                    <ul class="clearfix service_score_yqc">
+                        <li class="score_num"><strong>4.0</strong>分</li>
+                        <li>
+                            <div>
+                                <span>速度：</span>
+                                <div class="star_progress_yqc edit">
+                                    <div class="bar" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="score_desc_yqc"><i class="tip_arrow"></i><em>4分 满意</em></div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>质量：</span>
+                                <div class="star_progress_yqc edit">
+                                    <div class="bar red_star" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="score_desc_yqc red_score"><i class="tip_arrow"></i><em>5分 惊喜</em></div>
+                        </li>
+                        <li>
+                            <div>
+                                <span>服务：</span>
+                                <div class="star_progress_yqc edit">
+                                    <div class="bar" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="score_desc_yqc"><i class="tip_arrow"></i><em>4分 满意</em></div>
+                        </li>
+                    </ul>
+                    <div class="all_comments_box">
+                        <div class="comments_sort clearfix">
+                            <strong>全部评价</strong>
+                            <div class="radio-inline">
+                                <label><input type="radio">好评（368）</label>
+                            </div>
+                            <div class="radio-inline">
+                                <label><input type="radio">中评（368）</label>
+                            </div>
+                            <div class="radio-inline">
+                                <label><input type="radio">差评（368）</label>
+                            </div>
+                            <select class="pull-right selecter">
+                                <option>默认排序</option>
+                                <option>默认排序</option>
+                                <option>默认排序</option>
+                                <option>默认排序</option>
+                            </select>
+                        </div>
+                        <ul class="comments_list">
+                            <li class="clearfix">
+                                <div class="comment_img"><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></div>
+                                <div class="comment_info">
+                                    <div class="review_type"><i class="face_icon smile"></i>好评</div>
+                                    <p>一直在这家翻译，做了好多次了，每次都翻译的特别好，客服也特别好，翻译真正做到了信达雅希望店家以后继续努力，我们也会给与继续的支持。相信店家一定能做的更好</p>
+                                    <div class="img_list">
+                                        <img src="__IMG__/comments_img.jpg">
+                                        <img src="__IMG__/comments_img.jpg">
+                                        <img src="__IMG__/comments_img.jpg">
+                                    </div>
+                                    <p>2015-06-15 所属技能：笔译</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="comment_img"><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></div>
+                                <div class="comment_info">
+                                    <div class="review_type"><i class="face_icon normal"></i>中评</div>
+                                    <p>一直在这家翻译，做了好多次了，每次都翻译的特别好，客服也特别好，翻译真正做到了信达雅希望店家以后继续努力，我们也会给与继续的支持。相信店家一定能做的更好</p>
+                                    <div class="img_list">
+                                        <img src="__IMG__/comments_img.jpg">
+                                        <img src="__IMG__/comments_img.jpg">
+                                        <img src="__IMG__/comments_img.jpg">
+                                    </div>
+                                    <p>2015-06-15 所属技能：笔译</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="comment_img"><a href="#"><img src="__IMG__/company_img.jpg" class="img-circle"/></a></div>
+                                <div class="comment_info">
+                                    <div class="review_type"><i class="face_icon sad"></i>差评</div>
+                                    <p>一直在这家翻译，做了好多次了，每次都翻译的特别好，客服也特别好，翻译真正做到了信达雅希望店家以后继续努力，我们也会给与继续的支持。相信店家一定能做的更好</p>
+                                    <p>2015-06-15 所属技能：笔译</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pager clearfix">
+                            <ul class="pull-left">
+                                <li><a href="#">上一页</a></li>
+                                <li class="on"><a href="#">1</a></li>
+                                <li class="hover"><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">3</a></li>
+                                <li class="more">…</li>
+                                <li><a href="#">18</a></li>
+                                <li><a href="#">下一页</a></li>
+                                <li class="jump"><span>共18页</span><span>跳转至</span><input type="text" class="num"/><span>页</span><input type="submit" value="确定" class="btn_pager_jump"/></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- service score E-->
+        </div>
+    </div>
+    <script>
+        //鼠标滑过打分
+        $('.star_progress_yqc.edit').mouseover(function(){
+            var bar = $(this).children('.bar');
+            var txt = $(this).parent().next('.score_desc_yqc').children('em');
+            var text = [
+                '1分 很不满意',
+                '2分 不满意',
+                '3分 一般',
+                '4分 满意',
+                '5分 惊喜'
+            ];
+            $(this).mousemove(function(e){
+                var x = parseInt(e.pageX - $(this).offset().left);
+                if(x > 80){
+                    x = 100;
+                }else if(x > 60){
+                    x = 80;
+                }else if(x > 40){
+                    x = 60;
+                }else if(x > 20){
+                    x = 40;
+                }else{
+                    x = 20;
+                }
+                bar.css('width',x+'%');
+                if(x/20 == 5){
+                    bar.addClass('red_star');
+                    txt.parent().addClass('red_score');
+                }else{
+                    bar.removeClass('red_star');
+                    txt.parent().removeClass('red_score');
+                }
+                txt.html(text[x/20-1]);
+            })
+        })
+    </script>
+</block>

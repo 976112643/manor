@@ -1,0 +1,43 @@
+<div class="partner">
+	<div class="container">
+	  	<h5>
+	  		<strong>合作伙伴</strong>
+	  	</h5>
+	  	<div>
+			<?php
+				$navigation = getNavigation();
+				$link_navigation = $navigation['links'];
+				foreach($link_navigation as $key => $row){
+			?>
+				<?php if($key){ /*如果不是数组第一个元素，前面加上竖线*/?>
+				<i></i>
+				<?php }?>
+			<a href="<?=completion_url($row['url'])?>" target='<?=$row['target']?>'><?=$row['title']?></a>
+			<?php
+				}
+			?>
+			
+	  		<!-- <a href="javascript:void(0)">法语之友乐园</a><i></i> 
+	  		<a href="javascript:void(0)">中译法研讨会博客</a><i></i>
+	  		<a href="javascript:void(0)">蒙特雷国际研究学院（MIIS）</a><i></i>
+	  		<a href="javascript:void(0)">国际会议口译员协会（AIIC）</a><i></i>
+	  		<a href="javascript:void(0)">中国对外翻译出版有限公司</a><i></i>
+	  		<a href="javascript:void(0)">随你译翻译中国</a><i></i>
+	  		<a href="javascript:void(0)">译网Proz.com</a><i></i>
+	  		<a href="javascript:void(0)">本地化世界网</a><i></i>
+	  		<a href="javascript:void(0)">全球化与本地化协会（GALA）</a><i></i>
+	  		<a href="javascript:void(0)">Multilingual</a><i></i>
+	  		<a href="javascript:void(0)">美国翻译协会（ATA）</a><i></i>
+	  		<a href="javascript:void(0)">Common Sense Advisory </a><i></i>
+	  		<a href="javascript:void(0)">国际翻译与跨文化研究协会（IATIS）</a><i></i>
+	  		<a href="javascript:void(0)">国际术语联盟（TermNet）</a><i></i>
+	  		<a href="javascript:void(0)">国际术语信息中心（Infoterm）</a><i></i>
+	  		<a href="javascript:void(0)">国际医疗口译员协会（IMIA）</a><i></i>
+	  		<a href="javascript:void(0)">翻译自动化用户协会（TAUS）</a><i></i>
+	  		<a href="javascript:void(0)">深圳市台电实业有限公司</a><i></i>
+	  		<a href="javascript:void(0)">思迪软件科技（深圳）有限公司</a><i></i>
+	  		<a href="javascript:void(0)">21英语教师网</a><i></i>
+	  		<a href="javascript:void(0)">传神联合（北京）信息技术有限公司</a> -->
+	  	</div>
+	</div> 
+</div>

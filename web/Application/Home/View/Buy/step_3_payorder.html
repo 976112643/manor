@@ -1,0 +1,101 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container step_box">
+        <include file="Public/buyStepbar"/>
+        <div class="m_lr_15 maxw_915">
+            <!-- 支付订单 start -->
+            <div class="ordertitle_sw f_16">
+                <a id="linktitle_sw" class="paybtn_on_sw">在线支付</a>
+                <a id="activetitle_sw">余额支付</a>
+            </div>
+            <div class="clearfix">
+                <form action="<?=U('/Home/Pay/index')?>" class="js_online_pay" method="post" target="_blank">
+                    <div class="payorder_sw" id="pic_button_sw">
+						<input type="hidden" name="order_id" value="<?=$order_info['order_id']?>" />
+                        <label class="radio-inline">
+                            <input type="radio" name="pay_type" checked="checked" value="alipay" style="display:none;">
+                            <a class="ashyborder_sw">
+                                <img class="img-responsive center-block" src="__IMG__/zhifubao_nb.jpg">
+                            </a>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="pay_type" value="" style="display:none;"> 
+                            <a class="ashyborder_sw">
+                                <img class="img-responsive center-block" src="__IMG__/weixin_nb.jpg">
+                            </a>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="pay_type" value="" style="display:none;">
+                            <a class="ashyborder_sw">
+                                <img class="img-responsive center-block" src="__IMG__/zaixian_nb.jpg">
+                            </a>
+                        </label>
+                    </div>
+                    <ul class="pay_sw payorderbtn_sw text-right f_w" id="paybtn1_sw">
+                        <li>
+                            <span class="f_14">应付总额:</span><i class="c_ff7302">￥</i><span class="c_ff7302 f_25"><?=$order_info['total_price']?></span>
+                        </li>
+
+                        <li><input class="f_16 c_fff button_sw bg_c_ffb902 dialog" padding="0" onclick="js_submit(this);" href="<?=U('/Home/Buy/pay_tip')?>" type="button" target-form="js_online_pay" value="确认交易"></li>
+
+                        <!-- <li><input class="f_16 c_fff button_sw bg_c_ffb902 dialog" padding="0" href="<?=U('Home/Buy/pay_pwd')?>" type="submit" target-form="js_online_pay" value="确认交易"></li> -->
+
+                    </ul>
+                </form>
+                <form action="<?=U('balance_pay')?>" class="js_balance_pay">
+					<ul class="payorder_sw cf" id="pay_none_sw">
+						<input type="hidden" name="order_id" value="<?=$order_info['order_id']?>" />
+						<li class="f-14">您的余额为：<b class="c_ff4e00 f_20">￥<?=$member_info['balance']+$member_info['withdrawals']?></b></li>
+						<li>请输入支付密码：<input type="password" name="deal_password" size="20" class="pay_input">&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?=U('User/Balance/recharge')?>" target='_blank' class="red">充值</a></li>
+					</ul>
+					<ul class="pay_sw payorderbtn_sw text-right f_w" id="paybtn2_sw">
+						<li>
+							<span class="f_14">应付总额:</span><i class="c_ff7302">￥</i><span class="c_ff7302 f_25"><?=$order_info['total_price']?></span>
+						</li>
+						<li><input class="f_16 c_fff button_sw bg_c_ffb902 ajax-post confirm" type="submit" target-form="js_balance_pay" value="确认交易"></li>
+					</ul>
+                </form>
+            </div>
+            
+            <!-- end 支付订单 -->
+        </div>
+    </div>
+    <script type="text/javascript">
+		function js_submit(obj){
+			$(obj).parents('form').submit();
+		}
+        window.onload=function(){
+            var button=document.getElementById("pic_button_sw");
+            var link=button.getElementsByTagName("a");
+            for(var i=0;i<link.length;i++){
+                link[i].id=i;//为link里的li设置id
+                link[0].className="redborder_sw";
+                link[i].onclick=function(){
+                    for (var j = 0; j < link.length; j++) {
+                        link[j].className="ashyborder_sw";
+                    }
+                    this.className="";
+                    this.className="redborder_sw";
+                }
+            }
+            document.getElementById('activetitle_sw').onclick=function(){
+                document.getElementById('linktitle_sw').className="";
+                document.getElementById('activetitle_sw').className="paybtn_on_sw";
+                document.getElementById('pic_button_sw').style.display="none";
+                document.getElementById('paybtn1_sw').style.display="none";
+                document.getElementById('pay_none_sw').style.display="block";
+                document.getElementById('paybtn2_sw').style.display="block";
+            }
+            document.getElementById('linktitle_sw').onclick=function(){
+                if(document.getElementById('pic_button_sw').style.display=="none"){
+                    document.getElementById('linktitle_sw').className="paybtn_on_sw";
+                    document.getElementById('activetitle_sw').className="";
+                    document.getElementById('pic_button_sw').style.display="block";
+                    document.getElementById('paybtn1_sw').style.display="block";
+                    document.getElementById('paybtn2_sw').style.display="none";
+                    document.getElementById('pay_none_sw').style.display="none";
+                }
+            }
+        }
+    </script>
+</block>

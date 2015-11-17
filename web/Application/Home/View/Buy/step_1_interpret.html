@@ -1,0 +1,269 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<js href="__PLUGIN__/my97date/WdatePicker.js" />
+	<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js"/>
+	<css href="__PLUGIN__/uploadify/uploadify.css"/>
+	<div class="container step_box">
+		<include file="Public/buyStepbar"/>
+		<form class="form-horizontal form_box_ZH js_order_submit" action="<?=U('add_order')?>" >
+			<input type="hidden" name='product_id' value="<?=$product_info['id']?>" />
+			<input type="hidden" name='shop_id' value="<?=$product_info['shop_id']?>" />
+			<div class="form-group">
+				<label class="col-xs-2 title_ZH text-right" for="exampleInputName2">选择源语言:</label>
+				<div class="col-xs-10 eng_ZH">
+					<span>
+						<select>
+							<option value="<?=$product_info['language_id']?>" ><?=$product_info['language_id_text']?></option>
+							<!-- <option>英文</option> -->
+						</select>
+						<label>选择目标语言:</label>
+						<select>
+							<option  value="<?=$product_info['to_language_id']?>" ><?=$product_info['to_language_id_text']?></option>
+							<!-- <option>中文</option> -->
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="form-group m_b">
+    			<label class="col-xs-2 title_ZH text-right" for="exampleInputFile">收取地址:</label>
+				<div class="col-xs-10">
+	    			<div class="address_ZH" style="margin: 0;margin-bottom: 15px;">
+						<span>
+							<div class="form-group">
+								<select class="province_select"  name="province" id="province"  onchange="province_change(this)" >		
+									<option >省</option>
+								<?php
+									foreach($data['area'] as $row){
+									if($row['pid']==0){
+								?>
+									<option value="<?=$row['id']?>"  path="<?=$row['path']?>" title="<?=$row['title']?>" ><?=$row['title']?></option>
+								<?php
+										}
+									}
+								?>
+								</select>
+								<select class="city_select"  name="city" id="city" onchange="city_change(this)">
+									<option >市</option>
+								</select>
+							
+								<select class="area_select"  name="area" id="area" onchange="choose_addpath(this)" class="select area_select">
+									<option >区</option>
+								</select>
+							</div>
+						</span>	
+						<input type="hidden" name="addpath" id="addpath" value="" />
+						<div class="form-group">
+						<select id="area_select_data"  style="display:none">
+							<?php
+								foreach($data['area'] as $row){
+								if($row['pid']==0){
+									continue;
+								}
+							?>
+							<option value="<?=$row['id']?>" pid="<?=$row['pid']?>" path="<?=$row['path']?>" title="<?=$row['title']?>" ><?=$row['title']?></option>
+							<?php
+								}
+							?>
+						</select>
+						</div>
+						
+						<span>
+							<input type="text" id="area_detail" name="area_detail"  placeholder="请输入详细地址">
+						</span>
+						<p class="c_ff7402 m_tb_5">请具体到门牌号，以方便联系。</p>
+					</div>
+	  			</div>
+  			</div>
+  			<div class="form-group">
+    			<label class="col-xs-2 title_ZH text-right" for="exampleInputName2">预约服务时间:</label>
+	  			<div class="col-xs-10">
+	    			<div class="time_ZH">
+		    			<span>
+							<input type="text" id="d4311" class="js_time_count count1" style="width:125px" name="expected_start_time" onClick="WdatePicker({startDate:'%y-%M-%d %H:00:00',dateFmt:'yyyy-MM-dd HH:00:00',alwaysUseStartDate:true,maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})" name='add_time'  placeholder="开始时间"  >
+		    				<!-- <input type="text" value="2015年06月15日"> -->
+		    				<!-- <em>16:00</em> -->
+		    			</span> -
+		    			<span>
+							<input type="text" id="d4312"  class="js_time_count count2" style="width:125px" name="expected_end_time" onClick="WdatePicker({startDate:'%y-%M-%d %H:00:00',dateFmt:'yyyy-MM-dd HH:00:00',alwaysUseStartDate:true,minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2020-10-01'})" name='add_time'  placeholder="结束时间"  >
+		    				<!-- <input type="text" value="2015年06月15日"> -->
+		    				<!-- <em>16:00</em> -->
+		    			</span>
+						<p class="c_ff7402 m_tb_5">亲~请先和店家商议服务时间哦。</p><!--@liuqiao 增加一个提示信息-->
+		    			 共计：<b id='total_time1'>0</b>小时
+						 <input type="hidden" id='total_time' name="qty" value="" />
+	    			</div>
+	  			</div>
+  			</div>
+		<div class="form-group">
+			<label class="col-xs-2 title_ZH text-right" for="exampleInputName2">选择专业领域:</label>
+			<div class="col-xs-10 clearfix">
+				<i class="pull-left fa fa-pencil hidden-xs c_ff7402 m_t_10"></i>
+				<div class="radio_ZH radio">
+					<?php 
+							foreach($product_info['industry_id_arr'] as $row){
+						?>
+					<label> <input type="radio" name="industry_id"
+						value="<?=$row['id']?>"> <?=$row['title']?>
+					</label>
+					<?php 
+							}
+						?>
+					<label style="margin-right: 0"> <input class="ie7_radio"
+						type="radio" name="industry_id" value="other">更多 <input
+						class="input_x" type="text" name="industry_other"
+						placeholder="请输入...">
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group m_b">
+				<label class="col-xs-2 title_ZH text-right" for="exampleInputName2">需求备注:</label>
+				<div class="col-xs-10 clearfix">
+				<i class="pull-left fa fa-pencil hidden-xs c_ff7402 m_t_10"></i>
+				<div class="pull-left textarea_ZH">
+					<textarea class="pull-left form-control m_tb_5" name="description" rows="4"></textarea>
+					<p class="help-block">为建议填写，帮助我们选择合适的译员和理解您的需求，获取更佳的翻译质量</p>
+				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-offset-2  col-xs-10">
+					<div class="radio">
+					<?php
+						if($product_info['invoice']==1){
+					?>
+						<label class="checkbox-inline">
+							<input type="checkbox" name='need_invoice' id="inlineCheckbox1" value="1">是否需要提供发票
+						</label>
+					<?php
+						}
+					?>
+						<label class="checkbox-inline">
+							<input type="checkbox" name='agree' value="1">保密协议
+						</label>
+					</div>
+					<div class="js_info_ZH" style="display: none">
+					<?php
+						if($product_info['invoice']==1){
+					?>
+						<div class="basic_ZH">
+							<span>
+								<label>发票抬头：</label>
+								<input type="text" name="invoice" value="" placeholder="请填写发票抬头" >
+							</span>
+						</div>
+					<?php
+						}
+					?>
+						<div class="address_ZH">
+							<label>选择地址：</label>
+							<span>
+								<select class="province_select"  name="address_id" >
+									<option >请选择地址</option>
+								<?php
+									foreach($address_result as $row){
+								?>
+									<option value="<?=$row['id']?>"  path="<?=$row['path']?>"><?=$row['title']?></option>
+								<?php
+									}
+								?>
+								</select>
+							</span>
+							<label><i class="fa fa-plus-circle f_14" style="margin-right: 5px;"></i><a target="_blank" href="<?=U('User/Address/index')?>">添加地址</a></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-offset-2  col-xs-10">
+					<button class="btn_step_ZH ajax-post" type="submit" target-form="js_order_submit" class="btn">下一步</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+</block>
+<block name="script">
+<script type="text/javascript">
+	if($(window).width()<=768){
+		$(".title_ZH").removeClass("text-right")
+	}else if($(window).width()>768){
+		$(".title_ZH").addClass("text-right")
+	}
+	$(window).resize(function(){
+		if($(window).width()<=768){
+		$(".title_ZH").removeClass("text-right")
+	}else if($(window).width()>768){
+		$(".title_ZH").addClass("text-right")
+	}
+	});
+	$('#inlineCheckbox1').click(function(){
+		if($(this).prop('checked')){
+			$('.js_info_ZH').show('');
+		}else{
+			$('.js_info_ZH').hide('');
+		}
+	})
+	$(function(){
+		$('.left_btn').click(function(){
+			var _val=$(".btn1_ZH input").val();
+			$(this).next().val(parseInt(_val)-1 >= 0 ? _val-1 : 0);
+		})
+		$('.right_btn').click(function(){
+			var _val=$(".btn1_ZH input").val();
+			$(this).prev().val(parseInt(_val)+1);
+		})
+	});
+	function province_change(obj){
+		var pid=$(obj).val();
+		//$("#area_detail").val('');
+		//$('#addpath').val('');
+		$('.city_select').html('');
+		var area='0';
+		$('.city_select').html("<option value='0'>请选择城市</option>");
+		$('#area_select_data option[pid='+pid+']').clone().appendTo('.city_select');
+		
+	}
+	function city_change(obj){
+		var pid=$(obj).val();
+		$('.area_select').html('');
+		//$("#area_detail").val('');
+		//$('#addpath').val('');
+		var area='0';
+		$('.area_select').html("<option value='0'>请选择区/县</option>");
+		$('#area_select_data option[pid='+pid+']').clone().appendTo('.area_select');
+	}
+	function choose_addpath(obj){
+		var addpath = $(obj).find("option:selected").attr('path');
+		$('#addpath').val(addpath);
+		//var province = $('#province option:checked').attr('title');
+		//var city = $('#city option:checked').attr('title');
+		//var area = $('#area option:checked').attr('title');
+		//$("#area_detail").val(province+city+area);
+	}
+	<?php
+		if($info){
+	?>
+	$('#province').val('<?=intval($info['province'])?>').change();
+	$('#city').val('<?=intval($info['city'])?>').change();
+	$('#area').val('<?=intval($info['area'])?>').change();
+	<?php
+		}		
+	?>
+	/*计算时间*/
+	$(function(){
+		$('.js_time_count').val('');
+		$('.js_time_count').on('blur',function(){
+			if($(this).val()){
+				var date = new Date($(this).val().replace(/\-/g,"/"));
+				$(this).data('now',date.getTime());
+			}
+			if($('.count1').data('now') && $('.count2').data('now')){
+				sum_time =($('.count2').data('now') - $('.count1').data('now'))/1000/3600;
+				$('#total_time1').html(sum_time);
+				$('#total_time').val(sum_time);
+			}
+		});
+	});
+	</script>
+</block>

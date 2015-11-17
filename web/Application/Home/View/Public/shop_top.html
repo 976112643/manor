@@ -1,0 +1,178 @@
+<div class="container">
+        <div class="row">
+            <!--breadNav S-->
+            <ol class="lan_class_bread_yqc breadcrumb">
+                <li><a href="#">N邦翻译&nbsp;&nbsp;<?=session('cur_city_title')?></a></li>
+                <!-- <li><a href="#">北京老师</a></li>
+                <li><a href="#">其他</a></li>
+                <li><a href="#">其他</a></li> -->
+                <li><?=$shop_info_1['title']?></li>
+            </ol>
+            <!--breadNav E-->
+        </div>
+</div>
+<div class="company_bg">
+        <div class="container">
+            <div>
+				<div class="company_detail_info clearfix">
+                    <div class="company_img pull-left">
+                        <a href="#this"><img src="<?=$shop_info_1['logo']?>"></a>
+                        <a href="<?=U('/User/Message/send_msg',array('member_id'=>$shop_info_1['member_id']))?>" target="_blank" class="btn btn_contact"><i class="fa fa-envelope"></i>联系商家</a>
+                    </div>
+                    <div class="company_info clearfix">
+                        <h4 class="title"><a href="#"><?=$shop_info_1['title']?></a><span class="label label_lv">LV<?=$shop_info_1['level']?></span><!-- <?=$shop_info_1['level']?>级 --></h4>
+                        <div class="col-xs-9">
+                            <p>简介：<?=$shop_info_1['slogan']?></p>
+                            <p>身份：<?=$shop_info_1['type_text']?></p>
+                            <!-- <p>地址：<?=$shop_info_1['province'].$shop_info_1['city'].$shop_info_1['area'].$shop_info_1['address']?></p> -->
+                        <p>地址：
+						<?php foreach($address_data as $value){if($shop_info_1['member_id'] == $value['member_id'] && $shop_info_1['type'] == 1){echo $value['path'];}else if($shop_info_1['member_id'] == $value['member_id'] && $shop_info_1['type'] == 2){print_r($value['path'].$shop_info_1['address']);}}?>
+						</p>
+                        </div>
+                        <div class="col-xs-3 social_action_yqc">
+                         <?php if($shop_info['is_identity_confirm'] == 1){?>
+							<p><i class="icon_identify id"></i>身份认证</p>
+						<?php }?>       
+						<?php if($shop_info['is_qualified_comfirm'] == 1){?>            
+							<p><i class="icon_identify qua"></i>资质认证</p>
+						<?php 
+							}
+						?>
+                            <div>
+                            <?php if($show_result['status'] == 1){?>
+                             <a href="<?=U('Home/Classes/collect_cancel',array('shop_id'=>$shop_info['shop_id'],'id'=>$show_result['id']))?>" class="ajax-get" title=""><i class="fa fa-star org"></i>取消收藏</a>
+                            <?php }else{?>
+                                <a href="<?=U('Home/Classes/collect',array('shop_id'=>$shop_info['shop_id'],'id'=>$show_result['id']))?>" class="ajax-get" title=""><i class="fa fa-star"></i>收藏</a>
+                                <?php }?>
+                                <a href="javascript:;" class="jiathis jiathis_txt jiathis_separator"><i class="fa fa-share-alt"></i>分享</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="company_nav clearfix">
+                    <li class="<?=ACTION_NAME=='detail'?'active':''?>" ><a href="<?=U('Home/Classes/detail',array('shop_id'=>I('shop_id')))?>">主页</a></li>
+                    <li class="<?=ACTION_NAME=='servece'?'active':''?>"><a href="<?=U('Home/Classes/servece',array('shop_id'=>I('shop_id')))?>">服务语言</a></li>
+                    <li class="<?=ACTION_NAME=='videos'?'active':''?>"><a href="<?=U('Home/Classes/videos',array('shop_id'=>I('shop_id')))?>">相册/视频</a></li>
+                    <li class="<?=ACTION_NAME=='info'?'active':''?>"><a href="<?=U('Home/Classes/info',array('shop_id'=>I('shop_id')))?>">详细资料</a></li>
+                    <li class="<?=ACTION_NAME=='evaluate'?'active':''?>"><a href="<?=U('Home/Classes/evaluate',array('shop_id'=>I('shop_id')))?>">用户评价</a></li>
+                </ul>
+                <!--company left side S-->
+                <div class="col-xs-3 company_left_side">
+                    <!--base info S-->
+                    <h3><?=$shop_info_1['title']?></h3>
+                     <div class="company_rank_yqc clearfix">
+                        <div class="star_progress_yqc pull-left" style="<?=$shop_info_1['star_num']?'':'display:none'?>"><div class="bar<?=($shop_info_1['star_num']*2*10==100)? 'red_star':''?>" style="width: <?=$shop_info_1['star_num']*2*10?>%;"></div></div>
+                        <div class="score"><span class="red"><?=$shop_info_1['star_num']?>分</span>(<?=$all_comments_num?>条评价)</div>
+                    </div>
+                    <p>译龄：<?=$shop_info_1['translate_year']?>年 提供过<?=$shop_info_1['service_times']?>次翻译服务</p>
+                    <div class="btn-toolbar review_count_yqc">
+                        <div class="btn-group">
+                            <p><i class="face_icon smile fc fc-face"></i><span class="org">好评</span></p>
+                            <p><?=$good_comments_num?>条</p>
+                        </div>
+                        <div class="btn-group">
+                            <p><i class="face_icon normal fc fc-normalface"></i><span class="org">中评</span></p>
+                            <p><?=$mid_comments_num?>条</p>
+                        </div>
+                        <div class="btn-group">
+                            <p><i class="face_icon sad fc fc-sad-face"></i><span class="org">差评</span></p>
+                            <p><?=$bad_comments_num?>条</p>
+                        </div>
+                    </div>
+                    <p class="skills_yqc">
+					<?php
+						foreach($shop_info_1['good_at_arr'] as $row){
+					?>
+                        <span class="label label_lang"><?=$row['title']?></span>
+					<?php
+						}
+					?>
+                    </p>
+                    <!--base info E-->
+                    <!--work time S-->
+                    <h3><i class="fa fa-clock-o"></i>工作时间</h3>
+                    <div class="work_time_yqc">
+                        <!-- <p>周一至周五：<?php if(empty($shop_info['work_time_s'])){?>暂无数据<?php }?><?=$shop_info['work_time_s']?></p>
+                        <p>周六至周日：<?php if(empty($shop_info['work_time_e'])){?>暂无数据<?php }?><?=$shop_info['work_time_e']?></p> -->
+                        <p>周一至周五：
+                         <?php 
+                               $work_time_s = json_decode($shop_info['work_time_s']);
+									if(empty($work_time_s)){ echo '暂无数据';}else{
+                               		print_r($work_time_s[0].":".$work_time_s[1]."~".$work_time_s[2].":".$work_time_s[3]);
+										}
+                         ?> 
+                        </p>
+                        <p>周六至周日：
+                        <?php 
+                               $work_time_e = json_decode($shop_info['work_time_e']);
+									if(empty($work_time_e)){ echo '暂无数据';}else{
+                              		print_r($work_time_e[0].":".$work_time_e[1]."~".$work_time_e[2].":".$work_time_e[3]);
+										}
+                         ?> 
+                         </p>
+                    </div>
+                    <!--work time E-->
+                    <!--online contact S-->
+                    <h3><i class="fa fa-comment"></i>在线咨询</h3>
+                    <div class="online_contact_yqc">客服中心<a href="<?=U('/User/Message/send_msg',array('member_id'=>$shop_info_1['member_id']))?>" target="_blank" class="btn btn_service_yqc"><i class="fa fa-comment"></i>和我联系</a></div>
+                    <!--online contact E-->
+                    <!--passed S-->
+                    <h3><i class="fa fa-book"></i>过往经历</h3>
+                    <div class="passed_exp_yqc">
+                        <?php 
+                           foreach($shop_info_old as $k=>$v){
+                        ?>
+                        <h6><?=date('Y',$v['start_time'])?>年<?=date('m',$v['start_time'])?>月——<?=date('Y',$v['end_time'])?>年<?=date('m',$v['end_time'])?>月</h6>
+                        <p data-cut="<?=msubstr($v['content'],0,30)?>" data-all="<?=$v['content']?>">
+                            <span><?=msubstr($v['content'],0,30)?></span>
+                            <a href="javascript:;" class="js_toggle_text">展开全部</a>
+                        </p>
+                        <?php
+                           }
+                        ?>
+                        <?php if(empty($shop_info_old)){?>
+                        <div>暂无数据</div>
+                        <?php }?>
+                    </div>
+                    <!--passed E-->
+                    <!--success S-->
+                    <h3><i class="fa fa-certificate"></i>成功分享</h3>
+                    <div class="passed_exp_yqc">
+	                    <?php 
+	                       foreach($shop_info_new as $k=>$v){
+                        ?>
+	                    <h6><?=date('Y',$v['start_time'])?>年<?=date('m',$v['start_time'])?>月——<?=date('Y',$v['end_time'])?>年<?=date('m',$v['end_time'])?>月</h6>
+	                    <p data-cut="<?=msubstr($v['content'],0,30)?>" data-all="<?=$v['content']?>">
+	                        <span><?=msubstr($v['content'],0,30)?></span>
+	                        <a href="javascript:;" class="js_toggle_text">展开全部</a>
+	                    </p>
+	                    <?php
+	                       }
+                        ?>
+                        <?php if(empty($shop_info_new)){?>
+                        <div>暂无数据</div>
+                        <?php }?>
+                    </div>
+                    <!--success E-->
+                    <!--hot product S-->
+                    <h3><i class="fa fa-sun-o"></i>热销产品</h3>
+                    <?php if(empty($hot_product)){?>
+                    <div>暂无数据</div>
+                    <?php }?>
+                    <ul class="common_question_yqc">
+					<?php 
+						$i=1;
+						foreach($hot_product as $row){
+					?>
+						<li><a href="<?php if(intval(session('home_member_id'))){ echo U('/Home/Buy/index',array('product_id'=>$row['id'])); }else{ echo U('/User/Login/index'); }?>"> <?php if($i<=3){ ?> <strong class="red"><?=$i?></strong><?php }else{ echo $i;}?>、<?=$row['language_id_text']?>翻译为<?=$row['to_language_id_text']?></a></li>
+					<?php 
+							$i++;
+						}
+					?>
+                    </ul>
+                    <!--hot product E-->
+                    <!--location S-->
+                    <h3><i class="fa fa-map-marker middle f_20"></i>通讯地址</h3>
+                    <div id="map"></div>
+                    <!--location E-->
+</div>

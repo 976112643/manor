@@ -1,0 +1,30 @@
+<div class="nav_ZH">
+	<div class="container p_lr clearfix">
+		<div class="nav2 pull-left">
+			<b  class="title_nav">语言分类</b>
+		</div>
+		<ul  class="menu_ZH">
+			<?php
+				$navigation = getNavigation();
+				$top_navigation = $navigation['top'];
+				foreach($top_navigation as $row){
+			?>
+			<?php if($row['title'] == 首页){ ?>
+			<li><a href="__ROOT__<?=$row['url']?>" target='<?=$row['target']?>'><?=$row['title']?></a></li>
+			<?php }else{?>
+			<li><a href="__ROOT__/<?=$row['url']?>" target='<?=$row['target']?>'><?=$row['title']?></a></li>
+			<?php
+						}
+				}
+			?>
+			
+			<!-- <li><a href="javascript:void(0)">首页</a></li>
+			<li><a href="javascript:void(0)">笔译</a></li>
+			<li><a href="javascript:void(0)">口译</a></li>			
+			<li><a href="javascript:void(0)">平台流程</a></li>
+			<li><a href="javascript:void(0)">翻译入驻</a></li>
+			<li><a href="javascript:void(0)">下载APP</a></li>
+			<li><a href="javascript:void(0)">活动专区</a></li> -->
+		</ul>
+	</div>
+</div>

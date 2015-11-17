@@ -1,0 +1,277 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>商品管理</span><i></i></div>
+                    <!-- 商品添加-开始 -->
+                    <div class="m_lr_15">
+					<p class="text-center red"><?=$translate_type?></p>
+                        <div class="row row_sw addpro_sw">						
+                            <form class="col-xs-10 form-horizontal js_submit" action="<?=U('add_product')?>" method="post">
+								<input name="id" type="hidden" value="<?=$info['id']?>" >
+                                <div class="form-group form_group_sw clear_left_sw">
+                                    <label class="col-xs-3 control-label goodsna_sw">商品名称<span class="change_color c_ff7402">*</span>：</label>
+                                    <select name="language_id" id="source_language" class="form-control w_175 displ_sw" >
+                                        <option value=''>请选择源语言</option>
+										<?php
+											foreach($language as $row){
+												if($row['pid']>0){
+										?>
+                                        <option <?php if($row['id']==$info['language_id']){ echo 'selected="selected"';} ?> value="<?=$row['id']?>"><?=$row['title']?></option>
+                                       <!--  <option <?php if($row['id']==$language_data['language_id']){ echo 'selected="selected"';} ?> value="<?=$row['id']?>"><?=$row['title']?></option> -->
+										<?php
+												}
+											}
+										?>
+                                    </select>
+                                    <i class="fa fa-arrow-right fa-lg fa_right_sw displ_sw c_999"></i>
+                                    <select name="to_language_id" id="to_language" class="form-control w_175 displ_sw" >
+                                        <option value=''>请选择目标语言</option>
+										<?php
+											foreach($language as $row){
+												if($row['pid']>0){
+										?>
+                                        <option <?php if($row['id']==$info['to_language_id']){ echo 'selected="selected"';} ?> value="<?=$row['id']?>"><?=$row['title']?></option>
+                                       <!--  <option <?php if($row['id']==$language_data['to_language_id']){ echo 'selected="selected"';} ?> value="<?=$row['id']?>"><?=$row['title']?></option> -->
+										<?php
+												}
+											}
+										?>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">商品类型<span class="change_color c_ff7402">*</span>：</label>
+                                    <select class="form-control w_175 js_change_type" name="type" >
+										<option value="">--请选择类型--</option>	
+										<?php
+											foreach($product_type as $row){
+										?>
+                                        <option <?php if($row['id']==$info['type']){ echo 'selected="selected"';} ?> value="<?=$row['id']?>"><?=$row['title']?></option>	
+										<?php
+											}
+										?>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">等级<span class="change_color c_ff7402">*</span>：</label>
+                                    <select class="form-control w_175" name="level_id" >
+										<option value="">--请选择等级--</option>
+										<?php
+											foreach($product_level as $row){
+										?>
+                                        <option <?php if($row['id']==$info['level_id']){ echo 'selected="selected"';} ?> value="<?=$row['id']?>"><?=$row['title']?></option>
+										<?php
+											}
+										?>
+                                    </select>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">价格<span class="change_color c_ff7402">*</span>：</label>
+                                    <input name="price" class="form-control w_70 price_sw" type="text" placeholder="300" value="<?=$info['price']?>">
+                                    <span>元/千字/小时/分钟</span>
+                                </div>
+
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">服务类型：</label>
+                                    <div class="file_clas_sw">
+										<div class="form-group form_group_sw pad_bottom_sw js_ability">
+											<label class="col-xs-6 label_j w_175">请选择上面类型</label>
+										</div>
+										<?php
+										//print_r($ability);
+											foreach($ability as $row){
+												foreach($row['_child'] as $_row){
+													if(!empty($_row['_child'])){
+										?>
+										<div class="form-group form_group_sw pad_bottom_sw js_ability js_check<?=$row['id']?>" style="display:none;" >
+											<label class="col-xs-5 label_j"><?=$_row['title']?></label>
+											<div class="file_clas_sw w_175">
+												<?php
+												//print_r($ability_ids);
+													foreach($_row['_child'] as $_row_child){
+													
+												?>
+												<label class="checkbox-inline">
+													<input type="checkbox" name="ability_3[]" <?php if(in_array($_row_child['id'],$ability_ids)){echo 'checked="checked"';}?>  value="<?=$_row_child['id']?>" /> <?=$_row_child['title']?>
+												</label>
+												<?php
+													}
+												?>
+											</div>
+										</div>
+										<?php
+													}
+												}
+											}
+										?>
+                                    </div>
+                                </div>
+								
+
+								 <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">行业设置：</label>
+                                    <div class="file_clas_sw">
+										<?php
+											foreach($industry as $row){
+												if(!empty($row['_child'])){
+										?>
+										<div class="form-group form_group_sw pad_bottom_sw">
+											<label class="col-xs-5 label_j"><?=$row['title']?></label>
+											<div class="file_clas_sw w_175">
+												<?php
+												//print_r($ability_ids);
+													foreach($row['_child'] as $_row){
+													
+												?>
+												<label class="checkbox-inline">
+													<input name="industry_id[]" <?php if(in_array($_row['id'],$industry_ids)){echo 'checked="checked"';}?> type="checkbox" value="<?=$_row['id']?>"> <?=$_row['title']?>
+												</label>
+												<?php
+													}
+												?>
+											</div>
+										</div>
+										<?php
+												}
+											}
+										?>
+                                    </div>
+                                </div>
+
+
+
+                            <!--     <?php
+									foreach($industry as $row){
+								?>
+                                <div class="form-group form_group_sw pad_bottom_sw?>">
+                                    <label class="col-sm-3 control-label"><?=$row['title']?>：</label>
+                                    <div class="file_clas_sw w_175">
+										<?php
+										//print_r($ability);
+											foreach($row['_child'] as $_row){
+										?>
+                                        <label class="checkbox-inline">
+                                            <input name="industry_id[]" <?php if(in_array($_row['id'],$industry_ids)){echo 'checked="checked"';}?> type="checkbox" value="<?=$_row['id']?>"> <?=$_row['title']?>
+                                        </label>
+										<?php
+											}
+										?>
+                                    </div>
+                                </div>
+                               
+								<?php
+										
+									}
+								?> -->
+								<div class="form-group form_group_sw pad_bottom_sw">
+                                    <label class="col-xs-3 control-label">是否提供发票：</label>
+                                    <div class="file_clas_sw">
+                                    	<label class="radio-inline">
+	                                    	<input name="invoice" <?php if($info['invoice']==1){echo 'checked="checked"';}?> type="radio" value="1"> 是
+	                                    </label>
+	                                    <label class="radio-inline">
+	                                    	<input name="invoice" <?php if($info['invoice']==0){echo 'checked="checked"';}?> type="radio" value="0"> 否
+	                                    </label>
+                                    </div>
+                                </div>
+                                <div class="form-group form_group_sw pad_bottom_sw">
+                                    <label class="col-xs-3 control-label">商品描述：</label>
+                                    <textarea class="form-control maxw_400 minw_300" name="description" rows="5" placeholder="商品描述"><?=$info['description']?></textarea>
+                                </div>
+                                <div class="form-group form_group_sw">
+                                    <label class="col-xs-3 control-label">产品有效期<span class="change_color c_ff7402">*</span>：</label>
+                                    <div class="date_sw">
+									
+										<input id="d4311" class="form-control w_175 displ_sw"  type="text" onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true,maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})" name='start_time' placeholder="选择开始日期" value="<?=$info['start_time']?>" />
+                                        <!-- <select class="form-control w_175 displ_sw">
+                                            <option>选择开始日期</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>5</option>
+                                        </select> -->
+                                        <span class="displ_sw">—</span>
+										<input id="d4312" class="form-control w_175 displ_sw" type="text"  onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true,minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2020-10-01'})" name='expired_time' placeholder="选择结束日期"  value="<?=$info['expired_time']?>" />
+                                        <!-- <select class="form-control w_175 displ_sw">
+                                            <option>选择结束日期</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>3</option>
+                                            <option>5</option>
+                                        </select> -->
+										
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group form_group_sw">
+                                    <label class="col-sm-3 control-label pad_bottom_sw">是否提供发票：</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" value="option1"> 提供
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="inlineRadioOptions" value="option3"> 不提供
+                                    </label>
+                                </div> -->
+                                <div class="form-group">
+                                    <div class="col-xs-offset-3 zoom1_sw">
+                                        <div class="form-inline">
+                                            <input class="btn btn_add_sw ajax-post" target-form="js_submit" type="submit" value="提交">
+                                            <input class="btn btn_reset_sw" type="reset" value="取消">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 商品添加-结束 -->
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+	$(function(){
+		/*根据商品类型选择显示相应的属性  *李东*/
+		$('.js_change_type').on('change',function(){
+			var pid = $(this).val();
+			$('.js_ability').attr({'style':'display:none;'});
+			$('.js_ability').children().find('input:checkbox').prop('checked',false);
+			$('.js_check'+pid).attr({'style':'display:block;'});
+		});
+		<?php
+			if($info){
+		?>
+			$('.js_check'+'<?=intval($info['type'])?>').attr({'style':'display:block;'});
+		<?php
+			}
+		?>
+		
+		/*根据选择的源语言,隐藏目标语言中的相同项 *李东*/
+		$('#source_language').on('change',function(){
+			var choose_id = $(this).val();
+			$('#to_language').children('option[value='+choose_id+']').attr({'style':'display:none'});
+			$('#to_language').children('option[value='+choose_id+']').prevAll().attr({'style':'display:block'});
+			$('#to_language').children('option[value='+choose_id+']').nextAll().attr({'style':'display:block'});
+		});
+		
+		/*根据选择的目标言,隐藏源语言中的相同项 *李东*/
+		$('#to_language').on('change',function(){
+			var choose_id = $(this).val();
+			$('#source_language').children('option[value='+choose_id+']').attr({'style':'display:none'});
+			$('#source_language').children('option[value='+choose_id+']').prevAll().attr({'style':'display:block'});
+			$('#source_language').children('option[value='+choose_id+']').nextAll().attr({'style':'display:block'});
+		});
+		/*默认选中当前打开的链接菜单*/
+		if('<?=U(CONTROLLER_NAME.'/'.ACTION_NAME)?>'==='<?=U(CONTROLLER_NAME.'/'."edit")?>'){			
+			var current_uri='<?=U(CONTROLLER_NAME.'/'."index")?>';
+			}
+			$('a[href="'+current_uri+'"]').addClass('focus');
+			$('a[href="'+current_uri+'"]').parent().parent().attr({'style':'display:block;'});
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').addClass('cur');
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').children('.pull-right').addClass('down');
+	});
+	
+</script>
+</block>

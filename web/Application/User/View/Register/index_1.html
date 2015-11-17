@@ -1,0 +1,16 @@
+<extend name="User@Public/body"/>
+<block name="body">
+	<div class="container nbfy_main js_height">
+		<div class="row">
+			<div class="col-xs-4 nbfy_main_userreg">
+				<a href="<?=U('User/Register/index',array('type'=>1))?>" class="btn btn-primary" role="button">用户注册</a>
+			</div>
+			<div class="col-xs-4 nbfy_main_gy">
+				<a href="<?=U('User/Register/index',array('type'=>2))?>" class="btn btn_hs" role="button">个译注册</a>
+			</div>
+			<div class="col-xs-4 nbfy_main_gs">
+				<a href="<?=U('User/Register/index',array('type'=>3))?>" class="btn btn_js" role="button">公司注册</a>
+			</div>
+		</div>
+	</div>
+</block>

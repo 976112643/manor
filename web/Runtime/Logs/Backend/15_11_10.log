@@ -1,0 +1,28 @@
+[ 2015-11-10T12:47:07+08:00 ] ::1 /web/Backend/Help
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+ERR: 无法加载控制器:Help
+
+[ 2015-11-10T12:48:51+08:00 ] ::1 /web/Backend/Message/Help
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+ERR: 无法加载控制器:Message/Help
+
+[ 2015-11-10T12:49:05+08:00 ] ::1 /web/Backend/Message/Letter
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2048] Declaration of Backend\Controller\Message\LetterController::download() should be compatible with Common\Controller\CommonController::download($id = NULL) D:\htdocs\web\Application\Backend\Controller\Message\LetterController.class.php 第 4 行.
+ERR: 无法加载数据库驱动: Think\Db\Driver\
+

@@ -1,0 +1,141 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<js href="__PLUGIN__/echarts-all.js" />
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<div class="m_lr_15">
+            		<!-- 新增/修改 我是卖家模块 S--> 
+            			<!-- 订单列表头部-S -->
+            			<div class="m_tb_10">
+							<p class="f_18">欢迎您，remember娜娜！</p>
+							<p class="f_14">
+								<span><i class="fa fa-edit light_gray"></i> <a href="#this" class="blue">完善资料</a></span>
+								<span class="p_l_15"><i class="fa fa-shopping-cart light_gray"></i> <a href="#this" class="blue">管理商品</a></span>
+								<span class="p_l_15"><i class="fa fa-unlock-alt light_gray"></i> <a href="#this" class="blue">修改密码</a></span>
+							</p>
+							<p class="c_666"><i class="fa fa-exclamation-circle org m_r_5 f_16"></i>您当前资料还不完善，请尽快完善资料让更多买家搜到您！</p>
+						</div>
+						<!-- 订单列表头部-E -->
+						<!-- 订单列表-S -->
+						<div class="dataset_title clearfix f_16 js_exp_top mt_20"><span>我的资金</span><i></i></div>
+                        <div class="clearfix">
+                            <div class="f_l m_b_10 f_14">
+                                可用余额:<b class="org f_24">￥8.04</b>
+                            </div>
+                            <div class="seller_f_r">
+                                <a class="seller_btn_ZH b_org" href="javascript:void(0)"><em class="recharge_icon">立即充值</em></a>
+                                <a class="seller_btn_ZH b_blue" href="javascript:void(0)"><em class="withdraw_icon">我要提现</em></a>
+                            </div> 
+                        </div>
+                        <div id="main" style="width:100%;height:400px;"></div>
+						<!-- 订单列表-E -->
+                        <!-- 我的脚步-S -->
+                        <div class="dataset_title clearfix f_16 js_exp_top mt_20"><span>我的脚印</span><i></i></div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <div class="track_box_ZH">
+                                    <img class="img-circle img-responsive track_icon" src="__IMG__/sc_template/user/track_icon_1.png">
+                                    <div class="mt_20 text-center f_14">我在N邦翻译有<b class="org">5678910</b>元的交易往来</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="track_box_ZH">
+                                    <img class="img-circle img-responsive track_icon" src="__IMG__/sc_template/user/track_icon_2.png">
+                                    <div class="mt_20 text-center f_14">N邦翻译为我提供了<b class="org">54879529</b>字的笔译翻译</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="track_box_ZH">
+                                    <img class="img-circle img-responsive track_icon" src="__IMG__/sc_template/user/track_icon_3.png">
+                                    <div class="mt_20 text-center f_14">N邦翻译为我提供了<b class="org">518</b>小时的口译翻译</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="track_box_ZH">
+                                    <img class="img-circle img-responsive track_icon" src="__IMG__/sc_template/user/track_icon_4.png">
+                                    <div class="mt_20 text-center f_14">N邦翻译为我提供了<b class="org">54874</b>分钟的音频翻译</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 订单列表-E -->
+					<!--the end-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts图表
+var myChart = echarts.init(document.getElementById('main')); 
+var option = {
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            splitLine: {
+                lineStyle: {
+                    width: 0
+                }
+            },
+            axisLine:{
+                lineStyle: {
+                    width: 0
+                }
+            },
+            axisTick:{
+                lineStyle: {
+                    width: 0
+                }
+            },
+            data : ['可提现余额','累计收入','充值金额','已提现金额']
+        }
+    ],
+    grid: {
+        borderWidth: 0,
+        y: 80,
+        y2: 60
+    },
+    yAxis : [
+        {
+            show: false
+        }
+    ],
+    series : [
+        {
+            name:'数据报表',
+            type:'bar',
+            data:[3689,3000,2000,1000],
+       itemStyle: {
+                normal: {
+                    color: function(params) {
+                        // build a color map as your need.
+                        var colorList = [
+                          '#ffab47','#45a4e8','#21cebc','#d659ff'
+                        ];
+                        return colorList[params.dataIndex]
+                    },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        formatter: function(params){
+                             if(params.name == '可提现余额','累计收入','充值金额','已提现金额'){
+                                return '￥' + params.data;
+                             }else{
+                                return params.data;
+                             }
+                        }
+                    }
+                }
+        }
+        }
+    ]
+};
+    // 为echarts对象加载数据 
+    myChart.setOption(option);
+    window.onresize = myChart.resize;
+</script>	
+</block>
+

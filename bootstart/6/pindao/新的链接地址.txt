@@ -1,0 +1,8 @@
+chenxiaofeng(陈晓峰) 11:14:11
+3.保龄球 ---- 有乐德州扑克----activity://com.youjoy.com,com.youjoy.com.pokertexashuan
+4.战地英雄   ----  球球进门----activity://com.Coocaa.BjLbs.kk,com.Coocaa.BjLbs.kk.BallActivity
+5.疯狂牛仔  ----  水母逃生----activity://cn.wap3.tvuoo.jellyfish,cn.wap3.tvuoo.jellyfish.FlappyJellfish
+chenxiaofeng(陈晓峰) 11:14:25
+9.QQ音乐     -----  儿童故事电台---activity://com.ebodoo.fmhd,com.ebodoo.fmhd.activity.FmBookShelfActivity
+11.中华万年历  ----  瑜伽达人----activity://com.lovesport.yogadaren,com.lovesport.yogadaren.YogaActivity
+12.中国气象频道  ----  宝宝种庄稼----activity://com.orbaby.baike.crops,com.orbaby.baike.crops.FlashA

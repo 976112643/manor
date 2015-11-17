@@ -1,0 +1,76 @@
+<div class="col-xs-3 fyh">
+	<div class="side_bar">
+    	<!--用户信息 start-->
+    	<div class="user_mes clearfix">
+        	<div class="user_img pull-left">
+            	<a href="#this"><img src="__IMG__/user.jpg" class="img-circle img-responsive"></a>
+            </div>
+            <div class="user_info">
+            	<p>晚上好</p>
+                <p><a href="#this">用户昵称</a></p>
+            </div>
+        </div>
+        <div class="sidebar_bor"></div>
+        <div class="user_way">
+            <a href="#this"><i class="fa fa-file-text-o"></i></a>
+            <a href="#this"><i class="fa fa-envelope"></i></a>
+            <a href="#this"><i class="fa fa-mobile f28"></i></a>
+        </div>
+        <div class="sidebar_bor"></div>
+        <div class="in_message clearfix">
+        	<div class="pull-left">站内信息：<span class="yellow">0</span>条</div>
+            <a href="#this" class="pull-right"><i class="fa  fa-cog"></i></a>
+        </div>
+        <!--end -->
+        
+        <!--左侧导航栏 start-->
+        <ul class="sidebar_nav">
+        	<li>
+            	<div class="nav_title"><i class="fa fa-angle-down pull-right"></i>交易中心</div>
+                <ul>
+                	<li><a href="#this"><i class="fa fa-credit-card"></i>DTC交易</a></li>
+                    <li><a href="#this"><i class="fa fa-line-chart"></i>委托管理</a></li>
+                    <li><a href="#this"><i class="fa fa-send-o"></i>我的投资</a></li>
+                    <li><a href="#this"><i class="fa fa-shield"></i>我的回款计划</a></li>
+                </ul>
+                <div class="sidebar_bor"></div>
+            </li>
+            <li>
+            	<div class="nav_title cur"><i class="fa fa-angle-down down pull-right"></i>财务管理</div>
+                <ul style="display:none;">
+                	<li><a href="#this"><i class="fa fa-credit-card"></i>充值</a></li>
+                    <li><a href="#this" class="focus"><i class="fa fa-user"></i>提现</a></li>
+                    <li><a href="#this"><i class="fa fa-unlock-alt"></i>个人财务</a></li>
+                    <li><a href="#this"><i class="fa fa-file-text-o"></i>账单明细</a></li>
+                    <li><a href="#this"><i class="fa fa-credit-card"></i>多特币充值</a></li>
+                    <li><a href="#this"><i class="fa fa-user"></i>多特币提现</a></li>
+                </ul>
+                <div class="sidebar_bor"></div>
+            </li>
+            <li>
+            	<div class="nav_title"><i class="fa fa-angle-down down pull-right"></i>基本设置</div>
+                <ul style="display:none;">
+                	<li><a href="#this"><i class="fa fa-cog"></i>基本信息</a></li>
+                    <li><a href="#this"><i class="fa fa-image"></i>头像设置</a></li>
+                    <li><a href="#this"><i class="fa fa-unlock-alt"></i>密码设置</a></li>
+                    <li><a href="#this"><i class="fa fa-book"></i>认证管理</a></li>
+                    <li><a href="#this"><i class="fa fa-users"></i>邀请好友</a></li>
+                    <li><a href="#this"><i class="fa fa-envelope"></i>站内信息</a></li>
+                    <li><a href="#this"><i class="fa fa-refresh"></i>账号同步</a></li>
+                    <li><a href="#this"><i class="fa fa-bell-o"></i>消息提示</a></li>
+                </ul>
+                <div class="sidebar_bor"></div>
+            </li>
+        </ul>
+        <!--end -->
+    </div>
+</div>
+<script>
+    $(function(){
+        $(document).on('click','.nav_title',function(){
+            $(this).next('ul').slideToggle();   
+            $(this).children('i').toggleClass('down');
+        }); 
+    });
+</script>
+<!--end -->

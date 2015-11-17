@@ -1,0 +1,153 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                	<div class="dataset_title f_16"><span>店铺收藏</span><i></i></div>
+                	<ul class="company_lists_yqc">
+	                	<?php if(empty($result)){?>
+							 <include file="Public/nodata" />
+						<?php }?>
+						<?php 
+							foreach($result as $row){
+						?>
+                        <li class="company_item buy recommend clearfix">
+							<?php 
+								if($row['recommend'] == 1){
+							?>
+                            <i class="recommend_tip"></i>
+							<?php 
+								}
+							?>
+							<?php
+								if(in_array($row['id'],$buy_shop)){
+							?>
+                            <i class="buy_mark"></i>
+                            <?php
+                            	}
+                            ?>
+                            <a href="<?=U('Home/Classes/collect_cancel',array('shop_id'=>$row['shop_id'],'id'=>$row['collect_id']))?>" class="del ajax-get"><i class="fa fa-trash"></i>	</a>
+                            <div class="item_img_yqc"><a href="<?=U('detail',array('shop_id'=>$row['id']))?>" style="background-image: url('<?=$row['logo']?>');"></a></div>
+                            <div class="item_info_yqc clearfix">
+                                <div class="item_title col-xs-12">
+                                    <a href="<?=U('Home/Classes/detail',array('shop_id'=>$row['id']))?>"><?=$row['title']?></a>
+									<?php 
+										/*循环擅长的语言*/
+										foreach($row['good_at_arr'] as $_row){
+									?>
+                                    <span class="label label_lang"><?=$_row['title']?></span>
+									<?php 
+										}
+									?>
+                                </div>
+                                <div class="item_base_info_yqc col-xs-7">
+                                    <p class="desc"><?=$row['slogan']?></p>
+                                    <p>擅长：
+										<?php 
+											/*循环擅长的语言*/
+											foreach($row['good_at_arr'] as $_row){
+										?>
+										<span><?=$_row['title']?></span>
+										<?php 
+											}
+										?>
+									
+									</p>
+                                    <p>身份：<?=$seller_type[$row['type']]?></p>
+                                <p>译龄：<?=$row['translate_year']?>年<i class="fa fa-map-marker"></i><?php foreach($address_data as $value){if($row['member_id'] == $value['member_id'] && $row['type'] == 1){echo $value['path'];}else if($row['member_id'] == $value['member_id'] && $row['type'] == 2){print_r($value['path'].$row['address']);}}?></p>
+                                </div>
+                                <div class="item_deal_info_yqc col-xs-3">
+                                    <p><strong class="org f_14">￥：<?=$row['min_price']?>元</strong>起</p>
+                                    <p><?=$row['comment_num']?>条评价</p>
+                                    <p>提供了<strong class="red"><?=$row['service_times']?></strong>次服务</p>
+                                    <div class="star_progress_yqc"><div class="bar" style="width:<?php echo ($row['star_num']/5)*100; ?>%"></div></div>
+                                </div>
+                                <div class="item_identify_info_yqc col-xs-2">
+                                	<?php
+                                		if($row['is_identity_confirm']==1){
+                                	?>
+                                    <p><i class="icon_identify id"></i>身份认证</p>
+                                    <?php
+                                    	}
+										if($row['is_qualified_comfirm']){
+                                    ?>
+                                    <p><i class="icon_identify qua"></i>资质认证</p>
+                                    <?php
+                                    	}
+                                    ?>
+                                </div>
+                            </div>
+                        </li>
+						<?php 
+							}
+						?>
+                    </ul>
+                	<!-- <ul class="company_lists_yqc"> -->
+                		<!-- <li class="company_item recommend clearfix">
+                			<a href="#this" class="del"><i class="fa fa-trash"></i>	</a>			                            
+                            <div class="item_img_yqc"><a href="/nbfy/web/Home/Classes/detail/shop_id/1.html" style="background-image: url('__IMG__/company_img.jpg');"></a></div>
+                            <div class="item_info_yqc clearfix">
+                                <div class="item_title col-xs-12">
+                                    <a href="/nbfy/web/Home/Classes/detail/shop_id/1.html">第一翻译社</a>
+									<span class="label label_lang">英语</span>
+								</div>
+                                <div class="item_base_info_yqc col-xs-6">
+                                    <p class="desc">第一翻译社</p>
+                                    <p>擅长：
+                                    	<span>英语</span>
+                                    	<span>英语</span>
+                                    	<span>英语</span>
+                                    </p>
+                                    <p>身份：公司</p>
+                                	<p>译龄：5年<i class="fa fa-map-marker"></i>广东河源市紫金县关山大道463号</p>
+                                </div>
+                                <div class="item_deal_info_yqc col-xs-4">
+                                    <p><strong class="org f_14">￥：0.00元</strong>起</p>
+                                    <p>0条评价</p>
+                                    <p>提供了<strong class="red">4</strong>次服务</p>
+                                    <div class="star_progress_yqc"><div class="bar" style="width:100%"></div></div>
+                                </div>
+                                <div class="item_identify_info_yqc col-xs-2">
+                                	<p><i class="icon_identify id"></i>身份认证</p>
+                                </div>
+                            </div>
+                        </li> -->
+						<!-- <li class="company_item recommend clearfix">
+							<a href="#this" class="del"><i class="fa fa-trash"></i>	</a>				                            
+                            <div class="item_img_yqc"><a href="/nbfy/web/Home/Classes/detail/shop_id/1.html" style="background-image: url('__IMG__/company_img.jpg');"></a></div>
+                            <div class="item_info_yqc clearfix">
+                                <div class="item_title col-xs-12">
+                                    <a href="/nbfy/web/Home/Classes/detail/shop_id/1.html"><?=$value['title']?></a>
+									<span class="label label_lang">英语</span>
+								</div>
+                                <div class="item_base_info_yqc col-xs-6">
+                                    <p class="desc">第一翻译社</p>
+                                    <p>擅长：
+                                    	<span>英语</span>
+                                    	<span>英语</span>
+                                    	<span>英语</span>
+                                    </p>
+                                    <p>身份：公司</p>
+                                	<p>译龄：5年<i class="fa fa-map-marker"></i>广东河源市紫金县关山大道463号</p>
+                                </div>
+                                <div class="item_deal_info_yqc col-xs-4">
+                                    <p><strong class="org f_14">￥：0.00元</strong>起</p>
+                                    <p>0条评价</p>
+                                    <p>提供了<strong class="red">4</strong>次服务</p>
+                                    <div class="star_progress_yqc"><div class="bar" style="width:100%"></div></div>
+                                </div>
+                                <div class="item_identify_info_yqc col-xs-2">
+                                	<p><i class="icon_identify id"></i>身份认证</p>
+                                	<p><i class="icon_identify qua"></i>资质认证</p>
+                                </div>
+                            </div>
+                        </li>
+					</ul> -->
+					<div class="pages text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

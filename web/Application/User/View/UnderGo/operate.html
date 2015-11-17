@@ -1,0 +1,98 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+				<form action='<?=U('User/UnderGo/operate')?>' method='post'>
+				<input type='hidden' name='shop_under_go' value='<?=$UnderGo_info['id']?>' />
+                <div class="list_box_j">
+                    <div class="dataset_title clearfix f_16 js_exp_top">
+						<span>过往经历->修改</span><i></i>
+						<!-- <a href="javascript:void(0);" class="btn btn_exp_add" id='js_Show_LH'>添加</a>
+						<a href="javascript:void(0);" class="btn btn_exp_add" id='js_Hidden_LH' style='display:none'>隐藏</a> -->
+					</div>
+                    <!-- 新增/修改 过往经历模块 S-->
+                    <div class="exp_edit_box"  id='js_hide_LH' >
+                        <div class="exp_times clearfix" >
+                            <div class="exp_start_time">
+                                <h6>开始时间<span class="red">(必填)</span></h6>
+								<input type='text' class='form-control' name='start_time_year' placeholder='年' value='<?=$UnderGo_info['start_time_year']?>'/>
+								<input type='text' class='form-control m_l_15' name='start_time_month' placeholder='月' value='<?=$UnderGo_info['start_time_month']?>'/>
+                            </div>
+                            <div class="exp_end_time">
+                                <h6>结束时间<span class="red">(必填)</span></h6>
+								<input type='text' class='form-control' name='end_time_year' placeholder='年' value='<?=$UnderGo_info['end_time_year']?>'/>
+								<input type='text' class='form-control m_l_15' name='end_time_month' placeholder='月' value='<?=$UnderGo_info['end_time_month']?>'/>
+                              
+                            </div>
+                        </div>
+                        <h6>描述过往经历（50-200字）<span class="red">(必填)</span></h6>
+                        <p class="blue">详细的描述你的翻译经历、学习经历、工作经历等，有助于卖家更好的了解你！</p>
+                        <textarea class="textarea_exp js_count_num"  name='content' placeholder="1.工作经历：例如-2008-2011 北京外国语大学学习英语专业
+2.工作经历：例如-2013-1015在北京城里乐语翻译机构，担任英语特级翻译官
+3...."><?=$UnderGo_info['content']?></textarea>
+                        <p class="ta_r blue">还可以输入<span class="js_min_num" data-max="200">200</span>个字</p>
+                        <input type="submit" class="btn btn_exp_submit" value="提交">
+                        <input type="reset" class="btn btn_exp_cancel" value="取消">
+                    </div>
+                </div>
+				</form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+			var len=$('.js_count_num').val().length;
+            //点击修改回到表单处。
+            $('.js_edit').click(function(){
+                var backtop = setInterval(function(){
+                    if($(window).scrollTop() <= $('.js_exp_top').offset().top){
+                        clearInterval(backtop);
+                    }else{
+                        $(window).scrollTop($(window).scrollTop()-20);
+                    }
+                },10);
+			
+            })
+			
+            //切换描述显示状态
+            $('.js_toggle_text').click(function(){
+                if($(this).hasClass('active')){
+                    $(this).removeClass('active').text('展示全部');
+                    $(this).prev('.toggle_text_box').removeClass('active').css({'height':'20'});
+                }else{
+                    $(this).addClass('active').text('收起全部');
+                    $(this).prev('.toggle_text_box').addClass('active').css({'height':'auto'});
+                }
+            })
+            //计数器
+            $('.js_count_num').on('keyup blur',function(){
+                var v = $('.js_min_num').attr('data-max') - $(this).val().length;
+                $(this).val($(this).val().slice(0,parseInt($('.js_min_num').attr('data-max'))));
+                $('.js_min_num').text(v < 0 ? 0 : v);
+            })
+			if('<?=U(CONTROLLER_NAME.'/'.ACTION_NAME)?>'==='<?=U(CONTROLLER_NAME.'/'."operate")?>'){			
+				var current_uri='<?=U(CONTROLLER_NAME.'/'."index")?>';
+			}
+			$('a[href="'+current_uri+'"]').addClass('focus');
+			$('a[href="'+current_uri+'"]').parent().parent().attr({'style':'display:block;'});
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').addClass('cur');
+			$('a[href="'+current_uri+'"]').parent().parent().prev('div').children('.pull-right').addClass('down');
+        });
+		
+		
+		//提交框的显示与隐藏
+		$('#js_Show_LH').click(function(){
+			$('#js_hide_LH').attr('style','');
+			$(this).attr('style','display:none');
+			$('#js_Hidden_LH').attr('style','');
+		});
+		$('#js_Hidden_LH').click(function(){
+			$('#js_hide_LH').attr('style','display:none');
+			$(this).attr('style','display:none');
+			$('#js_Show_LH').attr('style','');
+			/*默认选中当前打开的链接菜单*/
+		});
+    </script>
+</block>

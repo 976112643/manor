@@ -1,0 +1,378 @@
+<extend name="Home@Public/body"/>
+<block name="style">
+	<js href="__PLUGIN__/my97date/WdatePicker.js" />
+	<js href="__PLUGIN__/uploadify/jquery.uploadify.min.js" />
+	<css href="__PLUGIN__/uploadify/uploadify.css" />
+</block>
+<block name="body">
+	<div class="container">
+		<div class="row m_t_10 m_b_10">
+			<include file="Public/sidebar" />
+			<div class="col-xs-9 border_gray">
+				<div class="list_box_j">
+					<div class="dataset_title f_16"><span>资料设置</span><i></i></div>
+					<div class="table-responsive">
+							<form action='<?=U('User/CompanyInfo/index')?>' method='post' class="js_form">
+							<table class="table table-bordered table_data_j">
+								<tr>
+									<th><?=session('type')==2?'店铺名称':'公司名称'?><span class="change_color c_ff7402">*</span></th>
+									<td><input type="text" class="input-sm" size="90" value="<?=$shop_info['title']?>" name='title'></td>
+								</tr>
+								<tr>
+									<th><?=session('type')==2?'店铺logo':'公司logo'?><span class="change_color c_ff7402">*</span></th>
+									<td>
+										<?php
+											$config=array(
+												'index'     =>1,
+												'table'		=>'shop',
+												'table_id'  =>$shop_info['id'],
+												'name'		=>'logo',
+												'val_key'	=>'logo',
+												'tpl' => 'logo'
+											);
+											echo W("Common/Img/index",array($config,$shop_info['id']));
+										?>
+									 <!--<img style="height:60px;width:auto" src="<?=$shop_info['logo']?'__ROOT__/'.$shop_info['logo']:'__ROOT__/Public/Home/img/sc_template/onerror_pic.png'?>">-->
+									</td>
+								</tr>
+								<tr>
+									<th>联系地址<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<div class="form-inline">
+											<div class="form-group">
+												<select class="input-sm" onchange="province_change(this)" name='province'>
+													<option>省</option>
+													<?php
+														foreach($area_data as $row){
+															if($row['pid']==0){
+													?>
+														<option value="<?=$row['id']?>" <?php if($shop_info['province']==$row['id']){ echo 'selected="selected"'; } ?>><?=$row['title']?></option>
+													<?php
+															}
+														}
+													?>
+												</select>
+											</div>
+											<div class="form-group">
+												<select class="input-sm city_select" id="city" onchange="city_change(this)" name='city'>
+													<option>市</option>
+													<?php
+														foreach($city_data as $row){
+															
+													?>
+														<option value="<?=$row['id']?>" <?php if($shop_info['city']==$row['id']){ echo 'selected="selected"'; } ?>><?=$row['title']?></option>
+													<?php
+															
+														}
+													?>
+												</select>
+											</div>
+											<div class="form-group">
+												<select class="input-sm area_select" name='area'>
+													<option>区</option>
+													<?php
+														foreach($area_k as $row){
+															
+													?>
+														<option value="<?=$row['id']?>" <?php if($shop_info['area_id']==$row['id']){ echo 'selected="selected"'; } ?>><?=$row['title']?></option>
+													<?php
+															
+														}
+													?>
+												</select>
+											</div>
+											<div class="form-group">
+												<input type="text" class="input-sm" size="48" placeholder="请输入详细地址" name='detailAddress' value='<?=$shop_info['address']?>' />
+											</div>
+											<div class="form-group" style='display:none'>
+												<select class="input-sm" id="area_select_data">
+													<?php
+														foreach($area_data as $k=>$v){
+															if($v['pid']==0){
+																continue;
+															}
+													?>
+													<option value='<?=$v['id']?>' pid='<?=$v['pid']?>' ><?=$v['title']?></option>
+													<?php
+														}
+													?>
+												</select>
+											</div>
+										</div>
+									</td>
+									<script type="text/javascript">
+									function province_change(obj){
+										var pid=$(obj).val();
+										$('.city_select').html('');
+										
+										var area='0';
+										$('.city_select').html("<option value='0'>市</option>");
+										$('#area_select_data option[pid='+pid+']').clone().appendTo('.city_select');
+										
+									}
+									function city_change(obj){
+										var pid=$(obj).val();
+										$('.area_select').html('');
+										
+										var area='0';
+										$('.area_select').html("<option value='0'>区</option>");
+										$('#area_select_data option[pid='+pid+']').clone().appendTo('.area_select');
+										
+									}
+									
+									</script>
+								</tr>
+								<tr>
+									<th>联系电话</th>
+									<td>
+										<span><?=$shop_info['telephone']?></span>
+										<a href="<?=U('User/UpdatePhone/index')?>" class="red">修改</a>
+									</td>
+								</tr>
+								<tr>
+									<th>成立时间<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<input type="text" class="input-sm" name='regtime' placeholder="2015-06-15" onclick="WdatePicker();" value='<?=date('Y-m-d',strtotime($shop_info['regtime']))?>'>
+									</td>
+								</tr>
+								<tr>
+									<th>营业时间<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<label>周一至周五：</label>
+										<select name="time_s_1" class="style_select">
+										<?php  if($time_data_s){?>
+										<option><?php echo $time_data_s[0];?></option>
+										<?php }else{?>
+										<option><?php echo "09";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=23;$i++){ ?>
+										<?php if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										:
+										<select name="time_s_2" class="style_select">
+										<?php  if($time_data_s){?>
+										<option><?php echo $time_data_s[1];?></option>
+										<?php }else{?>
+										<option><?php echo "00";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=59;$i++){?>
+										<?php if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										~
+										<select name="time_s_3" class="style_select">
+										<?php  if($time_data_s){?>
+										<option><?php echo $time_data_s[2]?></option>
+										<?php }else{?>
+										<option><?php echo "18";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=23;$i++){?>
+										<?php if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										:
+										<select name="time_s_4" class="style_select">
+										<?php  if($time_data_s){?>
+										<option><?php echo $time_data_s[3]?></option>
+										<?php }else{?>
+										<option><?php echo "00";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=59;$i++){?>
+										<?php if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										<br><br>
+										<!-- <input type="text" class="input-sm" name='work_time_s' placeholder="00:00~24:00" value='<?=$shop_info['work_time_s']?>' >  -->
+										<!-- <label style="margin-left:15px;"> --><label>周六至周日：</label>
+										<select name="time_e_1" class="style_select">
+										<?php  if($time_data_e){?>
+										<option><?php echo $time_data_e[0]?></option>
+										<?php }else{?>
+										<option><?php echo "09";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=23;$i++){ ?>
+										<?php if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										:
+										<select name="time_e_2" class="style_select">
+										<?php  if($time_data_e){?>
+										<option><?php echo $time_data_e[1]?></option>
+										<?php }else{?>
+										<option><?php echo "00";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=59;$i++){ ?>							
+										<?php if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										~
+										<select name="time_e_3" class="style_select">
+										<?php  if($time_data_e){?>
+										<option><?php echo $time_data_e[2]?></option>
+										<?php }else{?>
+										<option><?php echo "18";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=23;$i++){?>		
+										<?php  if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										:
+										<select name="time_e_4" class="style_select">
+										<?php  if($time_data_e){?>
+										<option><?php echo $time_data_e[3]?></option>
+										<?php }else{?>
+										<option><?php echo "00";?></option>
+										<?php }?>
+										<?php for($i=0;$i<=59;$i++){ ?>
+										<?php if($i>=0 && $i<=9){?>
+										<option><?php echo "0".$i;?></option>
+										<?php }else{?>
+										<option><?php echo $i;?></option>
+										<?php
+												 }
+											}
+										?>
+										</select>
+										<!-- <input type="text" class="input-sm" name='work_time_e' placeholder="00:00~24:00" value='<?=$shop_info['work_time_e']?>'> -->
+									</td>
+								</tr>
+								<tr>
+									<th>擅长语言<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<div class="form-inline">
+											<div class="form-group">
+												<?php
+													foreach($language_data as $row){
+													  foreach($row["_child"] as $k=>$v){
+												?>
+												<div class="checkbox">
+										            <label>
+										            	<input type="checkbox" value='<?=$v['id']?>' name='good_at[]' <?=in_array($v['id'],$good_at)?'checked':''?>/><?=$v['title']?>
+										            </label>
+										        </div>
+												<?php
+												     }
+													}
+												?>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>一句概述<span class="change_color c_ff7402">*</span></th>
+									<td>
+										<input type="text" class="input-sm js_limit" size="75" value="<?=$shop_info['slogan']?>" name='slogan' data-max="20" />
+										<span></span>
+									</td>
+								</tr>
+								<tr>
+									<th style="vertical-align: top !important;"><?=session('type')==2?'店铺介绍':'公司介绍'?><span class="change_color c_ff7402">*</span></th>
+									<td>
+										<!--百度编辑器-->
+										<?php $time=time(); ?>
+										<script id="<?='editor_'.$time?>" type="text/plain" name="content"><?=htmlspecialchars_decode($shop_info['description_now'])?></script>
+										<script type="text/javascript">
+										var config_2={
+											initialFrameWidth:"100%",
+											initialFrameHeight:400
+										};
+										//合并配置文件，config为默认配置，config_2为自定义的配置
+										var new_config=array_merge({},[config,config_2]);
+										//说明：editor_obj_id的值必须和编辑器ID保持一致
+										var editor_<?=$time?>=UE.getEditor('editor_<?=$time?>',new_config);
+										</script>
+									</td>
+								</tr>
+							</table>
+
+							<div class="text-center">
+								<!--<input class='btn btn-warning js_sub' type='submit' value='提交'>-->
+								 <a href="javascript:void(0);" class="btn btn-warning js_sub">提交</a>
+								<a href="#this" class="btn btn-default">取消</a>
+							</div>
+						</form>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.js_sub').click(function(){
+			var url=$('.js_form').attr('action');
+			var val=$('.js_form').serialize();
+			$.post(url,val,function(data){
+				tips(data.info,1500,'error');
+				if(data.status==1){
+					
+					window.location.reload();
+				}
+				
+			});
+		});
+
+		//限制输入字数
+		$(function(){
+			$('.js_limit').parent().find('span').html("限输入"+$('.js_limit').attr('data-max')+"个字");
+			$(document).on('keyup blur','.js_limit',function(){
+				var len=$(this).attr('data-max')-$(this).val().length;
+				$(this).val($(this).val().slice(0,parseInt($(this).attr('data-max'))));
+				if(len<0){
+					len=0;
+					alert('不能再输入了！！！');
+				}
+				$(this).parent().find('span').html("还能输入"+len+"个字");
+				if(len==($(this).attr('data-max'))){
+					$(this).parent().find('span').html("限输入"+$(this).attr('data-max')+"个字");
+				}
+			})
+		})
+	</script>
+	<style type="text/css">
+	  .table_data_j img{
+	     height:75px;
+	  }
+	</style>
+</block>

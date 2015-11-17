@@ -1,0 +1,31 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>修改头像</span><i></i></div>
+                    <div class="m_lr_15">
+                        <!-- 修改头像页面 -->
+                        <div class="row">
+                            <ul class="pictips_sw f_w c_999">
+                                <li>1、为提高账号安全性为提高账号安全性为提高账号安全性为提高账号安全性为提高账号安全性为提高账号安全性提高账</li>
+                                <li>2、在公共场合登录账号时在公共场合登录账号时在公共场合登录账号时在公共场合登录账号时在公共场合登录账账号安全性为提高账</li>
+                            </ul>
+							<div class="list_box_j">
+								<?php
+									$uc_avatar='http://'.$_SERVER['HTTP_HOST']."__ROOT__"."/uc_avatar_upload/upload.php?uid=".session('home_member_id');
+								?>
+								<iframe src="<?=$uc_avatar?>" style="width:447px;height:250px;border:solid 1px #ccc; margin:10px;" frameborder="none" scrolling="no"></iframe>
+							</div>
+                        </div>
+                        <!-- end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+</body>
+</html>

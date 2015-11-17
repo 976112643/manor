@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文件上传</title>
+</head>
+<body>
+	<h1 align="center">文件列表</h1>
+	<hr />
+	<p>{$console}</p>
+	<empty name="file_list">
+	<h1>暂无数据</h1>
+	<else />
+	<table width='70%' border='1' align='center' >
+		<tr>
+			<th scope='col'>预览</th>
+			<th scope='col'>Name</th>
+			<th scope='col'>MD5</th>
+		</tr>
+		<volist name="file_list" id="vo">
+		<tr>
+			<th scope='col'>
+			<empty name="vo.thumbnail"> 
+			
+			<img
+				width='50px' height='50px' src='../images/no_type.png' />
+			<else /> 
+			<img
+				width='50px' height='50px' src='../upload/{$vo.thumbnail}' />
+			</empty> 
+				<th scope='col'><a href="./Download?file_id={$vo.id}">{$vo.name}</a></th>
+				<th scope='col'>{$vo.md5_value}</th>
+		</tr>
+		</volist>
+	</table>
+	</empty>
+</body>
+</html>

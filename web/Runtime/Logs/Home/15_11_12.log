@@ -1,0 +1,9 @@
+[ 2015-11-12T21:05:50+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000377s ]
+INFO: [ app_init ] --END-- [ RunTime:0.089344s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.133836s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.136929s ]
+ERR: 无法加载数据库驱动: Think\Db\Driver\
+

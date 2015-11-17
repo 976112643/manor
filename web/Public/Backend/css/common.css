@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/* 设置需要的标签内边距和外边距为0，仅添加需要的标签，不建议使用星号（*）代替，以下为示例 */
+body,ul,h3,img,dl,dt,dd{margin:0;padding:0;}
+p{margin:10px 0;min-height:20px;}
+a{cursor:pointer}
+/* 列表样式设置，以下为示例，仅写你用到的标签 */
+ul{list-style-type:none;list-style-position:inside;}
+/* 设置body默认样式 */
+body{font-family:"Microsoft YaHei",verdana,arial;font-size:14px;color:#333;}
+pre{font-family:"Microsoft YaHei",verdana,arial !important;}
+/* 设置文本选中后的样式，默认设置的为背景和字体 */
+::selection{background:#138FCB !important; color:#eee !important;}
+/* 设置链接默认样式 */
+a{text-decoration:none;color:#4a4a4a;}
+a:hover{color:#FF5926;}
+/* 设置图片无边框 */
+img{border:none;}
+
+/* 浮动 */
+.f_l{float:left;}
+.f_r{float:right;}
+/* 清除浮动 http://developer.51cto.com/art/201105/261229.htm */
+.cf:before, .cf:after { content: ""; display: table; }
+.cf:after { clear: both; }
+.cf { zoom: 1; }
+/* 超过指定宽度，用省略号代替 */
+.ellipsis{display:block;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/*强制换行*/
+.break_word{word-wrap:break-word;word-break:break-all;}
+/*禁止换行*/
+.keep_all{word-break:keep-all;white-space:nowrap;}
+
+/* 翻页 */
+.page{text-align:center;margin-top:10px;}
+.page a{display:inline-block;_zoom:1;*display:inline;padding:3px 8px;background:#F2F2F2;color:#666;}
+.page a:hover,.page a.cur{background:#207CE1;color:#fff;}
+
+/* 提示框图标 */
+.img_icon{display:inline-block;_zoom:1;*display:inline;line-height:normal;padding:3px 0;padding-left:26px;background-repeat:no-repeat;background-position:0 center;font-family:"Microsoft YaHei",verdana,arial;font-size:14px;color:#333;;}
+.ui-dialog-content .error{background-image:url(../img/icon/error.png);}
+.ui-dialog-content .success{background-image:url(../img/icon/success.png);}
+.ui-dialog-content .warn{background-image:url(../img/icon/warn.png);}
+.ui-dialog-content .ask{background-image:url(../img/icon/ask.png);}
+.ui-dialog-content .tips{background-image:url(../img/icon/tips.png);}
+
+/* 整站公用样式 */
+.wrap{width:1000px;margin:0 auto;}
+
+/* 上传按钮样式 */
+.uploadify,.upload-pre-item{position:relative;}
+.upload-pre-item{float:left;width:200px;margin-top:10px;margin-right:15px;border:#ddd solid 1px;filter:Alpha(opacity=60);opacity:0.6;transition:opacity 0.3s;position:relative;}
+.upload-pre-item.cur,.upload-pre-item:hover{filter:Alpha(opacity=100);opacity:1;}
+.upload-pre-item img{display:block;margin:auto;}
+.upload-pre-item .setCover{position:absolute;bottom:0;left:0;width:100%;padding:5px 0;text-align:center;background:#eee;cursor:pointer;overflow:hidden;}
+.upload-pre-item.cur .setCover,.upload-pre-item:hover .setCover{background-color:#3482BC;color:#fff;}
+.upload-pre-item .setCover input{position:absolute;top:0;left:-100px;}
+.uploadify-button {background:#505050;color:#FFF;font:bold 12px Arial, Helvetica, sans-serif;text-align:center;width:100%;}
+.uploadify-button span{color:#fff;}
+.uploadify:hover .uploadify-button {background:#606060;}
+.uploadify-button.disabled {background-color:#D0D0D0;color:#808080;}
+.uploadify-queue-item {background-color:#F5F5F5;font:11px Verdana, Geneva, sans-serif;margin-top:5px;max-width:350px;padding:10px;}
+.uploadify-error {background-color:#FDE5DD !important;}
+.uploadify-queue-item .cancel a {float:right;height:16px;text-indent:-9999px;width:16px;}
+.uploadify-queue-item.completed {background-color:#E5E5E5;}
+.uploadify-progress {background-color:#E5E5E5;margin-top:10px;width:100%;}
+.uploadify-progress-bar {background-color:#0099FF;height:3px;width:1px;}
+.delThis{position:absolute;top:-8px;right:-8px;cursor:pointer;background:url(../img/icon/del.png) no-repeat center center;width:20px;height:20px;}
+/* 编辑器样式调整 */
+.edui-default{position:relative;z-index:1;}
+
+

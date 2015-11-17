@@ -1,0 +1,158 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<js href="__PLUGIN__/my97date/WdatePicker.js" />
+	<style type="text/css">
+
+	.error {
+    color: red;
+    }
+
+    </style>
+	</stytle>
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title clearfix f_16 js_exp_top">
+						<span>过往经历</span><i></i>
+						<a href="javascript:void(0);" class="btn btn_exp_add js_Toggle_ZH" >隐藏</a>
+					</div>
+                    <!-- 新增/修改 过往经历模块 S-->
+
+                    <div class="exp_edit_box" id='js_hide_LH' >
+						<form action='<?=U('User/UnderGo/index')?>' method='post' class="ajax_form">
+                        <div class="exp_times clearfix" >
+                            <div class="exp_start_time">
+                                <h6>开始时间<span class="red">(必填)</span></h6>
+								<!--@刘巧，将原网页的年月合并成直接改成一个input框-->
+								<input type='text' class='form-control' name='start_time_year' placeholder='年' onfocus="WdatePicker({dateFmt:'yyyy',skin:'whyGreen',maxDate:'%y-%M-%d'})"/>
+								<input type='text' class='form-control m_l_15' name='start_time_month' placeholder='月' onfocus="WdatePicker({dateFmt:'MM'})"/>
+                            </div>
+                            <div class="exp_end_time">
+                                <h6>结束时间<span class="red">(必填)</span></h6>
+								<!--@刘巧，将原网页的年月合并成直接改成一个input框-->
+								<input type='text' class='form-control' name='end_time_year' placeholder='年' onfocus="WdatePicker({dateFmt:'yyyy',skin:'whyGreen',maxDate:'%y-%M-%d'})"/>
+								<input type='text' class='form-control m_l_15' name='end_time_month' placeholder='月' onfocus="WdatePicker({dateFmt:'MM'})"/>
+                            </div>
+                        </div>
+                        <h6>描述过往经历（50-200字）<span class="red">(必填)</span></h6>
+                        <select class="select_style w_140 order_select" name="undergo">
+							<option value="学习经历">学习经历</option>
+							<option value="培训经历">培训经历</option>
+							<option value="工作经历">工作经历</option>
+						</select>
+                        <span class="blue">详细的描述你的学习经历、培训经历、工作经历等，有助于卖家更好的了解你！字数不要超过200个字</span>
+                        <!-- <textarea class="textarea_exp js_count_num" name='content' placeholder="1.学习经历：例如-2008-2011 北京外国语大学学习英语专业 
+2.工作经历：例如-2013-1015在北京城里乐语翻译机构，担任英语特级翻译官
+3...."></textarea> -->
+						<textarea class="textarea_exp js_count_num m_t_10" name='content' placeholder="例如-2008-2011 北京外国语大学学习英语专业 ;2013-1015在北京城里乐语翻译机构，担任英语特级翻译官;3...."></textarea>
+                        <p class="ta_r blue">还可以输入<span class="js_min_num" data-max="200">200</span>个字</p>
+                        <input type="submit" class="btn btn_exp_submit ajax-post"  target-form="ajax_form" value="提交">
+                        <input type="reset" class="btn btn_exp_cancel" value="取消">  
+                        </form>
+                    </div>
+                    <!-- 新增/修改 过往经历模块 E-->
+                <?php 
+					if(empty($shop_info)){
+				?>
+                    <include file="Public/nodata" />
+	            <?php 
+					}else{
+				?>
+                    <ul class="exp_lists_yqc">   
+						<?php
+							foreach($shop_info as $k=>$v){
+						?>
+                       	<li class="clearfix">
+                           	<div class="exp_item_action">
+                               	<a href="<?=U('User/UnderGo/del',array('under_go'=>$v['id']))?>" class="btn btn_exp_del js_del">删除</a>
+                               	<a href="<?=U('User/UnderGo/operate',array('under_go'=>$v['id']))?>" class="btn btn_exp_edit js_edit">修改</a>
+                           	</div>
+                           	<div class="exp_item_desc">
+                               	<h4>过往经历</h4>
+                               	<div class="exp_item_box">
+                                   	<h5><?=date('Y/m',$v['start_time'])?>-<?=date('Y/m',$v['end_time'])?></h5>
+                                  		 <p class="toggle_text_box"><?=$v['content']?></p>
+                                   	<a href="javascript:;" class="js_toggle_text toggle_text_link org">展开全部</a>
+                                </div>
+                            </div>
+                        </li>
+                        <?php 
+                        	}
+                        ?>
+                    </ul>
+                <?php
+					}
+				?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            //点击修改回到表单处。
+            $('.js_edit').click(function(){
+                var backtop = setInterval(function(){
+                    if($(window).scrollTop() <= $('.js_exp_top').offset().top){
+                        clearInterval(backtop);
+                    }else{
+                        $(window).scrollTop($(window).scrollTop()-20);
+                    }
+                },10);
+            })
+            //切换描述显示状态
+            $('.js_toggle_text').click(function(){
+                if($(this).hasClass('active')){
+                    $(this).removeClass('active').text('展示全部');
+                    $(this).prev('.toggle_text_box').removeClass('active').css({'height':'20'});
+                }else{
+                    $(this).addClass('active').text('收起全部');
+                    $(this).prev('.toggle_text_box').addClass('active').css({'height':'auto'});
+                }
+            })
+            //计数器
+            $('.js_count_num').on('keyup blur',function(){
+                var v = $('.js_min_num').attr('data-max') - $(this).val().length;
+                $(this).val($(this).val().slice(0,parseInt($('.js_min_num').attr('data-max'))));
+                $('.js_min_num').text(v < 0 ? 0 : v);
+				//@liuqiao改 当用户输入字数超过200，输入框提示文字变红色增加一个弹框,否则移除样式。
+				if(v===0){
+					$('.js_count_num').addClass("error"); 
+					//alert("亲~经历好丰富，但字数超过200字了哦！");
+				}
+				else{
+					$('.js_count_num').removeClass("error");
+				}
+            })
+        })
+		//提交框的显示与隐藏
+		$('.js_Toggle_ZH').click(function(){
+			$('#js_hide_LH').toggle();
+			if($(".js_Toggle_ZH").text()=="隐藏"){
+				$(".js_Toggle_ZH").text("添加");
+			}else{
+				$(".js_Toggle_ZH").text("隐藏");
+			}
+		});
+		//验证只能输入数字
+		function RepNumber(obj) {
+			var reg = /^[\d]+$/g;
+			if (!reg.test(obj.value)) {
+			var txt = obj.value;
+			txt.replace(/[^0-9]+/, function (char, index, val) {//匹配第一次非数字字符
+			obj.value = val.replace(/\D/g, "");//将非数字字符替换成""
+			var rtextRange = null;
+			if (obj.setSelectionRange) {
+			obj.setSelectionRange(index, index);
+		} else {//支持ie
+			rtextRange = obj.createTextRange();
+			rtextRange.moveStart('character', index);
+			rtextRange.collapse(true);
+			rtextRange.select();
+			}
+		})
+		}
+		}
+    </script>
+</block>

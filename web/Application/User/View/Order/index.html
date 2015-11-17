@@ -1,0 +1,256 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+            	<div class="dataset_title clearfix f_16 js_exp_top"><span>订单列表</span><i></i></div>
+            	<div class="m_lr_15">
+            	<!-- 新增/修改 过往经历模块 S-->            	
+            		<div class="form-inline">
+						<form action="<?=U('index')?>" method='get' >
+							<div class="form-group">
+								<input class="input_style" type="text" name="order_num" placeholder="订单号" value=<?=$map['order_num']?>>
+							</div>
+							<div class="form-group">
+								<input type="text" class="input_style" onClick="WdatePicker({startDate:'%y-%M-%d',dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" name='add_time'  placeholder="下单日期" value=<?=$map['add_time']?> >
+								<!-- <input class="input_style" type="text"> -->
+							</div>
+							<div class="form-group">
+								<input class="input_style" type="text" name="telephone" placeholder="手机号/昵称" value=<?=$map['telephone']?>>
+							</div>
+							<div class="form-group">
+								<select class="select_style w_140 from_language_select" name='from_language' >
+									<option value=''>源语言</option>
+									<?php
+										foreach($language_data as $row){
+										  foreach($row["_child"] as $val){
+									?>
+											<option value="<?=$val['id']?>"><?=$val['title']?></option>
+									<?php
+									      }
+										}
+									?>
+								</select>
+								<script>
+									<?php
+										if(!isset($_GET['from_language']) || $_GET['from_language']==''){
+									?>
+									$('.from_language_select').val('');
+									<?php 
+										}else{
+									?>
+									$('.from_language_select').val(<?=intval($_GET['from_language'])?>);
+									<?php
+										}
+									?>
+								</script>
+							</div>
+							<div class="form-group">
+								<select class="select_style w_140 to_language_select" name='to_language' >
+									<option value=''>目标语言</option>
+									<?php
+										foreach($language_data as $row){
+										  foreach($row["_child"] as $val){
+									?>
+											<option value="<?=$val['id']?>"><?=$val['title']?></option>
+									<?php
+									      }
+										}
+									?>
+								</select>
+								<script>
+									<?php
+										if(!isset($_GET['to_language']) || $_GET['to_language']==''){
+									?>
+									$('.to_language_select').val('');
+									<?php 
+										}else{
+									?>
+									$('.to_language_select').val(<?=intval($_GET['to_language'])?>);
+									<?php
+										}
+									?>
+								</script>
+							</div>
+							<div class="form-group">
+								<select class="select_style w_140 order_select m_t_10" name='status' >
+									<option value=''>全部订单</option>
+									<?php
+										foreach($order_status as $k=>$val){
+									?>
+											<option value="<?=$k?>"><?=$val?>订单</option>
+									<?php
+										}
+									?>
+								</select>
+								<script>
+									<?php
+										if(!isset($_GET['status']) || $_GET['status']==''){
+									?>
+									$('.order_select').val('');
+									<?php 
+										}else{
+									?>
+									$('.order_select').val(<?=intval($_GET['status'])?>);
+									<?php
+										}
+									?>
+								</script>
+							</div>
+							<div class="form-group">
+								<input class="order_btn_ZH m_t_10" type="submit" value="搜索">
+							</div>
+						</form>
+                    </div>
+					<div class="w_452">
+						<ul class="nav nav-pills nav-justified">
+							<li><a class="order_reset_a <?php if(I('type') == 'all' || !I('type')){ echo 'order_cur'; }?>" href="<?=U('',array('type'=>'all'))?>">全部订单(<strong><?=$all_count?></strong>)</a></li>
+							<li><a class="order_reset_a <?php if(I('type') == '3'){ echo 'order_cur'; }?>" href="<?=U('',array('type'=>'3'))?>">已完成订单(<strong><?=$completed_count?></strong>)</a></li>
+							<li><a class="order_reset_a <?php if(I('type') == '2'){ echo 'order_cur'; }?>" href="<?=U('',array('type'=>'2'))?>">进行中订单(<strong><?=$processing_count?></strong>)</a></li>
+						</ul>
+					</div>
+					<div class="table-responsive">
+						<table class="table order_b_edf5fd_ZH c_666">
+							<tr>
+								<th>
+									<input type="checkbox"  class="js_selectAll"  onClick="selectAll();">
+								</th>
+								<th>订单号</th>
+								<th>下单人</th>
+								<th>单价</th>
+								<th>数量</th>
+								<th>订单总额</th>
+								<th>类型</th>
+								<th>订单状态</th>
+								<th>下单日期</th>
+								<th>操作</th>
+							</tr>
+							<?php
+								foreach($result as $row){
+							?>
+							<tr>
+								<td>
+									<input type="checkbox" name="ids[]"  class="js_select ids" value="<?=$row['order_id']?>" onClick="setselectAll()">
+								</td>
+								<td><?=$row['order_num']?></td>
+								<td><?=$row['username']?></td>
+								<td><?=$row['product_price']?>/<?php if($row['product_type'] == 1){ echo '千字'; }else{ echo '小时'; } ?></td>
+								<td><?=$row['qty']?>/<?php if($row['product_type'] == 1){ echo '字'; }else{ echo '小时'; } ?></td>
+								<td><?=$row['total_price']?>元</td>
+								<td><?=$row['product_type_text']?></td>
+								<td><?=$row['order_status_text']?></td>
+								<td><?=$row['order_add_time']?></td>
+								<td>
+									<?php
+										if($row['order_status']==0){
+									?>
+									<a href="<?=U('del',array('ids'=>$row['order_id'],'status'=>'-1'))?>">删除</a>
+									<span class="m_lr_5">/</span>
+									<?php
+										}
+									?>
+									<?php
+										if($row['order_status']==4){
+									?>
+									<!-- <a href="<?=U('refund',array('id'=>$row['order_id']))?>">退款</a>
+									<span class="m_lr_5">/</span> -->
+									<?php
+										}
+									?>
+									<a href="<?=U('detail',array('id'=>$row['order_id']))?>">查看</a>
+									
+									
+								</td>
+							</tr>
+							<?php
+								}
+							?>							
+							<tr>
+								<td colspan="10">
+									<?php if(empty($result)){?>
+										<include file="Public/nodata" />
+									<?php }?>	
+                                    <?php
+									    if(!empty($result)){
+									?>									
+									<label>
+										<input type="checkbox"  class="js_selectAll" onClick="selectAll(this);">全选
+									</label>
+									<!-- <a href="<?=U('del')?>" class="ml_10 del_btn_ZH ajax-post" >删除</a> -->
+									<!-- <input class="ml_10 del_btn_ZH" type="button" class="btn btn-default" value="删除"> -->
+									<input class="ml_10 del_btn_ZH ajax-post confirm"  target-form="ids" type="button" href= "<?=U('del')?>" value="删除">
+									<?php
+									  }
+									?>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!--<div class="pages clearfix">
+						<?=$page?>
+						<span>共<?=$page_count?>页</span>
+						<?php
+							if(trim($page)){
+						?>
+						<span>&nbsp;</span>
+						<span>跳转至</span>
+						<input type="text" name='p' />
+						<span>页</span>
+						<a href="<?=U('')?>" class='go_to_page' >确定</a>
+						<?php
+							}
+						?>
+                    </div>-->
+					<div class="pages text-center">
+						<?=$page?>
+						<?php
+							if(trim($page)){
+						?>
+						<span>共<?=$page_count?>页</span>
+						<span>&nbsp;</span>
+						<span>跳转至</span>
+						<input type="text" name='p' />
+						<span>页</span>
+						<a href="<?=U('')?>" class='go_to_page' >确定</a>
+						<?php
+							}
+						?>
+					</div>
+            	<!--the end-->
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+    	/*全选*/
+    	$(document).on('click','.js_selectAll',function(){
+    		if($(this).prop('checked')){
+    			$('.js_select').prop('checked',true);
+    		}else{
+    			$('.js_select').prop('checked',false);
+    		}
+    	});
+		/*跳转指定页码	 李东*/
+		$(document).on('click','.go_to_page',function(){
+    		page = $('input[name="p"]').val();
+			if(!isNaN(page)){
+				//url_old = $(this).attr('href');
+				//url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+			    //$(this).attr({'href':url});
+					/*跳转指定页@刘巧*/
+				url_old=window.location.href;
+				var url = url_old.substr(0,url_old.length-5)+'/p/'+page+'.html';
+				$(this).attr({'href':url});
+			}else{
+			   alert("请输入数字");
+			   return false;
+			}
+    	});
+    })
+    </script>
+</block>

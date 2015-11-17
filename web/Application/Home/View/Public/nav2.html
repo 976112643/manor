@@ -1,0 +1,71 @@
+<div class="nav_ZH">
+	<div class="container p_lr clearfix">
+		<div class="nav2 pull-left">
+			<b  class="title_nav">语言分类</b>
+			<!--下拉样式 S -->
+			<div class="home_left_sidebar sidebar2 f_l">
+				<ul>
+					<?php 
+						//print_r($recommend_language);
+						foreach($recommend_language as $row){
+					?>
+					<li>
+						<dl class="clearfix">
+							<dt><b class="f_14"><?=$row['title']?></b><span>(源语言)</span></dt>
+							<?php 
+								$temp_i = 1;
+								foreach($language as $_row){
+									if($_row['pid']>0 && $_row['id']!=$row['id']){
+										if($temp_i<5){
+							?>
+							<dd><a href="<?=U('/Home/Classes/index',array('language_id'=>$row['id'],'to_language_id'=>$_row['id']))?>"><?=$_row['title']?></a></dd>
+							<?php 
+										}else{
+											break;
+										}
+										$temp_i++;
+									}
+								}
+							?>
+						</dl>
+						<div class="sidebar_ZH op_ZH">
+							<dl class="clearfix">
+								<dt><h5 class="c_ff7402"><b>目标语言</b></h5></dt>
+								<?php 
+									$temp_i = 1;
+									foreach($language as $_row){
+										if($_row['pid']>0 && $_row['id']!=$row['id']){
+								?>
+								<dd><a href="<?=U('/Home/Classes/index',array('language_id'=>$row['id'],'to_language_id'=>$_row['id']))?>"><?=$_row['title']?></a></dd>
+								<?php 
+										}
+									}
+								?>
+							</dl>
+						</div>
+					</li>
+					<?php
+						}
+					?>
+					<li class="more_btn2"><a class="text-center" href="<?=U('/Home/Classes/index')?>"><b>找好翻译,上N帮</b></a></li>
+				</ul>
+			</div>
+			<!--下拉样式 E -->
+		</div>
+		<ul class="menu_ZH">
+			<?php
+				$navigation = getNavigation();
+				$top_navigation = $navigation['top'];
+				foreach($top_navigation as $row){
+			?>
+			<?php if($row['title'] == 首页){ ?>
+			<li class="list_nav"><a href="__ROOT__<?=$row['url']?>" target='<?=$row['target']?>'><?=$row['title']?></a></li>
+			<?php }else{?>
+			<li class="list_nav"><a href="__ROOT__/<?=$row['url']?>" target='<?=$row['target']?>'><?=$row['title']?></a></li>
+			<?php
+						}
+				}
+			?>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,589 @@
+[ 2015-11-14T14:49:02+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000380s ]
+INFO: [ app_init ] --END-- [ RunTime:0.067567s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.020794s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.022916s ]
+ERR: 无法加载数据库驱动: Think\Db\Driver\
+
+[ 2015-11-14T14:49:18+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000649s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003472s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001887s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004318s ]
+ERR: 无法加载数据库驱动: Think\Db\Driver\
+
+[ 2015-11-14T14:53:53+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000328s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003032s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001967s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003956s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nbfy.sr_config' doesn't exist
+
+[ 2015-11-14T15:06:55+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000494s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003872s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003013s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006034s ]
+SQL: SHOW COLUMNS FROM `sr_config` [ RunTime:0.0048s ]
+SQL: SELECT `name`,`value` FROM `sr_config`  [ RunTime:0.0011s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nbfy.sr_category' doesn't exist
+
+[ 2015-11-14T15:06:59+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000439s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003210s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001977s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004737s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nbfy.sr_category' doesn't exist
+
+[ 2015-11-14T15:07:01+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000493s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003594s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002316s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004846s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nbfy.sr_category' doesn't exist
+
+[ 2015-11-14T15:07:04+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000527s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004179s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002179s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004804s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nbfy.sr_category' doesn't exist
+
+[ 2015-11-14T15:08:48+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000391s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003645s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001759s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004554s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'nbfy.sr_category' doesn't exist
+
+[ 2015-11-14T15:40:29+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000308s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002952s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002081s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004012s ]
+SQL: SHOW COLUMNS FROM `sr_category` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_category` WHERE `status` = 1 AND `type` = 0 AND `level` = 2 AND `recommend` = 1 ORDER BY  sort desc LIMIT 10   [ RunTime:0.0637s ]
+SQL: SHOW COLUMNS FROM `sr_theme` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_theme` WHERE `status` = 1  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:40:29' AND `end_time` >= '2015-11-14 15:40:29' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0290s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:40:29' AND `end_time` >= '2015-11-14 15:40:29' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0052s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0054s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0019s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:40:31+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000405s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002950s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001815s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003959s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:40:31' AND `end_time` >= '2015-11-14 15:40:31' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0012s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:40:31' AND `end_time` >= '2015-11-14 15:40:31' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0037s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0076s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0048s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0017s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0019s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:40:33+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000357s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002912s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001629s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003551s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:40:33' AND `end_time` >= '2015-11-14 15:40:33' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:40:33' AND `end_time` >= '2015-11-14 15:40:33' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0048s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0052s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0058s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0024s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:40:45+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000419s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003295s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001762s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003844s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:40:45' AND `end_time` >= '2015-11-14 15:40:45' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:40:45' AND `end_time` >= '2015-11-14 15:40:45' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0037s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0049s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0016s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:40:46+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000384s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002883s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002350s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004340s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:40:46' AND `end_time` >= '2015-11-14 15:40:46' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:40:46' AND `end_time` >= '2015-11-14 15:40:46' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0050s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0038s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0059s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0051s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0016s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:41:30+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000473s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004146s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003892s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006334s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0054s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0056s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:41:30' AND `end_time` >= '2015-11-14 15:41:30' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:41:30' AND `end_time` >= '2015-11-14 15:41:30' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0053s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0044s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0068s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0070s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0020s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:43:13+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000542s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003284s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002604s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004341s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:43:13' AND `end_time` >= '2015-11-14 15:43:13' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:43:13' AND `end_time` >= '2015-11-14 15:43:13' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0043s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0032s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0013s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0055s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0020s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:47:31+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000372s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003027s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002091s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004082s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0247s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:47:31' AND `end_time` >= '2015-11-14 15:47:31' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:47:31' AND `end_time` >= '2015-11-14 15:47:31' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0036s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0051s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0020s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0013s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:47:33+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000502s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002771s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001683s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003309s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0043s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:47:32' AND `end_time` >= '2015-11-14 15:47:32' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:47:32' AND `end_time` >= '2015-11-14 15:47:32' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0051s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0036s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0055s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0017s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0019s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:47:34+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000302s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002470s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001876s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003659s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0042s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:47:34' AND `end_time` >= '2015-11-14 15:47:34' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0014s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:47:34' AND `end_time` >= '2015-11-14 15:47:34' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0034s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0052s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0020s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:47:36+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000307s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002473s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001847s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003439s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0039s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0058s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:47:36' AND `end_time` >= '2015-11-14 15:47:36' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:47:36' AND `end_time` >= '2015-11-14 15:47:36' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0045s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0036s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0066s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0055s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0019s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:48:18+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000364s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003495s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002010s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004034s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0046s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:48:18' AND `end_time` >= '2015-11-14 15:48:18' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:48:18' AND `end_time` >= '2015-11-14 15:48:18' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0049s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0042s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0052s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0053s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0019s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:49:33+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000396s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002993s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002073s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004242s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:49:33' AND `end_time` >= '2015-11-14 15:49:33' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:49:33' AND `end_time` >= '2015-11-14 15:49:33' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0037s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0064s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0066s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0021s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0016s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:57:14+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000439s ]
+INFO: [ app_init ] --END-- [ RunTime:0.041068s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.013552s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.016246s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0628s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0608s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:57:13' AND `end_time` >= '2015-11-14 15:57:13' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:57:14' AND `end_time` >= '2015-11-14 15:57:14' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0056s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0018s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0056s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0066s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0401s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0016s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:57:15+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000335s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002992s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002712s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005005s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0048s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:57:15' AND `end_time` >= '2015-11-14 15:57:15' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:57:15' AND `end_time` >= '2015-11-14 15:57:15' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0355s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0015s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0058s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0068s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0017s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0018s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:57:26+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000382s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003034s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002309s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005072s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0564s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null AND `to_status` = 0  [ RunTime:0.0028s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0053s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:57:25' AND `end_time` >= '2015-11-14 15:57:25' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0327s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:57:25' AND `end_time` >= '2015-11-14 15:57:25' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0054s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0016s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0017s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0062s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.1525s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0017s ]
+ERR: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sr_shop.have_product' in 'where clause'
+
+[ 2015-11-14T15:57:40+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000367s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003609s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003074s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005669s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0044s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0054s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null AND `to_status` = 0  [ RunTime:0.0545s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0049s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:57:38' AND `end_time` >= '2015-11-14 15:57:38' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0258s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:57:38' AND `end_time` >= '2015-11-14 15:57:38' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0054s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0017s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0072s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0057s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,shop.shop_license_1 AS shop_license_1,shop.have_product AS have_product,shop.reason AS reason,shop.be_x AS be_x,shop.be_y AS be_y,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.1035s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,shop.shop_license_1 AS shop_license_1,shop.have_product AS have_product,shop.reason AS reason,shop.be_x AS be_x,shop.be_y AS be_y,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0021s ]
+SQL: SELECT distinct(sr_shop.id),sr_shop.title,sr_shop.translate_year,sr_shop.good_at FROM sr_shop,sr_products WHERE sr_shop.id=sr_products.shop_id AND sr_shop.status=1 AND sr_shop.have_product=1 order by sr_shop.add_time desc limit 5 [ RunTime:0.0794s ]
+SQL: SHOW COLUMNS FROM `sr_products` [ RunTime:0.0049s ]
+SQL: SELECT `shop_id` FROM `sr_products` WHERE `type` = 36 AND `status` = 1  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sr_shop` WHERE `id` IN (1,2,5,9,11,13,14,18,21,17,19,44,45) AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 5   [ RunTime:0.0014s ]
+SQL: SELECT `shop_id` FROM `sr_products` WHERE `type` = 37 AND `status` = 1  [ RunTime:0.0009s ]
+SQL: SELECT * FROM `sr_shop` WHERE `id` IN (2,5,3,1,8,9,14,11,17,15,18,21,19,26,39,46,44) AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 5   [ RunTime:0.0013s ]
+SQL: SELECT SUM(1) as demand,SUM(total_price) as price_sum FROM sr_orders WHERE `status`>1 [ RunTime:0.0486s ]
+SQL: SELECT COUNT(id) as total_num FROM sr_shop WHERE `status`=1; [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sr_banner` WHERE `status` = 1  [ RunTime:0.0009s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001895s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003832s ]
+NOTIC: [8] Undefined variable: title D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 9 行.
+NOTIC: [8] Undefined variable: keywords D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 9 行.
+NOTIC: [8] Undefined variable: description D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 9 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 98 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 100 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 101 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 102 行.
+SQL: SHOW COLUMNS FROM `sr_category` [ RunTime:0.0051s ]
+SQL: SELECT * FROM `sr_category` WHERE `status` = 1 AND `type` = 2 ORDER BY  sort desc  [ RunTime:0.0274s ]
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 139 行.
+SQL: SELECT * FROM `sr_category` WHERE `status` = 1 AND `type` = 0 ORDER BY  sort desc  [ RunTime:0.0015s ]
+SQL: SHOW COLUMNS FROM `sr_navigation` [ RunTime:0.0045s ]
+SQL: SELECT * FROM `sr_navigation` WHERE `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 311 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 319 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 339 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 467 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 577 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 634 行.
+NOTIC: [8] Undefined index: links D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 721 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 721 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.912157s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.914109s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.035504s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.010182s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.049007s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.016616s ]
+INFO: [ app_end ] --END-- [ RunTime:0.018762s ]
+
+[ 2015-11-14T15:57:42+08:00 ] ::1 /web/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000424s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003622s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001992s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003954s ]
+SQL: SHOW COLUMNS FROM `sr_sysmsg_status` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sr_sysmsg_status` WHERE `member_id` = null AND `status` = 0  [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `sr_message` [ RunTime:0.0052s ]
+SQL: SELECT * FROM `sr_message` WHERE `to_member_id` = null AND `to_status` = 0  [ RunTime:0.0035s ]
+SQL: SHOW COLUMNS FROM `sr_banner` [ RunTime:0.0081s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'home_banner' AND `start_time` <= '2015-11-14 15:57:40' AND `end_time` >= '2015-11-14 15:57:40' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sr_banner` WHERE `page` = 'advert_banner' AND `start_time` <= '2015-11-14 15:57:40' AND `end_time` >= '2015-11-14 15:57:40' AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.0012s ]
+SQL: SHOW COLUMNS FROM `sr_article` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'news' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0019s ]
+SQL: SELECT `id`,`title` FROM `sr_article` WHERE `type` = 'notice' AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 9   [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `sr_shop` [ RunTime:0.0099s ]
+SQL: SHOW COLUMNS FROM `sr_member` [ RunTime:0.0068s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,shop.shop_license_1 AS shop_license_1,shop.have_product AS have_product,shop.reason AS reason,shop.be_x AS be_x,shop.be_y AS be_y,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.type = 1 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0025s ]
+SQL: SELECT shop.id AS shop_id,shop.status AS shop_status,shop.add_time AS shop_add_time,shop.id AS id,shop.title AS title,shop.slogan AS slogan,shop.type AS type,shop.member_id AS member_id,shop.logo AS logo,shop.keywords AS keywords,shop.short_description AS short_description,shop.level AS level,shop.status AS status,shop.recommend AS recommend,shop.add_time AS add_time,shop.theme_id AS theme_id,shop.have_theme AS have_theme,shop.good_at AS good_at,shop.shop_license AS shop_license,shop.shop_tax AS shop_tax,shop.translate_type AS translate_type,shop.translate_year AS translate_year,shop.comment_num AS comment_num,shop.total_translate_time AS total_translate_time,shop.translate_num AS translate_num,shop.service_times AS service_times,shop.total_translate_num AS total_translate_num,shop.regtime AS regtime,shop.area_id AS area_id,shop.address AS address,shop.operate_type AS operate_type,shop.description_now AS description_now,shop.work_time_s AS work_time_s,shop.work_time_e AS work_time_e,shop.speed_star_num AS speed_star_num,shop.quality_star_num AS quality_star_num,shop.serve_star_num AS serve_star_num,shop.star_num AS star_num,shop.is_identity_confirm AS is_identity_confirm,shop.is_qualified_comfirm AS is_qualified_comfirm,shop.min_price AS min_price,shop.shop_license_1 AS shop_license_1,shop.have_product AS have_product,shop.reason AS reason,shop.be_x AS be_x,shop.be_y AS be_y,member.username AS username,member.id AS seller_id FROM sr_shop shop LEFT JOIN sr_member member ON shop.member_id=member.id WHERE member.id > 0 AND shop.status = 1 AND shop.recommend = 1 ORDER BY shop.id desc LIMIT 5   [ RunTime:0.0028s ]
+SQL: SELECT distinct(sr_shop.id),sr_shop.title,sr_shop.translate_year,sr_shop.good_at FROM sr_shop,sr_products WHERE sr_shop.id=sr_products.shop_id AND sr_shop.status=1 AND sr_shop.have_product=1 order by sr_shop.add_time desc limit 5 [ RunTime:0.0023s ]
+SQL: SHOW COLUMNS FROM `sr_products` [ RunTime:0.0087s ]
+SQL: SELECT `shop_id` FROM `sr_products` WHERE `type` = 36 AND `status` = 1  [ RunTime:0.0012s ]
+SQL: SELECT * FROM `sr_shop` WHERE `id` IN (1,2,5,9,11,13,14,18,21,17,19,44,45) AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 5   [ RunTime:0.0016s ]
+SQL: SELECT `shop_id` FROM `sr_products` WHERE `type` = 37 AND `status` = 1  [ RunTime:0.0014s ]
+SQL: SELECT * FROM `sr_shop` WHERE `id` IN (2,5,3,1,8,9,14,11,17,15,18,21,19,26,39,46,44) AND `status` = 1 AND `recommend` = 1 ORDER BY  id desc LIMIT 5   [ RunTime:0.0015s ]
+SQL: SELECT * FROM `sr_banner` WHERE `status` = 1  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002451s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.004937s ]
+NOTIC: [8] Undefined variable: title D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 9 行.
+NOTIC: [8] Undefined variable: keywords D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 9 行.
+NOTIC: [8] Undefined variable: description D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 9 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 98 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 100 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 101 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 102 行.
+NOTIC: [8] Undefined variable: param D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 139 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [8] Use of undefined constant 首页 - assumed '首页' D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 196 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 311 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 319 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 339 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 467 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [8] Undefined index: logo D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 512 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 577 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 634 行.
+NOTIC: [8] Undefined index: links D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 721 行.
+NOTIC: [2] Invalid argument supplied for foreach() D:\htdocs\web\Runtime\Cache\Home\2a94b8bda04ff446dcedd42276fc99ee.php 第 721 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:1.151049s ]
+INFO: [ view_parse ] --END-- [ RunTime:1.153880s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003326s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002100s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009246s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003907s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006365s ]
+

@@ -1,0 +1,86 @@
+<extend name="Home@Public/body_wap"/>
+<block name="style"></block>
+<block name="body">
+<js href="__JS__/dialog-min.js" />
+<div class="js_circle_ctrl">
+    <!--余额支付 S-->
+    <div class="balance_yqc mt10 mb10">
+        <div class="oppose_box clearfix f14">
+            <div class="pull-left"><img src="__IMG__/sc_template/app/balance.png"></div>
+            <div class="pull-right"><i data-name="payment" class="fa fa-circle-thin f20"></i></div>
+            <div class="payment_info">
+                <h5 class="f16">余额支付</h5>
+                <p class="f12">当前余额：3580 元，请<a href="#" class="red">充值</a></p>
+            </div>
+        </div>
+    </div>
+    <!--余额支付 E-->
+    <!--其他支付方式 S-->
+    <div class="balance_yqc mt10 mb10">
+        <div class="oppose_box clearfix f14">
+            <div class="pull-left"><img src="__IMG__/sc_template/app/ali_pay.png"></div>
+            <div class="pull-right"><i data-name="payment" class="fa fa-circle-thin f20"></i></div>
+            <div class="payment_info">
+                <h5 class="f16">支付宝支付</h5>
+                <p class="f12">推荐有支付宝账号的用户使用</p>
+            </div>
+        </div>
+        <div class="oppose_box clearfix f14">
+            <div class="pull-left"><img src="__IMG__/sc_template/app/wchat_pay.png"></div>
+            <div class="pull-right"><i data-name="payment" class="fa fa-circle-thin f20"></i></div>
+            <div class="payment_info">
+                <h5 class="f16">微信支付</h5>
+                <p class="f12">推荐安装微信5.0及以上版本的用户使用</p>
+            </div>
+        </div>
+        <div class="oppose_box clearfix f14">
+            <div class="pull-left"><img src="__IMG__/sc_template/app/online_pay.png"></div>
+            <div class="pull-right"><i data-name="payment" class="fa fa-circle-thin f20"></i></div>
+            <div class="payment_info">
+                <h5 class="f16">在线支付</h5>
+                <p class="f12">支持银行卡，信用卡，无需开通网银</p>
+            </div>
+        </div>
+    </div>
+    <!--其他支付方式 E-->
+</div>
+<!--确认支付 S-->
+<div class="order_submit_yqc">
+    <input type="submit" class="js_dialog btn btn_submit" value="确认支付">
+    <input type="submit" class="btn btn_submit disabled" disabled value="请充值，或选择其他支付方式">
+</div>
+<!--确认支付 E-->
+<!--确认支付模态框 S-->
+<div class="model f14">
+    <div class="model_title"><i class="org"></i>余额支付</div>
+    <div class="f16 info_line">888.9元</div>
+    <div class="clearfix info_line f16">
+        <span class="pull-left">888.9元</span>
+        <a href="#" class="pull-right"><i class="fa fa-angle-right"></i></a>
+    </div>
+    <div class="model_form">
+        <input type="password" class="pay_password" placeholder="请输入支付密码">
+        <div class="btn_line row">
+            <div class="col-xs-6"><input type="reset" class="js_close btn_cancel" value="取消"></div>
+            <div class="col-xs-6"><input type="submit" class="btn_pay" value="付款"></div>
+        </div>
+    </div>
+</div>
+<!--确认支付模态框 E-->
+
+<script>
+    $(function(){
+        $('.js_circle_ctrl .oppose_box').click(function(){
+            $(this).siblings().find('i').removeClass('fa-check-circle').addClass('fa-circle-thin');
+            $(this).find('i').toggleClass('fa-circle-thin').toggleClass('fa-check-circle');
+        })
+        var d= dialog({content:$('.model')});
+        $('.js_dialog').click(function(){
+            d.showModal();
+        })
+        $('.js_close').click(function(){
+            d.close();
+        })
+    })
+</script>
+</block>

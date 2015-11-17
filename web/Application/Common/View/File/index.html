@@ -1,0 +1,105 @@
+<input type="file" id="upload_file_<?=$config['index']?>">
+<div class="upload-img-box cf">
+	<?php
+		if($config['multi']=="true"){
+			//获取附件表中符合条件的数据
+			$_list=M($config['table'])->where(array($config['table_id']=>$id))->select();
+			foreach ($_list as $row) {
+	?>
+		<div class="file_list">
+			<?=basename($row['save_path'])?>
+			<a class="delThis" onclick="delThis_<?=$config['index']?>(this)" index="<?=$row['id']?>">删除</a>
+		</div>
+	<?php
+			}
+		}else{
+			if($info!=''){
+	?>
+		<div class="file_list">
+			<?=basename($info)?>
+			<a class="delThis" onclick="delThis_<?=$config['index']?>(this)" index="<?=$id?>">删除</a>
+		</div>
+	<?php
+			}
+		}
+	?>
+</div>
+<script type="text/javascript">
+//上传图片
+/* 初始化上传插件 */
+$("#upload_file_<?=$config['index']?>").uploadify({
+	'formData'		  :{'<?=session_name()?>':'<?=session_id()?>'},
+	'multi'        : <?=$config['multi']?>,//false表示关闭多文件上传，如果需要开启需要把值设置为true
+	'auto'		   : true,
+	"height"          : 30,
+	"swf"             : "__PLUGIN__/uploadify/uploadify.swf",
+	"fileObjName"     : "download",
+	"buttonText"      : "<?=$config['btn_val']?>",
+	"uploader"        : "<?=U('uploadFile',array('session_id'=>session_id()))?>",
+	"width"           : 120,
+	'removeTimeout'	  : 1,
+	'fileTypeExts'	  : '*.jpg;*.jpeg;*.bmp;*.png;*.rar;*.zip;*.rar;*.zip;*.7z;*.doc;*.docx;*.rtf;*.txt;*.avi;*.flv',
+	'fileSizeLimit'	  : 0,
+	"onUploadSuccess" : uploadFile_<?=$config['index']?>,
+	'onFallback' : function() {
+		alert('未检测到兼容版本的Flash.');
+	}
+});
+function uploadFile_<?=$config['index']?>(file, data){
+	var data = $.parseJSON(data);
+	var src = '';
+	if(data.status){
+		src = data.url || '__ROOT__/' + data.save_path;
+		var name="<?=$config['name']?>";
+		if(<?=$config['multi']?>){
+			name="<?=$config['name']?>[]";
+		}
+		var file_data_html="";
+		str=data.name.split("."+data.ext);
+		file_data_html='<input type="hidden" name="filename_'+data.id+'" value="'+str[0]+'">';
+		<?php
+		   //if($config["table"]=='files'){
+		?>
+		 // str=data.name.split("."+data.ext);
+		  //file_data_html='<input type="hidden" name="filename_'+data.id+'" value="'+str[0]+'">';
+		<?php
+		//}
+		?>
+		var html='<div class="file_list">'+file_data_html+'<input type="hidden" name="'+name+'" value="'+data.id+'"/>' + data.name + '<a class="delThis" index="'+data.id+'" onclick=\'delCache_<?=$config['index']?>(this,"'+data.id+'")\'>删除</a></div>';
+		if(<?=$config['multi']?>){
+			$("#upload_file_<?=$config['index']?>").parent().find('.upload-img-box').append(html);
+		}else{
+			$("#upload_file_<?=$config['index']?>").parent().find('.upload-img-box').html(html);
+		}
+	}else{
+		tips(data.info,1000);
+	}
+}
+
+//删除已经添加到数据库的图片
+function delThis_<?=$config['index']?>(obj){
+	var file_id=$(obj).attr('index');
+	if(confirm("确定删除吗？")){
+		$.post('<?=U("ajaxDelete_".$config["table"])?>',{'file_id':file_id,'id':'<?=$id?>'},function(data){
+			if(data.status==1){
+				$(obj).parent().html('');
+			}else{
+				tips(data.info,1500);
+			}
+		});
+	}
+}
+//删除临时上传的图片，也就是上传后还没有点击发布的图片
+function delCache_<?=$config['index']?>(obj){
+	if(confirm("确定删除吗？")){
+		var temp_id=$(obj).attr('index');
+		$.post("<?=U('delTempFile')?>",{id:temp_id},function(data){
+			if(data.status==1){
+				$(obj).parent().html('');
+			}else{
+				tips(data.info,1500);
+			}
+		})
+	}
+}
+</script>

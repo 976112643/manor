@@ -1,0 +1,271 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <div class="container">
+        <div class="row m_t_10 m_b_10">
+            <include file="Public/sidebar" />
+            <div class="col-xs-9 border_gray">
+                <div class="list_box_j">
+                    <div class="dataset_title f_16"><span>地址管理</span><i></i></div>
+                    <div class="row addcard_sw" style="display: block;">
+	                    <div class="m_lr_15"> 
+							<form class="form-horizontal f_w demo_form_sw js_address_update">
+								<table class="table table-bordered table_data_j">
+									<input type="hidden" name="id" value="<?=$res['id']?>"]>
+									<tr>
+										<th>地址别名<span class="change_color c_ff7402">*</span></th>
+										<td>
+											<input type="text" class="input-sm" name="title"  id="title" errormsg="" value="<?=$res['title']?>">
+											<span class="grey">设置一个易记的名称，如：“送到家里”、“送到公司” </span><span class="org">地址别名不能为空</span>
+										</td>
+									<tr>
+										<th>收货人<span class="change_color c_ff7402">*</span></th>
+										<td>
+											<input type="email" class="input-sm" name="username"  id="username" datatype="zh2-4"  errormsg="请填写开户人" value="<?=$res['username']?>">
+										</td>
+									</tr>
+									<tr>
+										<th>手机号码<span class="change_color c_ff7402">*</span></th>
+										<td>
+											<input type="text" class="input-sm"  name="phone_number" id="phone_number" datatype="m" errormsg="" value="<?=$res['phone_number']?>">
+										</td>
+									</tr>
+									<tr>
+										<th><?php if($type['type'] == 1){?>收取地址<?php }else if($type['type'] == 2){?>个人译者地址<?php }else if($type['type'] == 3){?>公司地址<?php }?><span class="change_color c_ff7402">*</span></th>
+										<td>
+											<div class="form-inline">
+												<div class="form-group">
+													<select class="input-sm province_select" name="province" id="province"  onchange="province_change(this)" >
+														<?php if($province_data){ ?>
+															<option value="<?=$province_data['id']?>"  path="<?=$province_data['path']?>"  selected="selected"><?=$province_data['province']?></option>
+															<?php }else{?>
+															<option >省</option>
+															<?php }?>
+														<?php
+															foreach($data['area'] as $row){
+															if($row['pid']==0){
+														?>
+															<option value="<?=$row['id']?>"  path="<?=$row['path']?>"><?=$row['title']?></option>
+														<?php
+																}
+															}
+														?>
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="input-sm city_select"  name="city" id="city" onchange="city_change(this)">
+														<?php if($city_data){ ?>
+														<option value="<?=$city_data['id']?>"  path="<?=$city_data['path']?>" selected="selected"><?=$city_data['city']?></option>
+														<?php }else{?>
+														<option >市</option>
+														<?php }?>
+													</select>
+												</div>
+												<div class="form-group">
+													<select class="input-sm area_select"  name="area" id="area" onchange="choose_addpath(this)">
+														<?php if($area_data){ ?>
+														<option value="<?=$area_data['id']?>"  path="<?=$area_data['path']?>" selected="selected"><?=$area_data['area']?></option>
+														<?php }else{?>
+														<option >区</option>
+														<?php }?>
+													</select>
+												</div>
+												<div class="form-group">
+													<input type="text" class="input-sm" name="detailed_address" placeholder="请输入详细地址" id="user_address" value="<?=$res['detailed_address']?>">
+												</div>
+												<div class="form-group">
+													<select id="area_select_data"  style="display:none">
+														<?php
+															foreach($data['area'] as $row){
+															if($row['pid']==0){
+																continue;
+															}
+													?>
+														<option value="<?=$row['id']?>" pid="<?=$row['pid']?>" path="<?=$row['path']?>" ><?=$row['title']?></option>
+														<?php
+															}
+													?>
+													</select>
+												</div>
+											</div> 
+										</td>
+									</tr>
+									<tr>
+										<th>邮政编码<span class="change_color c_ff7402">*</span></th>
+										<td>
+											<input class="input-sm" name="postalcode"  id="postalcode" type="text" datatype="p" errormsg="" value="<?=$res['postalcode']?>">
+										</td>
+									</tr>
+									<tr>
+										<th>设置默认</th>
+										<td>
+											<div class="form-inline">
+												<div class="form-group">									
+													<div class="checkbox">
+										            	<label><input type="checkbox" id="default_address" name="default_address" value="1">设为默认收货地址</label>
+										        	</div>
+										        </div>									
+											</div>
+										</td>
+									</tr>
+								</table>
+								<div class="form-group">
+	                                <div class="col-xs-9 col_9_sw col-xs-offset-2">
+	                                    <div class="form-inline">
+	                                        <input type="hidden" name="addpath" id="addpath" value=""/>
+											<input class="btn btn-warning ajax-post" target-form="js_address_update" id="submit" type="submit" value="保存" index="<?=$res['id']?>" >
+	                                    </div>
+	                                </div>
+	                            </div>
+								<!-- <div class="form-inline userinfo_sw m_tb_20">
+									<input type="hidden" name="id" value="<?=$res['id']?>"]>
+									<div class="form-group adr_mt_sw mb15">
+										<label for="exampleInputName2">发票抬头：</label>
+										<input type="text" class="form-control mb10" name="title"  id="title" errormsg="" value="<?=$res['title']?>">
+										<span class="Validform_checktip"></span>
+									</div>
+									<div class="form-group adr_mt_sw">
+										<label for="exampleInputEmail2">收货人：</label>
+										<input type="email" class="form-control" name="username"  id="username"  datatype="zh2-4"  errormsg="请填写开户人" value="<?=$res['username']?>">
+										<span class="Validform_checktip"></span>
+									</div>
+									<div class="form-group adr_mt_sw">
+										<label for="exampleInputEmail2">手机号码：</label>
+										<input type="text" class="form-control"  name="phone_number" id="phone_number" datatype="m" errormsg="" value="<?=$res['phone_number']?>">
+										<span class="Validform_checktip"></span>
+									</div>
+								</div>
+								<div class="form-inline consinaddre_sw m_tb_20">
+									<label>收取地址：</label>
+									<div class="form-group">
+										<select class="form-control province_select"  name="province" id="province"  onchange="province_change(this)" >
+											<?php if($province_data){ ?>
+											<option value="<?=$province_data['id']?>"  path="<?=$province_data['path']?>"  selected="selected"><?=$province_data['province']?></option>
+											<?php }else{?>
+											<option >省</option>
+											<?php }?>
+										<?php
+											foreach($data['area'] as $row){
+											if($row['pid']==0){
+									?>
+											<option value="<?=$row['id']?>"  path="<?=$row['path']?>"><?=$row['title']?></option>
+										<?php
+												}
+										}
+									?>
+										</select>
+									</div>
+									<div class="form-group">
+									   <select class="form-control city_select"  name="city" id="city" onchange="city_change(this)">
+											<?php if($city_data){ ?>
+											<option value="<?=$city_data['id']?>"  path="<?=$city_data['path']?>" selected="selected"><?=$city_data['city']?></option>
+											<?php }else{?>
+											<option >市</option>
+											<?php }?>
+										</select>
+									</div>
+									<div class="form-group">
+										<select class="form-control area_select"  name="area" id="area" onchange="choose_addpath(this)" class="select area_select">
+											<?php if($area_data){ ?>
+											<option value="<?=$area_data['id']?>"  path="<?=$area_data['path']?>" selected="selected"><?=$area_data['area']?></option>
+											<?php }else{?>
+											<option >区</option>
+											<?php }?>
+										</select>
+									</div>
+									<div class="form-group">
+										<input type="text" name="detailed_address" class="form-control" placeholder="请输入详细地址" id="user_address" value="<?=$res['detailed_address']?>">
+										<span class="Validform_checktip"></span>
+									</div>
+								</div>
+								<div class="form-inline zipcode_sw m_tb_10">
+									<label class="f_w">邮政编码：</label>
+									<input class="form-control" name="postalcode"  id="postalcode" type="text" datatype="p" errormsg="" value="<?=$res['postalcode']?>">
+									<span class="Validform_checktip"></span>
+								</div>
+								<div class="checkbox">
+									<label class="col-sm-offset-1 c_6d6d6d">
+										<input type="checkbox" id="default_address" name="default_address" value="1">设为默认收货地址
+									</label>
+								</div>
+								<div class="form-group m_tb_20">
+									<div class="col-sm-offset-1">
+										<input type="hidden" name="addpath" id="addpath" value=""/>
+										<input class="btn addre_keep_sw balance_add_sw ajax-post" target-form="js_address_update" id="submit" type="submit" value="保存" index="<?=$res['id']?>" >
+									</div>
+								</div>
+								<div class="form-group">
+									<select id="area_select_data"  style="display:none">
+										<?php
+											foreach($data['area'] as $row){
+											if($row['pid']==0){
+												continue;
+											}
+									?>
+										<option value="<?=$row['id']?>" pid="<?=$row['pid']?>" path="<?=$row['path']?>" ><?=$row['title']?></option>
+										<?php
+											}
+									?>
+										</select>
+									</div> -->
+								<script type="text/javascript">
+									function province_change(obj){
+										var pid=$(obj).val();
+										$('.city_select').html('');
+										var area='0';
+										$('.city_select').html("<option value='0'>请选择城市</option>");
+										$('#area_select_data option[pid='+pid+']').clone().appendTo('.city_select');
+										
+									}
+									function city_change(obj){
+										var pid=$(obj).val();
+										$('.area_select').html('');
+										var area='0';
+										$('.area_select').html("<option value='0'>请选择区/县</option>");
+										$('#area_select_data option[pid='+pid+']').clone().appendTo('.area_select');
+									}
+									function choose_addpath(obj){
+										var addpath = $(obj).find("option:selected").attr('path');
+										$('#addpath').val(addpath);
+									}
+									<?php
+										if($info){		
+									?>
+									$('#province').val('<?=intval($info['province'])?>').change();
+									$('#city').val('<?=intval($info['city'])?>').change();
+									$('#area').val('<?=intval($info['area'])?>');
+									<?php
+										}		
+									?>
+								</script>
+							</form>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            //表单验证
+            $(".demo_form_sw").Validform({
+            	tiptype:3,
+            	datatype:{
+            		 "zh2-4":/^[\u4E00-\u9FA5\uf900-\ufa2d]{2,4}$/,
+            		},
+            	});
+            //在表单提交时，将选中的地址分类路径添加到隐藏域中，并传给控制器
+            $("#submit").click(function(){
+            	var addpath = $(".area_select option:selected").attr("path");
+            	$('#addpath').val(addpath);
+            })
+            /*默认选中当前打开的链接菜单*/
+    		if('<?=U(CONTROLLER_NAME.'/'.ACTION_NAME)?>'==='<?=U(CONTROLLER_NAME.'/'."edit")?>'){			
+    			var current_uri='<?=U(CONTROLLER_NAME.'/'."index")?>';
+    			}
+    			$('a[href="'+current_uri+'"]').addClass('focus');
+    			$('a[href="'+current_uri+'"]').parent().parent().attr({'style':'display:block;'});
+    			$('a[href="'+current_uri+'"]').parent().parent().prev('div').addClass('cur');
+    			$('a[href="'+current_uri+'"]').parent().parent().prev('div').children('.pull-right').addClass('down');
+        });
+    </script>
+</block>

@@ -1,0 +1,111 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+<!--忘记密码-->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-7">
+			<div class="b_fff p_ZH">
+				<div style="border:1px solid #ddd;padding-bottom: 50px;">
+					<div class="border_ZH">
+						<span class="putt-left f_16">您正在找回账号 <b><?=$info['username']?></b> 的<?=session('forgetPassword_type')==2?'交易':'登录'?>密码 <a href="<?=U('User/Forgetpassword/index')?>">[换一个账号]</a></span>
+					</div>
+					<div>
+						<div class="row tab_ZH">
+							<div class="col-xs-4 li_ZH cur"><i>01.</i>选择找回方式</div>
+							<div class="col-xs-4 li_ZH"><i>02.</i>进行安全验证</div>
+							<div class="col-xs-4 li_ZH"><i>03.</i>设置新密码</div>
+						</div>
+						<div class="row tab_ZH">
+							<div class="col-xs-6 m_tb_10" onclick="window.location.href='<?=U('User/Forgetpassword/third',array('type'=>1))?>'">
+								<div class="media hover_ZH" >
+									<div class="media-left media-middle">
+										<img class="media-object" src="__IMG__/icon_h_ZH.png">
+									</div>
+									<div class="media-body media-middle" >
+										<h5 class="media-heading">手机验证：</h5>
+										<p><?=$info['telephone']?></p>
+									</div>
+								</div>
+							</div>	
+							<div class="col-xs-6 m_tb_10" onclick="window.location.href='<?=U('User/Forgetpassword/third',array('type'=>2))?>'">
+								<div class="media hover_ZH">
+									<div class="media-left media-middle">
+										<img class="media-object" src="__IMG__/icon_e_ZH.png">
+									</div>
+									<div class="media-body media-middle">
+										<h5 class="media-heading">邮箱验证：</h5>
+										<p><?=$info['email']?></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 lable_ZH">
+								<p>如果您无法通过上述方式找回密码，建议您尝试以下方式：</p>
+								<p class="c_999 f_12">1.联系客服提供个人资料，人工服找回</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="col-xs-5 reset_ZH">
+			<img src="__IMG__/sc_template/user/fpwd_bg.jpg">
+			<!-- <ul>
+					<li class="clearfix">
+						<div class="pull-left icon_ZH">
+							<i class="fc fc-duanpai"></i>
+						</div>
+						<div class="pull-right w_300_ZH">
+							<h3 class="c_ff7302">安全可靠</h3>
+							<p>银行系统级安全连接，短信身份验证机制以及分布式离线钱包备份机制；专业化公司运作，第三方银行资金监管确保资金安全</p>
+						</div>
+					</li>
+					<li class="clearfix">
+						<div class="pull-left icon_ZH">
+							<i class="fc fc-naozhong"></i>
+						</div>
+						<div class="pull-right w_300_ZH">
+							<h3 class="c_ff7302">高效便捷</h3>
+							<p>人民币账户提现时间9：00—17:30；N帮提现时间：9：00—17:30</p>
+						</div>
+					</li>
+					<li class="clearfix">
+						<div class="pull-left icon_ZH">
+							<i class="fc fc-qiandai"></i>
+						</div>
+						<div class="pull-right w_300_ZH">
+							<h3 class="c_ff7302">0费率</h3>
+							<p>网银，普通汇款充值免手续费；免收交易手续费，全面为用户考虑</p>
+						</div>
+					</li>
+					<li class="clearfix">
+						<div class="pull-left icon_ZH">
+							<i class="fc fc-fuwu"></i>
+						</div>
+						<div class="pull-right w_300_ZH">
+							<h3 class="c_ff7302">专业服务</h3>
+							<p>7*24 400电话服务，7*24在线企业客服VIP客户一对一免费专业咨询师服务</p>
+						</div>
+					</li>
+				</ul> -->	
+		</div>
+	</div>
+</div>
+<script>
+	$(function(){
+		if($(window).width()<768){
+				$(".lineH_zh").addClass("text-left").removeClass("text-right");
+				}else{
+					$(".lineH_zh").addClass("text-right").removeClass("text-left");
+				}		
+		$(window).resize(function() {
+			if($(window).width()<768){
+				$(".lineH_zh").addClass("text-left").removeClass("text-right");
+				}else{
+					$(".lineH_zh").addClass("text-right").removeClass("text-left");
+				}
+			});
+		});
+		$(".js_registerform").Validform({tiptype:3});
+		function jump(){window.location.href="<?=U('User/Forgetpassword/third')?>"}
+</script>
+</block>

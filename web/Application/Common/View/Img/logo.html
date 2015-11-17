@@ -1,0 +1,47 @@
+<input type="file" id="upload_picture_<?=$config['index']?>">
+<div class="upload-img-box" style="clear:both;">
+	<?php
+		if(!empty($shop_info["logo"])){
+		   echo "<img style='height=60;width:auto'src='__ROOT__/".$shop_info["logo"]."'><input type='hidden' name='".$config["name"]."' value='".$shop_info["logo"]."'>";
+		}else{
+		   echo "<img style='height=60;width:auto' src='__ROOT__/Public/Home/img/sc_template/onerror_pic.png'>";
+		}
+	?>
+</div>
+<script type="text/javascript">
+//上传图片
+/* 初始化上传插件 */
+$("#upload_picture_<?=$config['index']?>").uploadify({
+	formData :{
+		'<?=session_name()?>':'<?=session_id()?>'
+	},
+	'multi'        : <?=$config['multi']?>,//false表示关闭多文件上传，如果需要开启需要把值设置为true
+	"height"          : 30,
+	"swf"             : "__PLUGIN__/uploadify/uploadify.swf",
+	"fileObjName"     : "download",
+	"buttonText"      : "<?=$config['btn_val']?>",
+	"uploader"        : "<?=U('uploadPicture',array('session_id'=>session_id()))?>",
+	"width"           : 120,
+	'removeTimeout'	  : 1,
+	'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+	"onUploadSuccess" : uploadPicture_<?=$config['index']?>,
+	'onFallback' : function() {
+		alert('未检测到兼容版本的Flash.');
+	}
+});
+function uploadPicture_<?=$config['index']?>(file, data){
+	var data = $.parseJSON(data);
+	var src = '';
+	if(data.status){
+		src = data.url || '__ROOT__/' + data.save_path;
+		var html='<img style="width:auto" src="' + src + '"><input type="hidden" name="<?=$config['name']?>" value="'+data.id+'"/>';
+		$("#upload_picture_<?=$config['index']?>").parent().find('.upload-img-box').html(html);
+	}else{
+		tips(data.info,1000);
+		setTimeout(function(){
+			$('#top-alert').find('button').click();
+			$(that).removeClass('disabled').prop('disabled',false);
+		},1500);
+	}
+}
+</script>

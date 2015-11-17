@@ -1,0 +1,132 @@
+<extend name="Home@Public/body" />
+<block name="body">
+<js href="__PLUGIN__/my97date/WdatePicker.js" />
+<div class="container">
+	<div class="row m_t_10 m_b_10">
+        <include file="Public/sidebar" />
+        <div class="col-xs-9 border_gray">
+            <div class="list_box_j">
+            	<div class="dataset_title clearfix f_16 js_exp_top"><span>订单详情</span><i></i></div>
+            	<div class="m_lr_15">
+            	<!-- 新增/修改 过往经历模块 S-->            	
+            		<div class="order_box_ZH">
+                		<h5><b>订单信息</b></h5>
+                		<p>
+                			<span>订单编号：22154354112</span>
+                			<span>下单时间：2015-06-18</span>
+                			<span>付款时间：2015-6-18</span>
+                			<span>付款方式：余额支付</span>
+                			<span>是否提供发票：是</span>
+                		</p>
+                	</div>
+                	<div class="order_box_ZH">
+                		<h5><b>买家备注</b></h5>
+                		<p>这个资料很重要，请不要泄露，并用专业的态度翻译，谢谢！！！</p>
+                	</div>
+                	<div class="order_box_ZH">
+                		<h5><b>买家信息</b></h5>
+                		<div>
+                			<span>名称：remember娜娜</span>
+                			<span>城市：湖北 武汉</span>
+                			<span>联系电话：131****0840</span>
+                		</div>
+                		<p>收货信息：李小璐，131****0840，湖北省 武汉市 武昌区 光谷大道金融港，430061</p>
+                	</div>
+                	<div class="table-responsive">
+						<table class="table order_b_edf5fd_ZH c_666">
+							<tr>
+								<th>商品</th>
+								<th>单价</th>
+								<th>数量</th>
+								<th>技能</th>
+								<th>订单状态</th>
+								<th>商品总价</th>
+							</tr>
+							<tr>
+								<td>
+									<span class="m_r_20">源语言：中文</span><span>目标语言：意大利文</span>
+								</td>
+								<td>200元/千字</td>
+								<td>8千字</td>
+								<td>笔译</td>
+								<td><b class="org">未处理</b></td>
+								<td>1600 元</td>
+							</tr>
+							<tr>
+								<td colspan="6"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="order_title_ZH">
+						<h5><b class="blue">请为客户安排时间</b></h5>
+					</div>
+					<div class="form-inline m_tb_20">
+						<div class="form-group m_lr_15">
+							<label for="">开始时间：</label>
+							<input id="d4311" class="input_style" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4312\')||\'2020-10-01\'}'})" />
+						</div>
+						<div class="form-group">
+							<label for="">结束时间：</label>
+							<input id="d4312" class="input_style" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',maxDate:'2020-10-01'})">
+						</div>
+					</div>
+					<div class="order_title_ZH">
+						<h5><b class="blue">请为客户划分翻译难度</b></h5>
+					</div>
+					<div class="form-inline m_tb_20">
+						<div class="form-group m_lr_15">
+							<div class="radio">
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked="checked"> 简单
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 一般
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 困难
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 大师
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="pull-right">
+							<b class="f_14 c_666">应付总额：<span class="org">¥<em class="f_30">10,000.0</em></span></b>
+							<a class="" href="javascript:void(0)">修改</a>
+							<p class="clearfix">
+								<input class="pull-right m_tb_20 verify_btn" type="button" value="确  认">
+							</p>
+						</div>
+					</div>
+					<!--退款详情 S-->
+					<include file="Order/order_refundRequest"/>
+					<!--退款详情 E-->
+					<div class="table-responsive">
+						<div class="order_title_ZH">
+							<h5>历史记录</h5>
+						</div>
+						<table class="table order_b_edf5fd_ZH c_666 m_t_10">
+							<tr>
+								<th>日期</th>
+								<th>订单状态</th>
+								<th>备注</th>
+							</tr>
+							<tr>
+								<td>2015-06-18 16:18:26</td>
+								<td><b class="org">未处理</b></td>
+								<td>这个资料很重要，请不要泄露，并用专业的态度翻译，谢谢！！！</td>
+							</tr>
+							<tr>
+								<td colspan="3"></td>
+							</tr>
+						</table>
+					</div>
+            	<!--the end-->
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+</block>

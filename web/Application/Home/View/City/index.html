@@ -1,0 +1,204 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+	<style>
+	body{ background: #f5f5f5;}
+	</style>
+	<div class="container">
+		<div class="wrap_j f_14">
+			<div class="search_header_j clearfix">
+				<form class="form-inline pull-left" method="post" action="">
+					<label>按省份选择</label>
+					<select class="form-control" name="type" onchange="cate_1_choose(this)" >
+						<option>请选择</option>
+							<?php
+								foreach($data as $k=>$v){
+									if($v['level']==0){
+							?>
+								<option cat_id ="<?=$v['id']?>" value="<?=$v['id']?>"><?=$v['title']?></option>
+							<?php 
+									}
+								}
+							?>
+					</select>
+					<select id="sid"class="form-control">
+						<option  data-name="<?=$v['title']?>">请选择</option>
+					</select>
+					
+					<select id="tid" class="form-control" name="type" style="display:none;">						
+							<?php
+								foreach($data as $k=>$v){
+									if($v['level']>0){
+							?>
+								<option  id="choose_title" class="js_select_city"  data-pid="<?=$v['pid']?>" data-path="<?=$v['path']?>" data-name="<?=$v['title']?>" data-id="<?=$v['id']?>" value="<?=$v['id']?>"><?=$v['title']?></option>
+								
+							<?php 
+									}
+								}
+							?>
+							
+					</select>
+					
+					<input type="button" class="btn btn-orange " onclick="choose_1_city()" value="提交"/>
+				</form>
+				
+				
+				<!-- <form class="form-inline pull-left">
+					<label>直接输入城市</label>
+					<input type="text" id="fid" class="form-control " name="search_name">
+					
+					<div id="search_suggest">
+						<ul id="search_result">
+						</ul>
+					</div>
+
+				</form> -->
+				
+			</div>
+			
+			
+			<div class="search_header_j" id="choose_id">
+				<span >热门城市：</span>
+				<?php 
+					foreach($data as $k=>$v){
+						if($v['recommend']==1){	
+				?>
+							<a href="" id="choose_id" class="cur1 js_select_city" data-id="<?=$v['id']?>" data-name="<?=$v['title']?>" data-pid="<?=$v['pid']?>" data-path="<?=$v['path']?>" ><?=$v['title']?></a>	
+			
+				<?php 
+						}
+					}
+				?>
+				<a href="" id="choose_id" class="cur1 js_select_city" data-id="0" data-name="全国" data-pid="" data-path="" >全国</a>
+			</div>
+
+			<div class="cities_list_j">
+				<p>
+					<span>按拼音首字母选择：</span>
+					<?php 
+						foreach ($alphabets as $v){
+					?>
+								<a href="#index<?=$v?>"><?=$v?></a>
+					<?php 
+						}
+					?>
+				</p>
+				<?php 
+					foreach ($data_city as $k=>$v){
+				?>
+						<dl class="alphabet">
+							<dt class="text-uppercase" ><a name="index<?=$k?>"><?=$k?></a></dt>
+							<dd>
+							<?php 
+								foreach ($v as $v){
+							?>
+									<a href="" id="choose_id" class="cur1 js_select_city" data-id="<?=$v['id']?>" data-name="<?=$v['title']?>" data-pid="<?=$v['pid']?>" data-path="<?=$v['path']?>" ><?=$v['title']?></a>
+							<?php
+								}
+							?>
+							</dd>
+						</dl>
+				<?php
+					}
+				?>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$("#fid").bind('keyup',function(){
+			var title = $("#fid").val();
+			$.post("<?=U('lookCity')?>",{title:title},function(data){
+				var d=eval('data');
+				if(data==0){
+					$('#search_suggest').css('display','none');　 
+				}
+				else{
+					var html='';
+					for(var i=0;i<d.length;i++){
+						html+='<li><a href="" class="js_select_city1" data-id="'+d[i].id+'" data-pid="'+d[i].pid+'" data-name="'+d[i].title+'" data-path="'+d[i].path+'">'+d[i].title+'</a></li>';
+					} 
+					$("#search_result").html(html);
+					$("#search_suggest").show().css({
+						top:$('#fid').offset().top+$('#fid').height,
+						left:$('#fid').offset().left,
+						width:'175px',
+						position:'absolute',
+						border:'2px solid  #ddd',
+						display:'block',
+					});
+				}
+			},'json');
+		});
+	});
+	
+		
+	//下拉搜索框
+	function choose_1_city(){
+		$(function(){
+			var id = $("#sid").val();
+			var pid = $("#sid").find("option:selected").attr("data-pid");
+			var path = $("#sid").find("option:selected").attr("data-path");
+			var title=$("#sid").find("option:selected").text(); 
+			$.post("<?=U('lockCity')?>",{title:title,id:id,pid:pid,path:path,},function(data){
+				if(data.status==1){
+					window.location.href = data.url;
+				}
+			});
+		});
+		
+	}
+	
+	
+	
+	$(function(){
+		$(".js_select_city").on('click',function(){
+			var id = $(this).attr('data-id');
+			var title = $(this).attr('data-name');
+			var pid = $(this).attr('data-pid');
+			var path = $(this).attr('data-path');
+			$.post("<?=U('lockCity')?>",
+			{
+				id:id,
+				title:title,
+				pid:pid,
+				path:path,
+			},
+			function(data){
+				if(data.status==1){
+					window.location.href =data.url;
+				}
+			});
+			return false;
+		});
+	});
+	
+	/*//二级联动框*/
+	//第一级
+	function cate_1_choose(obj){
+		var pid=$(obj).val();
+		$('#sid').html("<option>请选择</option>");
+		$('#tid option[data-pid=' + pid + ']').clone().appendTo('#sid');
+	}
+	/*城市切换
+	**/
+	$(document).ready(function(){
+		$(function () {
+			$('.cur1').click(function(){
+				var s=$(".cur1").attr('class','cur1');
+				$("#ctname").html($(this).html());
+			});
+		});
+	});
+							
+	//点击字母回落滚动条
+	$(document).ready(function(){
+		$('.cities_list_j > p > span > a').on('click', function(e){
+		e.preventDefault();
+		var anchorid = $(this.hash);  
+		if(anchorid.length == 0) anchorid = $('a[name="' + this.hash.substr(1) + '"]');
+		else anchorid = $('html');
+		$('html, body').animate({ scrollTop: anchorid.offset().top }, 500);
+	   });
+	});
+	</script>
+</block>

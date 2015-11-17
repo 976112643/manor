@@ -1,0 +1,70 @@
+<extend name="Home@Public/body"/>
+<block name="body">
+    <css href="__CSS__/classes.css" />
+    <css href="__PLUGIN__/fancybox/source/jquery.fancybox.css" />
+	<js href="__PLUGIN__/fancybox/source/jquery.fancybox.js" />
+    <include file='Public/shop_top' />
+                <!--company right side S-->
+                <div class="col-xs-9 company_right_side">
+                    <div class="server_info_box">
+                        <ul class="video_box_yqc row js_fancybox">
+							<?php
+								foreach($shop_resource as $row){
+									if($row['type']==1){
+							?>
+							<li class="col-xs-3" data-type='img'>
+                                <a href="__ROOT__/<?=$row['img_path']?>" rel="group"><i class="video_icon"></i><img onerror="this.src='__IMG__/sc_template/onerror_pic.png'" src="__ROOT__/<?=$row['img_path']?>"></a>
+                                <a href="__ROOT__/<?=$row['img_path']?>" class="video_title_yqc"><?=$row['title']?></a>
+                            </li>
+							<?php
+									}else if($row['type']==4){
+							?>
+                            <li class="col-xs-3" data-type='video'>
+                                <a href="#play" data_url="__ROOT__/<?=$row['img_path']?>" class="video"><i class="video_icon"></i><img onerror="this.src='__IMG__/sc_template/onerror_pic.png'" src="<?=empty($row['cover'])?'__IMG__/company_pic.jpg':'__ROOT__/'.$row['cover']?>"></a>
+                                <a href="#play" data_url="__ROOT__/<?=$row['img_path']?>" class="video_title_yqc"><?=$row['title']?></a>
+                            </li>
+							<?php
+									}
+								}
+							?>
+                          
+                        </ul>
+                        <?php if(empty($shop_resource)){?>
+							<include file="Public/nodata" />
+						<?php }?>
+                        <ul class="pages clearfix">
+                            <?=$page?>
+							<?php
+								if(trim($page)){
+							?>
+							<span>&nbsp;</span>
+							<span>跳转至</span>
+							<input type="text" name='p' />
+							<span>页</span>
+							<a href="<?=U('')?>" class='go_to_page' >确定</a>
+							<?php
+								}
+							?>
+                        </ul>
+                    </div>
+                </div>
+                <!--company right side E-->
+            </div>
+        </div>
+    </div>
+    <script>
+    $(function(){
+    	$('.js_fancybox li a').fancybox({
+		    'arrows':false,
+            'beforeLoad': function(){
+                if($(this)[0].href.indexOf('#play') != -1){
+                    var _id = $(this)[0].href.slice(1,$(this)[0].href.length),
+                        _tpl = '<div class="video" id="'+_id+'"><object pluginspage="http://www.macromedia.com/go/getflashplayer" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=11,3,0,0" width="700" height="500" id="ckplayer_a1" name="ckplayer_a1" align="middle"><param name="allowScriptAccess" value="false"><param name="allowFullScreen" value="true"><param name="quality" value="high"><param name="bgcolor" value="#aaa"><param name="wmode" value="transparent"><param name="movie" value="__ROOT__/Public/Plugins/ckplayer/ckplayer.swf"><param name="flashvars" value="f=<?="http://".$_SERVER["SERVER_NAME"]?>'+$(this)[0].dataUrl+'&amp;c=0&amp;b=1"><embed allowscriptaccess="false" allowfullscreen="true" quality="high" bgcolor="#aaa" wmode="transparent" src="__ROOT__/Public/Plugins/ckplayer/ckplayer.swf" flashvars="f=<?="http://".$_SERVER["SERVER_NAME"]?>'+$(this)[0].dataUrl+'&amp;c=0&amp;b=1" width="700" height="500" name="ckplayer_a1" id="ckplayer_a1" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object></div>';
+                    $(this)[0].content = _tpl;
+                }
+            }
+        });
+    })
+    </script>
+	<include file='Public/shop_sidebar' />
+</block>

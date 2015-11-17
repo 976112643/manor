@@ -1,0 +1,92 @@
+							<ul class="comments_list">
+										<?php
+											foreach($shop_comments as $row){
+											 $user_header=getAvatar($row["member_id"],"middle");
+										?>
+										<li class="clearfix">
+											<div class="comment_img"><a href="#"><img src="<?=$user_header?>" class="img-circle"/></a></div>
+											<div class="comment_info">
+												<div class="review_type">
+												    <?php
+													  if($row["type"]==1){
+													?>
+												    <i class="face_icon smile"></i>好评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==2){
+													?>
+												    <i class="face_icon normal"></i>中评
+													<?php
+													  }
+													?>
+													<?php
+													  if($row["type"]==3){
+													?>
+												    <i class="face_icon sad"></i>差评
+													<?php
+													  }
+													?>
+													<span>源语言：<em><?=$row["language_text"]?></em></span><span>目标语言：<em><?=$row["to_language_text"]?></em></span>
+												</div>
+												<p><?=$row['content']?></p>
+												<?php
+												  if(!empty($comments_image[$row["id"]])){
+												?>
+												<div class="img_list js_fancybox">
+												   <?php
+												     foreach($comments_image[$row["id"]] as $img){
+												   ?>
+													<a href="__ROOT__/<?=$img["save_path"]?>" rel="group"><img src="__ROOT__/<?=$img["save_path"]?>"></a>
+												   <?php
+												    }
+												   ?>	
+												</div>
+												<?php
+												  }
+												?>
+												<p><?=date("Y-m-d",strtotime($row["add_time"]))?> 所属技能：<?=$row["serve_text"]?></p>
+												<!--评论 S-->
+												<?php
+													if($row['_child']){
+												?>
+												<div class="comment_ZH" style='margin-top:10px'>
+													<ul class="media-list">
+														<li class="media">
+															<div class="media-left">
+																<span class="media-object w_55">回复：</span>
+															</div>
+															<div class="media-body">
+																<h6 class="media-heading"><i class="face_icon smile"></i><?=$_row['type_text']?></h6>
+																<p><?=$_row['content']?></p>
+															</div>
+														</li>
+													</ul>
+												</div>
+												<?php
+												   }
+												?>
+												<!--评论 E-->
+											</div>
+										</li>
+										<?php
+											}
+										?>
+							</ul>
+							<div class="pages clearfix pager">
+								<?=$page?>
+								<?php
+									if(trim($page)){
+								?>
+								<span>&nbsp;</span>
+								<span>跳转至</span>
+								<input type="text" name='p' />
+								<span>页</span>
+								<a href="<?=U('')?>" class='go_to_page' >确定</a>
+								<?php
+									}
+								?>
+								<!--<a href="javascript:;" class="pull-right back_top_yqc js_backtop"></a>-->
+							</div>
+                        
